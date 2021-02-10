@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "commutyFestProyect"
+    }
+  },
+  "defaultProject": "commutyFestProyect",
+  "cli": {
+    "analytics": false
+  }
 }
