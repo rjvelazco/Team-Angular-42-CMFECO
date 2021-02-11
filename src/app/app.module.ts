@@ -11,6 +11,7 @@ import {AppComponent} from './app.component';
 
 // Modules
 import {SharedModule} from './shared/shared.module';
+import {PrimeModule} from './prime-module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {SharedModule} from './shared/shared.module';
     RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    PrimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
