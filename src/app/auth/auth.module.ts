@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 // Components
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import {LoginComponent} from './components/login/login.component';
+import {RegisterComponent} from './components/register/register.component';
 
+// Routing
+import {AuthRoutingModule} from './auth.routing';
 
 
 @NgModule({
@@ -14,11 +15,13 @@ import { RegisterComponent } from './register/register.component';
     RegisterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AuthRoutingModule
   ],
   exports: [
     LoginComponent,
     RegisterComponent
   ]
 })
-export class AuthModule { }
+export class AuthModule {
+}

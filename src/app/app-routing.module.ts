@@ -1,24 +1,23 @@
-import { NgModule } from '@angular/core';
-
-import { AuthRoutingModule } from './auth/auth.routing';
-
-import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
+import {LoginComponent} from './auth/components/login/login.component';
 
 const routes: Routes = [
-
+  {path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
   {path: '**', component: LoginComponent}
 
-]
+];
 
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes),
-    AuthRoutingModule
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+    }),
   ],
   exports: [
     RouterModule
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
