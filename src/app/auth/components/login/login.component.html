@@ -12,7 +12,7 @@
     </div>
     <div class="p-lg-8 p-d-flex p-justify-center p-align-center position-relative min-vh-lg-100">
       <div class="content-form w-100 p-pt-6 p-pt-lg-4 p-pb-6">
-        <form [formGroup]="form" (ngSubmit)="loginUser($event)">
+        <form [formGroup]="form" (ngSubmit)="loginUser()">
           <div class="p-text-center p-mb-5 header_form">
             <h1>Iniciar Sesión</h1>
             <p>¿Aun no tienes una cuenta? <a href="#"> Registrate</a></p>
@@ -44,11 +44,11 @@
             <div class="p-field">
               <label for="email">Correo Electronico</label>
               <input type="email" id="email" pInputText placeholder="example@gmail.com" formControlName="email">
-              <small class="p-error" *ngIf="form.get('email').hasError('pattern')">
-                Correo Electronico Invalido
+              <small class="p-error" *ngIf="emailInvalid">
+               <li class="error">Correo Electronico Invalido</li>
               </small>
-              <small class="p-error" *ngIf="form.get('email').hasError('required')&& form.get('email')?.touched">
-                Correo Electronico Requerido
+              <small class="p-error" *ngIf="emailIsEmpty">
+                <li class="error">Correo Electronico Requerido</li>
               </small>
             </div>
             <div class="p-field">
@@ -59,12 +59,14 @@
                 </span>
               </label>
               <input type="password" id="password" pInputText placeholder="************" formControlName="password">
-              <small class="p-error" *ngIf="form.get('password').hasError('required') && form.get('password')?.touched">
-                Contraseña requerida
+              <small class="p-error" *ngIf="passwordInvalid">
+                <li class="error">Contraseña requerida</li>
               </small>
             </div>
             <div class="p-field-checkbox">
-              <p-checkbox binary="true" id="remember" formControlName="remember"></p-checkbox>
+              <p-checkbox id="remember"
+                          binary="true"
+                          formControlName="remember"></p-checkbox>
               <label for="remember">Mantenerme contectado</label>
             </div>
           </div>

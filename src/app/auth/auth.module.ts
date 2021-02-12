@@ -1,15 +1,17 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-// Components
-import {LoginComponent} from './components/login/login.component';
-import {RegisterComponent} from './components/register/register.component';
+// Modules
+import {ReactiveFormsModule} from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
+import { PrimeModule } from '../prime-module';
 
 // Routing
 import {AuthRoutingModule} from './auth.routing';
-import {ReactiveFormsModule} from '@angular/forms';
-import {SharedModule} from '../shared/shared.module';
-import {PrimeModule} from '../prime-module';
+
+// Components
+import {LoginComponent} from './components/login/login.component';
+import {RegisterComponent} from './components/register/register.component';
 
 
 @NgModule({

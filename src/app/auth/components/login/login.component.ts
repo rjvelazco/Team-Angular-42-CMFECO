@@ -8,16 +8,33 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  email: string = localStorage.getItem('email') || '';
-  form: FormGroup;
+  public email: string = localStorage.getItem('email') || '';
+  public check: boolean;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.buildForm();
-  }
+  public form: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.buildForm();
+    this.check = this.form.value.remember;
   }
 
+  // Getters - Errors.
+  
+  get emailInvalid() {
+    return this.form.get('email').hasError('pattern');
+  }
+
+  get emailIsEmpty() {
+    return this.form.get('email').hasError('required') && this.form.get('email')?.touched;
+  }
+
+  get passwordInvalid() {
+    return this.form.get('password').hasError('required') && this.form.get('password')?.touched;
+  }
 
   private buildForm(): void {
     this.form = this.formBuilder.group({
@@ -32,20 +49,20 @@ export class LoginComponent implements OnInit {
   }
 
   rememberData(): void {
-    const check = this.form.value.remember;
-    if (check) {
-      localStorage.setItem('email', this.form.value.email);
-    } else {
-      localStorage.removeItem('email');
-    }
+    (this.check)? localStorage.setItem('email', this.form.value.email): localStorage.removeItem('email');
   }
 
 
-  loginUser(event: Event): void {
-    event.preventDefault();
+  loginUser(): void {
+    // event.preventDefault();
+    // event: Event
     if (this.form.valid) {
       const user = this.form.value;
       this.rememberData();
+    } else {
+      // In case someone send the form, we mark all the controls as 'touched' 
+      // to be able to show errors.
+      Object.values(this.form.controls).forEach(control => control.markAllAsTouched());
     }
   }
 }
