@@ -11,7 +11,11 @@ import {AppComponent} from './app.component';
 
 // Modules
 import {SharedModule} from './shared/shared.module';
+<<<<<<< HEAD
 import { AuthModule } from './auth/auth.module';
+=======
+import {PrimeModule} from './prime-module';
+>>>>>>> bc9e1b996fa4aa98c77635fcb20e16692e2b533e
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
 
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    PrimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
