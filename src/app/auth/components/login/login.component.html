@@ -1,1 +1,15 @@
 <p>login works!</p>
+<form ngNativeValidate [formGroup]="formu" (ngSubmit)="RegistrarUsuario()">
+    <label for="">
+    email:
+  </label>
+    <input type="email" name="email" formControlName="email" required>
+    <label for="">
+    password:
+  </label>
+    <input type="password" name="password" formControlName="password" required>
+    <label for="">Recuerdame:</label>
+    <input type="checkbox" name="recuerdame" value="false" formControlName="recuerdame" id="">
+
+    <button type="submit">Ingresar</button>
+</form>
