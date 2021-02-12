@@ -43,7 +43,12 @@
           <div class="p-fluid p-mb-5">
             <div class="p-field">
               <label for="email">Correo Electronico</label>
-              <input type="email" id="email" pInputText placeholder="example@gmail.com" formControlName="email">
+              <input type="email"
+                     autocomplete="off"
+                     id="email" 
+                     pInputText
+                     placeholder="example@gmail.com" 
+                     formControlName="email">
               <small class="p-error" *ngIf="emailInvalid">
                <li class="error">Correo Electronico Invalido</li>
               </small>
