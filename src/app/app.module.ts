@@ -11,6 +11,7 @@ import {AppComponent} from './app.component';
 
 // Modules
 import {SharedModule} from './shared/shared.module';
+import {AuthModule} from './auth/auth.module';
 import {PrimeModule} from './prime-module';
 
 @NgModule({
@@ -20,6 +21,7 @@ import {PrimeModule} from './prime-module';
   imports: [
     BrowserModule,
     RouterModule,
+    AuthModule,
     AppRoutingModule,
     ReactiveFormsModule,
     SharedModule,

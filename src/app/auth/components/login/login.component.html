@@ -12,7 +12,7 @@
     </div>
     <div class="p-lg-8 p-d-flex p-justify-center p-align-center position-relative min-vh-lg-100">
       <div class="content-form w-100 p-pt-6 p-pt-lg-4 p-pb-6">
-        <form>
+        <form [formGroup]="form" (ngSubmit)="loginUser($event)">
           <div class="p-text-center p-mb-5 header_form">
             <h1>Iniciar Sesión</h1>
             <p>¿Aun no tienes una cuenta? <a href="#"> Registrate</a></p>
@@ -43,7 +43,13 @@
           <div class="p-fluid p-mb-5">
             <div class="p-field">
               <label for="email">Correo Electronico</label>
-              <input type="email" id="email" pInputText placeholder="example@gmail.com">
+              <input type="email" id="email" pInputText placeholder="example@gmail.com" formControlName="email">
+              <small class="p-error" *ngIf="form.get('email').hasError('pattern')">
+                Correo Electronico Invalido
+              </small>
+              <small class="p-error" *ngIf="form.get('email').hasError('required')&& form.get('email')?.touched">
+                Correo Electronico Requerido
+              </small>
             </div>
             <div class="p-field">
               <label for="password" class="p-align-center">
@@ -52,11 +58,14 @@
                   <a href="#" class="input-label-secondary">¿Olvidaste tu contraseña?</a>
                 </span>
               </label>
-              <input type="password" id="password" pInputText placeholder="************">
+              <input type="password" id="password" pInputText placeholder="************" formControlName="password">
+              <small class="p-error" *ngIf="form.get('password').hasError('required') && form.get('password')?.touched">
+                Contraseña requerida
+              </small>
             </div>
             <div class="p-field-checkbox">
-              <p-checkbox binary="true" id="conected"></p-checkbox>
-              <label for="conected">Mantenerme contectado</label>
+              <p-checkbox binary="true" id="remember" formControlName="remember"></p-checkbox>
+              <label for="remember">Mantenerme contectado</label>
             </div>
           </div>
           <button pButton

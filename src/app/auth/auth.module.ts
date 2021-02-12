@@ -7,6 +7,7 @@ import {RegisterComponent} from './components/register/register.component';
 
 // Routing
 import {AuthRoutingModule} from './auth.routing';
+import {ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
 import {PrimeModule} from '../prime-module';
 
@@ -21,6 +22,7 @@ import {PrimeModule} from '../prime-module';
     AuthRoutingModule,
     SharedModule,
     PrimeModule,
+    ReactiveFormsModule,
   ],
   exports: [
     LoginComponent,
