@@ -1,1 +1,72 @@
-<app-header></app-header>
+<main id="content p-pt-0">
+  <div class="p-d-lg-flex p-px-3">
+    <div class="p-lg-4 p-d-none p-d-lg-flex p-justify-center p-align-center position-relative min-vh-100 bg-light">
+      <div class="logo-comfeco">
+        <div class="p-text-center p-mb-5">
+          <img src="assets/img/logo_comfeco.png" alt="" class="img-fluid">
+        </div>
+        <div class="p-mb-5">
+          <h1 class="text-logo">¡ A CODEAR !</h1>
+        </div>
+      </div>
+    </div>
+    <div class="p-lg-8 p-d-flex p-justify-center p-align-center position-relative min-vh-lg-100">
+      <div class="content-form w-100 p-pt-6 p-pt-lg-4 p-pb-6">
+        <form>
+          <div class="p-text-center p-mb-5 header_form">
+            <h1>Iniciar Sesión</h1>
+            <p>¿Aun no tienes una cuenta? <a href="#"> Registrate</a></p>
+          </div>
+          <div class="p-mb-3">
+            <button pButton
+                    type="button"
+                    class="p-button-raised p-button-text p-button-plain p-button-lg"
+                    label="Iniciar Sesión con Google">
+              <span class="p-flex p-justify-center p-align-center">
+                <img class="avatar avatar-xss p-mr-2" src="assets/img/google.svg" alt="Google Icon">
+              </span>
+            </button>
+          </div>
+          <div class="p-mb-3">
+            <button pButton
+                    type="button"
+                    class="p-button-raised p-button-text p-button-plain p-button-lg"
+                    label="Iniciar Sesión con Facebook">
+              <span class="p-flex p-justify-center p-align-center">
+                <img class="avatar avatar-xss p-mr-2" src="assets/img/facebook.svg" alt="Google Icon">
+              </span>
+            </button>
+          </div>
+          <p-divider align="center" type="dashed">
+            <b>O</b>
+          </p-divider>
+          <div class="p-fluid p-mb-5">
+            <div class="p-field">
+              <label for="email">Correo Electronico</label>
+              <input type="email" id="email" pInputText placeholder="example@gmail.com">
+            </div>
+            <div class="p-field">
+              <label for="password" class="p-align-center">
+                <span class="label-secondary">
+                  Contraseña
+                  <a href="#" class="input-label-secondary">¿Olvidaste tu contraseña?</a>
+                </span>
+              </label>
+              <input type="password" id="password" pInputText placeholder="************">
+            </div>
+            <div class="p-field-checkbox">
+              <p-checkbox binary="true" id="conected"></p-checkbox>
+              <label for="conected">Mantenerme contectado</label>
+            </div>
+          </div>
+          <button pButton
+                  pRipple
+                  type="submit"
+                  label="Ingresar"
+                  class="btn-login">
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>

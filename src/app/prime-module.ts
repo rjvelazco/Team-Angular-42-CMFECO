@@ -4,6 +4,9 @@ import {InputTextModule} from 'primeng/inputtext';
 import {PasswordModule} from 'primeng/password';
 import {TabViewModule} from 'primeng/tabview';
 import {CardModule} from 'primeng/card';
+import {RippleModule} from 'primeng/ripple';
+import {DividerModule} from 'primeng/divider';
+import {CheckboxModule} from 'primeng/checkbox';
 
 @NgModule({
   exports: [
@@ -12,6 +15,9 @@ import {CardModule} from 'primeng/card';
     PasswordModule,
     TabViewModule,
     CardModule,
+    RippleModule,
+    DividerModule,
+    CheckboxModule,
   ]
 })
 export class PrimeModule {

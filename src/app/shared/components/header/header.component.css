@@ -7,34 +7,6 @@ header{
     width: 100%;
 }
 
-header nav{
-    /* background-color: #f2f2f2; */
-    align-items: center;
-    display: flex;
-    justify-content: flex-start;
-    max-width: 1000px;
-    width: 100%;
-}
-
-header nav .logo-img{
-    align-items: center;
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-}
-
-header nav .logo-img .title{
-    color: var(--color-palette-primary);
-    display: inline-block;
-    font-family: var(--font-logo-family);
-    font-size: 25px;
-    font-weight: 400;
-    margin-left: 20px;
-}
-
-header nav .logo-img .logo{
-    width: 60px;
-}
 
 .secondary{
     color: var(--color-palette-secondary);

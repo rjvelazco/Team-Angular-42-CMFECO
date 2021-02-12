@@ -8,6 +8,7 @@ import {RegisterComponent} from './components/register/register.component';
 // Routing
 import {AuthRoutingModule} from './auth.routing';
 import {SharedModule} from '../shared/shared.module';
+import {PrimeModule} from '../prime-module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {SharedModule} from '../shared/shared.module';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    SharedModule
+    SharedModule,
+    PrimeModule,
   ],
   exports: [
     LoginComponent,
