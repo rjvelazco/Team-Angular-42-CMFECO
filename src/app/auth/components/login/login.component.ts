@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+// Services
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +13,18 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   public email: string = localStorage.getItem('email') || '';
-  public check: boolean;
 
   public form: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.buildForm();
-    this.check = this.form.value.remember;
+    this.authService.getCurrentUser().subscribe(data => console.log(data));
   }
 
   // Getters - Errors.
@@ -36,6 +41,10 @@ export class LoginComponent implements OnInit {
     return this.form.get('password').hasError('required') && this.form.get('password')?.touched;
   }
 
+  get checkRemember() {
+    return this.form.value.remember;
+  }
+
   private buildForm(): void {
     this.form = this.formBuilder.group({
       email: [`${this.email}`, [
@@ -44,21 +53,29 @@ export class LoginComponent implements OnInit {
           /^[0-9a-zA-Z]+([0-9a-zA-Z]*[-._+])*[0-9a-zA-Z]+@[0-9a-zA-Z]+([-.][0-9a-zA-Z]+)*([0-9a-zA-Z]*[.])[a-zA-Z]{2,6}$/)
       ]],
       password: ['', [Validators.required]],
-      remember: ['']
+      remember: [false]
     });
   }
 
   rememberData(): void {
-    (this.check)? localStorage.setItem('email', this.form.value.email): localStorage.removeItem('email');
+    (this.checkRemember)? localStorage.setItem('email', this.form.value.email): localStorage.removeItem('email');
   }
 
 
   loginUser(): void {
-    // event.preventDefault();
-    // event: Event
+    // console.log('form ->', this.form.value.email);
+
     if (this.form.valid) {
-      const user = this.form.value;
-      this.rememberData();
+    
+      const { email, password } = this.form.value;
+
+      this.authService.login(email, password)
+        .then((user) => {
+          console.log('Se ejecuta:',user);
+          // this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/dashboard');
+        });
+
     } else {
       // In case someone send the form, we mark all the controls as 'touched' 
       // to be able to show errors.
