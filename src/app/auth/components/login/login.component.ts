@@ -9,7 +9,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   public email: string = localStorage.getItem('email') || '';
-  public check: boolean;
 
   public form: FormGroup;
 
@@ -19,7 +18,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-    this.check = this.form.value.remember;
   }
 
   // Getters - Errors.
@@ -36,6 +34,10 @@ export class LoginComponent implements OnInit {
     return this.form.get('password').hasError('required') && this.form.get('password')?.touched;
   }
 
+  get checkRemember() {
+    return this.form.value.remember;
+  }
+
   private buildForm(): void {
     this.form = this.formBuilder.group({
       email: [`${this.email}`, [
@@ -49,13 +51,12 @@ export class LoginComponent implements OnInit {
   }
 
   rememberData(): void {
-    (this.check)? localStorage.setItem('email', this.form.value.email): localStorage.removeItem('email');
+    (this.checkRemember)? localStorage.setItem('email', this.form.value.email): localStorage.removeItem('email');
   }
 
 
   loginUser(): void {
-    // event.preventDefault();
-    // event: Event
+    console.log('form ->', this.form.value.email);
     if (this.form.valid) {
       const user = this.form.value;
       this.rememberData();
