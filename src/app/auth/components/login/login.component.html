@@ -15,7 +15,7 @@
         <form [formGroup]="form" (ngSubmit)="loginUser()">
           <div class="p-text-center p-mb-5 header_form">
             <h1>Iniciar Sesión</h1>
-            <p>¿Aun no tienes una cuenta? <a href="#"> Registrate</a></p>
+            <p>¿Aun no tienes una cuenta? <a [routerLink]="['/register']"> Registrate</a></p>
           </div>
           <div class="p-mb-3">
             <button pButton
@@ -71,7 +71,8 @@
             <div class="p-field-checkbox">
               <p-checkbox id="remember"
                           binary="true"
-                          formControlName="remember"></p-checkbox>
+                          formControlName="remember"
+                          (click)="rememberData()"></p-checkbox>
               <label for="remember">Mantenerme contectado</label>
             </div>
           </div>
