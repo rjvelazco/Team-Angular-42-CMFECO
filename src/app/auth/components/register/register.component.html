@@ -1,13 +1,13 @@
 <div class="container-fluid mt-5">
-  <div class="container d-flex align-items-center flex-column">
-    <div class="row mt-5">
-      <div class="col-12">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
         <h3 class="mb-3">Registro de usuario</h3>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <form autocomplete="off" [formGroup]="FormData" (ngSubmit)="add(FormData.value)">
+    <div class="row d-flex align-items-center flex-column">
+      <div class="col-12 col-md-6 col-lg-4">
+        <form autocomplete="off" [formGroup]="FormData" (ngSubmit)="createUser(FormData.value)">
           <div class="mb-4">
             <label>Usuario</label>
             <input  type="text"
@@ -61,8 +61,12 @@
             </div>
             <small *ngIf="checkTermsInvalid" class="text-danger">Debe de aceptar los términos y condiciones</small>
           </div>
-          <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="!FormData.valid">Registrar</button>
+          <button type="submit" class="btn btn-success w-100" [disabled]="!FormData.valid">Registrar</button>
+          <div class="mb-4">
+            <span>¿Ya tienes cuenta? <span class="link-info cursor" [routerLink]="['/login']">Login</span></span>
+          </div>
         </form>
+        
       </div> <!-- Col Formulario -->
     </div>  <!-- Row Formulario -->
   </div>

@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  add(FormData){
+  createUser(FormData){
     console.log(FormData);
   }
 
