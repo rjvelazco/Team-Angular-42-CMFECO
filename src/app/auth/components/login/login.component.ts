@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+// Services
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +17,14 @@ export class LoginComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.buildForm();
+    this.authService.getCurrentUser().subscribe(data => console.log(data));
   }
 
   // Getters - Errors.
@@ -46,7 +53,7 @@ export class LoginComponent implements OnInit {
           /^[0-9a-zA-Z]+([0-9a-zA-Z]*[-._+])*[0-9a-zA-Z]+@[0-9a-zA-Z]+([-.][0-9a-zA-Z]+)*([0-9a-zA-Z]*[.])[a-zA-Z]{2,6}$/)
       ]],
       password: ['', [Validators.required]],
-      remember: ['']
+      remember: [false]
     });
   }
 
@@ -56,10 +63,19 @@ export class LoginComponent implements OnInit {
 
 
   loginUser(): void {
-    console.log('form ->', this.form.value.email);
+    // console.log('form ->', this.form.value.email);
+
     if (this.form.valid) {
-      const user = this.form.value;
-      this.rememberData();
+    
+      const { email, password } = this.form.value;
+
+      this.authService.login(email, password)
+        .then((user) => {
+          console.log('Se ejecuta:',user);
+          // this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/dashboard');
+        });
+
     } else {
       // In case someone send the form, we mark all the controls as 'touched' 
       // to be able to show errors.

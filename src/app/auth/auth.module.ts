@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
+
 // Modules
 import {ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
@@ -26,7 +27,7 @@ import {RegisterComponent} from './components/register/register.component';
     SharedModule,
     PrimeModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     LoginComponent,
