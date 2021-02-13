@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import Swal from 'sweetalert2';
+
 // Services
 import { AuthService } from '../../../services/auth.service';
 
@@ -72,9 +74,16 @@ export class LoginComponent implements OnInit {
       this.authService.login(email, password)
         .then((user) => {
           console.log('Se ejecuta:',user);
-          // this.router.navigateByUrl('/login');
           this.router.navigateByUrl('/dashboard');
-        });
+        })
+        .catch((err) => {
+          Swal.fire({
+            title: 'Error!',
+            text: 'Email y/o contraseña no validos',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          })
+        })
 
     } else {
       // In case someone send the form, we mark all the controls as 'touched' 

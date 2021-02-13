@@ -22,7 +22,8 @@ export class AuthService {
       // user
       return await this.fbAuth.signInWithEmailAndPassword(email, password)
     }catch(error){
-      console.warn(error)
+      console.warn(error);
+      throw new Error('error');
     }
   }
 
@@ -30,7 +31,7 @@ export class AuthService {
     try{
       await this.fbAuth.signOut();
     }catch(error){
-      console.warn(error)
+      console.warn(error);
     }
   }
 
