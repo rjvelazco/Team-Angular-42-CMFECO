@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 import Swal from 'sweetalert2';
 
@@ -11,7 +12,10 @@ import Swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
   FormData: FormGroup;
 
-  constructor(private fB: FormBuilder) {
+  constructor(
+    private fB: FormBuilder,
+    private authService: AuthService
+  ) {
   }
 
   ngOnInit(): void {
@@ -27,8 +31,26 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  createUser(FormData){
-    console.log(FormData);
+  async createUser(formData){
+    const { email, password } = formData;
+    
+    try {
+      const { user} = await this.authService.register(email, password);
+      Swal.fire({
+        title: '¡Bienvenido!',
+        text: `Verifica tu email [${user.email}] para continuar`,
+        icon: 'success',
+        confirmButtonText: 'Cool'
+      });
+      this.FormData.reset();
+    } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'El email ya ha sido registrado.',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      }); 
+    }
   }
 
   get usernameInvalid() {

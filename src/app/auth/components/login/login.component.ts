@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-    this.authService.getCurrentUser().subscribe(data => console.log(data));
+    // this.authService.getCurrentUser().subscribe(data => console.log(data));
   }
 
   // Getters - Errors.
@@ -55,35 +55,60 @@ export class LoginComponent implements OnInit {
           /^[0-9a-zA-Z]+([0-9a-zA-Z]*[-._+])*[0-9a-zA-Z]+@[0-9a-zA-Z]+([-.][0-9a-zA-Z]+)*([0-9a-zA-Z]*[.])[a-zA-Z]{2,6}$/)
       ]],
       password: ['', [Validators.required]],
-      remember: [false]
+      remember: [ localStorage.getItem('remember') || false]
     });
   }
 
   rememberData(): void {
-    (this.checkRemember)? localStorage.setItem('email', this.form.value.email): localStorage.removeItem('email');
+    if(this.checkRemember){
+      localStorage.setItem('email', this.form.value.email)
+      localStorage.setItem('remember', this.form.get('remember').value);
+    } else {
+      localStorage.removeItem('email');
+      localStorage.removeItem('remember');
+    }
   }
 
 
-  loginUser(): void {
+  async loginUser() {
     // console.log('form ->', this.form.value.email);
 
     if (this.form.valid) {
     
       const { email, password } = this.form.value;
-
-      this.authService.login(email, password)
-        .then((user) => {
-          console.log('Se ejecuta:',user);
+      try {
+        const {user} = await this.authService.login(email, password);
+        if (user.emailVerified) {
           this.router.navigateByUrl('/dashboard');
-        })
-        .catch((err) => {
+        } else {   
           Swal.fire({
-            title: 'Error!',
-            text: 'Email y/o contraseña no validos',
-            icon: 'error',
-            confirmButtonText: 'Cool'
+            title: 'Email no verificado',
+            text: '¿Desea reenviar el email de verificacion?',
+            showDenyButton: true,
+            confirmButtonText: `Si`,
+            icon: 'info',
+            denyButtonText: `No`,
+          }).then(async (result) => {
+          /* Read more about isConfirmed, isDenied below */
+            await this.authService.sendVerificationEmail();
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: 'Email Enviado',
+                text: 'Recuerde revisar la bandeja de span y/o correo no desado',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              });
+            }
           })
-        })
+        }
+      } catch (err) {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Email y/o contraseña no validos',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        });
+      }
 
     } else {
       // In case someone send the form, we mark all the controls as 'touched' 

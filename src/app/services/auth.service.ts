@@ -23,13 +23,13 @@ export class AuthService {
       return await this.fbAuth.signInWithEmailAndPassword(email, password)
     }catch(error){
       console.warn(error);
-      throw new Error('error');
+      throw new Error(error);
     }
   }
 
   async logout(){
     try{
-      await this.fbAuth.signOut();
+      return await this.fbAuth.signOut();
     }catch(error){
       console.warn(error);
     }
@@ -37,14 +37,21 @@ export class AuthService {
 
   async register(email, password){
     try{
-      await this.fbAuth.createUserWithEmailAndPassword(email, password)
+      const user = await this.fbAuth.createUserWithEmailAndPassword(email, password);
+      this.sendVerificationEmail();
+      return user;
     }catch(error){
       console.warn(error);
+      throw new Error(error);
     }
+  }
+
+  async sendVerificationEmail() {
+    return (await this.fbAuth.currentUser).sendEmailVerification();
   }
  
   getCurrentUser(){
-    return this.fbAuth.authState.pipe(first());
+    return this.fbAuth.user;
   }
 
   
