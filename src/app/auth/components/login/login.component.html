@@ -60,7 +60,7 @@
               <label for="password" class="p-align-center">
                 <span class="label-secondary">
                   Contraseña
-                  <a href="#" class="input-label-secondary">¿Olvidaste tu contraseña?</a>
+                  <a [routerLink]="['/password', 'reset']" class="input-label-secondary cursor">¿Olvidaste tu contraseña?</a>
                 </span>
               </label>
               <input type="password" id="password" pInputText placeholder="************" formControlName="password">

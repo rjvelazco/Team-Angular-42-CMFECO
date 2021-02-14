@@ -16,3 +16,7 @@
 .error{
   padding: 10px
 }
+
+.cursor{
+  cursor: pointer;
+}

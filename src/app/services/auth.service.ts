@@ -49,6 +49,14 @@ export class AuthService {
   async sendVerificationEmail() {
     return (await this.fbAuth.currentUser).sendEmailVerification();
   }
+
+  async resetPassword(email: string) {
+    try {
+      return this.fbAuth.sendPasswordResetEmail(email);
+    } catch (error) {
+      console.log(error);
+    }
+  }
  
   getCurrentUser(){
     return this.fbAuth.user;
