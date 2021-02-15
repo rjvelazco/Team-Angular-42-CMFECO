@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
-import {LoginComponent} from './auth/components/login/login.component';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+
+import { PagesRoutingModule } from './pages/pages.routing';
+import { LoginComponent } from './auth/components/login/login.component';
 
 const routes: Routes = [
   {path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
@@ -14,6 +16,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
     }),
+    PagesRoutingModule
   ],
   exports: [
     RouterModule

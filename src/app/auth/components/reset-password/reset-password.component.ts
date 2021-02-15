@@ -1,5 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import Swal from 'sweetalert2';
+
+// Services
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -11,7 +16,8 @@ export class ResetPasswordComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
   ) {
   }
 
@@ -37,9 +43,20 @@ export class ResetPasswordComponent implements OnInit {
     });
   }
 
-  resetPassword(): void {
+  async resetPassword() {
     if (this.form.valid) {
-      console.log(this.form.value);
+      const { email } = this.form.value;
+      try {
+        await this.authService.resetPassword(email);
+        Swal.fire({
+          title: 'Email Enviado',
+          text: 'Recuerde revisar la bandeja de span y/o correo no desado',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        });
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       Object.values(this.form.controls).forEach(control => control.markAllAsTouched());
     }

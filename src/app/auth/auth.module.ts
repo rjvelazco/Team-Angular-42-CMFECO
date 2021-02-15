@@ -1,13 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
+
 // Modules
 import {ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
 import {PrimeModule} from '../prime-module';
 
 // Routing
-import {AuthRoutingModule} from './auth.routing';
+import { RouterModule } from '@angular/router';
+import { AuthRoutingModule } from './auth.routing';
 
 // Components
 import {LoginComponent} from './components/login/login.component';
@@ -27,6 +29,7 @@ import {ResetPasswordComponent} from './components/reset-password/reset-password
     SharedModule,
     PrimeModule,
     ReactiveFormsModule,
+    RouterModule,
   ],
   exports: [
     LoginComponent,

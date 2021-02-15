@@ -15,7 +15,7 @@
         <form [formGroup]="form" (ngSubmit)="loginUser()">
           <div class="p-text-center p-mb-5 header_form">
             <h1>Iniciar Sesión</h1>
-            <p>¿Aun no tienes una cuenta? <a href="#"> Registrate</a></p>
+            <p>¿Aun no tienes una cuenta? <a [routerLink]="['/register']"> Registrate</a></p>
           </div>
           <div class="p-mb-3">
             <button pButton
@@ -43,7 +43,12 @@
           <div class="p-fluid p-mb-5">
             <div class="p-field">
               <label for="email">Correo Electronico</label>
-              <input type="email" id="email" pInputText placeholder="example@gmail.com" formControlName="email">
+              <input type="email"
+                     autocomplete="off"
+                     id="email" 
+                     pInputText
+                     placeholder="example@gmail.com" 
+                     formControlName="email">
               <small class="p-error" *ngIf="emailInvalid">
                <li class="error">Correo Electronico Invalido</li>
               </small>
@@ -55,7 +60,7 @@
               <label for="password" class="p-align-center">
                 <span class="label-secondary">
                   Contraseña
-                  <a href="#" class="input-label-secondary">¿Olvidaste tu contraseña?</a>
+                  <a [routerLink]="['/password', 'reset']" class="input-label-secondary cursor">¿Olvidaste tu contraseña?</a>
                 </span>
               </label>
               <input type="password" id="password" pInputText placeholder="************" formControlName="password">
@@ -66,7 +71,8 @@
             <div class="p-field-checkbox">
               <p-checkbox id="remember"
                           binary="true"
-                          formControlName="remember"></p-checkbox>
+                          formControlName="remember"
+                          (click)="rememberData()"></p-checkbox>
               <label for="remember">Mantenerme contectado</label>
             </div>
           </div>

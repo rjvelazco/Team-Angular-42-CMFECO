@@ -1,1 +1,74 @@
-<p>register works!</p>
+<div class="container-fluid mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h3 class="mb-3">Registro de usuario</h3>
+      </div>
+    </div>
+    <div class="row d-flex align-items-center flex-column">
+      <div class="col-12 col-md-6 col-lg-4">
+        <form autocomplete="off" [formGroup]="FormData" (ngSubmit)="createUser(FormData.value)">
+          <div class="mb-4">
+            <label>Usuario</label>
+            <input  type="text"
+                    class="form-control"
+                    placeholder="Digite el usuario"
+                    id="inputUsername"
+                    formControlName="username"
+                    [class.is-invalid]="usernameInvalid">
+            <small *ngIf="usernameInvalid" class="text-danger">Digite almenos 5 carácteres</small>
+          </div>
+          <div class="mb-4">
+            <label>Correo</label>
+            <input  type="email"
+                    class="form-control"
+                    placeholder="Email"
+                    id="inputEmail"
+                    formControlName="email"
+                    [class.is-invalid]="emailInvalid">
+            <small *ngIf="emailInvalid" class="text-danger">Digite un correo válido</small>
+
+          </div>
+          <div class="mb-4">
+            <label>Contraseña</label>
+            <input  type="password"
+                    class="form-control"
+                    placeholder="Digite su contraseña"
+                    id="inputPassword"
+                    formControlName="password"
+                    [class.is-invalid]="passwordInvalid">
+            <small *ngIf="passwordInvalid" class="text-danger">Digite almenos 5 carácteres</small>
+          </div>
+          <div class="mb-4">
+            <label>Confirmar contraseña</label>
+            <input  type="password"
+                    class="form-control"
+                    placeholder="Confirmar contraseña"
+                    id="inputConfirmPassword"
+                    formControlName="confirmPassword"
+                    [class.is-invalid]="confirmPasswordInvalid">
+            <small *ngIf="confirmPasswordInvalid" class="text-danger">Contraseña no es igual</small>
+          </div>
+          <div class="mb-4">
+            <div class="form-check">
+              <label class="form-check-label" for="inputCheckTerms">Términos y Condiciones</label>
+              <input  type="checkbox"
+                      class="form-check-input"
+                      placeholder="Confirmar contraseña"
+                      id="inputCheckTerms"
+                      formControlName="checkTerms"
+                      [class.is-invalid]="checkTermsInvalid">
+            </div>
+            <small *ngIf="checkTermsInvalid" class="text-danger">Debe de aceptar los términos y condiciones</small>
+          </div>
+          <button type="submit" class="btn btn-success w-100" [disabled]="!FormData.valid">Registrar</button>
+          <div class="mb-4">
+            <span>¿Ya tienes cuenta? <span class="link-info cursor" [routerLink]="['/login']">Login</span></span>
+          </div>
+        </form>
+        
+      </div> <!-- Col Formulario -->
+    </div>  <!-- Row Formulario -->
+  </div>
+</div>
+

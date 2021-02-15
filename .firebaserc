@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "community-fest-code": {
+      "hosting": {
+        "commutyFestProyect": [
+          "community-fest-code"
+        ]
+      }
+    }
+  }
+}

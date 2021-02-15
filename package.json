@@ -15,14 +15,18 @@
     "@angular/common": "~10.1.0",
     "@angular/compiler": "~10.1.0",
     "@angular/core": "~10.1.0",
+    "@angular/fire": "^6.1.4",
     "@angular/forms": "~10.1.0",
     "@angular/platform-browser": "~10.1.0",
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@angular/router": "~10.1.0",
+    "@sweetalert2/ngx-sweetalert2": "^9.0.0",
+    "firebase": "^8.2.7",
     "primeflex": "~2.0.0",
     "primeicons": "~4.1.0",
     "primeng": "~11.2.1",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^10.14.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
@@ -44,6 +48,12 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
+    "typescript": "~4.0.2",
+    "@angular-devkit/architect": ">= 0.900 < 0.1200",
+    "firebase-tools": "^8.0.0",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1",
+    "open": "^7.0.3"
   }
 }
