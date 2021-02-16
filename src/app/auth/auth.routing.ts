@@ -15,7 +15,6 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'password/reset', component: ResetPasswordComponent},
   {path: 'terminos', component: TerminosComponent}
-  
 
 ];
 
