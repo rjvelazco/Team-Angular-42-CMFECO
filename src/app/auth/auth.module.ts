@@ -15,13 +15,15 @@ import { AuthRoutingModule } from './auth.routing';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {ResetPasswordComponent} from './components/reset-password/reset-password.component';
+import { TerminosComponent } from './components/terminos/terminos.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    TerminosComponent
   ],
   imports: [
     CommonModule,
