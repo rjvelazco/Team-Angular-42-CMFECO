@@ -7,6 +7,15 @@
   --font-logo-family: 'Lato', sans-serif;
 }
 
+.swal2-styled.swal2-confirm {
+  background-color: var(--color-palette-primary) !important;
+}
+
+.swal2-styled.swal2-confirm a{
+  background-color: var(--color-palette-primary) !important;
+  color: white !important;
+  text-decoration: none !important;
+}
 
 .btn-comfeco {
   background: var(--color-palette-primary) !important;

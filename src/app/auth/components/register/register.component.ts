@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import {Router} from '@angular/router';
 
 import Swal from 'sweetalert2';
 
@@ -14,7 +15,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fB: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
   }
 
@@ -33,14 +35,14 @@ export class RegisterComponent implements OnInit {
 
   async createUser(formData){
     const { email, password } = formData;
-    
+
     try {
       const { user} = await this.authService.register(email, password);
       Swal.fire({
         title: '¡Bienvenido!',
-        text: `Verifica tu email [${user.email}] para continuar`,
+        text: `Verifica tu email ${user.email} para continuar`,
         icon: 'success',
-        confirmButtonText: 'Cool'
+        confirmButtonText: ' <a href="login">Iniciar sesion</a>',
       });
       this.FormData.reset();
     } catch (error) {
@@ -49,7 +51,8 @@ export class RegisterComponent implements OnInit {
         text: 'El email ya ha sido registrado.',
         icon: 'error',
         confirmButtonText: 'Cool'
-      }); 
+      },
+      );
     }
   }
 
