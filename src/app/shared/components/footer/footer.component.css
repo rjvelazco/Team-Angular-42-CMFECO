@@ -1,0 +1,43 @@
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer_content {
+  padding: 1.3125rem 3.125rem;
+  text-align: center;
+  border-top: 1px solid #c4c4c4;
+}
+
+.socials {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+}
+
+.social_icon img {
+  width: 30px;
+  margin-right: .5rem;
+}
+
+.terms_link {
+  color: #273444;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 62em) {
+  .socials {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .social_media {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+
