@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from
 import { AuthService } from 'src/app/services/auth.service';
 
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fB: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
   }
 
@@ -43,6 +45,7 @@ export class RegisterComponent implements OnInit {
         confirmButtonText: 'Cool'
       });
       this.FormData.reset();
+      this.router.navigateByUrl('/login');
     } catch (error) {
       Swal.fire({
         title: 'Error!',

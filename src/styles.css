@@ -21,8 +21,12 @@
   cursor: pointer;
 }
 
-.vh-90{
-  min-height: 85vh;
+.vh-85{
+  min-height: 81vh !important;
+}
+
+.vh-50{
+  min-height: 50vh !important;
 }
 
 .vh-100{
