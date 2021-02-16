@@ -20,3 +20,11 @@
 .cursor{
   cursor: pointer;
 }
+
+.vh-90{
+  min-height: 85vh;
+}
+
+.vh-100{
+  min-height: 100vh;
+}

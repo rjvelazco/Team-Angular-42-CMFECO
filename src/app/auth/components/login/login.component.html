@@ -1,68 +1,45 @@
-<main id="content p-pt-0">
-  <div class="p-d-lg-flex p-px-3">
-    <div class="p-lg-4 p-d-none p-d-lg-flex p-justify-center p-align-center position-relative min-vh-100 bg-light">
-      <div class="logo-comfeco">
-        <div class="p-text-center p-mb-5">
-          <img src="assets/img/logo_comfeco.png" alt="" class="img-fluid">
-        </div>
-        <div class="p-mb-5">
-          <h1 class="text-logo">¡ A CODEAR !</h1>
-        </div>
-      </div>
-    </div>
-    <div class="p-lg-8 p-d-flex p-justify-center p-align-center position-relative min-vh-lg-100">
-      <div class="content-form w-100 p-pt-6 p-pt-lg-4 p-pb-6">
+<main id="content" class="main" role="main">
+  <div class="position-absolute top-0 right-0 left-0 bg-img-hero">
+    <figure class="position-absolute right-0 bottom-0 left-0">
+      <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1921 273">
+        <polygon fill="#fff" points="0,273 1921,273 1921,0"></polygon>
+      </svg>
+    </figure>
+  </div>
+  <div class="p-d-flex p-jc-center p-align-center py-2">
+    <div class="p-col-md-6 p-col-lg-5 content-form">
+      <p-card styleClass="p-shadow-7">
         <form [formGroup]="form" (ngSubmit)="loginUser()">
           <div class="p-text-center p-mb-5 header_form">
-            <h1>Iniciar Sesión</h1>
+            <h1>Iniciar sesión</h1>
             <p>¿Aun no tienes una cuenta? <a [routerLink]="['/register']"> Registrate</a></p>
           </div>
-          <div class="p-mb-3">
-            <button pButton
-                    type="button"
-                    class="p-button-raised p-button-text p-button-plain p-button-lg"
-                    label="Iniciar Sesión con Google">
-              <span class="p-flex p-justify-center p-align-center">
-                <img class="avatar avatar-xss p-mr-2" src="assets/img/google.svg" alt="Google Icon">
-              </span>
-            </button>
-          </div>
-          <div class="p-mb-3">
-            <button pButton
-                    type="button"
-                    class="p-button-raised p-button-text p-button-plain p-button-lg"
-                    label="Iniciar Sesión con Facebook">
-              <span class="p-flex p-justify-center p-align-center">
-                <img class="avatar avatar-xss p-mr-2" src="assets/img/facebook.svg" alt="Google Icon">
-              </span>
-            </button>
-          </div>
-          <p-divider align="center" type="dashed">
-            <b>O</b>
-          </p-divider>
           <div class="p-fluid p-mb-5">
             <div class="p-field">
               <label for="email">Correo Electronico</label>
               <input type="email"
                      autocomplete="off"
-                     id="email" 
+                     id="email"
                      pInputText
-                     placeholder="example@gmail.com" 
+                     placeholder="example@gmail.com"
                      formControlName="email">
               <small class="p-error" *ngIf="emailInvalid">
-               <li class="error">Correo Electronico Invalido</li>
+                <li class="error">Correo Electronico Invalido</li>
               </small>
               <small class="p-error" *ngIf="emailIsEmpty">
                 <li class="error">Correo Electronico Requerido</li>
               </small>
             </div>
             <div class="p-field">
-              <label for="password" class="p-align-center">
-                <span class="label-secondary">
-                  Contraseña
-                  <a [routerLink]="['/password', 'reset']" class="input-label-secondary cursor">¿Olvidaste tu contraseña?</a>
-                </span>
-              </label>
+              <div class="p-d-flex p-jc-between p-align-center">
+                <div>
+                  <label for="password">Contraseña</label>
+                </div>
+                <div>
+                  <a [routerLink]="['/password', 'reset']" class="input-label-secondary cursor">
+                    ¿Olvidaste tu contraseña?</a>
+                </div>
+              </div>
               <input type="password" id="password" pInputText placeholder="************" formControlName="password">
               <small class="p-error" *ngIf="passwordInvalid">
                 <li class="error">Contraseña requerida</li>
@@ -83,7 +60,28 @@
                   class="btn-comfeco">
           </button>
         </form>
-      </div>
+        <p-divider align="center" type="dashed">
+          <b>O</b>
+        </p-divider>
+        <div class="p-d-flex p-jc-between p-grid">
+          <div class="p-col-12 p-sm-6">
+            <a href="#" class="btn btn-social">
+              <span class="btn-icon">
+                  <img src="assets/img/google.svg" alt="google">
+              </span>
+              <span class="btn-text p-ml-2">Google</span>
+            </a>
+          </div>
+          <div class="p-col-12 p-sm-6">
+            <a href="#" class="btn btn-social">
+              <span class="btn-icon">
+                  <img src="assets/img/facebook.svg" alt="google">
+              </span>
+              <span class="btn-text p-ml-2">Facebook</span>
+            </a>
+          </div>
+        </div>
+      </p-card>
     </div>
   </div>
 </main>
