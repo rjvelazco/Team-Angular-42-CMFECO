@@ -1,0 +1,52 @@
+.text-logo {
+    color: var(--color-palette-primary);
+    font-weight: bold;
+  }
+  
+  .content-form {
+    width: 100% !important;
+    max-width: 35rem;
+  }
+  
+  .header_form h1 {
+    font-size: 1.85rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  
+  .header_form p {
+    color: #6c757d !important;
+  }
+  
+  .header_form a, .input-label-secondary {
+    color: var(--color-palette-primary);
+    text-decoration: none;
+  }
+  
+  .header_form a:hover, .input-label-secondary {
+    color: #4e007e !important;
+  }
+  
+  .input-label-secondary {
+    font-size: .8125rem;
+    margin-left: 20.5rem;
+  }
+  
+  .avatar {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .avatar-xss {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .p-button {
+    font-size: 1.1rem !important;
+    width: 100%;
+  }
+  
+  .p-button.p-button-text.p-button-plain:hover {
+    color: #0052ea !important;
+  }
