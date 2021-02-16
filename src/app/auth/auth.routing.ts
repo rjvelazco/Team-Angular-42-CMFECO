@@ -5,6 +5,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {ResetPasswordComponent} from './components/reset-password/reset-password.component';
+import { TerminosComponent } from './components/terminos/terminos.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,9 @@ const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'password/reset', component: ResetPasswordComponent}
+  {path: 'password/reset', component: ResetPasswordComponent},
+  {path: 'terminos', component: TerminosComponent}
+  
 
 ];
 
