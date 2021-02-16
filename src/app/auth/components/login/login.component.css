@@ -1,3 +1,10 @@
+main{
+  /* padding: 10px 0px; */
+  overflow: hidden;
+  position: relative;
+  z-index: 100;
+  min-width: 90vw;
+}
 .text-logo {
   color: var(--color-palette-primary);
   font-weight: bold;
@@ -5,6 +12,7 @@
 
 .content-form {
   min-width: 30rem;
+  padding: 50px 10px;
 }
 
 .header_form h1 {
@@ -40,6 +48,7 @@
 }
 
 .bg-img-hero {
+  margin: 0px !important;
   height: 32rem;
   background: linear-gradient(90deg, rgba(82, 30, 135, 0.8) 0%,
   rgba(102, 28, 137, 0.8) 9.87%,
@@ -52,7 +61,7 @@
 }
 
 .bg-img-hero {
-  z-index: -2;
+  z-index: -10000;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
@@ -79,9 +88,9 @@ figure {
   margin-bottom: 0;
 }
 
-.min-vh-90 {
+/* .min-vh-90 {
   min-height: 90vh !important;
-}
+} */
 
 :host ::ng-deep .p-card {
   border-radius: 0.75rem !important;
@@ -102,4 +111,16 @@ figure {
   color: #273444;
   border: 2px solid #e2e8f0;
   padding: .75rem 1.75rem;
+}
+
+
+.card-form{
+  margin-bottom: 15px !important;
+  overflow: hidden !important;
+}
+
+@media screen and (max-width: 760px){
+  .content-form {
+    min-width: 0px;
+  }
 }
