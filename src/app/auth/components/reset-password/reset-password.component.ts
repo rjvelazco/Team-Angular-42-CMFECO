@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import Swal from 'sweetalert2';
 
 // Services
-import { AuthService } from 'src/app/services/auth.service';
+import {AuthService} from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -45,7 +45,7 @@ export class ResetPasswordComponent implements OnInit {
 
   async resetPassword() {
     if (this.form.valid) {
-      const { email } = this.form.value;
+      const {email} = this.form.value;
       try {
         await this.authService.resetPassword(email);
         Swal.fire({

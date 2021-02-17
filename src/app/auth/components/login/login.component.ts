@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 // Services
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   // Getters - Errors.
-  
+
   get emailInvalid() {
     return this.form.get('email').hasError('pattern');
   }
@@ -74,13 +74,13 @@ export class LoginComponent implements OnInit {
     // console.log('form ->', this.form.value.email);
 
     if (this.form.valid) {
-    
+
       const { email, password } = this.form.value;
       try {
         const {user} = await this.authService.login(email, password);
         if (user.emailVerified) {
           this.router.navigateByUrl('/dashboard');
-        } else {   
+        } else {
           Swal.fire({
             title: 'Email no verificado',
             text: '¿Desea reenviar el email de verificacion?',
@@ -111,7 +111,7 @@ export class LoginComponent implements OnInit {
       }
 
     } else {
-      // In case someone send the form, we mark all the controls as 'touched' 
+      // In case someone send the form, we mark all the controls as 'touched'
       // to be able to show errors.
       Object.values(this.form.controls).forEach(control => control.markAllAsTouched());
     }

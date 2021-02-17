@@ -7,12 +7,14 @@ import { RouterModule } from '@angular/router';
 // Components
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FigureComponent } from './components/figure/figure.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FigureComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
     exports: [
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        FigureComponent
     ]
 })
 export class SharedModule {
