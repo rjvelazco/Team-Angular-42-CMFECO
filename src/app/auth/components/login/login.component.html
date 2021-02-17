@@ -1,16 +1,10 @@
-<main id="content" class="main vh-85" role="main">
-  <div class="vh-50 position-absolute top-0 right-0 left-0 bg-img-hero">
-    <figure class="position-absolute right-0 bottom-0 left-0">
-      <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1921 273">
-        <polygon fill="#fff" points="0,273 1921,273 1921,0"></polygon>
-      </svg>
-    </figure>
-  </div>
-  <div class="vh-85 p-d-flex p-jc-center p-align-center py-2">
-    <div class="p-col-md-6 p-col-lg-5 content-form">
-      <p-card styleClass="p-shadow-7">
+<main class="main vh-85" role="main">
+  <app-figure></app-figure>
+  <div class="vh-80 p-d-flex p-jc-center p-align-center py-2">
+    <div class="p-col-12 p-md-6 p-lg-6 p-xl-4">
+      <p-card styleClass="p-shadow-7 content-card">
         <form [formGroup]="form" (ngSubmit)="loginUser()">
-          <div class="p-text-center p-mb-5 header_form">
+          <div class="header_form p-text-center p-mb-5">
             <h1>Iniciar sesión</h1>
             <p>¿Aun no tienes una cuenta? <a [routerLink]="['/register']"> Registrate</a></p>
           </div>
@@ -21,7 +15,7 @@
                      autocomplete="off"
                      id="email"
                      pInputText
-                     placeholder="example@gmail.com"
+                     placeholder="example@correo.com"
                      formControlName="email">
               <small class="p-error" *ngIf="emailInvalid">
                 <li class="error">Correo Electronico Invalido</li>
@@ -40,7 +34,11 @@
                     ¿Olvidaste tu contraseña?</a>
                 </div>
               </div>
-              <input type="password" id="password" pInputText placeholder="************" formControlName="password">
+              <input type="password"
+                     placeholder="Contraseña"
+                     id="password"
+                     pInputText
+                     formControlName="password">
               <small class="p-error" *ngIf="passwordInvalid">
                 <li class="error">Contraseña requerida</li>
               </small>
