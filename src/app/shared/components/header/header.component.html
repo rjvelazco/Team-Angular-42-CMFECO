@@ -1,3 +1,10 @@
 <header class="p-shadow-7">
   <img class="img-fluid" src="assets/img/comfeco.png" alt="logo">
+  <div class="btn-show-login text-right"
+       *ngIf="showBackLoginBtn">
+    <a class="btn btn-primary btn-backLogin"
+       [routerLink]="['/login']">
+       Login
+    </a>
+  </div>
 </header>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+// services
+import { HeaderService } from '../../../core/services/header.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public showBackLoginBtn: boolean = false; 
+
+  constructor(
+    private headerService: HeaderService
+  ) { }
 
   ngOnInit(): void {
+    this.headerService.showLoginBtn.subscribe(data => {
+      this.showBackLoginBtn = data;
+    })
   }
 
 }

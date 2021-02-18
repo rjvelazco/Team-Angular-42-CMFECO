@@ -1,28 +1,36 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import Swal from 'sweetalert2';
 
 // Services
 import {AuthService} from 'src/app/core/services/auth.service';
+import { HeaderService } from '../../../core/services/header.service';
 
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.css']
 })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit, OnDestroy {
 
   public form: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private headerService: HeaderService,
   ) {
   }
 
   ngOnInit(): void {
     this.buildForm();
+    this.headerService.showLoginBtn.emit(true);
+  }
+
+  ngOnDestroy(): void {
+    this.headerService.showLoginBtn.emit(false);
+    // this.headerService.showLoginBtn = false;
   }
 
   get emailInvalid() {

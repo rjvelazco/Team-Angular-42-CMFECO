@@ -5,3 +5,7 @@ header {
   min-height: 10vh;
   padding: 1rem 3rem;
 }
+
+.btn-backLogin{
+  width: 80px;
+}
