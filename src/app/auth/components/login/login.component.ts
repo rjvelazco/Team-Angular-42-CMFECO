@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
         } else {
           Swal.fire({
             title: 'Email no verificado',
-            text: '¿Desea reenviar el email de verificacion?',
+            text: '¿Desea reenviar el email de verificación?',
             showDenyButton: true,
             confirmButtonText: `Si`,
             icon: 'info',
@@ -94,7 +94,7 @@ export class LoginComponent implements OnInit {
             if (result.isConfirmed) {
               Swal.fire({
                 title: 'Email Enviado',
-                text: 'Recuerde revisar la bandeja de span y/o correo no desado',
+                text: 'Recuerde revisar la bandeja de spam y/o correo no desado',
                 icon: 'success',
                 confirmButtonText: 'Cool'
               });
@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit {
         }
       } catch (err) {
         Swal.fire({
-          title: 'Error!',
+          title: '¡Error!',
           text: 'Email y/o contraseña no validos',
           icon: 'error',
           confirmButtonText: 'Cool'

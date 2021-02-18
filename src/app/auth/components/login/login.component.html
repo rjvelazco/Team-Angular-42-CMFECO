@@ -6,11 +6,11 @@
         <form [formGroup]="form" (ngSubmit)="loginUser()">
           <div class="header_form p-text-center p-mb-5">
             <h1>Iniciar sesión</h1>
-            <p>¿Aun no tienes una cuenta? <a [routerLink]="['/register']"> Registrate</a></p>
+            <p>¿Aún no tienes una cuenta? <a [routerLink]="['/register']"> Regístrate</a></p>
           </div>
           <div class="p-fluid p-mb-5">
             <div class="p-field">
-              <label for="email">Correo Electronico</label>
+              <label for="email">Correo Electrónico</label>
               <input type="email"
                      autocomplete="off"
                      id="email"
@@ -18,10 +18,10 @@
                      placeholder="example@correo.com"
                      formControlName="email">
               <small class="p-error" *ngIf="emailInvalid">
-                <li class="error">Correo Electronico Invalido</li>
+                <li class="error">Correo Electrónico Inválido</li>
               </small>
               <small class="p-error" *ngIf="emailIsEmpty">
-                <li class="error">Correo Electronico Requerido</li>
+                <li class="error">Correo Electrónico Requerido</li>
               </small>
             </div>
             <div class="p-field">
@@ -31,7 +31,8 @@
                 </div>
                 <div>
                   <a [routerLink]="['/password', 'reset']" class="input-label-secondary cursor">
-                    ¿Olvidaste tu contraseña?</a>
+                    ¿Olvidaste tu contraseña?
+                  </a>
                 </div>
               </div>
               <input type="password"
