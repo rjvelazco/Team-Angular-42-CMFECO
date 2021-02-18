@@ -22,12 +22,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      username: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      username: new FormControl('', [Validators.required, Validators.minLength(6)]),
       email: new FormControl('', [Validators.compose([
         Validators.required,
         Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')])]
       ),
-      password: new FormControl('', [Validators.required , Validators.minLength(5)]),
+      password: new FormControl('', [Validators.required , Validators.minLength(6)]),
       confirmPassword: new FormControl('', [Validators.required]),
     },
     {
@@ -38,23 +38,33 @@ export class RegisterComponent implements OnInit {
   async createUser(form){
     const { email, password } = form;
 
-    try {
-      const { user} = await this.authService.register(email, password);
+    if (this.form.invalid) {
       Swal.fire({
-        title: '¡Bienvenido!',
-        text: `Verifica tu email [${user.email}] para continuar`,
-        icon: 'success',
-        confirmButtonText: 'Cool'
-      });
-      this.form.reset();
-      this.router.navigateByUrl('/login');
-    } catch (error) {
-      Swal.fire({
-        title: 'Error!',
-        text: 'El email ya ha sido registrado.',
+        title: '¡Formulario inválido!',
+        text: 'Complete debidamente el registro, por favor.',
         icon: 'error',
         confirmButtonText: 'Cool'
       });
+      this.markAsTouched();
+    } else {
+      try {
+        const { user} = await this.authService.register(email, password);
+        Swal.fire({
+          title: '¡Bienvenido!',
+          text: `Verifica tu email [${user.email}] para continuar.`,
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        });
+        this.form.reset();
+        this.router.navigateByUrl('/login');
+      } catch (error) {
+        Swal.fire({
+          title: '¡Error!',
+          text: 'El email ya ha sido registrado.',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        });
+      } 
     }
   }
 
@@ -85,6 +95,10 @@ export class RegisterComponent implements OnInit {
         p2Control.setErrors({noEsIgual: true});
       }
     }
+  }
+
+  markAsTouched(){
+    Object.values(this.form.controls).forEach(control => control.markAllAsTouched());
   }
 
 

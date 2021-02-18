@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FigureComponent } from './components/figure/figure.component';
+import {PrimeModule} from '../prime-module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FigureComponent } from './components/figure/figure.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    PrimeModule
   ],
     exports: [
         HeaderComponent,

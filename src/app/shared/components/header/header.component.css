@@ -5,3 +5,13 @@ header {
   min-height: 10vh;
   padding: 1rem 3rem;
 }
+
+header img {
+  margin: 20px 0;
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    flex-direction: column;
+  }
+}
