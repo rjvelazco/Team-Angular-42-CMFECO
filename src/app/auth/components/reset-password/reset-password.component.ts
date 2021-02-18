@@ -50,7 +50,7 @@ export class ResetPasswordComponent implements OnInit {
         await this.authService.resetPassword(email);
         Swal.fire({
           title: 'Email Enviado',
-          text: 'Recuerde revisar la bandeja de span y/o correo no desado',
+          text: 'Recuerde revisar la bandeja de span y/o correo no deseado.',
           icon: 'success',
           confirmButtonText: 'Cool'
         });

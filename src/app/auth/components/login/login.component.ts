@@ -94,7 +94,7 @@ export class LoginComponent implements OnInit {
             if (result.isConfirmed) {
               Swal.fire({
                 title: 'Email Enviado',
-                text: 'Recuerde revisar la bandeja de spam y/o correo no desado',
+                text: 'Recuerde revisar la bandeja de spam y/o correo no deseado.',
                 icon: 'success',
                 confirmButtonText: 'Cool'
               });
@@ -104,7 +104,7 @@ export class LoginComponent implements OnInit {
       } catch (err) {
         Swal.fire({
           title: '¡Error!',
-          text: 'Email y/o contraseña no validos',
+          text: 'Email y/o contraseña no válidos',
           icon: 'error',
           confirmButtonText: 'Cool'
         });
