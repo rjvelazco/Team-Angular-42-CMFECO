@@ -6,6 +6,12 @@ header {
   padding: 1rem 3rem;
 }
 
-.btn-backLogin{
-  width: 80px;
+header img {
+  margin: 20px 0;
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    flex-direction: column;
+  }
 }

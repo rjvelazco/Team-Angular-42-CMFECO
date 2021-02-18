@@ -2,9 +2,10 @@
   <img class="img-fluid" src="assets/img/comfeco.png" alt="logo">
   <div class="btn-show-login text-right"
        *ngIf="showBackLoginBtn">
-    <a class="btn btn-primary btn-backLogin"
-       [routerLink]="['/login']">
-       Login
-    </a>
+    <p-button type="button"
+              styleClass="btn-comfeco p-button-lg"
+              label="Iniciar Sesión"
+              [routerLink]="['/login']">
+    </p-button>
   </div>
 </header>
