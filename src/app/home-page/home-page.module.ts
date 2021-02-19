@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CarouselComponent } from './components/carousel/carousel.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ClockComponent } from './components/clock/clock.component';
-import { SideElementComponent } from './components/side-element/side-element.component';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {CarouselComponent} from './components/carousel/carousel.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {ClockComponent} from './components/clock/clock.component';
+import {HomePageRoutingModule} from './home-page.routing';
+import { WorkshopsComponent } from './components/workshops/workshops.component';
+import { CommunitiesComponent } from './components/communities/communities.component';
 
 
 @NgModule({
@@ -12,10 +13,13 @@ import { SideElementComponent } from './components/side-element/side-element.com
     CarouselComponent,
     DashboardComponent,
     ClockComponent,
-    SideElementComponent,
+    WorkshopsComponent,
+    CommunitiesComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HomePageRoutingModule,
   ]
 })
-export class HomePageModule { }
+export class HomePageModule {
+}
