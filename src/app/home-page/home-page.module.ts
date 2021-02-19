@@ -6,6 +6,7 @@ import {ClockComponent} from './components/clock/clock.component';
 import {HomePageRoutingModule} from './home-page.routing';
 import { WorkshopsComponent } from './components/workshops/workshops.component';
 import { CommunitiesComponent } from './components/communities/communities.component';
+import { NavComponent } from './components/nav/nav.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { CommunitiesComponent } from './components/communities/communities.compo
     ClockComponent,
     WorkshopsComponent,
     CommunitiesComponent,
+    NavComponent,
   ],
   imports: [
     CommonModule,
