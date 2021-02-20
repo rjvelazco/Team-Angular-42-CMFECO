@@ -1,11 +1,12 @@
 import {NgModule} from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 
-import { PagesRoutingModule } from './pages/pages.routing';
-import { LoginComponent } from './auth/components/login/login.component';
+import {PagesRoutingModule} from './pages/pages.routing';
+import {LoginComponent} from './auth/components/login/login.component';
 
 const routes: Routes = [
   {path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
+  {path: 'home-page', loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)},
   {path: '**', component: LoginComponent}
 
 ];
