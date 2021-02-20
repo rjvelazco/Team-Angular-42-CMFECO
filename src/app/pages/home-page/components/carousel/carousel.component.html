@@ -1,0 +1,23 @@
+<div class="content_creators">
+  <p-carousel [value]="creators"
+              styleClass="custom-carousel"
+              [numVisible]="4"
+              [numScroll]="4"
+              [circular]="true"
+              autoplayInterval="3500"
+              [responsiveOptions]="responsiveOptions">
+    <ng-template let-creator pTemplate="item">
+      <div class="creator">
+        <div class="creator-content {{creator['technology']}}">
+          <img src="assets/img/creators/{{creator['url']}}" alt="Creator" class="creator-image">
+          <div class="creator-container">
+            <span class="creator-text">{{creator['full_name']}}</span>
+            <div class="creator-icon">
+              <img src="assets/img/creators/{{creator['icon']}}" alt="logo">
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
