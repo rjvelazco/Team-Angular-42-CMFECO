@@ -1,88 +1,71 @@
-
-.countdown-container{
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+.countdown-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 
-.countdown-container .time-container{
-    align-items: center;
-    background: #fff;
-    border-radius: 25px;
-    box-shadow: 1px 2px 4px rgba(0,0,0, .2);
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    height: 250px;
-    justify-content:center;
-    overflow: hidden;
-    padding: 10px;
-    width: 20%;
+.countdown-container .time-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 10px;
 }
 
-.countdown-container .time-container .date{
-    font-size: 60px;
-    background: linear-gradient(var(--background-gradient-comfeco));
-    background-clip: text;
-    color: transparent;
-    font-weight: bold;
+.countdown-container .time-container .date {
+  font-size: 10rem;
+  background: linear-gradient(var(--background-gradient-comfeco));
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+.countdown-container .time-container .date-text {
+  font-size: 25px;
+  font-weight: bold;
 }
 
-hr{
-    background: #000;
-    width: 90%;
-    height: 1px;
+.countdown-container-movil {
+  align-items: center;
+  display: none;
+  justify-content: center;
 }
 
-.countdown-container .time-container .date-text{
-    font-size: 25px;
-    font-style: italic;
+.countdown-container-movil .time-container-movil {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 150px;
+  font-size: 1.5rem;
+  background: linear-gradient(var(--background-gradient-comfeco));
+  color: #f2f2f2;
+  border-radius: 10px;
+  padding: 0 10px;
 }
 
-@media screen and (max-width: 950px){
-    .countdown-container{
-        flex-wrap: wrap;
-    }
-    
-    .countdown-container .time-container{
-        width: 45%;
-        margin-bottom: 10px;
-    }
-    .countdown-container .time-container .date{
-        font-size: 45px;
-    }
-    
-    .countdown-container .time-container .date-text{
-        font-size: 25px;
-        font-style: italic;
-    }
-}
+@media screen and (max-width: 950px) {
+  .countdown-container {
+    flex-wrap: wrap;
+  }
+  .countdown-container .time-container .date {
+    font-size: 45px;
+  }
 
-.countdown-container-movil{
-    align-items: center;
-    display: none;
-    justify-content: center;
-}
-
-.countdown-container-movil .time-container-movil{
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    height: 150px;
+  .countdown-container .time-container .date-text {
     font-size: 15px;
-    background: linear-gradient(var(--background-gradient-comfeco));
-    color: #f2f2f2;
-    border-radius: 5px;
-    padding: 0px 10px;
+    font-weight: bold;
+  }
 }
 
-@media screen and (max-width: 650px){
-    .countdown-container{
-        display:none;
-    }
-    .countdown-container-movil{
-        display: flex;
-    }
+
+@media screen and (max-width: 650px) {
+  .countdown-container {
+    display: none;
+  }
+
+  .countdown-container-movil {
+    display: flex;
+  }
 }
