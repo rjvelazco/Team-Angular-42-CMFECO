@@ -1,51 +1,53 @@
 
 
-<div class="countdown-container">
-    <div class="time-container">
-        <div class="date">
-            350
+<div class="p-my-2">
+    <div class="countdown-container">
+        <div class="time-container">
+            <div class="date">
+                {{remainTime.days}}
+            </div>
+            <hr>
+            <div class="date-text">
+                Dias
+            </div>
         </div>
-        <hr>
-        <div class="date-text">
-            Dias
+        <div class="time-container">
+            <div class="date">
+                {{remainTime.hours}}
+            </div>
+            <hr>
+            <div class="date-text">
+                Horas
+            </div>
+        </div>
+        <div class="time-container">
+            <div class="date">
+                {{remainTime.minutes}}
+            </div>
+            <hr>
+            <div class="date-text">
+                Minutos
+            </div>
+        </div>
+        <div class="time-container">
+            <div class="date">
+                {{remainTime.seconds}}
+            </div>
+            <hr>
+            <div class="date-text">
+                Segundos
+            </div>
         </div>
     </div>
-    <div class="time-container">
-        <div class="date">
-            350
-        </div>
-        <hr>
-        <div class="date-text">
-            Horas
-        </div>
-    </div>
-    <div class="time-container">
-        <div class="date">
-            350
-        </div>
-        <hr>
-        <div class="date-text">
-            Minutos
-        </div>
-    </div>
-    <div class="time-container">
-        <div class="date">
-            350
-        </div>
-        <hr>
-        <div class="date-text">
-            Segundos
-        </div>
-    </div>
-</div>
-
-<div class="countdown-container-movil mt-2">
-    <div class="time-container-movil">
-        <div class="date mb-2">
-            7 de Septiembre de 2021
-        </div>
-        <div class="countdown p-text-bold">
-            350d : 25h : 20m : 50s
+    
+    <div class="countdown-container-movil mt-2">
+        <div class="time-container-movil">
+            <div class="date mb-2">
+               <small>20 de Marzo de 2021</small>
+            </div>
+            <div class="countdown p-text-bold">
+                {{remainTime.days}}d : {{remainTime.hours}}h : {{remainTime.minutes}}m : {{remainTime.seconds}}s
+            </div>
         </div>
     </div>
 </div>

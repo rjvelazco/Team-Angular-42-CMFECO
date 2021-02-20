@@ -25,6 +25,7 @@
     background: linear-gradient(var(--background-gradient-comfeco));
     background-clip: text;
     color: transparent;
+    font-weight: bold;
 }
 
 hr{
@@ -38,13 +39,21 @@ hr{
     font-style: italic;
 }
 
-@media screen and (max-width: 850px){
+@media screen and (max-width: 950px){
+    .countdown-container{
+        flex-wrap: wrap;
+    }
+    
+    .countdown-container .time-container{
+        width: 45%;
+        margin-bottom: 10px;
+    }
     .countdown-container .time-container .date{
-        font-size: 25px;
+        font-size: 45px;
     }
     
     .countdown-container .time-container .date-text{
-        font-size: 15px;
+        font-size: 25px;
         font-style: italic;
     }
 }
@@ -64,7 +73,7 @@ hr{
     height: 150px;
     font-size: 15px;
     background: linear-gradient(var(--background-gradient-comfeco));
-    color: #c2c2c2;
+    color: #f2f2f2;
     border-radius: 5px;
     padding: 0px 10px;
 }
