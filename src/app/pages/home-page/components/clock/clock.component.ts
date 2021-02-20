@@ -11,7 +11,8 @@ export class ClockComponent implements OnInit, OnDestroy {
     seconds: '',
     minutes: '',
     hours: '',
-    days: ''
+    days: '',
+    remain: 0
   }
 
   constructor() { }
@@ -27,9 +28,9 @@ export class ClockComponent implements OnInit, OnDestroy {
   getRemainTime(deadLine: string) {
     const now: any = new Date();
     const deadLineDate: any = new Date(deadLine);
+    const remainTime: number = (deadLineDate - now + 1000) / 1000;
 
-    let remainTime: number = (deadLineDate - now + 1000) / 1000;
-
+    this.remainTime.remain = remainTime;
     this.remainTime.seconds = ('0' + Math.floor(remainTime % 60)).slice(-2);
     this.remainTime.minutes  = ('0' + Math.floor((remainTime / 60) % 60)).slice(-2);
     this.remainTime.hours = ('0' + Math.floor((remainTime / 3600) % 24)).slice(-2);
@@ -39,6 +40,9 @@ export class ClockComponent implements OnInit, OnDestroy {
   countDown(deadLine: string) {
     setInterval(() => {
       this.getRemainTime(deadLine);
+      if (this.remainTime.remain < 1) {
+        clearInterval();
+      }
     }, 1000);
   }
 
