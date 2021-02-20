@@ -9,25 +9,20 @@
     align-items: center;
     background: #fff;
     border-radius: 25px;
+    box-shadow: 1px 2px 4px rgba(0,0,0, .2);
     color: #333;
     display: flex;
     flex-direction: column;
     height: 250px;
     justify-content:center;
+    overflow: hidden;
+    padding: 10px;
     width: 20%;
-    box-shadow: 1px 2px 4px rgba(0,0,0, .2);
 }
 
 .countdown-container .time-container .date{
-    font-size: 80px;
-    background: linear-gradient(90deg, rgba(82, 30, 135, 0.8) 0%,
-    rgba(102, 28, 137, 0.8) 9.87%,
-    rgba(138, 23, 140, 0.8) 30.04%,
-    rgba(151, 43, 123, 0.8) 36.71%,
-    rgba(189, 101, 73, 0.8) 58.41%,
-    rgba(217, 144, 37, 0.8) 76.96%,
-    rgba(235, 170, 14, 0.8) 91.4%,
-    rgba(241, 180, 6, 0.8) 99.97%);
+    font-size: 60px;
+    background: linear-gradient(var(--background-gradient-comfeco));
     background-clip: text;
     color: transparent;
 }
@@ -41,4 +36,44 @@ hr{
 .countdown-container .time-container .date-text{
     font-size: 25px;
     font-style: italic;
+}
+
+@media screen and (max-width: 850px){
+    .countdown-container .time-container .date{
+        font-size: 25px;
+    }
+    
+    .countdown-container .time-container .date-text{
+        font-size: 15px;
+        font-style: italic;
+    }
+}
+
+.countdown-container-movil{
+    align-items: center;
+    display: none;
+    justify-content: center;
+}
+
+.countdown-container-movil .time-container-movil{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 150px;
+    font-size: 15px;
+    background: linear-gradient(var(--background-gradient-comfeco));
+    color: #c2c2c2;
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+
+@media screen and (max-width: 650px){
+    .countdown-container{
+        display:none;
+    }
+    .countdown-container-movil{
+        display: flex;
+    }
 }
