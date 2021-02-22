@@ -32,15 +32,15 @@ export class LoginComponent implements OnInit {
   // Getters - Errors.
 
   get emailInvalid() {
-    return this.form.get('email').hasError('pattern');
+    return this.form.get('email').hasError('pattern') && this.form.get('email').touched;
   }
 
   get emailIsEmpty() {
-    return this.form.get('email').hasError('required') && this.form.get('email')?.touched;
+    return this.form.get('email').hasError('required') && this.form.get('email').touched;
   }
 
   get passwordInvalid() {
-    return this.form.get('password').hasError('required') && this.form.get('password')?.touched;
+    return this.form.get('password').hasError('required') && this.form.get('password').touched;
   }
 
   get checkRemember() {
