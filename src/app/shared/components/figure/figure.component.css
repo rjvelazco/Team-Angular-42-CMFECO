@@ -1,14 +1,7 @@
 .bg-img-hero {
   margin: 0 !important;
   height: 32rem;
-  background: linear-gradient(90deg, rgba(82, 30, 135, 0.8) 0%,
-  rgba(102, 28, 137, 0.8) 9.87%,
-  rgba(138, 23, 140, 0.8) 30.04%,
-  rgba(151, 43, 123, 0.8) 36.71%,
-  rgba(189, 101, 73, 0.8) 58.41%,
-  rgba(217, 144, 37, 0.8) 76.96%,
-  rgba(235, 170, 14, 0.8) 91.4%,
-  rgba(241, 180, 6, 0.8) 99.97%);
+  background: linear-gradient(var(--background-gradient-comfeco));
 }
 
 .bg-img-hero {

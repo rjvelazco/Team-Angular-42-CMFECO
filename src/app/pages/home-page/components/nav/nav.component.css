@@ -1,0 +1,22 @@
+.workshops{
+  display: none;
+}
+
+.communities {
+  display: none;
+}
+
+
+@media only screen and (min-width: 75em){
+  .workshops {
+    display: block;
+  }
+
+  .communities{
+    display: block;
+  }
+
+  .nested{
+    display: none;
+  }
+}
