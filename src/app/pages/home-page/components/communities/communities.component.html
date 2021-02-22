@@ -1,1 +1,12 @@
-<p>communities works!</p>
+<p-card header="Comunidades">
+  <div *ngFor="let item of communities">
+    <div class="p-col border-communities">
+      <p-avatar image="assets/img/communities/{{item.imgurl}}"></p-avatar>
+      {{item.name}}
+      <div class="p-col ver-mas">
+        <a href="{{item.url}}">Ver mas</a>
+      </div>
+    </div>
+  </div>
+
+</p-card>

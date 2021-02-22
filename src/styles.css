@@ -90,3 +90,12 @@ main{
   padding: .75rem 1.75rem;
 }
 
+.border-communities{
+  border-bottom: 2px solid rgba(124, 124, 124, 0.267) !important; 
+}
+
+.ver-mas a{
+  margin-left: auto;
+  text-decoration: none !important;
+  font-size: 14px !important;
+}
