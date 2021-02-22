@@ -4,11 +4,10 @@ import {CarouselComponent} from './components/carousel/carousel.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {ClockComponent} from './components/clock/clock.component';
 import {HomePageRoutingModule} from './home-page.routing';
-import { WorkshopsComponent } from './components/workshops/workshops.component';
-import { CommunitiesComponent } from './components/communities/communities.component';
-import { NavComponent } from './components/nav/nav.component';
-import { PrimeModule } from '../prime-module';
-
+import {WorkshopsComponent} from './components/workshops/workshops.component';
+import {CommunitiesComponent} from './components/communities/communities.component';
+import {NavComponent} from './components/nav/nav.component';
+import {PrimeModule} from '../../prime-module';
 
 
 @NgModule({
@@ -24,9 +23,8 @@ import { PrimeModule } from '../prime-module';
   imports: [
     CommonModule,
     HomePageRoutingModule,
-    PrimeModule
-  ],
-
+    PrimeModule,
+  ]
 })
 export class HomePageModule {
 }
