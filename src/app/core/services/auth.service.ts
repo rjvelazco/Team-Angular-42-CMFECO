@@ -35,9 +35,10 @@ export class AuthService {
     }
   }
 
-  async register(email, password){
+  async register(username, email, password){
     try{
       const user = await this.fbAuth.createUserWithEmailAndPassword(email, password);
+      await this.updateUserName(username);
       this.sendVerificationEmail();
       return user;
     }catch(error){
@@ -56,6 +57,16 @@ export class AuthService {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  async updateUserName(username) {
+    try {
+      (await this.fbAuth.currentUser).updateProfile({
+        displayName: username
+      });
+    } catch (error) {
+      console.log(error);
+    } 
   }
  
   getCurrentUser(){

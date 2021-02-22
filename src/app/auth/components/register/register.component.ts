@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async createUser(form){
-    const { email, password } = form;
+    const { username, email, password } = form;
 
     if (this.form.invalid) {
       Swal.fire({
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
       this.markAsTouched();
     } else {
       try {
-        const { user} = await this.authService.register(email, password);
+        const { user } = await this.authService.register(username, email, password);
         Swal.fire({
           title: '¡Bienvenido!',
           text: `Verifica tu email [${user.email}] para continuar.`,
