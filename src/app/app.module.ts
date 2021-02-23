@@ -7,6 +7,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 
+// Environment
+import { environment } from 'src/environments/environment';
+
 // Routing
 import {AppRoutingModule} from './app-routing.module';
 
@@ -14,10 +17,11 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
 // Modules
-import { environment } from 'src/environments/environment';
-import {AuthModule} from './auth/auth.module';
-import {PrimeModule} from './prime-module';
-import {SharedModule} from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
+import { HomePageModule } from './pages/home-page/home-page.module';
+import { PagesModule } from './pages/pages.module';
+import { PrimeModule } from './prime-module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,10 +33,12 @@ import {SharedModule} from './shared/shared.module';
     AppRoutingModule,
     AuthModule,
     BrowserModule,
+    HomePageModule,
+    PagesModule,
     PrimeModule,
     ReactiveFormsModule,
     RouterModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

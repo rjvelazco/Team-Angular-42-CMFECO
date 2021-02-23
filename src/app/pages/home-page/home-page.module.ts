@@ -1,24 +1,28 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {CarouselComponent} from './components/carousel/carousel.component';
-import {DashboardComponent} from './components/dashboard/dashboard.component';
-import {ClockComponent} from './components/clock/clock.component';
+import { CommonModule } from '@angular/common';
+
+// Router
 import {HomePageRoutingModule} from './home-page.routing';
-import {WorkshopsComponent} from './components/workshops/workshops.component';
+
+// Modules
+import { PrimeModule } from '../../prime-module';
+
+import {CarouselComponent} from './components/carousel/carousel.component';
+import {ClockComponent} from './components/clock/clock.component';
 import {CommunitiesComponent} from './components/communities/communities.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {NavComponent} from './components/nav/nav.component';
-import {PrimeModule} from '../../prime-module';
+import {WorkshopsComponent} from './components/workshops/workshops.component';
 
 
 @NgModule({
   declarations: [
     CarouselComponent,
-    DashboardComponent,
     ClockComponent,
-    WorkshopsComponent,
     CommunitiesComponent,
+    DashboardComponent,
     NavComponent,
-
+    WorkshopsComponent,
   ],
   imports: [
     CommonModule,
