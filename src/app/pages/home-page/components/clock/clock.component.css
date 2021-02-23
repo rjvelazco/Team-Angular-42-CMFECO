@@ -11,10 +11,11 @@
   justify-content: center;
   overflow: hidden;
   padding: 10px;
+  margin: 0px 15px;
 }
 
 .countdown-container .time-container .date {
-  font-size: 10rem;
+  font-size: 7rem;
   background: linear-gradient(var(--background-gradient-comfeco));
   background-clip: text;
   color: transparent;
@@ -45,12 +46,17 @@
   padding: 0 10px;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 800px) {
   .countdown-container {
     flex-wrap: wrap;
   }
+
+  .countdown-container .time-container{
+    margin:0px;
+  }
+
   .countdown-container .time-container .date {
-    font-size: 45px;
+    font-size: 80px;
   }
 
   .countdown-container .time-container .date-text {
@@ -59,8 +65,14 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  .countdown-container .time-container .date {
+    font-size: 45px;
+  }
+}
 
-@media screen and (max-width: 650px) {
+
+@media screen and (max-width: 424px) {
   .countdown-container {
     display: none;
   }
