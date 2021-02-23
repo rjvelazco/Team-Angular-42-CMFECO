@@ -8,6 +8,7 @@ import {RippleModule} from 'primeng/ripple';
 import {DividerModule} from 'primeng/divider';
 import {CheckboxModule} from 'primeng/checkbox';
 import {CarouselModule} from 'primeng/carousel';
+import {TooltipModule} from 'primeng/tooltip';
 
 @NgModule({
   exports: [
@@ -20,6 +21,7 @@ import {CarouselModule} from 'primeng/carousel';
     DividerModule,
     CheckboxModule,
     CarouselModule,
+    TooltipModule,
   ]
 })
 export class PrimeModule {

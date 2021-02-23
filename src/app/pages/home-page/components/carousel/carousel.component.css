@@ -1,5 +1,5 @@
 .creator .creator-content {
-  margin: 3rem 0;
+  margin: 20px 0;
   width: 200px;
   height: 300px;
   display: flex;
@@ -73,13 +73,22 @@
   width: 50%;
 }
 
-.sponsor-image{
+.sponsor-image {
   width: 70px;
+  height: 70px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
-:host ::ng-deep .content_creators .p-carousel-prev,
-:host ::ng-deep .content_creators .p-carousel-next {
+.sponsor {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 20px 0;
+}
+
+:host ::ng-deep .creators .p-carousel-prev,
+:host ::ng-deep .creators .p-carousel-next {
   display: none !important;
 }
 
@@ -90,12 +99,12 @@
 }
 
 :host ::ng-deep .p-carousel-next-icon,
-:host ::ng-deep .p-carousel-prev-icon{
+:host ::ng-deep .p-carousel-prev-icon {
   font-size: 50px !important;
 }
 
-:host ::ng-deep  .p-carousel-next,
-:host ::ng-deep .p-carousel-prev{
+:host ::ng-deep .p-carousel-next,
+:host ::ng-deep .p-carousel-prev {
   width: 50px !important;
   height: 50px !important;
 }
