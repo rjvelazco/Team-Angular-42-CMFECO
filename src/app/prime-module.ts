@@ -10,6 +10,8 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {CarouselModule} from 'primeng/carousel';
 import {AvatarModule} from 'primeng/avatar';
 import {AvatarGroupModule} from 'primeng/avatargroup';
+import {AccordionModule} from 'primeng/accordion';
+
 
 @NgModule({
   exports: [
@@ -24,6 +26,7 @@ import {AvatarGroupModule} from 'primeng/avatargroup';
     CarouselModule,
     AvatarModule,
     AvatarGroupModule,
+    AccordionModule,
   ]
 })
 export class PrimeModule {

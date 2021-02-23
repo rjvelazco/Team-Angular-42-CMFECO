@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-communities',
@@ -18,15 +18,20 @@ export class CommunitiesComponent implements OnInit {
       'name': 'StacklyCode Community',
       'imgurl': 'stackly.png',
       'url': 'https://discord.gg/VeXZ2DzyFM'
-    }
-    
+    },
+    {
+      'id': 3,
+      'name': 'Comunidad Coderos',
+      'imgurl': 'comunidad_coderos.png',
+      'url': 'https://discord.gg/3sKnKjrcUW'
+    },
+  ];
 
-  ]
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-  
+
 
 }

@@ -1,0 +1,7 @@
+.p-card-header {
+  padding: 2rem 2rem 0;
+}
+
+:host ::ng-deep .p-avatar img {
+  border-radius: 50%;
+}

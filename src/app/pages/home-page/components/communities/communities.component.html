@@ -1,12 +1,24 @@
-<p-card header="Comunidades">
+<p-card>
+  <ng-template pTemplate="header">
+    <div class="p-d-flex p-jc-between p-card-header">
+      <h6>Comunidades</h6>
+      <a href="#" class="text-decoration-none">Ver mas</a>
+    </div>
+  </ng-template>
   <div *ngFor="let item of communities">
-    <div class="p-col border-communities">
-      <p-avatar image="assets/img/communities/{{item.imgurl}}"></p-avatar>
-      {{item.name}}
-      <div class="p-col ver-mas">
-        <a href="{{item.url}}">Ver mas</a>
+    <div class="community">
+      <div class="p-d-flex p-align-center">
+        <p-avatar image="assets/img/communities/{{item.imgurl}}"
+                  styleClass="p-mr-2"
+                  size="large"
+                  shape="circle">
+        </p-avatar>
+        <h6>{{item.name}}</h6>
+      </div>
+      <div class="p-text-right">
+        <a href="{{item.url}}" class="text-decoration-none">Unirme</a>
       </div>
     </div>
+    <p-divider></p-divider>
   </div>
-
 </p-card>

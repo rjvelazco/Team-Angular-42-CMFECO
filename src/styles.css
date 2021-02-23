@@ -21,27 +21,27 @@
   border: 1px solid var(--color-palette-primary) !important;
 }
 
-.error{
+.error {
   padding: 10px
 }
 
-.cursor{
+.cursor {
   cursor: pointer;
 }
 
-.vh-80{
+.vh-80 {
   min-height: 80vh !important;
 }
 
-.vh-50{
+.vh-50 {
   min-height: 50vh !important;
 }
 
-.vh-100{
+.vh-100 {
   min-height: 100vh;
 }
 
-main{
+main {
   overflow: hidden;
   position: relative;
   z-index: 100;
@@ -88,14 +88,4 @@ main{
   color: #273444;
   border: 2px solid #e2e8f0;
   padding: .75rem 1.75rem;
-}
-
-.border-communities{
-  border-bottom: 2px solid rgba(124, 124, 124, 0.267) !important; 
-}
-
-.ver-mas a{
-  margin-left: auto;
-  text-decoration: none !important;
-  font-size: 14px !important;
 }

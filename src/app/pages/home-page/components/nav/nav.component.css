@@ -1,4 +1,4 @@
-.workshops{
+.workshops {
   display: none;
 }
 
@@ -6,17 +6,33 @@
   display: none;
 }
 
+.mobile {
+  display: none;
+}
 
-@media only screen and (min-width: 75em){
+
+@media only screen and (min-width: 75em) {
   .workshops {
     display: block;
+    margin-top: 8rem;
   }
 
-  .communities{
+  .communities {
+    display: block;
+    margin-top: 8rem;
+  }
+
+  .nested {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  .mobile {
     display: block;
   }
 
-  .nested{
+  .widget {
     display: none;
   }
 }
