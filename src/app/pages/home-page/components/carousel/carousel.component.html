@@ -1,4 +1,4 @@
-<div class="content_creators">
+<div class="creators">
   <h3>Ellos ya creen en esta iniciativa:</h3>
   <p-carousel [value]="creators"
               styleClass="custom-carousel"
@@ -10,7 +10,7 @@
     <ng-template let-creator pTemplate="item">
       <div class="creator">
         <div class="creator-content">
-          <img src="assets/img/creators/{{creator['url']}}" alt="Creator" class="creator-image">
+          <img src="assets/img/creators/{{creator['image']}}" alt="Creator" class="creator-image">
           <div class="creator-container {{creator['technology']}}">
             <span class="creator-text">{{creator['full_name']}}</span>
             <div class="creator-icon">
@@ -23,10 +23,10 @@
   </p-carousel>
 </div>
 
-<div class="content_sponsors p-mt-6">
+<div class="sponsors_oficiales p-mt-6">
   <div class="p-d-flex p-jc-between">
     <div>
-      <h4>Sponsors</h4>
+      <h3>Sponsors</h3>
     </div>
     <div>
       <button pButton
@@ -45,13 +45,17 @@
     [circular]="true"
     [responsiveOptions]="responsiveSponsors">
     <ng-template let-sponsor pTemplate="item">
-      <div class="sponsor">
-        <div class="sponsor-content">
-          <a href="#">
-            <img src="assets/img/sponsors_oficiales/{{sponsor['url']}}" alt="Sponsor" class="sponsor-image">
-          </a>
+      <a href="{{sponsor['link']}}" target="_blank">
+        <div class="sponsor">
+          <div class="sponsor-content">
+            <img src="assets/img/sponsors_oficiales/{{sponsor['image']}}"
+                 class="sponsor-image p-shadow-2"
+                 pTooltip="{{sponsor['sponsor_name']}}"
+                 tooltipPosition="top"
+                 alt="Sponsor">
+          </div>
         </div>
-      </div>
+      </a>
     </ng-template>
   </p-carousel>
 </div>
