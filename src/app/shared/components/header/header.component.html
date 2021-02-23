@@ -1,5 +1,22 @@
 <header class="p-shadow-2 p-px-6">
   <img class="img-fluid" src="assets/img/comfeco.png" alt="logo">
+
+  <nav *ngIf="showDashboard">
+    <ul>
+      <li routerLinkActive="active"><a [routerLink]="['/dashboard']">Inicio</a></li>
+      <li><a>Comunidad</a></li>
+      <li><a>Talleres</a></li>
+      <li><a>Creadores de Contenido</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-profiel" *ngIf="showDashboard">
+    <div class="img-container">
+      <img class="img-avatar" src="../../../../assets/img/avatar.png" alt="Avatar">
+    </div>
+    <a>Logout</a>
+  </div>
+
   <div class="btn-show-login text-right" *ngIf="showBackLoginBtn">
     <p-button type="button"
               styleClass="btn-comfeco p-button-lg"

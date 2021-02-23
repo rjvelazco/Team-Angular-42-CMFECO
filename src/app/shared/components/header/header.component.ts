@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     });
 
     this.headerService.dashBoardLogin.subscribe((showDashboard) => {
-      this.showBackLoginBtn = showDashboard;
+      this.showDashboard = showDashboard;
     })
   }
 
