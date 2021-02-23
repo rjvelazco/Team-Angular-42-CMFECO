@@ -65,10 +65,82 @@ export class CarouselComponent implements OnInit {
     }
   ];
 
-  public responsiveOptions;
+  sponsors = [
+    {
+      'id': 1,
+      'url': 'sponsor-codelytv.jpg'
+    },
+    {
+      'id': 2,
+      'url': 'sponsor-codigofacilito.jpg'
+    },
+    {
+      'id': 3,
+      'url': 'sponsor-dominicode.jpg'
+    },
+    {
+      'id': 4,
+      'url': 'sponsor-egghead.jpg'
+    },
+    {
+      'id': 5,
+      'url': 'sponsor-fernando_herrera.jpg'
+    },
+    {
+      'id': 6,
+      'url': 'sponsor-huawei.jpg'
+    },
+    {
+      'id': 7,
+      'url': 'sponsor-jose_dimas_lujan.jpg'
+    },
+    {
+      'id': 8,
+      'url': 'sponsor-latamdev.jpg'
+    },
+    {
+      'id': 9,
+      'url': 'sponsor-leonidas_esteban.jpg'
+    },
+    {
+      'id': 10,
+      'url': 'sponsor-stacklycode.jpg'
+    },
+    {
+      'id': 11,
+      'url': 'sponsor-tekkitv.jpg'
+    },
+  ]
+
+
+  public responsiveCreators;
+  public responsiveSponsors;
 
   constructor() {
-    this.responsiveOptions = [
+    this.responsiveSponsors = [
+      {
+        breakpoint: '1500px',
+        numVisible: 6,
+        numScroll: 6,
+      },
+      {
+        breakpoint: '1024px',
+        numVisible: 5,
+        numScroll: 5
+      },
+      {
+        breakpoint: '768px',
+        numVisible: 3,
+        numScroll: 3,
+      },
+      {
+        breakpoint: '560px',
+        numVisible: 2,
+        numScroll: 2,
+      }
+    ]
+
+    this.responsiveCreators = [
       {
         breakpoint: '1500px',
         numVisible: 3,

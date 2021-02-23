@@ -18,6 +18,7 @@ import {PrimeModule} from '../../prime-module';
     WorkshopsComponent,
     CommunitiesComponent,
     NavComponent,
+
   ],
   imports: [
     CommonModule,

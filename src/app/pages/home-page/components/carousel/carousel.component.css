@@ -73,6 +73,11 @@
   width: 50%;
 }
 
+.sponsor-image{
+  width: 70px;
+  border-radius: 50%;
+}
+
 :host ::ng-deep .content_creators .p-carousel-prev,
 :host ::ng-deep .content_creators .p-carousel-next {
   display: none !important;
@@ -82,4 +87,15 @@
   width: 1rem !important;
   height: 1rem !important;
   border-radius: 10px;
+}
+
+:host ::ng-deep .p-carousel-next-icon,
+:host ::ng-deep .p-carousel-prev-icon{
+  font-size: 50px !important;
+}
+
+:host ::ng-deep  .p-carousel-next,
+:host ::ng-deep .p-carousel-prev{
+  width: 50px !important;
+  height: 50px !important;
 }
