@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 // services
+import { AuthService } from 'src/app/core/services/auth.service';
 import { HeaderService } from '../../../core/services/header.service';
 
 @Component({
@@ -14,7 +16,9 @@ export class HeaderComponent implements OnInit {
   public showDashboard: boolean = false; 
 
   constructor(
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -24,7 +28,12 @@ export class HeaderComponent implements OnInit {
 
     this.headerService.dashBoardLogin.subscribe((showDashboard) => {
       this.showDashboard = showDashboard;
-    })
+    });
   }
 
+
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/login');
+  }
 }
