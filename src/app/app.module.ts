@@ -22,10 +22,12 @@ import { HomePageModule } from './pages/home-page/home-page.module';
 import { PagesModule } from './pages/pages.module';
 import { PrimeModule } from './prime-module';
 import { SharedModule } from './shared/shared.module';
+import { NotPageFoundComponent } from './notPageFound/not-page-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotPageFoundComponent
   ],
   imports: [
     AngularFireAuthModule,
