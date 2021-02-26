@@ -8,6 +8,13 @@ import {RippleModule} from 'primeng/ripple';
 import {DividerModule} from 'primeng/divider';
 import {CheckboxModule} from 'primeng/checkbox';
 import {CarouselModule} from 'primeng/carousel';
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
+import {AccordionModule} from 'primeng/accordion';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {DropdownModule} from 'primeng/dropdown';
+import {PanelModule} from 'primeng/panel';
+import {TagModule} from 'primeng/tag';
 import {TooltipModule} from 'primeng/tooltip';
 
 @NgModule({
@@ -21,7 +28,14 @@ import {TooltipModule} from 'primeng/tooltip';
     DividerModule,
     CheckboxModule,
     CarouselModule,
+    AvatarModule,
+    AvatarGroupModule,
+    AccordionModule,
+    ScrollPanelModule,
+    DropdownModule,
     TooltipModule,
+    PanelModule,
+    TagModule,
   ]
 })
 export class PrimeModule {

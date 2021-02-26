@@ -1,1 +1,16 @@
-<p>communities works!</p>
+<div *ngFor="let community of communities">
+  <div class="community">
+    <div class="p-d-flex p-align-center">
+      <p-avatar image="assets/img/communities/{{community.imgurl}}"
+                styleClass="p-mr-2"
+                size="large"
+                shape="circle">
+      </p-avatar>
+      <h6>{{community.name}}</h6>
+    </div>
+    <div class="p-text-right">
+      <a href="{{community.url}}" class="text-decoration-none" target="_blank">Unirme</a>
+    </div>
+  </div>
+  <p-divider></p-divider>
+</div>

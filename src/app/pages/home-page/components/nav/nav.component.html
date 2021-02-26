@@ -1,31 +1,104 @@
-<main class="main p-mt-5 p-px-6">
-  <div class="p-grid">
-    <div class="p-col-12 p-lg-3 nested">
-      <div class="p-grid">
-        <div class="p-col-12 p-md-6 p-lg-12">
-          <div class="p-card">
-            <app-communities></app-communities>
+<main class="main p-pt-5 p-px-2">
+  <div class="p-grid p-jc-center">
+    <div class="p-col-12 p-md-4 p-lg-4 nested">
+      <p-accordion class="mobile">
+        <div class="p-grid">
+          <div class="p-col-12 p-sm-6 p-md-12 p-lg-12">
+            <p-accordionTab header="Comunidades">
+              <app-communities></app-communities>
+              <button pButton
+                      pRipple
+                      class="btn-comfeco"
+                      label="Ver más"
+                      routerLink="..">
+              </button>
+            </p-accordionTab>
+          </div>
+          <div class="p-col-12 p-sm-6 p-md-12 p-lg-12">
+            <p-accordionTab header="Talleres">
+              <p-scrollPanel styleClass="custombar">
+                <app-workshops></app-workshops>
+              </p-scrollPanel>
+              <button pButton
+                      pRipple
+                      class="btn-comfeco"
+                      label="Ver más"
+                      routerLink="..">
+              </button>
+            </p-accordionTab>
           </div>
         </div>
-        <div class="p-col-12 p-md-6 p-lg-12">
-          <div class="p-card">
-            <app-workshops></app-workshops>
+      </p-accordion>
+      <p-accordion class="widget">
+        <div class="p-grid">
+          <div class="p-col-12 p-sm-6 p-md-12 p-lg-12">
+            <p-accordionTab header="Comunidades" [selected]="true">
+              <app-communities></app-communities>
+              <button pButton
+                      pRipple
+                      class="btn-comfeco"
+                      label="Ver más"
+                      routerLink="..">
+              </button>
+            </p-accordionTab>
+          </div>
+          <div class="p-col-12 p-sm-6 p-md-12 p-lg-12">
+            <p-accordionTab header="Talleres" [selected]="true">
+              <p-scrollPanel styleClass="custombar">
+                <app-workshops></app-workshops>
+              </p-scrollPanel>
+              <button pButton
+                      pRipple
+                      class="btn-comfeco"
+                      label="Ver más"
+                      routerLink="..">
+              </button>
+            </p-accordionTab>
           </div>
         </div>
-      </div>
+      </p-accordion>
     </div>
-    <div class="communities p-md-6 p-lg-2">
-      <div class="p-card">
+    <div class="communities p-lg-3 p-xl-fixed">
+      <p-card>
+        <ng-template pTemplate="header">
+          <div class="p-card-header">
+            <h5 class="p-text-bold">Comunidades</h5>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <button pButton
+                  pRipple
+                  class="btn-comfeco"
+                  label="Ver más"
+                  routerLink="..">
+          </button>
+        </ng-template>
         <app-communities></app-communities>
-      </div>
+      </p-card>
     </div>
-    <div class="p-col-12 p-md-12 p-lg-8 vh-80 p-text-center">
+    <div class="p-col-12 p-md-8 p-lg-8 p-xl-6 vh-80 p-text-center">
       <router-outlet></router-outlet>
     </div>
-    <div class="workshops p-lg-2">
-      <div class="p-card">
-        <app-workshops></app-workshops>
-      </div>
+    <div class="workshops p-lg-3 p-xl-fixed">
+      <p-card>
+        <ng-template pTemplate="header">
+          <div class="p-card-header">
+            <h5 class="p-text-bold">Talleres</h5>
+            <p-tag value="Hoy" [rounded]="true"></p-tag>
+          </div>
+        </ng-template>
+        <p-scrollPanel styleClass="custombar">
+          <app-workshops></app-workshops>
+        </p-scrollPanel>
+        <ng-template pTemplate="footer">
+          <button pButton
+                  pRipple
+                  class="btn-comfeco"
+                  label="Ver más"
+                  routerLink="..">
+          </button>
+        </ng-template>
+      </p-card>
     </div>
   </div>
 </main>

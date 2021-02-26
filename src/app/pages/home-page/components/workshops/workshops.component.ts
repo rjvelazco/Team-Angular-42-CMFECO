@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-workshops',
@@ -7,9 +7,128 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkshopsComponent implements OnInit {
 
-  constructor() { }
+  workshops = [
+    {
+      'id': 1,
+      'tematic': 'State of Javascript',
+      'hour': '16:00 PM',
+      'is_active': true,
+      'speaker': 'Juan Pablo de la Torre',
+      'canal': 'https://primefaces.org/primeng/showcase/#/avatar',
+    },
+    {
+      'id': 2,
+      'tematic': 'State of Javascript',
+      'hour': '16:00 PM',
+      'is_active': false,
+      'speaker': 'Juan Pablo de la Torre',
+      'canal': 'https://primefaces.org/primeng/showcase/#/avatar',
+
+    },
+    {
+      'id': 1,
+      'tematic': 'State of Javascript',
+      'hour': '16:00 PM',
+      'is_active': true,
+      'speaker': 'Juan Pablo de la Torre',
+      'canal': 'https://primefaces.org/primeng/showcase/#/avatar',
+    },
+    {
+      'id': 2,
+      'tematic': 'State of Javascript',
+      'hour': '16:00 PM',
+      'is_active': false,
+      'speaker': 'Juan Pablo de la Torre',
+      'canal': 'https://primefaces.org/primeng/showcase/#/avatar',
+
+    },
+    {
+      'id': 1,
+      'tematic': 'State of Javascript',
+      'hour': '16:00 PM',
+      'is_active': true,
+      'speaker': 'Juan Pablo de la Torre',
+      'canal': 'https://primefaces.org/primeng/showcase/#/avatar',
+    },
+    {
+      'id': 2,
+      'tematic': 'State of Javascript',
+      'hour': '16:00 PM',
+      'is_active': false,
+      'speaker': 'Juan Pablo de la Torre',
+      'canal': 'https://primefaces.org/primeng/showcase/#/avatar',
+
+    }, {
+      'id': 1,
+      'tematic': 'State of Javascript',
+      'hour': '16:00 PM',
+      'is_active': true,
+      'speaker': 'Juan Pablo de la Torre',
+      'canal': 'https://primefaces.org/primeng/showcase/#/avatar',
+    },
+    {
+      'id': 2,
+      'tematic': 'State of Javascript',
+      'hour': '16:00 PM',
+      'is_active': false,
+      'speaker': 'Juan Pablo de la Torre',
+      'canal': 'https://primefaces.org/primeng/showcase/#/avatar',
+
+    },
+    {
+      'id': 1,
+      'tematic': 'State of Javascript',
+      'hour': '16:00 PM',
+      'is_active': true,
+      'speaker': 'Juan Pablo de la Torre',
+      'canal': 'https://primefaces.org/primeng/showcase/#/avatar',
+    },
+    {
+      'id': 2,
+      'tematic': 'State of Javascript',
+      'hour': '16:00 PM',
+      'is_active': false,
+      'speaker': 'Juan Pablo de la Torre',
+      'canal': 'https://primefaces.org/primeng/showcase/#/avatar',
+
+    }, {
+      'id': 1,
+      'tematic': 'State of Javascript',
+      'hour': '16:00 PM',
+      'is_active': true,
+      'speaker': 'Juan Pablo de la Torre',
+      'canal': 'https://primefaces.org/primeng/showcase/#/avatar',
+    },
+    {
+      'id': 2,
+      'tematic': 'State of Javascript',
+      'hour': '16:00 PM',
+      'is_active': false,
+      'speaker': 'Juan Pablo de la Torre',
+      'canal': 'https://primefaces.org/primeng/showcase/#/avatar',
+
+    },
+
+
+  ];
+  sortOptions;
+  sortKey: number;
+  icon: string;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.sortOptions = [
+      {label: 'Frontend', value: 'front'},
+      {label: 'Backend', value: 'back'},
+      {label: 'DevOps', value: 'dev'},
+      {label: 'Video Game Developers', value: 'games'},
+      {label: 'UI/UX,', value: 'designers'},
+      {label: 'Database Developer', value: 'databases'},
+      {label: 'Cloud Computing', value: 'cloud'},
+    ];
   }
+
 
 }

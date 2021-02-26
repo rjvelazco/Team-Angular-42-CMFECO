@@ -1,0 +1,18 @@
+.workshop {
+  display: flex;
+  padding-top: 2rem;
+}
+
+.workshop-body small {
+  color: #6c757d;
+}
+
+.speaker a {
+  text-decoration: none;
+}
+
+:host ::ng-deep .p-dropdown {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}

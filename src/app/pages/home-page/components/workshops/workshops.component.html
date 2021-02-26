@@ -1,1 +1,27 @@
-<p>workshops works!</p>
+<p-dropdown [options]="sortOptions"
+            [(ngModel)]="sortKey"
+            optionLabel="label"
+            [showClear]="true"
+            styleClass="dropdown"
+            placeholder="Talleres por areas de conocimiento">
+</p-dropdown>
+<div *ngFor="let workshop of workshops">
+  <div class="workshop">
+    <ng-container *ngIf="workshop['is_active']; else elseBlock">
+      <p-avatar icon="pi pi-ellipsis-h" styleClass="p-mr-2" size="large" shape="circle"></p-avatar>
+    </ng-container>
+    <ng-template #elseBlock>
+      <p-avatar icon="pi pi-check" styleClass="p-mr-2" size="large" shape="circle"></p-avatar>
+    </ng-template>
+    <div class="workshop-body">
+      <strong>{{workshop['tematic']}}</strong>
+      <br>
+      <small>Hoy a las {{workshop['hour']}}</small>
+      <div class="speaker">
+        <span class="p-text-bold">By </span>
+        <a href="{{workshop['canal']}}" target="_blank">{{workshop['speaker']}}</a>
+      </div>
+    </div>
+  </div>
+  <p-divider></p-divider>
+</div>

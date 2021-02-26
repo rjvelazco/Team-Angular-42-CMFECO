@@ -5,6 +5,7 @@ import { PagesComponent } from './pages.component';
 // Router
 import { RouterModule } from '@angular/router';
 
+
 @NgModule({
   declarations: [PagesComponent],
   imports: [

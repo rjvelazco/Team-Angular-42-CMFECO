@@ -2,6 +2,6 @@
   border-radius: 0.75rem !important;
 }
 
-:host ::ng-deep .p-card-body {
+:host ::ng-deep .content-card .p-card-body {
   padding: 2rem 2rem !important;
 }
