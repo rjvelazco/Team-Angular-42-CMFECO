@@ -1,30 +1,34 @@
-main{
-    min-height: 70vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+main {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-main .img-container{
-    overflow: hidden;
+main .img-container {
+  overflow: hidden;
 }
 
-main .img-container img{
-    width: 100%;
+main .img-container img {
+  width: 100%;
 }
-main .text-container{
-    margin-bottom: 20px;
+
+main .text-container {
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 main .text-container span {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
 }
 
-main .text-container span a{
-    font-weight: normal;
+main .text-container span a {
+  font-weight: normal;
+  text-decoration: none;
+  color: #4e007e;
 }
 
 
