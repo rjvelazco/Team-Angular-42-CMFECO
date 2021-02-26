@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 // Services
-import { AuthService } from '../core/services/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     private authService: AuthService
 
   ) {
-
+    
   }
 
   canActivate(
@@ -34,5 +34,5 @@ export class AuthGuard implements CanActivate {
         })
       )
   }
-
+  
 }

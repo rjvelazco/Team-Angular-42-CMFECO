@@ -1,31 +1,22 @@
 import {NgModule} from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-// Router
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common'
 
 // Components
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { FigureComponent } from './components/figure/figure.component';
-import {PrimeModule} from '../prime-module';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent,
-    FigureComponent
+    FooterComponent
   ],
   imports: [
     CommonModule,
-    RouterModule,
-    PrimeModule
   ],
     exports: [
         HeaderComponent,
-        FooterComponent,
-        FigureComponent
+        FooterComponent
     ]
 })
 export class SharedModule {

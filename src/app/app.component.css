@@ -1,7 +1,8 @@
-:host ::ng-deep .p-card {
-  border-radius: 0.75rem !important;
+.container-main{
+
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+
 }
 
-:host ::ng-deep .p-card-body {
-  padding: 2rem 2rem !important;
-}

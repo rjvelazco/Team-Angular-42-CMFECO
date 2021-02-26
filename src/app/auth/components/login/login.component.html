@@ -1,27 +1,33 @@
-<main class="main" role="main">
-  <app-figure></app-figure>
-  <div class="vh-80 p-d-flex p-jc-center p-align-center py-2">
-    <div class="p-col-12 p-md-6 p-lg-6 p-xl-4">
-      <p-card styleClass="p-shadow-7 content-card">
+<main id="content" class="main" role="main">
+  <div class="position-absolute top-0 right-0 left-0 bg-img-hero">
+    <figure class="position-absolute right-0 bottom-0 left-0">
+      <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1921 273">
+        <polygon fill="#fff" points="0,273 1921,273 1921,0"></polygon>
+      </svg>
+    </figure>
+  </div>
+  <div class="p-d-flex p-jc-center p-align-center py-2">
+    <div class="p-col-md-6 p-col-lg-5 content-form">
+      <p-card styleClass="p-shadow-7">
         <form [formGroup]="form" (ngSubmit)="loginUser()">
-          <div class="header_form p-text-center p-mb-5">
+          <div class="p-text-center p-mb-5 header_form">
             <h1>Iniciar sesión</h1>
-            <p>¿Aún no tienes una cuenta? <a [routerLink]="['/register']"> Regístrate</a></p>
+            <p>¿Aun no tienes una cuenta? <a [routerLink]="['/register']"> Registrate</a></p>
           </div>
           <div class="p-fluid p-mb-5">
             <div class="p-field">
-              <label for="email">Correo Electrónico</label>
+              <label for="email">Correo Electronico</label>
               <input type="email"
                      autocomplete="off"
                      id="email"
                      pInputText
-                     placeholder="example@correo.com"
+                     placeholder="example@gmail.com"
                      formControlName="email">
               <small class="p-error" *ngIf="emailInvalid">
-                <li class="error">Correo Electrónico Inválido</li>
+                <li class="error">Correo Electronico Invalido</li>
               </small>
               <small class="p-error" *ngIf="emailIsEmpty">
-                <li class="error">Correo Electrónico Requerido</li>
+                <li class="error">Correo Electronico Requerido</li>
               </small>
             </div>
             <div class="p-field">
@@ -31,15 +37,10 @@
                 </div>
                 <div>
                   <a [routerLink]="['/password', 'reset']" class="input-label-secondary cursor">
-                    ¿Olvidaste tu contraseña?
-                  </a>
+                    ¿Olvidaste tu contraseña?</a>
                 </div>
               </div>
-              <input type="password"
-                     placeholder="Contraseña"
-                     id="password"
-                     pInputText
-                     formControlName="password">
+              <input type="password" id="password" pInputText placeholder="************" formControlName="password">
               <small class="p-error" *ngIf="passwordInvalid">
                 <li class="error">Contraseña requerida</li>
               </small>

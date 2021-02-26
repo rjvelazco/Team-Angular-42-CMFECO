@@ -1,12 +1,11 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-import {PagesRoutingModule} from './pages/pages.routing';
-import {LoginComponent} from './auth/components/login/login.component';
-import { AuthRoutingModule } from './auth/auth.routing';
+import { PagesRoutingModule } from './pages/pages.routing';
+import { LoginComponent } from './auth/components/login/login.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  {path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
   {path: '**', component: LoginComponent}
 
 ];
@@ -17,8 +16,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
     }),
-    PagesRoutingModule,
-    AuthRoutingModule
+    PagesRoutingModule
   ],
   exports: [
     RouterModule

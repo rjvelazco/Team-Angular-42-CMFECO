@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pages',
@@ -6,12 +6,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styles: [
   ]
 })
-export class PagesComponent implements OnInit, OnDestroy {
+export class PagesComponent implements OnInit {
 
   constructor() { }
-
-  ngOnDestroy(): void {
-  }
 
   ngOnInit(): void {
   }

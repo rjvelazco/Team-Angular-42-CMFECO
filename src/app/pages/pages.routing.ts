@@ -13,7 +13,6 @@ const routes: Routes = [
     path: 'dashboard',
     component: PagesComponent,
     canActivate: [AuthGuard],
-    loadChildren: ()=> import('./home-page/home-page.routing').then( m => m.HomePageRoutingModule)
   },
 ];
 
