@@ -11,6 +11,11 @@ import {CarouselModule} from 'primeng/carousel';
 import {AvatarModule} from 'primeng/avatar';
 import {AvatarGroupModule} from 'primeng/avatargroup';
 import {AccordionModule} from 'primeng/accordion';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {DropdownModule} from 'primeng/dropdown';
+import {TooltipModule} from 'primeng/tooltip';
+import {PanelModule} from 'primeng/panel';
+import {TagModule} from 'primeng/tag';
 
 
 @NgModule({
@@ -27,6 +32,11 @@ import {AccordionModule} from 'primeng/accordion';
     AvatarModule,
     AvatarGroupModule,
     AccordionModule,
+    ScrollPanelModule,
+    DropdownModule,
+    TooltipModule,
+    PanelModule,
+    TagModule,
   ]
 })
 export class PrimeModule {

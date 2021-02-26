@@ -25,6 +25,7 @@ export class CommunitiesComponent implements OnInit {
       'imgurl': 'comunidad_coderos.png',
       'url': 'https://discord.gg/3sKnKjrcUW'
     },
+
   ];
 
   constructor() {

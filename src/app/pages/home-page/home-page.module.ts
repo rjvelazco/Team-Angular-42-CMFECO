@@ -8,6 +8,7 @@ import {WorkshopsComponent} from './components/workshops/workshops.component';
 import {CommunitiesComponent} from './components/communities/communities.component';
 import {NavComponent} from './components/nav/nav.component';
 import {PrimeModule} from '../../prime-module';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -19,11 +20,12 @@ import {PrimeModule} from '../../prime-module';
     CommunitiesComponent,
     NavComponent,
   ],
-  imports: [
-    CommonModule,
-    HomePageRoutingModule,
-    PrimeModule,
-  ]
+    imports: [
+        CommonModule,
+        HomePageRoutingModule,
+        PrimeModule,
+        FormsModule,
+    ]
 })
 export class HomePageModule {
 }
