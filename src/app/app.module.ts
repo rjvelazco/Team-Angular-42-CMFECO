@@ -18,7 +18,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
 // Modules
-import {environment} from 'src/environments/environment';
 import { AuthModule } from './auth/auth.module';
 import { HomePageModule } from './pages/home-page/home-page.module';
 import { PagesModule } from './pages/pages.module';
