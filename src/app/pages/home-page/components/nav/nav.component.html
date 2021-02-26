@@ -1,0 +1,31 @@
+<main class="main p-mt-5 p-px-6">
+  <div class="p-grid">
+    <div class="p-col-12 p-lg-3 nested">
+      <div class="p-grid">
+        <div class="p-col-12 p-md-6 p-lg-12">
+          <div class="p-card">
+            <app-communities></app-communities>
+          </div>
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-12">
+          <div class="p-card">
+            <app-workshops></app-workshops>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="communities p-md-6 p-lg-2">
+      <div class="p-card">
+        <app-communities></app-communities>
+      </div>
+    </div>
+    <div class="p-col-12 p-md-12 p-lg-8 vh-80 p-text-center">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="workshops p-lg-2">
+      <div class="p-card">
+        <app-workshops></app-workshops>
+      </div>
+    </div>
+  </div>
+</main>

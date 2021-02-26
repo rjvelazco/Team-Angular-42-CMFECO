@@ -1,0 +1,32 @@
+<div class="p-my-2">
+  <div class="countdown-container">
+    <div class="time-container">
+      <div class="date">
+        {{remainTime.days}}
+      </div>
+      <div class="date-text">DÍAS</div>
+    </div>
+    <div class="time-container">
+      <div class="date">{{remainTime.hours}}</div>
+      <div class="date-text">HORAS</div>
+    </div>
+    <div class="time-container">
+      <div class="date">{{remainTime.minutes}}</div>
+      <div class="date-text">MINS</div>
+    </div>
+    <div class="time-container">
+      <div class="date">{{remainTime.seconds}}</div>
+      <div class="date-text">SEG</div>
+    </div>
+  </div>
+  <div class="countdown-container-movil mt-2">
+    <div class="time-container-movil">
+      <div class="date mb-2">
+        <small>20 de Marzo de 2021</small>
+      </div>
+      <div class="countdown p-text-bold">
+        {{remainTime.days}}D : {{remainTime.hours}}H : {{remainTime.minutes}}M : {{remainTime.seconds}}S
+      </div>
+    </div>
+  </div>
+</div>

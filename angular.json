@@ -30,6 +30,7 @@
               "./node_modules/primeflex/primeflex.css",
               "./node_modules/primeng/resources/primeng.min.css"
             ],
+            
             "scripts": []
           },
           "configurations": {

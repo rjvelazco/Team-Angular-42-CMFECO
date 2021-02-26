@@ -1,74 +1,92 @@
-<div class="container-fluid mt-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 text-center">
-        <h3 class="mb-3">Registro de usuario</h3>
-      </div>
-    </div>
-    <div class="row d-flex align-items-center flex-column">
-      <div class="col-12 col-md-6 col-lg-4">
-        <form autocomplete="off" [formGroup]="FormData" (ngSubmit)="createUser(FormData.value)">
-          <div class="mb-4">
-            <label>Usuario</label>
-            <input  type="text"
-                    class="form-control"
-                    placeholder="Digite el usuario"
-                    id="inputUsername"
-                    formControlName="username"
-                    [class.is-invalid]="usernameInvalid">
-            <small *ngIf="usernameInvalid" class="text-danger">Digite almenos 5 carácteres</small>
+<main id="content" class="main vh-85" role="main">
+  <app-figure></app-figure>
+  <div class="vh-80 p-d-flex p-jc-center p-align-center py-2">
+    <div class="p-col-12 p-md-6 p-lg-4">
+      <p-card styleClass="p-shadow-7">
+        <form autocomplete="off" [formGroup]="form" (ngSubmit)="createUser(form.value)">
+          <div class="header_form p-text-center p-mb-5">
+            <h1>Registro</h1>
+            <p>¿Ya tienes una cuenta? <a [routerLink]="['/login']">Entra aquí</a></p>
           </div>
-          <div class="mb-4">
-            <label>Correo</label>
-            <input  type="email"
-                    class="form-control"
-                    placeholder="Email"
-                    id="inputEmail"
-                    formControlName="email"
-                    [class.is-invalid]="emailInvalid">
-            <small *ngIf="emailInvalid" class="text-danger">Digite un correo válido</small>
-
-          </div>
-          <div class="mb-4">
-            <label>Contraseña</label>
-            <input  type="password"
-                    class="form-control"
-                    placeholder="Digite su contraseña"
-                    id="inputPassword"
-                    formControlName="password"
-                    [class.is-invalid]="passwordInvalid">
-            <small *ngIf="passwordInvalid" class="text-danger">Digite almenos 5 carácteres</small>
-          </div>
-          <div class="mb-4">
-            <label>Confirmar contraseña</label>
-            <input  type="password"
-                    class="form-control"
-                    placeholder="Confirmar contraseña"
-                    id="inputConfirmPassword"
-                    formControlName="confirmPassword"
-                    [class.is-invalid]="confirmPasswordInvalid">
-            <small *ngIf="confirmPasswordInvalid" class="text-danger">Contraseña no es igual</small>
-          </div>
-          <div class="mb-4">
-            <div class="form-check">
-              <label class="form-check-label" for="inputCheckTerms">Términos y Condiciones</label>
-              <input  type="checkbox"
-                      class="form-check-input"
-                      placeholder="Confirmar contraseña"
-                      id="inputCheckTerms"
-                      formControlName="checkTerms"
-                      [class.is-invalid]="checkTermsInvalid">
+          <div class="p-fluid p-mb-5">
+            <div class="p-field">
+              <label for="username">Nombre Usuario</label>
+              <input type="text"
+                     pInputText
+                     id="username"
+                     placeholder="Escribe tu usuario"
+                     formControlName="username">
+              <small *ngIf="usernameInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
             </div>
-            <small *ngIf="checkTermsInvalid" class="text-danger">Debe de aceptar los términos y condiciones</small>
+            <div class="p-field">
+              <label for="email">Corre Electrónico</label>
+              <input type="email"
+                     pInputText
+                     id="email"
+                     placeholder="example@correo.com"
+                     formControlName="email">
+              <small *ngIf="emailInvalid" class="p-error">Ingrese un correo válido</small>
+            </div>
+            <div class="p-field">
+              <label for="password">Contraseña</label>
+              <input type="password"
+                     placeholder="Contraseña"
+                     pInputText
+                     id="password"
+                     formControlName="password">
+              <small *ngIf="passwordInvalid" class="p-error">Usa 6 o más caracteres</small>
+            </div>
+            <div class="p-field">
+              <label for="confirm_password">Confirmar contraseña</label>
+              <input type="password"
+                     placeholder="Confirme la ontraseña"
+                     pInputText
+                     id="confirm_password"
+                     formControlName="confirmPassword">
+              <small *ngIf="confirmPasswordInvalid" class="p-error">
+                Las contraseñas no coinciden. Vuelve a intentarlo.
+              </small>
+            </div>
           </div>
-          <button type="submit" class="btn btn-success w-100" [disabled]="!FormData.valid">Registrar</button>
-          <div class="mb-4">
-            <span>¿Ya tienes cuenta? <span class="link-info cursor" [routerLink]="['/login']">Login</span></span>
-          </div>
+          <button pButton
+                  pRipple
+                  type="submit"
+                  label="Crear una cuenta"
+                  class="btn-comfeco">
+          </button>
         </form>
-        
-      </div> <!-- Col Formulario -->
-    </div>  <!-- Row Formulario -->
+        <p-divider align="center" type="dashed" class="p-p-1">
+          <b>O regístrate usando</b>
+        </p-divider>
+        <div class="p-d-flex p-jc-between p-grid">
+          <div class="p-col-12 p-sm-6">
+            <a href="#" class="btn btn-social">
+              <span class="btn-icon">
+                  <img src="assets/img/google.svg" alt="google">
+              </span>
+              <span class="btn-text p-ml-2">Google</span>
+            </a>
+          </div>
+          <div class="p-col-12 p-sm-6">
+            <a href="#" class="btn btn-social">
+              <span class="btn-icon">
+                  <img src="assets/img/facebook.svg" alt="google">
+              </span>
+              <span class="btn-text p-ml-2">Facebook</span>
+            </a>
+          </div>
+        </div>
+        <ng-template pTemplate="footer">
+          <div class="p-text-center">
+            <span>Al registrarte estas aceptando los
+            <a routerLink="/terminos" class="text-decoration-none cursor">Términos y condiciones</a> y la
+              <a routerLink="/terminos"
+                 class="text-decoration-none cursos">Política de privacidad y protección de datos</a>
+              de COMFECO
+            </span>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
   </div>
-</div>
-
+</main>

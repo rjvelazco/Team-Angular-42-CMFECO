@@ -5,6 +5,14 @@
   --color-palette-primary: #591A80;
   --color-palette-secondary: #EBAB0D;
   --font-logo-family: 'Lato', sans-serif;
+  --background-gradient-comfeco: 90deg, rgba(82, 30, 135, 0.8) 0%,
+  rgba(102, 28, 137, 0.8) 9.87%,
+  rgba(138, 23, 140, 0.8) 30.04%,
+  rgba(151, 43, 123, 0.8) 36.71%,
+  rgba(189, 101, 73, 0.8) 58.41%,
+  rgba(217, 144, 37, 0.8) 76.96%,
+  rgba(235, 170, 14, 0.8) 91.4%,
+  rgba(241, 180, 6, 0.8) 99.97%;
 }
 
 .swal2-styled.swal2-confirm {
@@ -30,10 +38,62 @@
   cursor: pointer;
 }
 
-.vh-90{
-  min-height: 85vh;
+.vh-80{
+  min-height: 80vh !important;
+}
+
+.vh-50{
+  min-height: 50vh !important;
 }
 
 .vh-100{
   min-height: 100vh;
+}
+main{
+  overflow: hidden;
+  position: relative;
+  z-index: 100;
+  min-width: 90vw;
+}
+
+.header_form h1 {
+  font-size: 1.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.header_form p {
+  color: #6c757d !important;
+}
+
+
+.header_form a, .input-label-secondary {
+  color: var(--color-palette-primary);
+  text-decoration: none;
+}
+
+.header_form a:hover, .input-label-secondary {
+  color: #4e007e !important;
+}
+
+.input-label-secondary {
+  font-size: .8125rem;
+}
+
+.p-button {
+  font-size: 1.1rem !important;
+  width: 100%;
+}
+
+.btn-icon img {
+  width: 20px;
+}
+
+.btn-social {
+  width: 100%;
+  display: block;
+  background-color: transparent;
+  color: #273444;
+  border: 2px solid #e2e8f0;
+  padding: .75rem 1.75rem;
 }

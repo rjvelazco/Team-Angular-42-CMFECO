@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import {FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import {Router} from '@angular/router';
-
+import {AuthService} from 'src/app/core/services/auth.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,68 +10,77 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  FormData: FormGroup;
+  form: FormGroup;
 
   constructor(
-    private fB: FormBuilder,
+    private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router
   ) {
   }
 
   ngOnInit(): void {
-    this.FormData = this.fB.group({
-      username: new FormControl('', [Validators.required, Validators.minLength(5)]),
-      email: new FormControl('', [Validators.compose([Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')])]),
-      password: new FormControl('', [Validators.required , Validators.minLength(5)]),
+    this.form = this.formBuilder.group({
+      username: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      email: new FormControl('', [Validators.compose([
+        Validators.required,
+        Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')])]
+      ),
+      password: new FormControl('', [Validators.required , Validators.minLength(6)]),
       confirmPassword: new FormControl('', [Validators.required]),
-      checkTerms: new FormControl('', [Validators.required, Validators.requiredTrue])
     },
     {
       validators: this.validatePassword('password','confirmPassword')
     });
   }
-
-  async createUser(formData){
-    const { email, password } = formData;
-
-    try {
-      const { user} = await this.authService.register(email, password);
+  async createUser(form){
+    const { username, email, password } = form;
+    if (this.form.invalid) {
       Swal.fire({
-        title: '¡Bienvenido!',
-        text: `Verifica tu email ${user.email} para continuar`,
-        icon: 'success',
-        confirmButtonText: ' <a href="login">Iniciar sesion</a>',
-      });
-      this.FormData.reset();
-    } catch (error) {
-      Swal.fire({
-        title: 'Error!',
-        text: 'El email ya ha sido registrado.',
+        title: '¡Formulario inválido!',
+        text: 'Complete debidamente el registro, por favor.',
         icon: 'error',
         confirmButtonText: 'Cool'
       },
       );
+      });
+      this.markAsTouched();
+    } else {
+      try {
+        const { user } = await this.authService.register(username, email, password);
+        Swal.fire({
+          title: '¡Bienvenido!',
+          text: `Verifica tu email ${user.email} para continuar.`,
+          icon: 'success',
+          confirmButtonText: ' <a href="login">Iniciar sesion</a>',
+        });
+        this.form.reset();
+        this.router.navigateByUrl('/login');
+      } catch (error) {
+        Swal.fire({
+          title: '¡Error!',
+          text: 'El email ya ha sido registrado.',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        });
+      } 
     }
   }
 
   get usernameInvalid() {
-    return this.FormData.get('username').invalid && this.FormData.get('username').touched
+    return this.form.get('username').invalid && this.form.get('username').touched
   }
   get emailInvalid() {
-    return this.FormData.get('email').invalid && this.FormData.get('email').touched
+    return this.form.get('email').invalid && this.form.get('email').touched
   }
   get passwordInvalid() {
-    return this.FormData.get('password').invalid && this.FormData.get('password').touched
-  }
-  get checkTermsInvalid() {
-    return this.FormData.get('checkTerms').invalid && this.FormData.get('checkTerms').touched
+    return this.form.get('password').invalid && this.form.get('password').touched
   }
 
   get confirmPasswordInvalid() {
-    const password1 = this.FormData.get('password').value;
-    const password2 = this.FormData.get('confirmPassword').value;
-    return ( password1 === password2) ? false : true;
+    const password1 = this.form.get('password').value;
+    const password2 = this.form.get('confirmPassword').value;
+    return (password1 !== password2);
   }
 
   validatePassword(p1: string, p2: string){
@@ -86,6 +94,10 @@ export class RegisterComponent implements OnInit {
         p2Control.setErrors({noEsIgual: true});
       }
     }
+  }
+
+  markAsTouched(){
+    Object.values(this.form.controls).forEach(control => control.markAllAsTouched());
   }
 
 

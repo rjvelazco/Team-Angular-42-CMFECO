@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 // Services
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -34,18 +34,16 @@ export class LoginComponent implements OnInit {
   get emailVerified(){
     return this.form.get('email').hasError('required')
   }
-
-
   get emailInvalid() {
-    return this.form.get('email').hasError('pattern');
+    return this.form.get('email').hasError('pattern') && this.form.get('email').touched;
   }
 
   get emailIsEmpty() {
-    return this.form.get('email').hasError('required') && this.form.get('email')?.touched;
+    return this.form.get('email').hasError('required') && this.form.get('email').touched;
   }
 
   get passwordInvalid() {
-    return this.form.get('password').hasError('required') && this.form.get('password')?.touched;
+    return this.form.get('password').hasError('required') && this.form.get('password').touched;
   }
 
   get checkRemember() {
@@ -88,7 +86,7 @@ export class LoginComponent implements OnInit {
         } else {
           Swal.fire({
             title: 'Email no verificado',
-            text: '¿Desea reenviar el email de verificacion?',
+            text: '¿Desea reenviar el email de verificación?',
             showDenyButton: true,
             confirmButtonText: `Aceptar`,
             icon: 'info',
@@ -99,7 +97,7 @@ export class LoginComponent implements OnInit {
             if (result.isConfirmed) {
               Swal.fire({
                 title: 'Email Enviado',
-                text: 'Recuerde revisar la bandeja de span y/o correo no desado',
+                text: 'Recuerde revisar la bandeja de spam y/o correo no deseado.',
                 icon: 'success',
                 confirmButtonText: 'Cool'
               });
@@ -108,8 +106,8 @@ export class LoginComponent implements OnInit {
         }
       } catch (err) {
         Swal.fire({
-          title: 'Error!',
-          text: 'Email y/o contraseña no validos',
+          title: '¡Error!',
+          text: 'Email y/o contraseña no válidos',
           icon: 'error',
           confirmButtonText: 'Cool'
         });

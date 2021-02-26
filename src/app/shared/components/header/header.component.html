@@ -1,5 +1,10 @@
-<header class="header">
-  <div class="py-2 img-container text-center">
-    <img class="img-fluid" src="assets/img/comfeco.png" alt="logo">
+<header class="p-shadow-2 p-px-6">
+  <img class="img-fluid" src="assets/img/comfeco.png" alt="logo">
+  <div class="btn-show-login text-right" *ngIf="showBackLoginBtn">
+    <p-button type="button"
+              styleClass="btn-comfeco p-button-lg"
+              label="Iniciar Sesión"
+              [routerLink]="['/login']">
+    </p-button>
   </div>
 </header>

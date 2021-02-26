@@ -1,0 +1,33 @@
+.bg-img-hero {
+  margin: 0 !important;
+  height: 32rem;
+  background: linear-gradient(var(--background-gradient-comfeco));
+}
+
+.bg-img-hero {
+  z-index: -10000;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  margin-top: 5rem;
+}
+
+.left-0 {
+  left: 0 !important;
+}
+
+.right-0 {
+  right: 0 !important;
+}
+
+.top-0 {
+  top: 0 !important;
+}
+
+.bottom-0 {
+  bottom: 0 !important;
+}
+
+figure {
+  margin-bottom: 0;
+}
