@@ -11,14 +11,19 @@ import { HeaderService } from '../../../core/services/header.service';
 export class HeaderComponent implements OnInit {
 
   public showBackLoginBtn: boolean = false; 
+  public showDashboard: boolean = false; 
 
   constructor(
     private headerService: HeaderService
   ) { }
 
   ngOnInit(): void {
-    this.headerService.showLoginBtn.subscribe(data => {
-      this.showBackLoginBtn = data;
+    this.headerService.showLoginBtn.subscribe((showBtn) => {
+      this.showBackLoginBtn = showBtn;
+    });
+
+    this.headerService.dashBoardLogin.subscribe((showDashboard) => {
+      this.showBackLoginBtn = showDashboard;
     })
   }
 

@@ -13,10 +13,9 @@ import {AvatarGroupModule} from 'primeng/avatargroup';
 import {AccordionModule} from 'primeng/accordion';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {DropdownModule} from 'primeng/dropdown';
-import {TooltipModule} from 'primeng/tooltip';
 import {PanelModule} from 'primeng/panel';
 import {TagModule} from 'primeng/tag';
-
+import {TooltipModule} from 'primeng/tooltip';
 
 @NgModule({
   exports: [

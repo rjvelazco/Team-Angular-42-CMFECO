@@ -1,15 +1,16 @@
-<div class="content_creators">
+<div class="creators">
+  <h3>Ellos ya creen en esta iniciativa:</h3>
   <p-carousel [value]="creators"
               styleClass="custom-carousel"
               [numVisible]="4"
               [numScroll]="4"
               [circular]="true"
               autoplayInterval="3500"
-              [responsiveOptions]="responsiveOptions">
+              [responsiveOptions]="responsiveCreators">
     <ng-template let-creator pTemplate="item">
       <div class="creator">
         <div class="creator-content">
-          <img src="assets/img/creators/{{creator['url']}}" alt="Creator" class="creator-image">
+          <img src="assets/img/creators/{{creator['image']}}" alt="Creator" class="creator-image">
           <div class="creator-container {{creator['technology']}}">
             <span class="creator-text">{{creator['full_name']}}</span>
             <div class="creator-icon">
@@ -21,3 +22,41 @@
     </ng-template>
   </p-carousel>
 </div>
+
+<div class="sponsors_oficiales p-mt-6">
+  <div class="p-d-flex p-jc-between">
+    <div>
+      <h3>Sponsors</h3>
+    </div>
+    <div>
+      <button pButton
+              pRipple
+              type="button"
+              label="Apoyar Iniciativa"
+              class="btn-comfeco">
+      </button>
+    </div>
+  </div>
+  <p-carousel
+    [value]="sponsors"
+    [numVisible]="8"
+    styleClass="p-mt-6"
+    [numScroll]="8"
+    [circular]="true"
+    [responsiveOptions]="responsiveSponsors">
+    <ng-template let-sponsor pTemplate="item">
+      <a href="{{sponsor['link']}}" target="_blank">
+        <div class="sponsor">
+          <div class="sponsor-content">
+            <img src="assets/img/sponsors_oficiales/{{sponsor['image']}}"
+                 class="sponsor-image p-shadow-2"
+                 pTooltip="{{sponsor['sponsor_name']}}"
+                 tooltipPosition="top"
+                 alt="Sponsor">
+          </div>
+        </div>
+      </a>
+    </ng-template>
+  </p-carousel>
+</div>
+
