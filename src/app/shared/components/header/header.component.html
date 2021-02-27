@@ -13,7 +13,7 @@
   <div class="user-options">
     <div *ngIf="showDashboard">
       <a type="button" (click)="update()">
-          <i  class="pi pi-bell p-mr-4 p-text-secondary" style="font-size: 2.5rem"
+          <i  class="pi pi-bell p-mr-4 p-text-secondary" style="font-size: 2rem"
               [ngClass]="{'color-yellow' : changeColor, 'color-purple': !changeColor}">
           </i>
       </a>
@@ -26,8 +26,8 @@
         </div>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownUser">
-        <li>
-          <a class="dropdown-item" (click)="logout()">Logout</a>
+        <li class="cursor">
+          <a class="dropdown-item cursor" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>
