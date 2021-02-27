@@ -1,0 +1,8 @@
+.content_text {
+  margin-top: 2rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

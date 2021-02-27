@@ -151,14 +151,19 @@ export class CarouselComponent implements OnInit {
         numScroll: 5
       },
       {
-        breakpoint: '768px',
+        breakpoint: '560px',
         numVisible: 3,
         numScroll: 3,
       },
       {
-        breakpoint: '560px',
+        breakpoint: '360px',
         numVisible: 2,
         numScroll: 2,
+      },
+      {
+        breakpoint: '280px',
+        numVisible: 1,
+        numScroll: 1,
       }
     ];
 
@@ -169,14 +174,14 @@ export class CarouselComponent implements OnInit {
         numScroll: 3,
       },
       {
-        breakpoint: '1024px',
-        numVisible: 3,
-        numScroll: 3,
-      },
-      {
-        breakpoint: '768px',
+        breakpoint: '950px',
         numVisible: 2,
         numScroll: 2,
+      },
+      {
+        breakpoint: '770px',
+        numVisible: 3,
+        numScroll: 3
       },
       {
         breakpoint: '560px',
