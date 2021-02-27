@@ -22,11 +22,11 @@ import {PrimeModule} from '../prime-module';
     RouterModule,
     PrimeModule
   ],
-    exports: [
+  exports: [
         HeaderComponent,
         FooterComponent,
         FigureComponent
-    ]
+  ]
 })
 export class SharedModule {
 }

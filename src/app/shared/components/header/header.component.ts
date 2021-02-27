@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {MenuItem} from 'primeng/api';
 
 // services
+import { AuthService } from 'src/app/core/services/auth.service';
 import { HeaderService } from '../../../core/services/header.service';
 
 @Component({
@@ -10,11 +13,15 @@ import { HeaderService } from '../../../core/services/header.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public showBackLoginBtn: boolean = false; 
-  public showDashboard: boolean = false; 
+  public showBackLoginBtn: boolean = false;
+  public showDashboard: boolean = false;
+  items: MenuItem[];
+  changeColor = true;
 
   constructor(
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -23,8 +30,17 @@ export class HeaderComponent implements OnInit {
     });
 
     this.headerService.dashBoardLogin.subscribe((showDashboard) => {
-      this.showBackLoginBtn = showDashboard;
-    })
+      this.showDashboard = showDashboard;
+    });
   }
 
+
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/login');
+  }
+
+  update(){
+    this.changeColor = !this.changeColor;
+  }
 }
