@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 // Services
 import {AuthService} from 'src/app/core/services/auth.service';
-import { HeaderService } from '../../../core/services/header.service';
+import {HeaderService} from '../../../core/services/header.service';
 
 @Component({
   selector: 'app-reset-password',

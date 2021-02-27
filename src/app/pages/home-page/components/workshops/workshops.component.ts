@@ -113,7 +113,6 @@ export class WorkshopsComponent implements OnInit {
   ];
   sortOptions;
   sortKey: number;
-  icon: string;
 
   constructor() {
   }
