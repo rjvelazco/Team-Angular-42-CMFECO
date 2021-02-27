@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {MenuItem} from 'primeng/api';
 
 // services
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -12,8 +13,10 @@ import { HeaderService } from '../../../core/services/header.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public showBackLoginBtn: boolean = false; 
-  public showDashboard: boolean = false; 
+  public showBackLoginBtn: boolean = false;
+  public showDashboard: boolean = false;
+  items: MenuItem[];
+  changeColor = true;
 
   constructor(
     private headerService: HeaderService,
@@ -35,5 +38,9 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigateByUrl('/login');
+  }
+
+  update(){
+    this.changeColor = !this.changeColor;
   }
 }

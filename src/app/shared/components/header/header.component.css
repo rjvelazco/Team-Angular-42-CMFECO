@@ -6,7 +6,8 @@ header {
 }
 
 header img {
-  margin: 20px 0;
+  margin: 10px 0;
+  width: 180px;
 }
 
 nav{
@@ -44,12 +45,31 @@ a{
 }
 
 .img-container .img-avatar{
-  width: 100%;
+  width: 70%;
 }
-
 
 @media screen and (max-width: 500px) {
   header {
     flex-direction: column;
   }
 }
+
+.user-options {
+  display:  flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color-purple{
+  color: #591A80;
+}
+
+.color-yellow{
+  color: #EBAB0D;
+}
+
+.botonNotificacion{
+  background-color: #ececec !important;
+  color: #000 !important;
+}
+

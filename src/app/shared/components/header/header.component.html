@@ -10,18 +10,34 @@
     </ul>
   </nav>
 
-  <div class="user-profiel" *ngIf="showDashboard">
-    <div class="img-container">
-      <img class="img-avatar" src="../../../../assets/img/avatar.png" alt="Avatar">
+  <div class="user-options">
+    <div *ngIf="showDashboard">
+      <a type="button" (click)="update()">
+          <i  class="pi pi-bell p-mr-4 p-text-secondary" style="font-size: 2.5rem"
+              [ngClass]="{'color-yellow' : changeColor, 'color-purple': !changeColor}">
+          </i>
+      </a>
     </div>
-    <a class="cursor" (click)="logout()">Logout</a>
-  </div>
 
-  <div class="btn-show-login text-right" *ngIf="showBackLoginBtn">
-    <p-button type="button"
-              styleClass="btn-comfeco p-button-lg"
-              label="Iniciar Sesión"
-              [routerLink]="['/login']">
-    </p-button>
+    <div class="dropdown user-profile" *ngIf="showDashboard">
+      <button class="btn" type="button" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="img-container">
+          <img class="img-avatar" src="../../../../assets/img/avatar.png" alt="Avatar">
+        </div>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownUser">
+        <li>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="btn-show-login text-right" *ngIf="showBackLoginBtn">
+      <p-button type="button"
+                styleClass="btn-comfeco p-button-lg"
+                label="Iniciar Sesión"
+                [routerLink]="['/login']">
+      </p-button>
+    </div>
   </div>
 </header>
