@@ -3,11 +3,11 @@ import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 
 // Routing
 import {PagesRoutingModule} from './pages/pages.routing';
-import { AuthRoutingModule } from './auth/auth.routing';
+import {AuthRoutingModule} from './auth/auth.routing';
 
 // Components
 import {LoginComponent} from './auth/components/login/login.component';
-import { NotPageFoundComponent } from './notPageFound/not-page-found.component';
+import {NotPageFoundComponent} from './notPageFound/not-page-found.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -22,7 +22,7 @@ const routes: Routes = [
       preloadingStrategy: PreloadAllModules,
     }),
     PagesRoutingModule,
-    AuthRoutingModule
+    AuthRoutingModule,
   ],
   exports: [
     RouterModule

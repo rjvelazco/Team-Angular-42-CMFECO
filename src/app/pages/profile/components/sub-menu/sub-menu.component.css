@@ -1,0 +1,32 @@
+:host ::ng-deep .tabview-profile i, :host ::ng-deep .tabview-profile span {
+  vertical-align: middle;
+}
+
+:host ::ng-deep .tabview-profile span {
+  margin: 0 .5rem;
+}
+
+:host ::ng-deep .p-button {
+  margin-right: .25rem;
+}
+
+:host ::ng-deep .p-tabview p {
+  line-height: 1.5;
+  margin: 0;
+}
+
+:host ::ng-deep .p-tabview-nav {
+  justify-content: center;
+  align-content: center;
+}
+
+@media screen and (max-width: 500px) {
+  :host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+    font-size: 12px;
+    padding: 0.5rem;
+  }
+
+  :host ::ng-deep .tabview-profile span {
+    font-size: 11px;
+  }
+}
