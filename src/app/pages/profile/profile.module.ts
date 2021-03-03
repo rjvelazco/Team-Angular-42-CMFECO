@@ -6,6 +6,7 @@ import {EventsComponent} from './components/events/events.component';
 import {MyProfileComponent} from './components/my-profile/my-profile.component';
 import {PrimeModule} from '../../prime-module';
 import {ProfileRoutingModule} from './profile.routing';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {ProfileRoutingModule} from './profile.routing';
     InsigniasComponent,
     GroupsComponent,
     EventsComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    EditProfileComponent
   ],
   exports: [
     MyProfileComponent,
