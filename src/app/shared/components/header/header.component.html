@@ -1,43 +1,43 @@
-<header class="p-shadow-2 p-px-6">
-  <img class="img-fluid" src="assets/img/comfeco.png" alt="logo">
-
-  <nav *ngIf="showDashboard">
-    <ul>
-      <li routerLinkActive="active"><a [routerLink]="['/dashboard']">Inicio</a></li>
-      <li><a>Comunidad</a></li>
-      <li><a>Talleres</a></li>
-      <li><a>Creadores de Contenido</a></li>
+<header class="header {{classTopBar}}">
+  <span class="logo" style="width: 20%">
+    <img src="assets/img/comfeco.png" alt="logo">
+  </span>
+  <ng-template [ngIf]="showDashboard">
+    <ul class="topbar-menu">
+      <li class="topbar-submenu">
+        <a [routerLink]="['/dashboard']" routerLinkActive="active">Inicio</a>
+      </li>
+      <li class="topbar-submenu">
+        <a routerLink="comunidades" routerLinkActive="active">Comunidades</a>
+      </li>
+      <li class="topbar-submenu">
+        <a routerLink="talleres" routerLinkActive="active">Talleres</a>
+      </li>
+      <li class="topbar-submenu creators">
+        <a routerLink="creadores" routerLinkActive="active">Creadores de contenido</a>
+      </li>
     </ul>
-  </nav>
-
-  <div class="user-options">
-    <div *ngIf="showDashboard">
-      <a type="button" (click)="update()">
-          <i  class="pi pi-bell p-mr-4 p-text-secondary" style="font-size: 2rem"
-              [ngClass]="{'color-yellow' : changeColor, 'color-purple': !changeColor}">
-          </i>
-      </a>
-    </div>
-    
-    <div class="dropdown user-profile" *ngIf="showDashboard">
-      <button class="btn" type="button" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-        <div class="img-container">
-          <img class="img-avatar" src="../../../../assets/img/avatar.png" alt="Avatar">
+    <div class="user-profile p-d-flex p-align-center p-jc-center">
+      <i class="pi pi-bell notification" pBadge severity="danger"></i>
+      <div class="p-d-flex p-align-center p-jc-center cursor" (click)="menu.toggle($event)">
+        <img src="assets/img/avatar.png" alt="" class="profile-image">
+        <div class="profile-info">
+          <h6>Developer080</h6>
+          <span>Backend Developer</span>
         </div>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownUser">
-        <li class="cursor">
-          <a class="dropdown-item cursor" (click)="logout()">Logout</a>
-        </li>
-      </ul>
+        <i class="pi pi-angle-down p-ml-3"></i>
+      </div>
+      <p-menu #menu [popup]="true" [model]="items"></p-menu>
     </div>
+  </ng-template>
 
-    <div class="btn-show-login text-right" *ngIf="showBackLoginBtn">
+  <ng-template [ngIf]="showBackLoginBtn">
+    <div class="p-d-flex p-align-center">
       <p-button type="button"
                 styleClass="btn-comfeco p-button-lg"
                 label="Iniciar Sesión"
                 [routerLink]="['/login']">
       </p-button>
     </div>
-  </div>
+  </ng-template>
 </header>

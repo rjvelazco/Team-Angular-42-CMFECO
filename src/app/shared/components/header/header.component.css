@@ -1,75 +1,179 @@
-header {
-  align-items: center;
+.header {
+  height: 70px;
+  width: 100%;
+  padding: 0 3.5rem;
   display: flex;
   justify-content: space-between;
-  min-height: 10vh;
 }
 
-header img {
+.header.topbar {
+  background: #ffffff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, .25);
+  border-bottom: 1px solid #dee2e6;
+  align-content: center;
+}
+
+.header .logo img {
+  height: 70%;
+  object-fit: cover;
   margin: 10px 0;
-  width: 180px;
 }
 
-nav{
-  width: 100%;
+.topbar .topbar-menu {
+  list-style-type: none;
+  height: 100%;
+  display: flex;
 }
 
-nav ul{
-  list-style: none;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  padding:0px;
-  margin: 0px;
+.topbar-menu > li {
+  height: 70px;
+  line-height: 70px;
 }
 
-nav ul li{
-  display:inline-block;
-  padding: 20px;
+.topbar-menu > li > a {
+  text-decoration: none;
+  min-width: 120px;
+  font-size: 16px;
+  display: block;
+  text-align: center;
+  user-select: none;
+  line-height: 68px;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom-color .2s;
+  cursor: pointer;
+  color: #495057;
 }
 
-.active{
-  text-decoration: underline;
+.topbar-menu > li > a:hover {
+  border-bottom-color: var(--color-palette-primary);
 }
 
-a{
-  color: #333;
+.active {
+  border-bottom-color: var(--color-palette-primary) !important;
+}
+
+.user-profile {
+  height: 100%;
+  margin-left: auto;
+}
+
+.user-profile > a {
+  margin: 0 6px;
   text-decoration: none;
 }
 
-.img-container{
-  width: 80px;
-  height: 80px;
-  overflow: hidden;
-  border-radius: 50px;
+.user-profile .profile-image {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
-.img-container .img-avatar{
-  width: 70%;
+.profile-info {
+  margin-left: 7px;
 }
 
-@media screen and (max-width: 500px) {
-  header {
+.profile-info > h6 {
+  margin: 0;
+}
+
+.profile-info > span {
+  display: block;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.notification {
+  font-size: 18px;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+:host ::ng-deep .p-menu .p-menuitem-icon {
+  margin-right: 1rem;
+}
+
+:host ::ng-deep .p-menu.p-menu-overlay {
+  top: 70px !important;
+}
+
+
+@media screen and (max-width: 75em) {
+
+  .topbar {
+    height: 110px;
+    align-items: flex-start;
     flex-direction: column;
+    position: relative;
+    padding: 0;
+  }
+
+  .logo {
+    height: 70px;
+    padding-left: 12px;
+  }
+
+  .logo > img {
+    height: 48px;
+  }
+
+  .topbar .topbar-menu {
+    border-bottom: 1px solid #E8F1F8;
+    height: 48px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .topbar-menu > li {
+    height: 40px;
+    line-height: 40px;
+    width: 25%;
+  }
+
+  .topbar-menu > li > a {
+    padding-bottom: 0;
+    height: 40px;
+    line-height: 38px;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 600;
+    min-width: auto;
+    text-overflow: ellipsis;
+  }
+
+  .user-profile {
+    position: absolute;
+    top: 15px;
+    right: 8px;
+    height: auto;
+    width: auto;
+    padding-right: 12px;
+    font-size: 12px;
+  }
+
+  :host ::ng-deep .p-menu.p-menu-overlay {
+    top: 110px !important;
+    left: 5%;
+    position: fixed;
+    display: block !important;
+    width: 275px;
   }
 }
 
-.user-options {
-  display:  flex;
-  align-items: center;
-  justify-content: center;
-}
+@media screen and (max-width: 522px) {
+  .creators {
+    width: calc(30% + 13%) !important;
+  }
 
-.color-purple{
-  color: #591A80;
-}
+  .profile-info {
+    display: none;
+  }
 
-.color-yellow{
-  color: #EBAB0D;
+  :host ::ng-deep .p-menu.p-menu-overlay {
+    top: 104px !important;
+    position: fixed;
+    display: block !important;
+    width: 100% !important;
+    z-index: 3;
+  }
 }
-
-.botonNotificacion{
-  background-color: #ececec !important;
-  color: #000 !important;
-}
-

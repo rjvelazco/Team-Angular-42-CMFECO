@@ -1,13 +1,14 @@
 import {NgModule} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
+import {BrowserModule} from '@angular/platform-browser';
 
 // Router
-import { RouterModule } from '@angular/router';
+import {RouterModule} from '@angular/router';
 
 // Components
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { FigureComponent } from './components/figure/figure.component';
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {FigureComponent} from './components/figure/figure.component';
 import {PrimeModule} from '../prime-module';
 
 
@@ -20,12 +21,14 @@ import {PrimeModule} from '../prime-module';
   imports: [
     CommonModule,
     RouterModule,
-    PrimeModule
+    PrimeModule,
+    BrowserModule,
+
   ],
   exports: [
-        HeaderComponent,
-        FooterComponent,
-        FigureComponent
+    HeaderComponent,
+    FooterComponent,
+    FigureComponent
   ]
 })
 export class SharedModule {

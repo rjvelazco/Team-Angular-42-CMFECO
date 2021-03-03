@@ -16,6 +16,8 @@ import {DropdownModule} from 'primeng/dropdown';
 import {PanelModule} from 'primeng/panel';
 import {TagModule} from 'primeng/tag';
 import {TooltipModule} from 'primeng/tooltip';
+import {MenuModule} from 'primeng/menu';
+import {BadgeModule} from 'primeng/badge';
 
 @NgModule({
   exports: [
@@ -36,6 +38,8 @@ import {TooltipModule} from 'primeng/tooltip';
     TooltipModule,
     PanelModule,
     TagModule,
+    MenuModule,
+    BadgeModule
   ]
 })
 export class PrimeModule {
