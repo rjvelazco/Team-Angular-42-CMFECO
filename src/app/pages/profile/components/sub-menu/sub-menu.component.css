@@ -1,5 +1,6 @@
 :host ::ng-deep .tabview-profile i, :host ::ng-deep .tabview-profile span {
   vertical-align: middle;
+  color: var(--color-palette-primary);
 }
 
 :host ::ng-deep .tabview-profile span {
@@ -18,7 +19,33 @@
 :host ::ng-deep .p-tabview-nav {
   justify-content: center;
   align-content: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
+
+:host ::ng-deep .p-tabview-nav li {
+  justify-content: center;
+  align-content: center;
+  margin-right: 50px;
+  margin-bottom: 30px;
+  
+}
+
+:host ::ng-deep .p-tabview-nav li a {
+  border: 0 !important;
+}
+
+:host ::ng-deep .p-tabview-nav > li > a:hover {
+  border-bottom: 2px solid var(--color-palette-secondary) !important;
+  
+}
+
+:host ::ng-deep .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus{
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem var(--color-palette-secondary);
+}
+
 
 @media screen and (max-width: 500px) {
   :host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
@@ -30,3 +57,4 @@
     font-size: 11px;
   }
 }
+
