@@ -1,0 +1,30 @@
+<p-tabView styleClass="tabview-profile">
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <i class="pi pi-user"></i>
+      <span>Perfil</span>
+    </ng-template>
+    <router-outlet></router-outlet>
+  </p-tabPanel>
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <i class="pi pi-star-o"></i>
+      <span>Insignias</span>
+    </ng-template>
+    <app-insignias></app-insignias>
+  </p-tabPanel>
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <i class="pi pi-users"></i>
+      <span>Grupos</span>
+    </ng-template>
+    <app-groups></app-groups>
+  </p-tabPanel>
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <i class="pi pi-calendar"></i>
+      <span>Eventos</span>
+    </ng-template>
+    <app-events></app-events>
+  </p-tabPanel>
+</p-tabView>

@@ -1,0 +1,84 @@
+:host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  color: var(--color-palette-primary);
+  vertical-align: middle;
+  font-size: 1.2em;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+  border: none;
+  border-radius: 10px;
+}
+
+:host ::ng-deep .tabview-profile span {
+  margin: 0 .5rem;
+}
+
+:host ::ng-deep .p-button {
+  margin-right: .25rem;
+}
+
+:host ::ng-deep .p-tabview p {
+  line-height: 1.5;
+  margin: 0;
+}
+
+:host ::ng-deep .p-tabview-nav {
+  justify-content: center;
+  align-content: center;
+  padding: 2rem 15rem;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li {
+  width: 20%;
+  margin-right: 1rem !important;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  border-color: var(--color-palette-primary) !important;
+  color: white;
+  background: var(--color-palette-primary);
+  border-radius: 10px;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
+  color: var(--color-palette-primary);
+  border-bottom: none;
+  background-color: #f5f5f5;
+}
+
+:host ::ng-deep .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: none;
+}
+
+
+@media screen and (max-width: 75em) {
+  :host ::ng-deep .p-tabview-nav {
+    padding: 1rem 0;
+  }
+
+  :host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 627px) {
+  :host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+    font-size: 0.8em;
+    padding: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 522px) {
+  :host ::ng-deep .tabview-profile i {
+    font-size: 0.9em;
+  }
+
+  :host ::ng-deep .tabview-profile span {
+    font-size: 0.9em;
+    margin: 0 .3rem;
+  }
+}
+

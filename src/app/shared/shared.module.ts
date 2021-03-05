@@ -10,19 +10,23 @@ import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {FigureComponent} from './components/figure/figure.component';
 import {PrimeModule} from '../prime-module';
+import {SubMenuComponent} from '../pages/profile/components/sub-menu/sub-menu.component';
+import {ProfileModule} from '../pages/profile/profile.module';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    FigureComponent
+    FigureComponent,
+    SubMenuComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     PrimeModule,
     BrowserModule,
+    ProfileModule,
 
   ],
   exports: [
