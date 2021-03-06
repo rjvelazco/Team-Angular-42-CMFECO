@@ -14,6 +14,7 @@ import {SubMenuComponent} from '../pages/profile/components/sub-menu/sub-menu.co
 import {ProfileModule} from '../pages/profile/profile.module';
 
 
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -26,7 +27,7 @@ import {ProfileModule} from '../pages/profile/profile.module';
     RouterModule,
     PrimeModule,
     BrowserModule,
-    ProfileModule,
+    ProfileModule
 
   ],
   exports: [

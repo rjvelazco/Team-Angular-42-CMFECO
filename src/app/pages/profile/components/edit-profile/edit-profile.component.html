@@ -1,1 +1,93 @@
-<p>edit-profile works!</p>
+<div class="content">
+    <h3 class="titulo">Editar perfil</h3>
+    <div class="contact-wrapper">
+        <div class="contact-form p-grid p-fluid">
+            <form >
+                <div class="avatar" >
+                    <img src="/assets/img/sponsors_oficiales/sponsor-fernando_herrera.jpg" alt="Italian Trulli">
+                </div>
+                <div class="info1 p-grid p-fluid">
+                    <p class="p-col-12 p-md-12">
+                        <label for="nick">Nick</label>
+                        <input type="text" name = "nick" id="nick" pInputText placeholder="Nick de usuario">
+                    </p>
+    
+                    <p class="p-col-12 p-md-12">
+                        <label>Correo</label>
+                        <input type = "email" name = "email" pInputText placeholder="ejemplo@gmail.com">
+                    </p>
+    
+                </div>
+
+                <div class="info2 p-grid p-fluid">
+                    <p class="p-col-12 p-md-12">
+                        <label for="genero">Género</label>
+                        <input type = "text" name="genero" pInputText id="genero">
+                    </p>
+    
+                    <p class="p-col-12 p-md-12">
+                        <label for="fechaN">Fecha de nacimiento</label>
+                        <input type="date" name="fecha" pInputText id = "fechaN">
+                    </p>
+    
+                    <p class="p-col-12 p-md-12">
+                        <label for="pais">Pais</label>
+                        <input type = "text" name="pais" pInputText id="pais">
+                    </p>
+    
+                </div>
+                
+                <div class="info1 p-grid p-fluid">
+                    <p class="p-col-12 p-md-12">
+                        <label for="nick">Contraseña</label>
+                        <input type="text" name = "nick" id="nick" pInputText >
+                    </p>
+    
+                    <p class="p-col-12 p-md-12">
+                        <label>Repetir contraseña</label>
+                        <input type = "repPass" name = "email" pInputText >
+                    </p>
+    
+                </div>
+
+               <div class="links p-grid p-fluid">
+                    <p class="p-inputgroup  " >
+                        <i class="pi pi-facebook" style="font-size: 1.5rem;"></i>
+                        <label for="facebook">facebook.com/</label>
+                        <input id="facebook" type="text" pInputText>
+                    </p>
+
+                    <p class="p-inputgroup">
+                        <i class="pi pi-github" style="font-size: 1.5rem;"></i>
+                        <label for="github" class="p-col-fixed">github.com/</label>
+                        <input id="github" type="text" pInputText>
+                    </p>
+
+                    <p class="p-inputgroup">
+                        <i class="pi pi-facebook" style="font-size: 1.5rem;"></i>
+                        <label for="linkedin" class="p-col-fixed">linkedin.com/</label>
+                        <input id="linkedin" type="text" pInputText>
+                    </p>
+
+                    <p class="p-inputgroup"> 
+                        <i class="pi pi-twitter" style="font-size: 1.5rem;"></i>
+                        <label for="twitter" class="p-col-fixed">twitter.com/</label>
+                        <input id="twitter" type="text" pInputText>
+                    </p>
+
+               </div>
+
+
+                <p class="block">
+                    <label>Biografía</label>
+                    <textarea [rows]="5" [cols]="30"  autoResize="autoResize" pInputTextarea></textarea>
+                </p>
+
+                <p class="button p-col-6 p-md-6">
+                    <p-button label="Guardar cambios" icon="pi pi-check" iconPos="left"></p-button>
+                </p>
+
+            </form>
+        </div>
+    </div>
+</div>

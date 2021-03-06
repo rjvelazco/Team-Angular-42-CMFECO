@@ -7,6 +7,12 @@ import {MyProfileComponent} from './components/my-profile/my-profile.component';
 import {PrimeModule} from '../../prime-module';
 import {ProfileRoutingModule} from './profile.routing';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { CalendarModule } from 'primeng/calendar';
+import { FormsModule } from '@angular/forms';
+import {ButtonModule} from 'primeng/button';
+
+
+
 
 
 @NgModule({
@@ -26,7 +32,11 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
   imports: [
     CommonModule,
     PrimeModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    FormsModule,
+    CalendarModule,
+    ButtonModule
+
   ]
 })
 export class ProfileModule {
