@@ -10,6 +10,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { CalendarModule } from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -35,7 +36,8 @@ import {ButtonModule} from 'primeng/button';
     ProfileRoutingModule,
     FormsModule,
     CalendarModule,
-    ButtonModule
+    ButtonModule,
+    ReactiveFormsModule,
 
   ]
 })
