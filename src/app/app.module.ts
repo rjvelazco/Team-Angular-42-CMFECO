@@ -32,9 +32,11 @@ import {NotPageFoundComponent} from './notPageFound/not-page-found.component';
   ],
   imports: [
     AngularFireAuthModule,
+    AngularFireModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AppRoutingModule,
     AuthModule,
+    BrowserAnimationsModule,
     BrowserModule,
     HomePageModule,
     PagesModule,
@@ -42,7 +44,6 @@ import {NotPageFoundComponent} from './notPageFound/not-page-found.component';
     ReactiveFormsModule,
     RouterModule,
     SharedModule,
-    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

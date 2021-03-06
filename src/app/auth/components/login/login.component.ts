@@ -77,7 +77,8 @@ export class LoginComponent implements OnInit {
 
       const { email, password } = this.form.value;
       try {
-        const {user} = await this.usuarioService.login(email, password);
+        const { user } = await this.usuarioService.login(email, password);
+        console.log(user);
         if (user.emailVerified) {
           this.router.navigateByUrl('/dashboard');
         } else {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 // Services
 import { UsuarioService } from '../core/services/usuario.service';
@@ -19,24 +19,32 @@ export class AuthGuard implements CanActivate {
 
   }
 
-  canActivate(
+  async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ){
-    return this.usuarioService.getCurrentUser()
-      .pipe(
-        map((user: any) => {
-          if (!user.emailVerified) {
-            this.router.navigateByUrl('/login');
-          } else {
-            return true;
-          }
-        }),
-        catchError(() => {
-          this.router.navigateByUrl('/login');
-          return of(null);
-        })
-      )
+  ) {
+
+    return true;
+    // return (await this.usuarioService.getCurrentUser()).onAuthStateChanged(user => {
+    //   if (this.usuarioService.usuario) {
+    //     return true;
+    //   }
+    //   if (user) {
+    //     this.usuarioService.getParticipante(user).pipe(
+    //       tap(() => {
+    //         this.router.navigateByUrl('/dashboard');
+    //       })
+    //     )
+    //   }
+    //   return false;
+    // }).then(resp => true);
+    // return .then(usuario => {
+    //   // this.router.navigateByUrl('/dashboard');
+    //   console.log('guard',usuario);
+    //   return true;
+    // }).catch(error => {
+    //   return false;
+    // })
   }
 
 }

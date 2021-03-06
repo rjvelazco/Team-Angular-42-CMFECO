@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from "@angular/fire/auth";
-// import auth from 'firebase/firebase-auth'
-import firabase from  'firebase/app';
-// import { User }  from 'firebase';
 
-import { first } from 'rxjs/operators';
+// Firebase
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFirestore } from '@angular/fire/firestore';
+
+// Models
+import { Usuario } from '../../models/usuario.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,36 +14,44 @@ import { first } from 'rxjs/operators';
 export class UsuarioService {
 
   public user: any;
+  public usuario: Usuario;
 
   constructor(
-    private fbAuth: AngularFireAuth
+    private fbAuth: AngularFireAuth,
+    private db: AngularFirestore
   ) { }
 
+  // AUTH
   async login(email: string, password: string) {
-    try{
+    try {
       // user
-      return await this.fbAuth.signInWithEmailAndPassword(email, password)
-    }catch(error){
+      return await this.fbAuth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
       console.warn(error);
       throw new Error(error);
     }
   }
 
-  async logout(){
-    try{
+  async logout() {
+    try {
       return await this.fbAuth.signOut();
-    }catch(error){
+    } catch (error) {
       console.warn(error);
     }
   }
 
-  async register(username, email, password){
-    try{
+  async register(username, email, password) {
+    try {
       const user = await this.fbAuth.createUserWithEmailAndPassword(email, password);
+      const { uid } = user.user;
+      const usuario = new Usuario(uid, email , username);
+
+      await this.createParticipante(usuario);
       await this.updateUserName(username);
+      
       this.sendVerificationEmail();
       return user;
-    }catch(error){
+    } catch (error) {
       console.warn(error);
       throw new Error(error);
     }
@@ -66,12 +76,44 @@ export class UsuarioService {
       });
     } catch (error) {
       console.log(error);
-    } 
+    }
   }
  
-  getCurrentUser(){
-    return this.fbAuth.user;
+  async getCurrentUser() {
+    return this.fbAuth
+    // return await this.fbAuth.onAuthStateChanged(user => {
+    //   if (user) {
+    //     return this.db.collection('participantes').doc(`${user.uid}`)
+    //       .get().subscribe((userProfilSnapshot:any) => {
+    //         const { uid, email, nick, sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio =''} = userProfilSnapshot.data();
+    //         this.usuario = new Usuario(uid, email, nick, sex, birthDate, country, facebook, github, linkedIn, twitter, bio);
+    //         return this.usuario;
+    //       });
+    //   }
+
+    // });
   }
 
+  getParticipante(user:any) {
+    return this.db.collection('participantes').doc(`${user.uid}`)
+      .get().pipe(
+        map((userProfilSnapshot: any) => {
+          const { uid, email, nick, sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio =''} = userProfilSnapshot.data();
+          this.usuario = new Usuario(uid, email, nick, sex, birthDate, country, facebook, github, linkedIn, twitter, bio);
+          return this.usuario
+      }))
+  }
+
+  async createParticipante(user: Usuario) {
+    try {
+      console.log(user, user.uid);
+      const uid = user.uid;
+      const item = {uid, ...user };
+      return await this.db.collection('participantes').doc(uid).set(item);
+    } catch (error) {
+      console.log(error);
+      return new Error(error);
+    }
+  }
   
 }
