@@ -28,7 +28,7 @@ import {NotPageFoundComponent} from './notPageFound/not-page-found.component';
 @NgModule({
   declarations: [
     AppComponent,
-    NotPageFoundComponent
+    NotPageFoundComponent,
   ],
   imports: [
     AngularFireAuthModule,

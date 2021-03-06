@@ -4,7 +4,10 @@ import {MenuItem} from 'primeng/api';
 
 // services
 import {UsuarioService} from 'src/app/core/services/usuario.service';
-import {HeaderService} from '../../../core/services/header.service';
+import { HeaderService } from '../../../core/services/header.service';
+
+// Models
+import { Usuario } from '../../../models/usuario.model';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +18,7 @@ export class HeaderComponent implements OnInit {
 
   public showBackLoginBtn: boolean = false;
   public showDashboard: boolean = false;
+  public usuario: Usuario;
   items: MenuItem[];
   changeColor = true;
   classTopBar: string;
@@ -60,6 +64,7 @@ export class HeaderComponent implements OnInit {
 
     this.headerService.dashBoardLogin.subscribe((showDashboard) => {
       this.showDashboard = showDashboard;
+      this.usuario = this.usuarioService.usuario;
       this.topbar();
     });
   }

@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
       const { email, password } = this.form.value;
       try {
         const { user } = await this.usuarioService.login(email, password);
-        console.log(user);
+        localStorage.setItem('token',user.uid);
         if (user.emailVerified) {
           this.router.navigateByUrl('/dashboard');
         } else {
@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
             icon: 'info',
             denyButtonText: `No`,
           }).then(async (result) => {
-          /* Read more about isConfirmed, isDenied below */
+
             await this.usuarioService.sendVerificationEmail();
             if (result.isConfirmed) {
               Swal.fire({

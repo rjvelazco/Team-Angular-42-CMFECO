@@ -6,7 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 // Models
 import { Usuario } from '../../models/usuario.model';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +34,7 @@ export class UsuarioService {
 
   async logout() {
     try {
+      localStorage.removeItem('token');
       return await this.fbAuth.signOut();
     } catch (error) {
       console.warn(error);
@@ -43,8 +44,8 @@ export class UsuarioService {
   async register(username, email, password) {
     try {
       const user = await this.fbAuth.createUserWithEmailAndPassword(email, password);
-      const { uid } = user.user;
-      const usuario = new Usuario(uid, email , username);
+      const { uid, photoURL } = user.user;
+      const usuario = new Usuario(uid, email , username, 'participante', photoURL);
 
       await this.createParticipante(usuario);
       await this.updateUserName(username);
@@ -78,31 +79,6 @@ export class UsuarioService {
       console.log(error);
     }
   }
- 
-  async getCurrentUser() {
-    return this.fbAuth
-    // return await this.fbAuth.onAuthStateChanged(user => {
-    //   if (user) {
-    //     return this.db.collection('participantes').doc(`${user.uid}`)
-    //       .get().subscribe((userProfilSnapshot:any) => {
-    //         const { uid, email, nick, sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio =''} = userProfilSnapshot.data();
-    //         this.usuario = new Usuario(uid, email, nick, sex, birthDate, country, facebook, github, linkedIn, twitter, bio);
-    //         return this.usuario;
-    //       });
-    //   }
-
-    // });
-  }
-
-  getParticipante(user:any) {
-    return this.db.collection('participantes').doc(`${user.uid}`)
-      .get().pipe(
-        map((userProfilSnapshot: any) => {
-          const { uid, email, nick, sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio =''} = userProfilSnapshot.data();
-          this.usuario = new Usuario(uid, email, nick, sex, birthDate, country, facebook, github, linkedIn, twitter, bio);
-          return this.usuario
-      }))
-  }
 
   async createParticipante(user: Usuario) {
     try {
@@ -114,6 +90,28 @@ export class UsuarioService {
       console.log(error);
       return new Error(error);
     }
+  }
+ 
+  getCurrentUser() {
+    return this.fbAuth.user.pipe(
+      map(user => {
+        return user;
+      })
+    );
+  }
+
+  getParticipante() {
+    return this.db.collection('participantes').doc(`${this.token}`)
+      .get().pipe(
+        map((userProfilSnapshot: any) => {
+          const { uid, email, username, role,  img='', sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio =''} = userProfilSnapshot.data();
+          this.usuario = new Usuario(uid, email, username, role, img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio);
+          return true;
+      }))
+  }
+
+  get token(): string{
+    return localStorage.getItem('token') || '';
   }
   
 }
