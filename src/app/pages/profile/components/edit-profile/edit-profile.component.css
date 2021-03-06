@@ -104,3 +104,7 @@ img, svg {
 }
 
 
+input[type="file"]{
+    display: none;
+}
+

@@ -8,6 +8,10 @@ import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit{
+
+  public imagenSubir: string = '';
+  public imgTemp: any = '';
+
   form: FormGroup;
 
   constructor(
@@ -137,4 +141,23 @@ export class EditProfileComponent implements OnInit{
       }
     }
   }
+
+
+  // IMAGEN
+
+  cambiarImagen(file: File) {
+    // this.imagenSubir = file;
+
+    if (!file) {
+      return this.imgTemp = '';
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      this.imgTemp = reader.result;
+    }
+  }
+
 }

@@ -1,12 +1,17 @@
-<button pButton pRipple type="button" icon="pi pi-angle-left" class="p-button-rounded p-button-text"></button>
-<h6>Volver atras</h6>
+<button pButton pRipple type="button" [routerLink]="['/perfil']" icon="pi pi-angle-left" class="p-button-rounded p-button-text"></button>
+
 <div class="content">
     <h3 class="titulo">Editar perfil</h3>
     <div class="contact-wrapper">
         <div class="contact-form p-grid p-fluid">
             <form [formGroup]="form">
-                <div class="avatar" >
-                    <img src="/assets/img/sponsors_oficiales/sponsor-fernando_herrera.jpg" alt="Italian Trulli">
+                <div class="avatar">
+                    <img *ngIf="!imgTemp" src="/assets/img/sponsors_oficiales/sponsor-fernando_herrera.jpg" alt="Italian Trulli">
+                    <img *ngIf="imgTemp" class="img-avatar" [src]="imgTemp">
+                    <label class="pi pi-camera cursor" for="uploadImage" style="font-size: 2rem"></label>
+                    <input type="file"
+                            id="uploadImage"
+                            (change)="cambiarImagen($event.target.files[0])">
                 </div>
                 <div class="info1 p-grid p-fluid">
                     <p class="p-col-12 p-md-12">
@@ -96,9 +101,9 @@
                 </div>
 
                <div class="links p-grid p-fluid">
-                    <p class="p-inputgroup  " >
+                    <p class="p-inputgroup d-flex align-items-center">
                         <i class="pi pi-facebook" style="font-size: 1.5rem;"></i>
-                        <label for="facebook">facebook.com/</label>
+                        <label class="p-ml-2" for="facebook">facebook.com/</label>
                         <input
                         id="facebook"
                         type="text"
@@ -107,7 +112,7 @@
                         <small *ngIf="facebookInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
-                    <p class="p-inputgroup">
+                    <p class="p-inputgroup d-flex align-items-center">
                         <i class="pi pi-github" style="font-size: 1.5rem;"></i>
                         <label for="github" class="p-col-fixed">github.com/</label>
                         <input id="github"
@@ -117,7 +122,7 @@
                          <small *ngIf="githubInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
-                    <p class="p-inputgroup">
+                    <p class="p-inputgroup d-flex align-items-center">
                         <i class="pi pi-facebook" style="font-size: 1.5rem;"></i>
                         <label for="linkedin" class="p-col-fixed">linkedin.com/</label>
                         <input id="linkedin"
@@ -127,7 +132,7 @@
                         <small *ngIf="linkedinInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
-                    <p class="p-inputgroup">
+                    <p class="p-inputgroup d-flex align-items-center">
                         <i class="pi pi-twitter" style="font-size: 1.5rem;"></i>
                         <label for="twitter" class="p-col-fixed">twitter.com/</label>
                         <input id="twitter"
