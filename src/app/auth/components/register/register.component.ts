@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { UsuarioService } from 'src/app/core/services/usuario.service';
 
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private usuarioService: UsuarioService,
     private router: Router
   ) {
   }
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
       this.markAsTouched();
     } else {
       try {
-        const { user } = await this.authService.register(username, email, password);
+        const { user } = await this.usuarioService.register(username, email, password);
         Swal.fire({
           title: '¡Bienvenido!',
           text: `Verifica tu email [${user.email}] para continuar.`,

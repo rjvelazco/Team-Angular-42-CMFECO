@@ -9,7 +9,7 @@ import { first } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class UsuarioService {
 
   public user: any;
 

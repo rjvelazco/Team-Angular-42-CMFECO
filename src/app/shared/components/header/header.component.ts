@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 
 // services
-import {AuthService} from 'src/app/core/services/auth.service';
+import {UsuarioService} from 'src/app/core/services/usuario.service';
 import {HeaderService} from '../../../core/services/header.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private headerService: HeaderService,
-    private authService: AuthService,
+    private usuarioService: UsuarioService,
     private router: Router,
   ) {
   }
@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit {
 
 
   logout() {
-    this.authService.logout();
+    this.usuarioService.logout();
     this.router.navigateByUrl('/login');
   }
 

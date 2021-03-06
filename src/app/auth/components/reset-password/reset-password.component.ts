@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 
 // Services
-import {AuthService} from 'src/app/core/services/auth.service';
+import {UsuarioService} from 'src/app/core/services/usuario.service';
 import {HeaderService} from '../../../core/services/header.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private usuarioService: UsuarioService,
     private headerService: HeaderService,
   ) {
   }
@@ -55,7 +55,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
     if (this.form.valid) {
       const {email} = this.form.value;
       try {
-        await this.authService.resetPassword(email);
+        await this.usuarioService.resetPassword(email);
         Swal.fire({
           title: 'Email Enviado',
           text: 'Recuerde revisar la bandeja de span y/o correo no deseado.',

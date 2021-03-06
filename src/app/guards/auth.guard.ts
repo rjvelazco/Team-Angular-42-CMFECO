@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 // Services
-import { AuthService } from '../core/services/auth.service';
+import { UsuarioService } from '../core/services/usuario.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private usuarioService: UsuarioService
 
   ) {
 
@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ){
-    return this.authService.getCurrentUser()
+    return this.usuarioService.getCurrentUser()
       .pipe(
         map((user: any) => {
           if (!user.emailVerified) {
