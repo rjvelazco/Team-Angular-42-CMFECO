@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
     private usuarioService: UsuarioService,
     private router: Router,
   ) {
+    this.usuario = this.usuarioService.usuario;
   }
 
   topbar() {
@@ -63,10 +64,14 @@ export class HeaderComponent implements OnInit {
     });
 
     this.headerService.dashBoardLogin.subscribe((showDashboard) => {
-      this.showDashboard = showDashboard;
       this.usuario = this.usuarioService.usuario;
+      this.showDashboard = showDashboard;
       this.topbar();
     });
+
+    this.usuarioService.usuarioEmiter.subscribe(usuario => {
+      this.usuario = usuario;
+    })
   }
 
 

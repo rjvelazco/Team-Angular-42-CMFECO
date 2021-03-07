@@ -35,18 +35,18 @@ export class EditProfileComponent implements OnInit{
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      nick            : new FormControl(this.usuario.userName || '', Validators.minLength(6)),
+      userName        : new FormControl(this.usuario.userName || '', Validators.minLength(6)),
       email           : new FormControl(this.usuario.email || '', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
-      genero          : new FormControl(this.usuario.sex || '', Validators.minLength(8)),
-      fecha           : new FormControl(this.usuario.birthDate || '',),
-      pais            : new FormControl(this.usuario.country || '',),
+      sex             : new FormControl(this.usuario.sex || '', Validators.minLength(8)),
+      birthDate       : new FormControl(this.usuario.birthDate || '',),
+      country         : new FormControl(this.usuario.country || '',),
       password        : new FormControl('', [ Validators.minLength(8)]),
       confirmPassword : new FormControl('', [Validators.required]),
       facebook        : new FormControl(this.usuario.facebook || '', [ Validators.minLength(8)]),
       github          : new FormControl(this.usuario.github || '', [ Validators.minLength(8)]),
-      linkedin        : new FormControl(this.usuario.linkedIn || '', [ Validators.minLength(8)]),
+      linkedIn        : new FormControl(this.usuario.linkedIn || '', [ Validators.minLength(8)]),
       twitter         : new FormControl(this.usuario.twitter || '', [ Validators.minLength(8)]),
-      biografia       : new FormControl(this.usuario.bio || '', [ Validators.minLength(8)])
+      bio             : new FormControl(this.usuario.bio || '', [ Validators.minLength(8)])
     })
     this.es = {
       firstDayOfWeek: 1,
@@ -79,27 +79,27 @@ export class EditProfileComponent implements OnInit{
   }
 
   get usernameInvalid() {
-    return this.form.get('nick').invalid && this.form.get('nick').touched
+    return this.form.get('userName').invalid && this.form.get('userName').touched
   }
 
   get generInvalid() {
-    return this.form.get('genero').invalid && this.form.get('genero').touched
+    return this.form.get('sex').invalid && this.form.get('sex').touched
   }
 
   get dateInvalid() {
-    return this.form.get('fecha').invalid && this.form.get('fecha').touched
+    return this.form.get('birthDate').invalid && this.form.get('birthDate').touched
   }
 
   get countryInvalid() {
-    return this.form.get('pais').invalid && this.form.get('pais').touched
+    return this.form.get('country').invalid && this.form.get('country').touched
   }
 
   get facebookInvalid() {
     return this.form.get('facebook').invalid && this.form.get('facebook').touched
   }
 
-  get linkedinInvalid() {
-    return this.form.get('linkedin').invalid && this.form.get('linkedin').touched
+  get linkedInInvalid() {
+    return this.form.get('linkedIn').invalid && this.form.get('linkedIn').touched
   }
 
   get githubInvalid() {
@@ -111,7 +111,7 @@ export class EditProfileComponent implements OnInit{
   }
 
   get biographyInvalid() {
-    return this.form.get('biografia').invalid && this.form.get('biografia').touched
+    return this.form.get('bio').invalid && this.form.get('bio').touched
   }
 
   get emailInvalid() {
@@ -146,8 +146,8 @@ export class EditProfileComponent implements OnInit{
   // Enviar
   async updateUser(form) {
     console.log(form);
-    const { nick, email, biografia, fecha, genero, pais, password, facebook, github, linkedin, twitter } = form;
-    const nuevoUsuario = new Usuario(this.usuario.uid, email, nick, this.usuario.role, this.usuario.img, genero, fecha, pais, facebook, github, linkedin, twitter, biografia)
+    const { userName, email, bio      ,  birthDate, sex, country, password, facebook, github, linkedIn, twitter } = form;
+    const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio      ) 
     
     try {
       await this.usuarioService.updateParticipante(nuevoUsuario);

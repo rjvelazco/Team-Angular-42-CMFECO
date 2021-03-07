@@ -15,14 +15,14 @@
                 </div>
                 <div class="info1 p-grid p-fluid">
                     <p class="p-col-12 p-md-12">
-                        <label for="nick">Nick</label>
+                        <label for="userName">Nick</label>
                         <input
                          type="text"
-                         name="nick"
-                         id="nick"
-                         formControlName="nick"
+                         name="userName"
+                         id="userName"
+                         formControlName="userName"
                          pInputText
-                         placeholder="Nick de usuario">
+                         placeholder="Nombre de usuario">
                          <small *ngIf="usernameInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
@@ -42,35 +42,34 @@
 
                 <div class="info2 p-grid p-fluid">
                     <p class="p-col-12 p-md-12">
-                        <label for="genero">Género</label>
+                        <label for="sex">Género</label>
                         <input type="text"
-                        name="genero"
-                        id="genero"
-                        formControlName="genero"
-                        pInputText
-                        id="genero">
+                        name="sex"
+                        id="sex"
+                        formControlName="sex"
+                        pInputText>
                         <small *ngIf="generInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                     <p class="p-col-12 p-md-12">
-                        <label for="fechaN">Fecha de nacimiento</label>
+                        <label for="birthDate">Fecha de nacimiento</label>
                         <input
                         type="date"
-                        name="fecha"
+                        name="birthDate"
                         pInputText
-                        id="fechaN"
-                        formControlName="fecha"
+                        id="birthDate"
+                        formControlName="birthDate"
                         >
                         <small *ngIf="dateInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                     <p class="p-col-12 p-md-12">
-                        <label for="pais">Pais</label>
+                        <label for="country">Pais</label>
                         <input type="text"
-                        name="pais"
+                        name="country"
                         pInputText
-                        formControlName="pais"
-                        id="pais">
+                        formControlName="country"
+                        id="country">
                         <small *ngIf="countryInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
@@ -127,9 +126,9 @@
                         <label for="linkedin" class="p-col-fixed">linkedin.com/</label>
                         <input id="linkedin"
                          type="text"
-                         formControlName="linkedin"
+                         formControlName="linkedIn"
                         pInputText>
-                        <small *ngIf="linkedinInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
+                        <small *ngIf="linkedInInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                     <p class="p-inputgroup d-flex align-items-center">
@@ -146,7 +145,7 @@
 
                 <p class="block">
                     <label>Biografía</label>
-                    <textarea [rows]="5" [cols]="30"  autoResize="autoResize" pInputTextarea formControlName="biografia"></textarea>
+                    <textarea [rows]="5" [cols]="30"  autoResize="autoResize" pInputTextarea formControlName="bio"></textarea>
                     <small *ngIf="biographyInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                 </p>
 

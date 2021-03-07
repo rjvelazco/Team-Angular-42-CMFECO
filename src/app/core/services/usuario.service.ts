@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 // Firebase
 import { AngularFireAuth } from "@angular/fire/auth";
@@ -6,15 +7,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 // Models
 import { Usuario } from '../../models/usuario.model';
-import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  public user: any;
   public usuario: Usuario;
+  public usuarioEmiter: EventEmitter<Usuario> = new EventEmitter();
 
   get token(): string{
     return localStorage.getItem('token') || '';
@@ -28,10 +28,8 @@ export class UsuarioService {
   // AUTH
   async login(email: string, password: string) {
     try {
-      // user
       return await this.fbAuth.signInWithEmailAndPassword(email, password);
     } catch (error) {
-      console.warn(error);
       throw new Error(error);
     }
   }
@@ -41,7 +39,7 @@ export class UsuarioService {
       localStorage.removeItem('token');
       return await this.fbAuth.signOut();
     } catch (error) {
-      console.warn(error);
+      throw new Error(error);
     }
   }
 
@@ -49,7 +47,7 @@ export class UsuarioService {
     try {
       const user = await this.fbAuth.createUserWithEmailAndPassword(email, password);
       const { uid, photoURL } = user.user;
-      const usuario = new Usuario(uid, email , username, 'participante', photoURL);
+      const usuario = new Usuario(uid, email , username, 'participante', photoURL, '', '', '', '', '', '', '', '');
 
       await this.createParticipante(usuario);
       await this.updateUserName(username);
@@ -57,7 +55,6 @@ export class UsuarioService {
       this.sendVerificationEmail();
       return user;
     } catch (error) {
-      console.warn(error);
       throw new Error(error);
     }
   }
@@ -70,7 +67,7 @@ export class UsuarioService {
     try {
       return this.fbAuth.sendPasswordResetEmail(email);
     } catch (error) {
-      console.log(error);
+      throw new Error(error);
     }
   }
 
@@ -80,18 +77,16 @@ export class UsuarioService {
         displayName: username
       });
     } catch (error) {
-      console.log(error);
+      throw new Error(error);
     }
   }
 
   async createParticipante(user: Usuario) {
     try {
-      // console.log(user, user.uid);
       const uid = user.uid;
       const item = {uid, ...user };
       return await this.db.collection('participantes').doc(uid).set(item);
     } catch (error) {
-      console.log(error);
       return new Error(error);
     }
   }
@@ -120,6 +115,7 @@ export class UsuarioService {
       const item = { uid, ...user };
       const result = await this.db.collection('participantes').doc(`${this.token}`).set(item);
       this.usuario = user;
+      this.usuarioEmiter.emit(user);
       return result;
     } catch (error) {
       return new Error(error)
