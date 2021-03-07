@@ -16,6 +16,10 @@ export class UsuarioService {
   public user: any;
   public usuario: Usuario;
 
+  get token(): string{
+    return localStorage.getItem('token') || '';
+  }
+
   constructor(
     private fbAuth: AngularFireAuth,
     private db: AngularFirestore
@@ -82,7 +86,7 @@ export class UsuarioService {
 
   async createParticipante(user: Usuario) {
     try {
-      console.log(user, user.uid);
+      // console.log(user, user.uid);
       const uid = user.uid;
       const item = {uid, ...user };
       return await this.db.collection('participantes').doc(uid).set(item);
@@ -102,16 +106,24 @@ export class UsuarioService {
 
   getParticipante() {
     return this.db.collection('participantes').doc(`${this.token}`)
-      .get().pipe(
+      .valueChanges().pipe(
         map((userProfilSnapshot: any) => {
-          const { uid, email, username, role,  img='', sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio =''} = userProfilSnapshot.data();
-          this.usuario = new Usuario(uid, email, username, role, img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio);
+          const { uid, email, userName, role, img = '', sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio = '' } = userProfilSnapshot;
+          this.usuario = new Usuario(uid, email, userName, role, img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio);
           return true;
-      }))
+        }));
   }
 
-  get token(): string{
-    return localStorage.getItem('token') || '';
+  async updateParticipante(user: Usuario) {
+    try {
+      const uid = user.uid;
+      const item = { uid, ...user };
+      const result = await this.db.collection('participantes').doc(`${this.token}`).set(item);
+      this.usuario = user;
+      return result;
+    } catch (error) {
+      return new Error(error)
+    }
   }
   
 }
