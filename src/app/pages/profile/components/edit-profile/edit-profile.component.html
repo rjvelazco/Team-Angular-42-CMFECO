@@ -46,10 +46,9 @@
                         <input type="text"
                         name="genero"
                         id="genero"
-                        formControlName="genero"
+                        formControlName="genero"a
                         pInputText
                         id="genero">
-                        <small *ngIf="generInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                     <p class="p-col-12 p-md-12">
@@ -61,7 +60,6 @@
                         id="fechaN"
                         formControlName="fecha"
                         >
-                        <small *ngIf="dateInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                     <p class="p-col-12 p-md-12">
@@ -71,7 +69,6 @@
                         pInputText
                         formControlName="pais"
                         id="pais">
-                        <small *ngIf="countryInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                 </div>
@@ -85,7 +82,7 @@
                          id="password"
                          formControlName="password"
                          pInputText >
-                         <small *ngIf="passwordInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
+                         <small *ngIf="passwordInvalid" class="p-error">Ingrese al menos 8 carácteres</small>
                     </p>
 
                     <p class="p-col-12 p-md-12">
@@ -109,7 +106,6 @@
                         type="text"
                         formControlName="facebook"
                         pInputText>
-                        <small *ngIf="facebookInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                     <p class="p-inputgroup d-flex align-items-center">
@@ -119,7 +115,6 @@
                          type="text"
                          formControlName="github"
                          pInputText>
-                         <small *ngIf="githubInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                     <p class="p-inputgroup d-flex align-items-center">
@@ -129,7 +124,6 @@
                          type="text"
                          formControlName="linkedin"
                         pInputText>
-                        <small *ngIf="linkedinInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                     <p class="p-inputgroup d-flex align-items-center">
@@ -139,15 +133,13 @@
                         type="text"
                         formControlName="twitter"
                         pInputText>
-                        <small *ngIf="twitterInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
-
                </div>
 
                 <p class="block">
                     <label>Biografía</label>
                     <textarea [rows]="5" [cols]="30"  autoResize="autoResize" pInputTextarea formControlName="biografia"></textarea>
-                    <small *ngIf="biographyInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
+                    <small *ngIf="biographyInvalid" class="p-error">Ingrese al menos 8 carácteres</small>
                 </p>
 
                 <p class="button p-col-6 p-md-6">

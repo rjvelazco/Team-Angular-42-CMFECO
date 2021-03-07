@@ -16,6 +16,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 
 
+
 @NgModule({
   declarations: [
     InsigniasComponent,
@@ -38,6 +39,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     CalendarModule,
     ButtonModule,
     ReactiveFormsModule,
+
 
   ]
 })
