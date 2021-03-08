@@ -25,13 +25,11 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ) {
     
-    this.loadingService.loading.emit(true);
-
-    if (!localStorage.getItem('token')) {
-      this.router.navigateByUrl('/login');
-      this.loadingService.loading.emit(false);
-      return false;
+    if (this.usuarioService.usuario) {
+      return true;
     }
+    this.loadingService.loading.emit(true);
+    this.validarToken();
     return this.usuarioService.getParticipante()
       .pipe(
         catchError(() => {
@@ -39,6 +37,14 @@ export class AuthGuard implements CanActivate {
           return of(null);
         })
       )
+  }
+
+  validarToken() {
+    if (!localStorage.getItem('token')) {
+      this.router.navigateByUrl('/login');
+      this.loadingService.loading.emit(false);
+      return false;
+    }
   }
 
 }
