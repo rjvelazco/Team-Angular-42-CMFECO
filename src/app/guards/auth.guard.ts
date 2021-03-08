@@ -5,6 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 // Services
 import { UsuarioService } from '../core/services/usuario.service';
+import { LoadingService } from '../core/services/loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,9 @@ import { UsuarioService } from '../core/services/usuario.service';
 export class AuthGuard implements CanActivate {
 
   constructor(
-    private router: Router,
-    private usuarioService: UsuarioService
-
+    private router        : Router,
+    private usuarioService: UsuarioService,
+    private loadingService: LoadingService
   ) {
 
   }
@@ -23,8 +24,12 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ) {
+    
+    this.loadingService.loading.emit(true);
+
     if (!localStorage.getItem('token')) {
       this.router.navigateByUrl('/login');
+      this.loadingService.loading.emit(false);
       return false;
     }
     return this.usuarioService.getParticipante()

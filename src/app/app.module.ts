@@ -24,11 +24,13 @@ import {HomePageModule} from './pages/home-page/home-page.module';
 import {PrimeModule} from './prime-module';
 import {SharedModule} from './shared/shared.module';
 import {NotPageFoundComponent} from './notPageFound/not-page-found.component';
+import { LoadingComponent } from './loading/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotPageFoundComponent,
+    LoadingComponent,
   ],
   imports: [
     AngularFireAuthModule,
