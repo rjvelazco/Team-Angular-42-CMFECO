@@ -69,10 +69,6 @@
                         pInputText
                         formControlName="country"
                         id="country">
-<<<<<<< HEAD
-                        <small *ngIf="countryInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
-=======
->>>>>>> edit_profile
                     </p>
 
                 </div>
@@ -147,7 +143,7 @@
                 </p>
 
                 <p class="button p-col-6 p-md-6">
-                    <p-button [disabled]="usernameInvalid || emailInvalid" type="submit" label="Guardar cambios" icon="pi pi-check" iconPos="left"></p-button>
+                    <p-button [disabled]="form.invalid || form.pristine" type="submit" label="Guardar cambios" icon="pi pi-check" iconPos="left"></p-button>
                 </p>
 
             </form>
