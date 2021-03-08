@@ -35,7 +35,7 @@
                          formControlName="email"
                          pInputText
                          placeholder="ejemplo@gmail.com">
-                         <small *ngIf="emailInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
+                         <small *ngIf="emailInvalid" class="p-error">Ingrese un email valido</small>
                     </p>
 
                 </div>
@@ -47,8 +47,8 @@
                         name="sex"
                         id="sex"
                         formControlName="sex"
-                        pInputText>
-                        <small *ngIf="generInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
+                        pInputText
+                        id="sex">
                     </p>
 
                     <p class="p-col-12 p-md-12">
@@ -60,7 +60,6 @@
                         id="birthDate"
                         formControlName="birthDate"
                         >
-                        <small *ngIf="dateInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                     <p class="p-col-12 p-md-12">
@@ -70,7 +69,10 @@
                         pInputText
                         formControlName="country"
                         id="country">
+<<<<<<< HEAD
                         <small *ngIf="countryInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
+=======
+>>>>>>> edit_profile
                     </p>
 
                 </div>
@@ -84,7 +86,7 @@
                          id="password"
                          formControlName="password"
                          pInputText >
-                         <small *ngIf="passwordInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
+                         <small *ngIf="passwordInvalid" class="p-error">Ingrese al menos 8 carácteres</small>
                     </p>
 
                     <p class="p-col-12 p-md-12">
@@ -108,7 +110,6 @@
                         type="text"
                         formControlName="facebook"
                         pInputText>
-                        <small *ngIf="facebookInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                     <p class="p-inputgroup d-flex align-items-center">
@@ -118,17 +119,15 @@
                          type="text"
                          formControlName="github"
                          pInputText>
-                         <small *ngIf="githubInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                     <p class="p-inputgroup d-flex align-items-center">
                         <i class="pi pi-facebook" style="font-size: 1.5rem;"></i>
-                        <label for="linkedin" class="p-col-fixed">linkedin.com/</label>
-                        <input id="linkedin"
+                        <label for="linkedIn" class="p-col-fixed">linkedin.com/</label>
+                        <input id="linkedIn"
                          type="text"
                          formControlName="linkedIn"
                         pInputText>
-                        <small *ngIf="linkedInInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
                     <p class="p-inputgroup d-flex align-items-center">
@@ -138,19 +137,17 @@
                         type="text"
                         formControlName="twitter"
                         pInputText>
-                        <small *ngIf="twitterInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
-
                </div>
 
                 <p class="block">
                     <label>Biografía</label>
                     <textarea [rows]="5" [cols]="30"  autoResize="autoResize" pInputTextarea formControlName="bio"></textarea>
-                    <small *ngIf="biographyInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
+                    <small *ngIf="bioInvalid" class="p-error">Máximo 140 carácteres</small>
                 </p>
 
                 <p class="button p-col-6 p-md-6">
-                    <p-button type="submit" label="Guardar cambios" icon="pi pi-check" iconPos="left"></p-button>
+                    <p-button [disabled]="usernameInvalid || emailInvalid" type="submit" label="Guardar cambios" icon="pi pi-check" iconPos="left"></p-button>
                 </p>
 
             </form>

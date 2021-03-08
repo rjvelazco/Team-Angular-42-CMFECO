@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, Form } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../../../core/services/usuario.service';
 
@@ -11,19 +11,24 @@ import { Usuario } from '../../../../models/usuario.model';
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css']
 })
+
+
+
 export class EditProfileComponent implements OnInit{
 
   public imagenSubir: string = '';
   public imgTemp: any = '';
   public usuario: Usuario;
 
-  form: FormGroup;
-  date3: Date;
-  rangeDates: Date[];
-  minDate: Date;
-  maxDate: Date;
-  es: any;
-  invalidDates: Array<Date>
+  // Form
+  public date3: Date;
+  public rangeDates: Date[];
+  public minDate: Date;
+  public maxDate: Date;
+  public es: any;
+  public invalidDates: Array<Date>
+  public form: FormGroup;
+
 
   constructor(
     private router: Router,
@@ -37,16 +42,16 @@ export class EditProfileComponent implements OnInit{
     this.form = this.formBuilder.group({
       userName        : new FormControl(this.usuario.userName || '', Validators.minLength(6)),
       email           : new FormControl(this.usuario.email || '', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
-      sex             : new FormControl(this.usuario.sex || '', Validators.minLength(8)),
+      sex             : new FormControl(this.usuario.sex || ''),
       birthDate       : new FormControl(this.usuario.birthDate || '',),
       country         : new FormControl(this.usuario.country || '',),
-      password        : new FormControl('', [ Validators.minLength(8)]),
+      password        : new FormControl('', [Validators.minLength(8)]),
       confirmPassword : new FormControl('', [Validators.required]),
       facebook        : new FormControl(this.usuario.facebook || '', [ Validators.minLength(8)]),
       github          : new FormControl(this.usuario.github || '', [ Validators.minLength(8)]),
       linkedIn        : new FormControl(this.usuario.linkedIn || '', [ Validators.minLength(8)]),
       twitter         : new FormControl(this.usuario.twitter || '', [ Validators.minLength(8)]),
-      bio             : new FormControl(this.usuario.bio || '', [ Validators.minLength(8)])
+      bio             : new FormControl(this.usuario.bio || '', [Validators.maxLength(140)])
     })
     this.es = {
       firstDayOfWeek: 1,
@@ -57,72 +62,42 @@ export class EditProfileComponent implements OnInit{
       monthNamesShort: [ "ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic" ],
       today: 'Hoy',
       clear: 'Borrar'
-  }
+    }
 
-  let today = new Date();
-  let month = today.getMonth();
-  let year = today.getFullYear();
-  let prevMonth = (month === 0) ? 11 : month -1;
-  let prevYear = (prevMonth === 11) ? year - 1 : year;
-  let nextMonth = (month === 11) ? 0 : month + 1;
-  let nextYear = (nextMonth === 0) ? year + 1 : year;
-  this.minDate = new Date();
-  this.minDate.setMonth(prevMonth);
-  this.minDate.setFullYear(prevYear);
-  this.maxDate = new Date();
-  this.maxDate.setMonth(nextMonth);
-  this.maxDate.setFullYear(nextYear);
+    let today = new Date();
+    let month = today.getMonth();
+    let year = today.getFullYear();
+    let prevMonth = (month === 0) ? 11 : month -1;
+    let prevYear = (prevMonth === 11) ? year - 1 : year;
+    let nextMonth = (month === 11) ? 0 : month + 1;
+    let nextYear = (nextMonth === 0) ? year + 1 : year;
+    this.minDate = new Date();
+    this.minDate.setMonth(prevMonth);
+    this.minDate.setFullYear(prevYear);
+    this.maxDate = new Date();
+    this.maxDate.setMonth(nextMonth);
+    this.maxDate.setFullYear(nextYear);
 
-  let invalidDate = new Date();
-  invalidDate.setDate(today.getDate() - 1);
-  this.invalidDates = [today,invalidDate];
+    let invalidDate = new Date();
+    invalidDate.setDate(today.getDate() - 1);
+    this.invalidDates = [today,invalidDate];
   }
 
   get usernameInvalid() {
-    return this.form.get('userName').invalid && this.form.get('userName').touched
+    return this.form.get('userName').invalid && this.form.get('userName').touched;
   }
 
-  get generInvalid() {
-    return this.form.get('sex').invalid && this.form.get('sex').touched
-  }
-
-  get dateInvalid() {
-    return this.form.get('birthDate').invalid && this.form.get('birthDate').touched
-  }
-
-  get countryInvalid() {
-    return this.form.get('country').invalid && this.form.get('country').touched
-  }
-
-  get facebookInvalid() {
-    return this.form.get('facebook').invalid && this.form.get('facebook').touched
-  }
-
-  get linkedInInvalid() {
-    return this.form.get('linkedIn').invalid && this.form.get('linkedIn').touched
-  }
-
-  get githubInvalid() {
-    return this.form.get('github').invalid && this.form.get('github').touched
-  }
-
-  get twitterInvalid() {
-    return this.form.get('twitter').invalid && this.form.get('twitter').touched
-  }
-
-  get biographyInvalid() {
-    return this.form.get('bio').invalid && this.form.get('bio').touched
+  get bioInvalid() {
+    return this.form.get('bio').invalid && this.form.get('bio').touched;
   }
 
   get emailInvalid() {
-    return this.form.get('email').invalid && this.form.get('email').touched
+    return this.form.get('email').invalid && this.form.get('email').touched;
   }
 
   get passwordInvalid() {
-    return this.form.get('password').invalid && this.form.get('password').touched
+    return this.form.get('password').invalid && this.form.get('password').touched;
   }
-
-
 
   get confirmPasswordInvalid() {
     const password1 = this.form.get('password').value;
@@ -146,7 +121,7 @@ export class EditProfileComponent implements OnInit{
   // Enviar
   async updateUser(form) {
     console.log(form);
-    const { userName, email, bio      ,  birthDate, sex, country, password, facebook, github, linkedIn, twitter } = form;
+    const { userName, email, bio, birthDate, sex, country, password, facebook, github, linkedIn, twitter } = form;
     const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio      ) 
     
     try {
@@ -170,6 +145,4 @@ export class EditProfileComponent implements OnInit{
       this.imgTemp = reader.result;
     }
   }
-  
-
 }

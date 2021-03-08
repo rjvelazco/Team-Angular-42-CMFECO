@@ -22,6 +22,7 @@ import { GroupsComponent } from './components/groups/groups.component';
 import { InsigniasComponent } from './components/insignias/insignias.component';
 
 
+
 @NgModule({
   declarations: [
     InsigniasComponent,
@@ -44,7 +45,7 @@ import { InsigniasComponent } from './components/insignias/insignias.component';
     PipeModule,
     PrimeModule,
     ProfileRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class ProfileModule {
