@@ -1,1 +1,153 @@
-<p>edit-profile works!</p>
+<button pButton pRipple type="button" [routerLink]="['/perfil']" icon="pi pi-angle-left" class="p-button-rounded p-button-text"></button>
+
+<div class="content">
+    <h3 class="titulo">Editar perfil</h3>
+    <div class="contact-wrapper">
+        <div class="contact-form p-grid p-fluid">
+            <form [formGroup]="form" (ngSubmit)="updateUser(form.value)">
+                <div class="avatar">
+                    <img *ngIf="!imgTemp" [src]="usuario.img | imagen" alt="Italian Trulli">
+                    <img *ngIf="imgTemp" class="img-avatar" [src]="imgTemp">
+                    <label class="pi pi-camera cursor" for="uploadImage" style="font-size: 2rem"></label>
+                    <input type="file"
+                            id="uploadImage"
+                            (change)="cambiarImagen($event.target.files[0])">
+                </div>
+                <div class="info1 p-grid p-fluid">
+                    <p class="p-col-12 p-md-12">
+                        <label for="userName">Nick</label>
+                        <input
+                         type="text"
+                         name="userName"
+                         id="userName"
+                         formControlName="userName"
+                         pInputText
+                         placeholder="Nombre de usuario">
+                         <small *ngIf="usernameInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
+                    </p>
+
+
+                    <p class="p-col-12 p-md-12">
+                        <label>Correo</label>
+                        <input type="email"
+                         name="email"
+                         id="email"
+                         formControlName="email"
+                         pInputText
+                         placeholder="ejemplo@gmail.com">
+                         <small *ngIf="emailInvalid" class="p-error">Ingrese un email valido</small>
+                    </p>
+
+                </div>
+
+                <div class="info2 p-grid p-fluid">
+                    <p class="p-col-12 p-md-12">
+                        <label for="sex">Género</label>
+                        <input type="text"
+                        name="sex"
+                        id="sex"
+                        formControlName="sex"
+                        pInputText
+                        id="sex">
+                    </p>
+
+                    <p class="p-col-12 p-md-12">
+                        <label for="birthDate">Fecha de nacimiento</label>
+                        <input
+                        type="date"
+                        name="birthDate"
+                        pInputText
+                        id="birthDate"
+                        formControlName="birthDate"
+                        >
+                    </p>
+
+                    <p class="p-col-12 p-md-12">
+                        <label for="country">Pais</label>
+                        <input type="text"
+                        name="country"
+                        pInputText
+                        formControlName="country"
+                        id="country">
+                    </p>
+
+                </div>
+
+                <div class="info1 p-grid p-fluid">
+                    <p class="p-col-12 p-md-12">
+                        <label for="nick">Contraseña</label>
+                        <input
+                        type="password"
+                         name="password"
+                         id="password"
+                         formControlName="password"
+                         pInputText >
+                         <small *ngIf="passwordInvalid" class="p-error">Ingrese al menos 8 carácteres</small>
+                    </p>
+
+                    <p class="p-col-12 p-md-12">
+                        <label>Repetir contraseña</label>
+                        <input
+                        type="password"
+                        name="confirmPassword"
+                        formControlName="confirmPassword"
+                        pInputText >
+                        <small *ngIf="confirmPasswordInvalid" class="p-error">La contraseña debe coincidir</small>
+                    </p>
+
+                </div>
+
+               <div class="links p-grid p-fluid">
+                    <p class="p-inputgroup d-flex align-items-center">
+                        <i class="pi pi-facebook" style="font-size: 1.5rem;"></i>
+                        <label class="p-ml-2" for="facebook">facebook.com/</label>
+                        <input
+                        id="facebook"
+                        type="text"
+                        formControlName="facebook"
+                        pInputText>
+                    </p>
+
+                    <p class="p-inputgroup d-flex align-items-center">
+                        <i class="pi pi-github" style="font-size: 1.5rem;"></i>
+                        <label for="github" class="p-col-fixed">github.com/</label>
+                        <input id="github"
+                         type="text"
+                         formControlName="github"
+                         pInputText>
+                    </p>
+
+                    <p class="p-inputgroup d-flex align-items-center">
+                        <i class="pi pi-facebook" style="font-size: 1.5rem;"></i>
+                        <label for="linkedIn" class="p-col-fixed">linkedin.com/</label>
+                        <input id="linkedIn"
+                         type="text"
+                         formControlName="linkedIn"
+                        pInputText>
+                    </p>
+
+                    <p class="p-inputgroup d-flex align-items-center">
+                        <i class="pi pi-twitter" style="font-size: 1.5rem;"></i>
+                        <label for="twitter" class="p-col-fixed">twitter.com/</label>
+                        <input id="twitter"
+                        type="text"
+                        formControlName="twitter"
+                        pInputText>
+                    </p>
+               </div>
+
+                <p class="block">
+                    <label>Biografía</label>
+                    <textarea [rows]="5" [cols]="30"  autoResize="autoResize" pInputTextarea formControlName="bio"></textarea>
+                    <small *ngIf="bioInvalid" class="p-error">Máximo 140 carácteres</small>
+                </p>
+
+                <p class="button p-col-6 p-md-6">
+                    <p-button [disabled]="form.invalid || form.pristine" type="submit" label="Guardar cambios" icon="pi pi-check" iconPos="left"></p-button>
+                </p>
+
+            </form>
+
+        </div>
+    </div>
+</div>

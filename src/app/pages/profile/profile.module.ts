@@ -1,12 +1,26 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {InsigniasComponent} from './components/insignias/insignias.component';
-import {GroupsComponent} from './components/groups/groups.component';
-import {EventsComponent} from './components/events/events.component';
-import {MyProfileComponent} from './components/my-profile/my-profile.component';
-import {PrimeModule} from '../../prime-module';
-import {ProfileRoutingModule} from './profile.routing';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
+// Routing
+import { ProfileRoutingModule } from './profile.routing';
+
+// PrimerNg
+import { PrimeModule } from '../../prime-module';
+import { CalendarModule } from 'primeng/calendar';
+import { ButtonModule } from 'primeng/button';
+
+// Modules
+import { PipeModule } from '../../pipe/pipe.module';
+
+// Components
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { EventsComponent } from './components/events/events.component';
+import { GroupsComponent } from './components/groups/groups.component';
+import { InsigniasComponent } from './components/insignias/insignias.component';
+
 
 
 @NgModule({
@@ -24,9 +38,14 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     EventsComponent
   ],
   imports: [
+    ButtonModule,
+    CalendarModule,
     CommonModule,
+    FormsModule,
+    PipeModule,
     PrimeModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    ReactiveFormsModule,
   ]
 })
 export class ProfileModule {
