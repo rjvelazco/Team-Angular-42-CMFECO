@@ -4,7 +4,7 @@
     <h3 class="titulo">Editar perfil</h3>
     <div class="contact-wrapper">
         <div class="contact-form p-grid p-fluid">
-            <form [formGroup]="form">
+            <form [formGroup]="form" (ngSubmit)="submit(form)">
                 <div class="avatar">
                     <img *ngIf="!imgTemp" src="/assets/img/sponsors_oficiales/sponsor-fernando_herrera.jpg" alt="Italian Trulli">
                     <img *ngIf="imgTemp" class="img-avatar" [src]="imgTemp">
@@ -15,14 +15,14 @@
                 </div>
                 <div class="info1 p-grid p-fluid">
                     <p class="p-col-12 p-md-12">
-                        <label for="nick">Nick</label>
+                        <label for="userName">Nick</label>
                         <input
                          type="text"
-                         name="nick"
-                         id="nick"
-                         formControlName="nick"
+                         name="userName"
+                         id="userName"
+                         formControlName="userName"
                          pInputText
-                         placeholder="Nick de usuario">
+                         placeholder="Nombre de usuario">
                          <small *ngIf="usernameInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
                     </p>
 
@@ -35,40 +35,40 @@
                          formControlName="email"
                          pInputText
                          placeholder="ejemplo@gmail.com">
-                         <small *ngIf="emailInvalid" class="p-error">Ingrese al menos 5 carácteres</small>
+                         <small *ngIf="emailInvalid" class="p-error">Ingrese un email valido</small>
                     </p>
 
                 </div>
 
                 <div class="info2 p-grid p-fluid">
                     <p class="p-col-12 p-md-12">
-                        <label for="genero">Género</label>
+                        <label for="sex">Género</label>
                         <input type="text"
-                        name="genero"
-                        id="genero"
-                        formControlName="genero"a
+                        name="sex"
+                        id="sex"
+                        formControlName="sex"
                         pInputText
-                        id="genero">
+                        id="sex">
                     </p>
 
                     <p class="p-col-12 p-md-12">
                         <label for="fechaN">Fecha de nacimiento</label>
                         <input
                         type="date"
-                        name="fecha"
+                        name="birthDate"
                         pInputText
                         id="fechaN"
-                        formControlName="fecha"
+                        formControlName="birthDate"
                         >
                     </p>
 
                     <p class="p-col-12 p-md-12">
-                        <label for="pais">Pais</label>
+                        <label for="country">Pais</label>
                         <input type="text"
-                        name="pais"
+                        name="country"
                         pInputText
-                        formControlName="pais"
-                        id="pais">
+                        formControlName="country"
+                        id="country">
                     </p>
 
                 </div>
@@ -119,10 +119,10 @@
 
                     <p class="p-inputgroup d-flex align-items-center">
                         <i class="pi pi-facebook" style="font-size: 1.5rem;"></i>
-                        <label for="linkedin" class="p-col-fixed">linkedin.com/</label>
-                        <input id="linkedin"
+                        <label for="linkedIn" class="p-col-fixed">linkedin.com/</label>
+                        <input id="linkedIn"
                          type="text"
-                         formControlName="linkedin"
+                         formControlName="linkedIn"
                         pInputText>
                     </p>
 
@@ -138,12 +138,12 @@
 
                 <p class="block">
                     <label>Biografía</label>
-                    <textarea [rows]="5" [cols]="30"  autoResize="autoResize" pInputTextarea formControlName="biografia"></textarea>
-                    <small *ngIf="biographyInvalid" class="p-error">Ingrese al menos 8 carácteres</small>
+                    <textarea [rows]="5" [cols]="30"  autoResize="autoResize" pInputTextarea formControlName="bio"></textarea>
+                    <small *ngIf="bioInvalid" class="p-error">Máximo 140 carácteres</small>
                 </p>
 
                 <p class="button p-col-6 p-md-6">
-                    <p-button label="Guardar cambios" icon="pi pi-check" iconPos="left"></p-button>
+                    <p-button [disabled]="usernameInvalid || emailInvalid" type="submit" label="Guardar cambios" icon="pi pi-check" iconPos="left"></p-button>
                 </p>
 
             </form>
