@@ -1,0 +1,32 @@
+:host ::ng-deep .p-card .p-avatar{
+    background-color: var(--color-palette-primary);
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px !important;
+    margin-bottom: 30px !important;
+}
+:host ::ng-deep .p-card .p-avatar:first-child{
+    margin-left: 30px !important;
+}
+
+:host ::ng-deep .p-card .p-card-body .p-card-content{
+    text-align: center;
+}
+
+
+:host ::ng-deep .p-card .pi .pi-star{
+    color: var(--color-palette-secondary);
+}
+
+:host ::ng-deep .p-card .p-avatar i{
+    color: var(--color-palette-secondary);
+}
+
+:host ::ng-deep .p-card .activity{
+    text-align: left  !important;
+}
+
+:host ::ng-deep .p-card .activity img{
+    float: right !important;
+}
+

@@ -1,1 +1,32 @@
-<p>dasdasd<a [routerLink]="'editar'">aqui</a></p>
+<div class="p-grid">
+    <div class="p-col-12 p-md-6 p-lg-3">
+        Editar Perfil
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-6">
+        <p-card header="Insignias" [style]="{'margin-bottom': '2em', 'font-size':'20px'}">
+            <ng-container *ngFor="let i of [].constructor(4)">
+                <p-avatar styleClass="p-mr-2" size="xlarge" shape="circle">
+                    <i class="pi pi-star"></i>
+                </p-avatar>
+            </ng-container>
+        </p-card>
+        <h3 [style]="{'margin-bottom': '1em', 'font-size':'20px', 'font-weight': 'bold'}">
+            Actividad reciente
+        </h3>
+        <p-card>
+            <div class="p-grid activity">
+                <div class="p-col-8">
+                    <p>
+                    Te has unido al evento Community Fest and Code
+                    </p>
+                </div>
+                <div class="p-col-4">
+                    <img src="../../../../../assets/img/communities/stackly.png" width="40">
+                </div>
+            </div>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        Eventos
+    </div>
+</div>
