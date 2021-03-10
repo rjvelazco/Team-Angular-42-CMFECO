@@ -82,13 +82,10 @@
     margin: 0.5em;
 }
 
-
-
-
-
 .p-component, .p-component * {
     box-sizing: border-box;
 }
+
 img, svg {
     position: relative;
     left: 35%;
@@ -103,8 +100,17 @@ img, svg {
     left: 57%;
 }
 
-
 input[type="file"]{
     display: none;
+}
+
+span.sub-title{
+    display: inline-block;
+    width: 100%;
+    margin: 0px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0px;
+    margin-top: 10px;
 }
 

@@ -13,6 +13,8 @@
                             id="uploadImage"
                             (change)="cambiarImagen($event.target.files[0])">
                 </div>
+                <span class="sub-title">Información Personal</span>
+
                 <div class="info1 p-grid p-fluid">
                     <p class="p-col-12 p-md-12">
                         <label for="userName">Nick</label>
@@ -97,7 +99,8 @@
 
                 </div>
 
-               <div class="links p-grid p-fluid">
+                <span class="sub-title">Redes de Contacto</span>
+                <div class="links p-grid p-fluid">
                     <p class="p-inputgroup d-flex align-items-center">
                         <i class="pi pi-facebook" style="font-size: 1.5rem;"></i>
                         <label class="p-ml-2" for="facebook">facebook.com/</label>
@@ -136,6 +139,7 @@
                     </p>
                </div>
 
+               <span class="sub-title">¡Cuéntanos tu historia!</span>
                 <p class="block">
                     <label>Biografía</label>
                     <textarea [rows]="5" [cols]="30"  autoResize="autoResize" pInputTextarea formControlName="bio"></textarea>
@@ -145,7 +149,6 @@
                 <p class="button p-col-6 p-md-6">
                     <p-button [disabled]="form.invalid || form.pristine" type="submit" label="Guardar cambios" icon="pi pi-check" iconPos="left"></p-button>
                 </p>
-
             </form>
 
         </div>
