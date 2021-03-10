@@ -24,17 +24,21 @@ import {HomePageModule} from './pages/home-page/home-page.module';
 import {PrimeModule} from './prime-module';
 import {SharedModule} from './shared/shared.module';
 import {NotPageFoundComponent} from './notPageFound/not-page-found.component';
+import { LoadingComponent } from './loading/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotPageFoundComponent
+    NotPageFoundComponent,
+    LoadingComponent,
   ],
   imports: [
     AngularFireAuthModule,
+    AngularFireModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AppRoutingModule,
     AuthModule,
+    BrowserAnimationsModule,
     BrowserModule,
     HomePageModule,
     PagesModule,
@@ -42,7 +46,6 @@ import {NotPageFoundComponent} from './notPageFound/not-page-found.component';
     ReactiveFormsModule,
     RouterModule,
     SharedModule,
-    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

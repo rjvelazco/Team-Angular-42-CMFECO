@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 // Services
-import { AuthService } from '../core/services/auth.service';
+import { UsuarioService } from '../core/services/usuario.service';
+import { LoadingService } from '../core/services/loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,9 @@ import { AuthService } from '../core/services/auth.service';
 export class AuthGuard implements CanActivate {
 
   constructor(
-    private router: Router,
-    private authService: AuthService
-
+    private router        : Router,
+    private usuarioService: UsuarioService,
+    private loadingService: LoadingService
   ) {
 
   }
@@ -22,21 +23,28 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ){
-    return this.authService.getCurrentUser()
+  ) {
+    
+    if (this.usuarioService.usuario) {
+      return true;
+    }
+    this.loadingService.loading.emit(true);
+    this.validarToken();
+    return this.usuarioService.getParticipante()
       .pipe(
-        map((user: any) => {
-          if (!user.emailVerified) {
-            this.router.navigateByUrl('/login');
-          } else {
-            return true;
-          }
-        }),
         catchError(() => {
           this.router.navigateByUrl('/login');
           return of(null);
         })
       )
+  }
+
+  validarToken() {
+    if (!localStorage.getItem('token')) {
+      this.router.navigateByUrl('/login');
+      this.loadingService.loading.emit(false);
+      return false;
+    }
   }
 
 }

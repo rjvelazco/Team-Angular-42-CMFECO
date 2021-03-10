@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 // Services
-import { AuthService } from '../../../core/services/auth.service';
+import { UsuarioService } from '../../../core/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -20,13 +20,13 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private usuarioService: UsuarioService, 
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.buildForm();
-    // this.authService.getCurrentUser().subscribe(data => console.log(data));
+    // this.usuarioService.getCurrentUser().subscribe(data => console.log(data));
   }
 
   // Getters - Errors.
@@ -77,7 +77,8 @@ export class LoginComponent implements OnInit {
 
       const { email, password } = this.form.value;
       try {
-        const {user} = await this.authService.login(email, password);
+        const { user } = await this.usuarioService.login(email, password);
+        localStorage.setItem('token',user.uid);
         if (user.emailVerified) {
           this.router.navigateByUrl('/dashboard');
         } else {
@@ -89,8 +90,8 @@ export class LoginComponent implements OnInit {
             icon: 'info',
             denyButtonText: `No`,
           }).then(async (result) => {
-          /* Read more about isConfirmed, isDenied below */
-            await this.authService.sendVerificationEmail();
+
+            await this.usuarioService.sendVerificationEmail();
             if (result.isConfirmed) {
               Swal.fire({
                 title: 'Email Enviado',

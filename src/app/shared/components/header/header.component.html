@@ -20,10 +20,10 @@
     <div class="user-profile p-d-flex p-align-center p-jc-center">
       <i class="pi pi-bell notification" pBadge severity="danger"></i>
       <div class="p-d-flex p-align-center p-jc-center cursor" (click)="menu.toggle($event)">
-        <img src="assets/img/avatar.png" alt="Avatar" class="profile-image">
+        <img [src]="usuario.img | imagen" alt="" class="profile-image">
         <div class="profile-info">
-          <h6>Developer080</h6>
-          <span>Backend Developer</span>
+          <h6>{{usuario.userName}}</h6>
+          <span>{{usuario.role}}</span>
         </div>
         <i class="pi pi-angle-down p-ml-3"></i>
       </div>
