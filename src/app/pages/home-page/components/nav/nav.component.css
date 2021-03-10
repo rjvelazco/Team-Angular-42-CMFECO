@@ -14,6 +14,11 @@
   padding: 2rem 1rem 0;
   display: flex;
   justify-content: space-between;
+  color: #273b47;
+}
+
+:host ::ng-deep .p-card {
+  background: #f9fafb;
 }
 
 :host ::ng-deep .custombar {

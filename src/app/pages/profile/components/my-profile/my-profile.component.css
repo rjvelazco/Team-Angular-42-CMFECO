@@ -1,0 +1,150 @@
+a {
+  text-decoration: none;
+}
+
+.profile-info {
+  padding-top: 12px;
+}
+
+.insignia {
+  padding: 1rem;
+}
+
+.profile-info .profile-nickname {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  color: #273b47;
+}
+
+.profile-info .profile-role {
+  color: #6c757d;
+}
+
+.profile-image {
+  max-width: 100%;
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.p-card-header {
+  padding: 2rem 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  color: #273b47;
+}
+
+
+.event-card, .base-activity {
+  border-radius: .5rem;
+  border: solid 1px #e5e9f0;
+  background-color: #ffffff;
+  height: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.event-card .event-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.event-card .event-content {
+  text-align: center;
+  padding-bottom: 12px;
+}
+
+
+.btn-comfeco {
+  max-width: 65%;
+  margin-top: 1rem;
+}
+
+.event-card .event-content h5 {
+  margin: 6px;
+  font-weight: 500;
+  color: #4c566a;
+}
+
+.base-activity .recent-activity{
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.base-activity .recent-activity .badge-activity img {
+  width: 50px;
+  height: auto;
+}
+
+.base-activity .recent-activity .title{
+  line-height: 1.38;
+}
+
+:host ::ng-deep .custombar {
+  width: 100%;
+  height: 50vh;
+}
+
+:host ::ng-deep .p-scrollpanel.custombar .p-scrollpanel-bar {
+  background-color: var(--color-palette-primary) !important;
+  opacity: 1;
+  transition: background-color .2s;
+  border-radius: 10px;
+}
+
+:host ::ng-deep .p-card {
+  background: #f9fafb;
+}
+
+:host ::ng-deep .p-scrollpanel-bar-x {
+  display: none;
+}
+
+:host ::ng-deep .insignias-card {
+  margin-bottom: 1em;
+  font-size: 30px;
+}
+
+:host ::ng-deep .insignias-card .p-card-content {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+:host ::ng-deep .p-card .insignia-avatar{
+  background-color: var(--color-palette-primary);
+}
+
+:host ::ng-deep .p-card .insignia-avatar .p-card-body .p-card-content{
+  text-align: center;
+}
+
+:host ::ng-deep .p-avatar.p-avatar-xl .p-avatar-icon{
+  color: var(--color-palette-secondary);
+}
+
+@media only screen and (min-width: 1200px) {
+  .p-xl-fixed {
+    width: 22%;
+  }
+}
+
+@media only screen and (max-width: 992px){
+  .insignia {
+    padding: 0.5rem;
+  }
+
+  :host ::ng-deep .p-card .insignia-avatar{
+    margin-left: 0;
+  }
+
+  :host ::ng-deep .insignias-card .p-card-body .p-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+  }
+
+}

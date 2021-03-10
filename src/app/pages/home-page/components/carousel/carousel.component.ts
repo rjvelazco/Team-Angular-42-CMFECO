@@ -169,7 +169,7 @@ export class CarouselComponent implements OnInit {
 
     this.responsiveCreators = [
       {
-        breakpoint: '1500px',
+        breakpoint: '1640px',
         numVisible: 3,
         numScroll: 3,
       },
