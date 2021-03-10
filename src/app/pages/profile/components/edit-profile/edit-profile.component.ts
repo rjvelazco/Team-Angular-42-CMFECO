@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, Form } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -8,21 +8,17 @@ import { FormGroup, FormControl, FormBuilder, Validators, Form } from '@angular/
   styleUrls: ['./edit-profile.component.css']
 })
 
-
-
-export class EditProfileComponent implements OnInit{
-
-  public imagenSubir: string = '';
+export class EditProfileComponent implements OnInit {
   public imgTemp: any = '';
 
   // Form
-  public date3: Date;
-  public rangeDates: Date[];
   public minDate: Date;
   public maxDate: Date;
   public es: any;
   public invalidDates: Array<Date>
   public form: FormGroup;
+  public countries: any[];
+  selectedCountry: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,30 +26,40 @@ export class EditProfileComponent implements OnInit{
 
 
   ngOnInit() {
+    this.countries = [
+      {name: 'Colombia'},
+      {name: 'Mexico'},
+      {name: 'Venezuela'},
+      {name: 'Guatemala'},
+      {name: 'Estados Unidos',},
+      {name: 'Costa Rica'},
+      {name: 'España'},
+      {name: 'Bolivia'},
+      {name: 'Ecuador'},
+      {name: 'Brasil'}
+    ];
     this.form = this.formBuilder.group({
-      userName        : new FormControl('', [Validators.required, Validators.minLength(5)]),
-      email           : new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
-      sex             : new FormControl('',),
-      birthDate       : new FormControl('',),
-      country         : new FormControl('',),
-      password        : new FormControl('', [Validators.minLength(8)]),
-      confirmPassword : new FormControl('', [Validators.required]),
-      facebook        : new FormControl('',),
-      github          : new FormControl('',),
-      linkedIn        : new FormControl('', ),
-      twitter         : new FormControl('',),
-      bio             : new FormControl('', [Validators.maxLength(140)])
-    })
+      userName: ['', [Validators.required, Validators.minLength(5)]],
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      sex: ['',],
+      birthDate: ['',],
+      country: ['',],
+      password: ['', [Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required]],
+      facebook: ['',],
+      github: ['',],
+      linkedin: ['',],
+      twitter: ['',],
+      bio: ['', [Validators.maxLength(140)]]
+    });
     this.es = {
       firstDayOfWeek: 1,
-      dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
-      dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
-      dayNamesMin: [ "D","L","M","X","J","V","S" ],
-      monthNames: [ "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre" ],
-      monthNamesShort: [ "ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic" ],
-      today: 'Hoy',
-      clear: 'Borrar'
-    }
+      dayNames: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+      dayNamesShort: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+      dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+      monthNames: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+      monthNamesShort: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+    };
 
     let today = new Date();
     let month = today.getMonth();

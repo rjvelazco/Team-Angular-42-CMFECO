@@ -1,7 +1,7 @@
 <main class="main" role="main">
   <app-figure></app-figure>
   <div class="vh-80 p-d-flex p-jc-center p-align-center py-2">
-    <div class="p-col-12 p-md-6 p-lg-6 p-xl-4">
+    <div class="p-sm-8 p-lg-4 p-xl-3">
       <p-card styleClass="p-shadow-7 content-card">
         <form [formGroup]="form" (ngSubmit)="loginUser()">
           <div class="header_form p-text-center p-mb-5">
@@ -17,32 +17,22 @@
                      pInputText
                      placeholder="example@correo.com"
                      formControlName="email">
-              <small class="p-error" *ngIf="emailInvalid">
-                <li class="error">Correo Electrónico Inválido</li>
-              </small>
-              <small class="p-error" *ngIf="emailIsEmpty">
-                <li class="error">Correo Electrónico Requerido</li>
-              </small>
+              <small class="p-error" *ngIf="emailInvalid">Correo Electrónico Inválido</small>
+              <small class="p-error" *ngIf="emailIsEmpty">Correo Electrónico Requerido</small>
             </div>
             <div class="p-field">
-              <div class="p-d-flex p-jc-between p-align-center">
-                <div>
+              <div class="p-d-flex p-jc-between p-align-center p-mb-2">
                   <label for="password">Contraseña</label>
-                </div>
-                <div>
                   <a [routerLink]="['/password', 'reset']" class="input-label-secondary cursor">
                     ¿Olvidaste tu contraseña?
                   </a>
-                </div>
               </div>
               <input type="password"
                      placeholder="Contraseña"
                      id="password"
                      pInputText
                      formControlName="password">
-              <small class="p-error" *ngIf="passwordInvalid">
-                <li class="error">Contraseña requerida</li>
-              </small>
+              <small class="p-error" *ngIf="passwordInvalid">Contraseña requerida</small>
             </div>
             <div class="p-field-checkbox">
               <p-checkbox id="remember"

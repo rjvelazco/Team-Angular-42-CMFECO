@@ -15,10 +15,46 @@
   rgba(241, 180, 6, 0.8) 99.97%;
 }
 
+* {
+  margin: 0;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #333333;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
 
 .btn-comfeco {
   background: var(--color-palette-primary) !important;
   border: 1px solid var(--color-palette-primary) !important;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .error {
@@ -39,6 +75,11 @@
 
 .vh-100 {
   min-height: 100vh;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
 }
 
 main {
