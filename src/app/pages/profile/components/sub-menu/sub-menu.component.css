@@ -45,12 +45,17 @@
   color: var(--color-palette-primary);
   border-bottom: none;
   background-color: #f5f5f5;
+  transition: border-bottom-color .2s;
 }
 
 :host ::ng-deep .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
   outline: 0 none;
   outline-offset: 0;
   box-shadow: none;
+}
+
+:host ::ng-deep .p-tabview-panels {
+  min-height: 70vh;
 }
 
 

@@ -1,1 +1,68 @@
-<p>dasdasd<a [routerLink]="'editar'">aqui</a></p>
+<div class="p-grid p-jc-center">
+  <div class="p-col-12 p-lg-3 p-xl-fixed p-text-center">
+    <p-card class="profile-card">
+      <div class="p-text-right">
+        <a routerLink="editar">Editar perfil</a>
+      </div>
+      <img src="https://static.platzi.com/media/avatars/avatars/sgomez2113_140ea478-c5d7-4c7a-b0b3-b5f5499e6d51.jpg"
+           alt="Avatar" class="profile-image">
+      <div class="profile-info">
+        <h1 class="profile-nickname">Developer080</h1>
+        <div class="profile-role">Backend Developer</div>
+        <div class="profile-biography p-pt-5">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam beatae commodi culpa, cum,
+            dignissimos dolorem eligendi facilis ipsam iure maxime, natus necessitatibus nesciunt nihil nobis quae
+            quam quas quisquam.</p>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <p-divider></p-divider>
+        <div class="p-d-flex p-jc-between p-align-center">
+          <ng-container *ngFor="let i of [].constructor(4)">
+            <p-avatar icon="pi pi-star" styleClass="p-mr-2" size="large" shape="circle"></p-avatar>
+          </ng-container>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+  <div class="p-col-12 p-lg-6 p-xl-6">
+    <p-card>
+      <ng-template pTemplate="header">
+        <h5>Mi perfil</h5>
+      </ng-template>
+    </p-card>
+  </div>
+  <div class="p-col-12 p-lg-3 p-xl-fixed">
+    <p-card>
+      <ng-template pTemplate="header">
+        <div class="p-card-header">
+          <h5 class="color-white">Eventos de tu interes</h5>
+          <a href="#">Ver más</a>
+        </div>
+      </ng-template>
+      <p-scrollPanel styleClass="custombar">
+        <div *ngFor="let event of myEvents">
+          <div class="p-grid p-flex-column">
+            <div class="p-col">
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="assets/img/{{event['image']}}" alt="image">
+                </div>
+                <div class="event-content">
+                  <h5>{{event['event']}}</h5>
+                  <button pButton
+                          pRipple
+                          class="btn-comfeco"
+                          label="Mas información"
+                          routerLink="{{event['information']}}">
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-scrollPanel>
+    </p-card>
+  </div>
+</div>
+
