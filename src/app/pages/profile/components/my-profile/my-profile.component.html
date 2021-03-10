@@ -1,5 +1,5 @@
-<div class="p-grid p-jc-center">
-  <div class="p-col-12 p-lg-3 p-xl-fixed p-text-center">
+<div class="p-grid p-mt-3">
+  <div class="p-col-12 p-lg-3 p-xl-fixed p-text-center profile">
     <p-card class="profile-card">
       <div class="p-text-right">
         <a routerLink="editar">Editar perfil</a>
@@ -25,14 +25,40 @@
       </ng-template>
     </p-card>
   </div>
-  <div class="p-col-12 p-lg-6 p-xl-6">
-    <p-card>
-      <ng-template pTemplate="header">
-        <h5>Mi perfil</h5>
-      </ng-template>
+  <div class="p-col-12 p-lg-6 insignia">
+    <p-card header="Insignias" styleClass="insignias-card">
+      <ng-container *ngFor="let i of [].constructor(4)">
+        <p-avatar icon="pi pi-star" styleClass="insignia-avatar" size="xlarge" shape="circle"></p-avatar>
+      </ng-container>
+    </p-card>
+    <p-card header="Actividad reciente">
+      <article class="base-activity">
+        <div class="recent-activity">
+          <div class="title">
+            <h6>
+              Te has unido al evento Community Fest and Code
+            </h6>
+          </div>
+          <div class="badge-activity">
+            <img src="assets/img/communities/stackly.png" alt="badge">
+          </div>
+        </div>
+      </article>
+      <article class="base-activity">
+        <div class="recent-activity">
+          <div class="title">
+            <h6>
+              Te has unido al evento Community Fest and Code
+            </h6>
+          </div>
+          <div class="badge-activity">
+            <img src="assets/img/communities/stackly.png" alt="badge">
+          </div>
+        </div>
+      </article>
     </p-card>
   </div>
-  <div class="p-col-12 p-lg-3 p-xl-fixed">
+  <div class="p-col-12 p-lg-3 p-xl-fixed events">
     <p-card>
       <ng-template pTemplate="header">
         <div class="p-card-header">
