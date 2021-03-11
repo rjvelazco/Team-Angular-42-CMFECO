@@ -1,0 +1,13 @@
+.sponsor-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .sponsor {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 20px 0;
+  }

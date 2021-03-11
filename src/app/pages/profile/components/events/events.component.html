@@ -1,1 +1,72 @@
-<p>Events works!</p>
+<p-card [style]="{'width': '60rem', 'margin-bottom': '2em'}">
+    <ng-template pTemplate="header">
+
+      <div class="p-grid">
+        <div class="p-col-6"> 
+          <img src="assets/img/comfeco.png" heigth = "28%" width="28%" alt="" > 
+        </div>
+        <div class="p-col-6">
+          <h3>!DUELO DE TITANES!</h3>
+        </div>
+      </div>
+    </ng-template>
+    <div>
+        <p-carousel
+        [value]="sponsors"
+        [numVisible]="9"
+        styleClass="p-mt-6"
+        [numScroll]="9"
+        [circular]="true">
+        <ng-template let-sponsor pTemplate="item">
+          <a href="{{sponsor['link']}}" target="_blank">
+            <div class="sponsor">
+              <div class="sponsor-content">
+                <img src="assets/img/sponsors_oficiales/{{sponsor['image']}}"
+                     class="sponsor-image p-shadow-2"
+                     pTooltip="{{sponsor['sponsor_name']}}"
+                     tooltipPosition="top"
+                     alt="Sponsor">
+              </div>
+            </div>
+          </a>
+        </ng-template>
+      </p-carousel>
+    </div>
+
+    <div class="p-grid">
+      <div class="p-col-8">
+        <div class="p-grid">
+          <div class="p-col-4">
+            <img src="assets/img/communities/comunidad_coderos.png" heigth = "28%" width="28%" alt="">
+            <img src="assets/img/communities/comunidad_programadores.png"  heigth = "28%" width="28%" alt="">
+            <img src="assets/img/communities/stackly.png"  heigth = "28%" width="28%" alt="">
+          </div>
+          <div class="p-col-4">
+            <h3>FRAMEWORKS</h3>
+          </div>
+          <div class="p-col-4">
+            <img src="assets/img/angular.png" heigth = "28%" width="28%" alt="">
+            
+            <img src="assets/img/react.png"  heigth = "28%" width="28%" alt="">
+            
+            <img src="assets/img/svelte.png"  heigth = "28%" width="28%" alt="">
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollt.</p>
+        <div class="p-grid">
+          <div class="p-col-6"> 
+            <a>Más información</a> 
+          </div>
+          <div class="p-col-6">
+            <button pButton type="button" class="p-button-raised p-button-rounded" label="Participar" ></button>
+          </div>
+        </div>
+        
+        
+    </ng-template>
+</p-card>
+
