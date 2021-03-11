@@ -1,4 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+// Services
+import { UsuarioService } from '../../../../core/services/usuario.service';
+
+// Models
+import { Usuario } from '../../../../models/usuario.model';
 
 @Component({
   selector: 'app-my-profile',
@@ -7,6 +13,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MyProfileComponent implements OnInit {
 
+  public usuario: Usuario;
   myEvents = [
     {
       'id': 1,
@@ -52,10 +59,14 @@ export class MyProfileComponent implements OnInit {
     }
   ];
 
-  constructor() {
+  constructor(
+    private usuarioService: UsuarioService
+  ) {
+    
   }
 
   ngOnInit(): void {
+    this.usuario = this.usuarioService.usuario;
   }
 
 }

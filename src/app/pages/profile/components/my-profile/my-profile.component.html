@@ -4,15 +4,13 @@
       <div class="p-text-right">
         <a routerLink="editar">Editar perfil</a>
       </div>
-      <img src="https://static.platzi.com/media/avatars/avatars/sgomez2113_140ea478-c5d7-4c7a-b0b3-b5f5499e6d51.jpg"
+      <img [src]="usuario.img | imagen"
            alt="Avatar" class="profile-image">
       <div class="profile-info">
-        <h1 class="profile-nickname">Developer080</h1>
-        <div class="profile-role">Backend Developer</div>
+        <h1 class="profile-nickname">{{usuario.userName}}</h1>
+        <div class="profile-role">{{usuario.role}}</div>
         <div class="profile-biography p-pt-5">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam beatae commodi culpa, cum,
-            dignissimos dolorem eligendi facilis ipsam iure maxime, natus necessitatibus nesciunt nihil nobis quae
-            quam quas quisquam.</p>
+          <p>{{usuario.bio}}</p>
         </div>
       </div>
       <ng-template pTemplate="footer">

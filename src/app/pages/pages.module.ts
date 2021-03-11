@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesComponent } from './pages.component';
 
+// Modules
+import { PipeModule } from '../pipe/pipe.module';
 
 // Router
 import { RouterModule } from '@angular/router';
@@ -11,7 +13,8 @@ import { RouterModule } from '@angular/router';
   declarations: [PagesComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    PipeModule
   ],
   exports: [
     PagesComponent
