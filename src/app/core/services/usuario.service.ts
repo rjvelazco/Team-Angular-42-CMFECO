@@ -46,7 +46,7 @@ export class UsuarioService {
   async register(username, email, password) {
     try {
       const user = await this.fbAuth.createUserWithEmailAndPassword(email, password);
-      const { uid, photoURL } = user.user;
+      const { uid, photoURL = '' } = user.user;
       const usuario = new Usuario(uid, email , username, 'participante', photoURL, '', '', '', '', '', '', '', '');
 
       await this.createParticipante(usuario);
