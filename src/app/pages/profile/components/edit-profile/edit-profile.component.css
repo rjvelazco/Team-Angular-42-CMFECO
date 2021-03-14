@@ -1,3 +1,14 @@
+input[type="file"] {
+  display: none;
+}
+
+h5 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  line-height: 30px;
+}
+
+
 .title {
   margin-bottom: 12px;
 }
@@ -12,10 +23,6 @@
   width: 240px;
   object-fit: cover;
   margin-bottom: 12px;
-}
-
-input[type="file"]{
-    display: none;
 }
 
 :host ::ng-deep .p-inputgroup-addon:not(.not-padding) {
