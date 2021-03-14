@@ -26,14 +26,15 @@ import {GroupsModule} from '../pages/profile/components/groups/groups.module';
     FigureComponent,
     SubMenuComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    PrimeModule,
-    BrowserModule,
-    ProfileModule,
-    PipeModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        PrimeModule,
+        BrowserModule,
+        ProfileModule,
+        PipeModule,
+        GroupsModule,
+    ],
   exports: [
     HeaderComponent,
     FooterComponent,
