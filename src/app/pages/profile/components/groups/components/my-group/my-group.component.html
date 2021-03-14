@@ -1,1 +1,36 @@
-<p>my-group works!</p>
+<div *ngFor="let participante of participantes">
+  <p-divider></p-divider>
+  <div class="p-d-flex p-align-center">
+    <p-avatar
+    shape="circle"
+    image="{{participante.img}}"
+    styleClass="p-mr-2"
+    size="large">
+    </p-avatar>
+    <div>
+      <strong>{{participante.nombre}}</strong>
+      <br>
+      <small>{{participante.nivel}}</small>
+    </div>
+  </div>
+  <div class="p-text-right">
+    <h6>{{participante.rango}}</h6>
+  </div>
+  <p-divider></p-divider>
+</div>
+<div>
+  <div class="p-grid p-flex-column p-flex-md-row vertical-container ">
+    <div class="p-col">
+      <div class="box">
+        <button pButton pRipple type="button" label="Abandonar" class="p-button-rounded p-button-danger" (click)="AbandonarGrupo()"></button>
+      </div>
+    </div>
+    <div class="p-col">
+      <div class="box">
+        <button pButton pRipple type="button" label="Ir al chat" class="p-button-rounded p-button-info"></button>
+      </div>
+    </div>
+  </div>
+
+
+</div>
