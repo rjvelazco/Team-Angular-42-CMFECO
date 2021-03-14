@@ -15,6 +15,7 @@ import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {FigureComponent} from './components/figure/figure.component';
 import {SubMenuComponent} from '../pages/profile/components/sub-menu/sub-menu.component';
+import {GroupsModule} from '../pages/profile/components/groups/groups.module';
 
 
 

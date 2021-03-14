@@ -5,8 +5,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProfileRoutingModule} from './profile.routing';
 // PrimerNg
 import {PrimeModule} from '../../prime-module';
-import {CalendarModule} from 'primeng/calendar';
-import {ButtonModule} from 'primeng/button';
 // Modules
 import {PipeModule} from '../../pipe/pipe.module';
 // Components
@@ -20,28 +18,23 @@ import {InsigniasComponent} from './components/insignias/insignias.component';
 @NgModule({
   declarations: [
     InsigniasComponent,
-    GroupsComponent,
     EventsComponent,
     MyProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
   ],
   exports: [
     MyProfileComponent,
     InsigniasComponent,
-    GroupsComponent,
-    EventsComponent
+    EventsComponent,
   ],
   imports: [
-    ButtonModule,
-    CalendarModule,
     CommonModule,
     FormsModule,
     PipeModule,
     PrimeModule,
     ProfileRoutingModule,
     ReactiveFormsModule,
-    ButtonModule,
-    CalendarModule,
+    GroupsModule,
     FormsModule,
   ]
 })

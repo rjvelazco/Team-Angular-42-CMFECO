@@ -18,6 +18,10 @@ import {TagModule} from 'primeng/tag';
 import {TooltipModule} from 'primeng/tooltip';
 import {MenuModule} from 'primeng/menu';
 import {BadgeModule} from 'primeng/badge';
+import {DataViewModule} from 'primeng/dataview';
+import {ChipModule} from 'primeng/chip';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {TableModule} from 'primeng/table';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
 
@@ -42,6 +46,10 @@ import {CalendarModule} from 'primeng/calendar';
     TagModule,
     MenuModule,
     BadgeModule,
+    DataViewModule,
+    ChipModule,
+    MultiSelectModule,
+    TableModule,
     InputTextareaModule,
     CalendarModule,
   ]
