@@ -13,6 +13,8 @@ import { ButtonModule } from 'primeng/button';
 
 // Modules
 import { PipeModule } from '../../pipe/pipe.module';
+import {CardModule} from 'primeng/card';
+
 
 // Components
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
@@ -46,6 +48,7 @@ import { InsigniasComponent } from './components/insignias/insignias.component';
     PrimeModule,
     ProfileRoutingModule,
     ReactiveFormsModule,
+    CardModule
   ]
 })
 export class ProfileModule {
