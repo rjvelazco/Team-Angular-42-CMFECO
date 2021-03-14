@@ -1,0 +1,112 @@
+.group-list-item{
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.group-list-item img{
+  width: 250px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin-right: 2rem;
+}
+
+.group-list-item .group-list-action{
+  display: flex;
+  flex-direction: column;
+}
+
+.group-name{
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.group-description{
+  margin: 0 0 1rem 0;
+}
+
+.group-list-item .group-description{
+  max-width: 70%;
+  margin-top: 0.5rem;
+}
+
+.group-grid-item{
+  margin: .5rem;
+}
+
+:host ::ng-deep .p-button{
+  margin-bottom: .5rem;
+}
+:host ::ng-deep .p-card .p-chip{
+  margin: 1rem;
+}
+
+:host ::ng-deep .p-card .p-card-content{
+  padding: 0;
+}
+
+:host ::ng-deep .p-multiselect{
+  width: 14rem;
+  font-weight: normal;
+}
+
+:host ::ng-deep .p-card .p-card-body{
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+}
+
+:host ::ng-deep .p-chip.python {
+  background-color: #366a96;
+  color: #ffffff;
+}
+
+:host ::ng-deep .p-chip.typescript {
+  background-color: #006dbc;
+  color: #ffffff;
+}
+
+:host ::ng-deep .p-chip.javascript {
+  background-color: #f2da1e;
+  color: #000000;
+}
+
+:host ::ng-deep .p-chip.java {
+  background-color: #C33;
+  color: #ffffff;
+}
+
+:host ::ng-deep .p-chip.go {
+  background-color: #7fd5ea;
+  color: #202224;
+}
+
+:host ::ng-deep .p-chip.php {
+  background-color: #6c7fb7;
+  color: #020202;
+}
+
+:host ::ng-deep .p-chip.swift {
+  background-color: #e84e34;
+  color: #f2f9f2;
+}
+
+:host ::ng-deep .p-chip.flutter {
+  background-color: #0057a1;
+  color: #f4f4f4;
+}
+
+:host ::ng-deep .p-chip.ruby {
+  background-color: #970a0d;
+  color: #f3f9f6;
+}
+
+:host ::ng-deep .p-chip.kotlin {
+  background-color: #7f52ff;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 765px) {
+  p-dataViewLayoutOptions{
+    display: none;
+  }
+}

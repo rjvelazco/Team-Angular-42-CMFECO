@@ -1,1 +1,63 @@
-<p>groups-available works!</p>
+<p-dataView #dv [value]="filter"
+            [paginator]="true"
+            rows="8"
+            filterBy="technology"
+            layout="grid"
+            [loading]="loading"
+            [sortField]="sortField"
+            [sortOrder]="sortOrder">
+  <ng-template pTemplate="header">
+    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+      <p-multiSelect [options]="technologies"
+                     placeholder="Filtrar por lenguajes"
+                     (onChange)="onSortChange($event)"
+                     optionLabel="name">
+        <ng-template let-option pTemplate="item">
+          <div class="p-multiselect-technology-option">
+            <span class="p-ml-1">{{option['name']}}</span>
+          </div>
+        </ng-template>
+      </p-multiSelect>
+      <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+        <i class="pi pi-search"></i>
+        <input type="search"
+               pInputText
+               placeholder="Buscar grupo"
+               (input)="dv.filter($event.target['value'], 'contains')">
+      </span>
+      <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+    </div>
+  </ng-template>
+  <ng-template let-group pTemplate="listItem">
+    <div class="p-col-12">
+      <div class="group-list-item">
+        <img src="assets/img/{{group['image']}}" alt="Image Group">
+        <div class="group-list-detail">
+          <div class="group-name">{{group['name']}}</div>
+          <p-chip label="{{group['technology']}}" [styleClass]="group.technology.toLowerCase()"></p-chip>
+          <div class="group-description">{{group['description']}}</div>
+        </div>
+        <div class="group-list-action">
+          <p-button label="Unirse"></p-button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template let-group pTemplate="gridItem">
+    <div class="p-col-12 p-lg-3">
+      <p-card>
+        <ng-template pTemplate="header">
+          <img src="assets/img/{{group['image']}}" alt="Image Group">
+          <p-chip label="{{group['technology']}}" [styleClass]="group.technology.toLowerCase()"></p-chip>
+        </ng-template>
+        <div class="group-grid-item-content">
+          <div class="group-name">{{group['name']}}</div>
+          <div class="group-description">{{group['description']}}</div>
+        </div>
+        <div class="group-list-action">
+          <p-button label="Unirse"></p-button>
+        </div>
+      </p-card>
+    </div>
+  </ng-template>
+</p-dataView>

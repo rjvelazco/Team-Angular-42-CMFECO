@@ -4,6 +4,7 @@ import {MyGroupComponent} from './components/my-group/my-group.component';
 import {GroupsAvailableComponent} from './components/groups-available/groups-available.component';
 import {GroupsComponent} from './components/groups/groups.component';
 import {PrimeModule} from '../../../../prime-module';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {PrimeModule} from '../../../../prime-module';
   ],
   imports: [
     CommonModule,
-    PrimeModule
+    PrimeModule,
+    FormsModule
   ]
 })
 export class GroupsModule {
