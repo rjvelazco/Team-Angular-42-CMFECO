@@ -34,6 +34,10 @@
   margin: .5rem;
 }
 
+.search-group{
+  width: 50%;
+}
+
 :host ::ng-deep .p-button{
   margin-bottom: .5rem;
 }
@@ -46,9 +50,14 @@
 }
 
 :host ::ng-deep .p-multiselect{
-  width: 14rem;
+  width: 100%;
   font-weight: normal;
 }
+:host ::ng-deep input{
+  width: 100%;
+}
+
+
 
 :host ::ng-deep .p-card .p-card-body{
   padding: 0 1rem;
@@ -108,5 +117,13 @@
 @media screen and (max-width: 765px) {
   p-dataViewLayoutOptions{
     display: none;
+  }
+
+  :host ::ng-deep .p-multiselect{
+    margin-bottom: 0.5rem;
+  }
+
+  .search-group{
+    width: 100%;
   }
 }

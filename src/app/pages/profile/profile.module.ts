@@ -10,9 +10,9 @@ import {PipeModule} from '../../pipe/pipe.module';
 // Components
 import {EditProfileComponent} from './components/edit-profile/edit-profile.component';
 import {MyProfileComponent} from './components/my-profile/my-profile.component';
-import {GroupsComponent} from './components/groups/groups.component';
 import {EventsComponent} from './components/events/events.component';
 import {InsigniasComponent} from './components/insignias/insignias.component';
+import {GroupsModule} from './components/groups/groups.module';
 
 
 @NgModule({
