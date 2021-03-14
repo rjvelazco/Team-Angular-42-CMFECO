@@ -29,6 +29,20 @@ export class MyGroupComponent implements OnInit {
       'nivel': 'Apenas aprendiendo',
       'img':'https://i.imgur.com/hiJQ1rQ.jpg',
       'rango':'Integrante'
+    },
+    {
+      'id': 3,
+      'nombre': 'Sebastian',
+      'nivel': 'Apenas aprendiendo',
+      'img':'https://i.imgur.com/hiJQ1rQ.jpg',
+      'rango':'Integrante'
+    },
+    {
+      'id': 3,
+      'nombre': 'Sebastian',
+      'nivel': 'Apenas aprendiendo',
+      'img':'https://i.imgur.com/hiJQ1rQ.jpg',
+      'rango':'Integrante'
     }
   ]
 

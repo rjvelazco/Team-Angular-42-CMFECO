@@ -1,43 +1,61 @@
-<div *ngFor="let participante of participantes">
-  <div class="p-d-flex p-align-center">
-    <p-avatar shape="circle"
-              image="{{participante.img}}"
-              styleClass="p-mr-2"
-              size="large">
-    </p-avatar>
-    <div>
-      <strong>{{participante.nombre}}</strong>
-      <br>
-      <small>{{participante.nivel}}</small>
+<p-card>
+  <ng-template pTemplate="header">
+    <div class="p-card-header">
+      <h5 class="p-text-bold">Talleres</h5>
+      <a href="" class="text-decoration-none">Ir a mi grupo</a>
     </div>
+  </ng-template>
+  <div class="group">
+    <h6>Mi grupo</h6>
+    <img src="https://i.imgur.com/bcyviLp.png" alt="" class="img-js">
   </div>
-  <div class="p-text-right">
-    <h6>{{participante.rango}}</h6>
-  </div>
-  <p-divider></p-divider>
-</div>
-<div>
-  <div class="p-grid p-flex-column p-flex-md-row vertical-container ">
-    <div class="p-col">
-      <div class="box">
-        <button pButton
-                pRipple
-                type="button"
-                label="Abandonar"
-                class="p-button-rounded p-button-danger"
-                (click)="AbandonarGrupo()">
-        </button>
+  <div *ngFor="let participante of participantes">
+    <div class="p-d-flex p-align-center">
+      <p-avatar shape="circle"
+                image="{{participante.img}}"
+                styleClass="p-mr-2"
+                size="large">
+      </p-avatar>
+      <div class="p-grid group-detail">
+        <div class="p-col-8">
+          <div>
+            <strong>{{participante.nombre}}</strong>
+            <br>
+            <small>{{participante.nivel}}</small>
+          </div>
+        </div>
+        <div class="p-col-1 p-text-left">
+          <h6>{{participante.rango}}</h6>
+        </div>
       </div>
     </div>
-    <div class="p-col">
-      <div class="box">
-        <button pButton
-                pRipple
-                type="button"
-                label="Ir al chat"
-                class="p-button-rounded p-button-info">
-        </button>
+    <p-divider></p-divider>
+  </div>
+  <div>
+    <div class="p-grid p-flex-column p-flex-md-row vertical-container ">
+      <div class="p-col">
+        <div class="box">
+          <button pButton
+                  pRipple
+                  type="button"
+                  label="Abandonar"
+                  class="p-button-rounded p-button-outlined p-button-danger"
+                  (click)="AbandonarGrupo()">
+          </button>
+        </div>
+      </div>
+      <div class="p-col">
+        <div class="box">
+          <button pButton
+                  pRipple
+                  type="button"
+                  label="Ir al chat"
+                  class="p-button-rounded p-button-info">
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</p-card>
+
+
