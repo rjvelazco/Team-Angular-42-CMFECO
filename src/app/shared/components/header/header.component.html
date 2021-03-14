@@ -8,13 +8,13 @@
         <a [routerLink]="['/dashboard']" routerLinkActive="active">Inicio</a>
       </li>
       <li class="topbar-submenu">
-        <a routerLink="comunidades" routerLinkActive="active">Comunidades</a>
+        <a [routerLink]="['/code-fest','comunity']" routerLinkActive="active">Comunidades</a>
       </li>
       <li class="topbar-submenu">
-        <a routerLink="talleres" routerLinkActive="active">Talleres</a>
+        <a [routerLink]="['/code-fest', 'workshop']" routerLinkActive="active">Talleres</a>
       </li>
       <li class="topbar-submenu creators">
-        <a routerLink="creadores" routerLinkActive="active">Creadores de contenido</a>
+        <a [routerLink]="['/code-fest','content-creators']" routerLinkActive="active">Creadores de contenido</a>
       </li>
     </ul>
     <div class="user-profile p-d-flex p-align-center p-jc-center">

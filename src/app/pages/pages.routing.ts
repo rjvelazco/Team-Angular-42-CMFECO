@@ -6,6 +6,9 @@ import {AuthGuard} from '../guards/auth.guard';
 
 // Components
 import {PagesComponent} from './pages.component';
+import { ComunityComponent } from './comunity/comunity.component';
+import { WorkshopComponent } from './workshop/workshop.component';
+import { ContentCreatorsComponent } from './content-creators/content-creators.component';
 
 
 const routes: Routes = [
@@ -20,7 +23,25 @@ const routes: Routes = [
     component: PagesComponent,
     canActivate: [AuthGuard],
     loadChildren: () => import('./profile/profile.routing').then(m => m.ProfileRoutingModule)
-  }
+  }, {
+    path: 'code-fest',
+    component: PagesComponent,
+    children: [
+      {
+        path: 'comunity',
+        component: ComunityComponent
+      },
+      {
+        path: 'workshop',
+        component: WorkshopComponent,
+      },
+      {
+          path: 'content-creators',
+          component: ContentCreatorsComponent,
+      },
+    ],
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
