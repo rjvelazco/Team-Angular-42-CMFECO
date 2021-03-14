@@ -1,0 +1,23 @@
+.title{
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.image {
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+:host ::ng-deep .p-card {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: 0.3s;
+}
+
+:host ::ng-deep .p-card:hover {
+  box-shadow: 1px 8px 16px 0 rgba(0,0,0,0.5);
+}

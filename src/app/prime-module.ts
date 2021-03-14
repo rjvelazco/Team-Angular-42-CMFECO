@@ -22,6 +22,8 @@ import {DataViewModule} from 'primeng/dataview';
 import {ChipModule} from 'primeng/chip';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {TableModule} from 'primeng/table';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   exports: [
@@ -48,6 +50,8 @@ import {TableModule} from 'primeng/table';
     ChipModule,
     MultiSelectModule,
     TableModule,
+    InputTextareaModule,
+    CalendarModule,
   ]
 })
 export class PrimeModule {

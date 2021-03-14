@@ -1,12 +1,10 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { map } from 'rxjs/operators';
-
+import {EventEmitter, Injectable} from '@angular/core';
+import {map} from 'rxjs/operators';
 // Firebase
-import { AngularFireAuth } from "@angular/fire/auth";
-import { AngularFirestore } from '@angular/fire/firestore';
-
+import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFirestore} from '@angular/fire/firestore';
 // Models
-import { Usuario } from '../../models/usuario.model';
+import {Usuario} from '../../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +50,7 @@ export class UsuarioService {
 
       await this.createParticipante(usuario);
       await this.updateUserName(username);
-      
+
       this.sendVerificationEmail();
       return user;
     } catch (error) {
@@ -91,7 +89,7 @@ export class UsuarioService {
       return new Error(error);
     }
   }
- 
+
   getCurrentUser() {
     return this.fbAuth.user.pipe(
       map(user => {
@@ -122,5 +120,5 @@ export class UsuarioService {
       return new Error(error)
     }
   }
-  
+
 }
