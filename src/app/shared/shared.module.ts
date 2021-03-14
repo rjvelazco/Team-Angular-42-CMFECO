@@ -32,7 +32,6 @@ import {SubMenuComponent} from '../pages/profile/components/sub-menu/sub-menu.co
     BrowserModule,
     ProfileModule,
     PipeModule,
-    ProfileModule
   ],
   exports: [
     HeaderComponent,

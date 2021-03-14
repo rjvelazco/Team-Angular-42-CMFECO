@@ -4,6 +4,17 @@
   background: linear-gradient(var(--background-gradient-comfeco));
 }
 
+.position-absolute {
+  position: absolute !important;
+}
+
+.bg-img-hero figure svg {
+  display: block;
+  fill: #fff;
+  pointer-events: none;
+  vertical-align: baseline;
+}
+
 .bg-img-hero {
   z-index: -10000;
   background-size: cover;

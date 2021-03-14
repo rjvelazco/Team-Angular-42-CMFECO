@@ -1,29 +1,24 @@
-<h3 style="text-align: center; margin-bottom: 40px; font-weight: bold;">Mis Insignias</h3>
+<h1 class="title">Mis Insignias</h1>
 <div class="p-grid p-text-center">
-    <p-card class="p-col-12 p-md-6 p-lg-3" *ngFor="let i of dumpData">
-      <img [src]="i.img"
-            alt="Avatar" class="image">
-      <div>
-        <h1> {{ i.insignia }}</h1>
-        <h5>Descripción</h5>
-        <div class="p-pt-5">
-          <p> {{ i.detalle }} </p>
-        </div>
+  <p-card class="p-col-12 p-md-6 p-lg-3" *ngFor="let i of dumpData">
+    <img [src]="i.img" alt="Avatar" class="image">
+    <div>
+      <h1> {{ i.insignia }}</h1>
+      <h5>Descripción</h5>
+      <div class="p-pt-5">
+        <p> {{ i.detalle }}</p>
       </div>
+    </div>
       <ng-template pTemplate="footer">
         <p-divider></p-divider>
         <div class="p-d-flex p-jc-between p-align-center">
           <ng-container>
             <div class="p-grid">
               <div class="p-col-12">
-                <h5>
-                  ¿Cómo ganaría?
-                </h5>
+                <h5>¿Cómo ganaría?</h5>
               </div>
               <div class="p-col-12">
-                <p>
-                  {{ i.pasos }}
-                </p>
+                <p>{{ i.pasos }}</p>
               </div>
             </div>
           </ng-container>

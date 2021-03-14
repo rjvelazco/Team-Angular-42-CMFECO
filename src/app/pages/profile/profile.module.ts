@@ -1,28 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // Routing
-import { ProfileRoutingModule } from './profile.routing';
-
+import {ProfileRoutingModule} from './profile.routing';
 // PrimerNg
-import { PrimeModule } from '../../prime-module';
-import { CalendarModule } from 'primeng/calendar';
-import { ButtonModule } from 'primeng/button';
-
+import {PrimeModule} from '../../prime-module';
+import {CalendarModule} from 'primeng/calendar';
+import {ButtonModule} from 'primeng/button';
 // Modules
-import { PipeModule } from '../../pipe/pipe.module';
-import {CardModule} from 'primeng/card';
-
-
+import {PipeModule} from '../../pipe/pipe.module';
 // Components
-import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { MyProfileComponent } from './components/my-profile/my-profile.component';
-import { EventsComponent } from './components/events/events.component';
-import { GroupsComponent } from './components/groups/groups.component';
-import { InsigniasComponent } from './components/insignias/insignias.component';
-
+import {EditProfileComponent} from './components/edit-profile/edit-profile.component';
+import {MyProfileComponent} from './components/my-profile/my-profile.component';
+import {GroupsComponent} from './components/groups/groups.component';
+import {EventsComponent} from './components/events/events.component';
+import {InsigniasComponent} from './components/insignias/insignias.component';
 
 
 @NgModule({
@@ -48,7 +40,9 @@ import { InsigniasComponent } from './components/insignias/insignias.component';
     PrimeModule,
     ProfileRoutingModule,
     ReactiveFormsModule,
-    CardModule
+    ButtonModule,
+    CalendarModule,
+    FormsModule,
   ]
 })
 export class ProfileModule {
