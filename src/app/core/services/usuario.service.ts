@@ -1,8 +1,10 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+
 // Firebase
 import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFirestore} from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 // Models
 import {Usuario} from '../../models/usuario.model';
 
