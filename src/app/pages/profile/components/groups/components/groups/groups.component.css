@@ -1,0 +1,19 @@
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+
+:host ::ng-deep .p-card {
+  background: #f9fafb;
+}
+
+@media only screen and (min-width: 1200px) {
+  .p-xl-fixed {
+    width: 22%;
+  }
+}
+
+

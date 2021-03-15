@@ -2,11 +2,10 @@
   <p-card [style]="{'margin-bottom': '2em', 'box-shadow':'0px 0px 4px rgba(0,0,0, .4)'}"
           class="card-event"
           *ngFor="let i of [].constructor(6)">
-   
     <ng-template pTemplate="header">
       <div class="p-d-flex p-justify-between p-align-center">
-        <div class="container-logo-card-event"> 
-          <img class="logo-card-event" src="assets/img/CMFECO-Logo.png" alt="COMFECO" > 
+        <div class="container-logo-card-event">
+          <img class="logo-card-event" src="assets/img/CMFECO-Logo.png" alt="COMFECO">
         </div>
         <div>
           <h3 class="p-text-center">!DUELO DE TITANES!</h3>
@@ -16,7 +15,6 @@
         </div>
       </div>
     </ng-template>
-
     <div class="p-py-0">
       <div class="p-mb-2 container-img-bg-card">
         <img class="img-bg-event-card" src="assets/img/bg_event_card.png" alt="Event">
@@ -41,7 +39,6 @@
         </div>
       </div>
     </div>
-
     <ng-template pTemplate="footer">
       <div class="p-mb-4">
         <h3>Angular</h3>
@@ -52,31 +49,9 @@
           <a href="#">Más Información</a>
         </div>
         <div class="p-col-6">
-          <button pButton type="button" class="p-button-raised button-reverse" label="Participar" ></button>
+          <button pButton type="button" class="p-button-raised button-reverse" label="Participar"></button>
         </div>
-      </div>    
+      </div>
     </ng-template>
-
   </p-card>
 </div>
-
-<!-- <p-carousel
-[value]="sponsors"
-[numVisible]="9"
-styleClass="p-mt-6"
-[numScroll]="9"
-[circular]="true">
-<ng-template let-sponsor pTemplate="item">
-  <a href="{{sponsor['link']}}" target="_blank">
-    <div class="sponsor">
-      <div class="sponsor-content">
-        <img src="assets/img/sponsors_oficiales/{{sponsor['image']}}"
-              class="sponsor-image p-shadow-2"
-              pTooltip="{{sponsor['sponsor_name']}}"
-              tooltipPosition="top"
-              alt="Sponsor">
-      </div>
-    </div>
-  </a>
-</ng-template>
-</p-carousel> -->

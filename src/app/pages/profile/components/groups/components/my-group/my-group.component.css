@@ -1,0 +1,41 @@
+img {
+  width: 8%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.group-detail {
+  width: 100%;
+}
+
+
+.p-card-header {
+  padding: 2rem 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  color: #273b47;
+}
+
+.group {
+  border-left: 4px solid rgb(107, 64, 126);
+  background-color: rgb(225, 217, 229);
+  color: rgb(107, 64, 126);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 2px;
+  padding: 0.3rem;
+  margin-bottom: 2rem;
+}
+
+:host ::ng-deep .p-avatar img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+:host ::ng-deep .p-card .p-card-body {
+  padding: 0 1rem;
+}
+

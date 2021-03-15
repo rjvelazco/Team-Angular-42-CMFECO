@@ -10,7 +10,7 @@
   border-radius: 10px;
 }
 
-:host ::ng-deep .tabview-profile span {
+:host ::ng-deep .tabview-profile .p-tabview-nav-link span {
   margin: 0 .5rem;
 }
 
