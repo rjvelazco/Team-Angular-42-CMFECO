@@ -12,6 +12,7 @@
         <div class="profile-biography p-pt-5">
           <p>{{usuario.bio}}</p>
         </div>
+        <div *ngIf="usuario.event">{{usuario.event}}</div>
       </div>
       <ng-template pTemplate="footer">
         <p-divider></p-divider>

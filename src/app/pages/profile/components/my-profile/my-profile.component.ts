@@ -62,11 +62,13 @@ export class MyProfileComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService
   ) {
-    
+    this.usuario = this.usuarioService.usuario;
   }
 
   ngOnInit(): void {
-    this.usuario = this.usuarioService.usuario;
+    this.usuarioService.usuarioEmiter.subscribe(usuario => {
+      this.usuario = usuario;
+    });
   }
 
 }
