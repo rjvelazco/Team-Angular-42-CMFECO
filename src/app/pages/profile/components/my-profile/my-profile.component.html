@@ -12,7 +12,13 @@
         <div class="profile-biography p-pt-5">
           <p>{{usuario.bio}}</p>
         </div>
-        <div *ngIf="usuario.event">{{usuario.event}}</div>
+        <div *ngIf="userEvent">
+          <span class="event-info">Informacion del Evento</span>
+          <br>
+          <span class="label-event-info">Nombre: <span class="event-title">{{userEvent.title}}</span></span>
+          <br>
+          <small><strong>Empieza:</strong> {{userEvent.dateStart}}</small>
+        </div>
       </div>
       <ng-template pTemplate="footer">
         <p-divider></p-divider>
@@ -90,9 +96,5 @@
     </p-card>
   </div>
 </div>
-Evento:
-<div *ngIf="userEvent">
-  Evento:
-  {{userEvent | json}}
-</div>
+
 

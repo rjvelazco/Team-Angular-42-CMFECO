@@ -17,7 +17,7 @@ export class MyProfileComponent implements OnInit {
 
   public usuario  : Usuario;
   public eventos  : Event[];
-  public userEvent: Event;
+  public userEvent: any;
 
   myEvents = [
     {
@@ -74,18 +74,26 @@ export class MyProfileComponent implements OnInit {
   ngOnInit(): void {
     this.eventService.getEvents().subscribe(events => {
       this.eventos = events;
+      this.actualizarUserEvent();
     });
     this.usuarioService.usuarioEmiter.subscribe(usuario => {
       this.usuario = usuario;
       if (this.usuario.event.length > 0) {
-        this.eventos.forEach(evento => {
-          if (evento.id === this.usuario.event) {
-            this.userEvent = evento;
-            console.log(this.userEvent);
-          }
-        });
+        this.actualizarUserEvent();
       }
     });
+  }
+
+  actualizarUserEvent() {
+    if (this.usuario.event.length > 0) {
+      this.eventos.forEach(evento => {
+        if (evento.id === this.usuario.event) {
+          this.userEvent = evento;
+        }
+      });
+    } else { 
+      this.userEvent = '';
+    }
   }
 
 }

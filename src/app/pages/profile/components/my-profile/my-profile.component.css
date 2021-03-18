@@ -84,6 +84,24 @@ a {
   line-height: 1.38;
 }
 
+.event-info{
+  display: inline-block;
+  margin: 10px 0px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.label-event-info{
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.event-title{
+  font-size: 14px;
+  font-weight: bold;
+}
+
 :host ::ng-deep .custombar {
   width: 100%;
   height: 50vh;
