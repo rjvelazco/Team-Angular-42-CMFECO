@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InsigniasService } from 'src/app/core/services/insignias.service';
+import { UsuarioService } from 'src/app/core/services/usuario.service';
 
 @Component({
   selector: 'app-insignias',
@@ -6,37 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./insignias.component.css']
 })
 export class InsigniasComponent implements OnInit {
+  insigniasUsuario = [];
+  insigniasGanadas = [];
 
-  dumpData = [
-    {
-      "insignia": "King of Code",
-      "img": 'corona.png',
-      "detalle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam beatae commodi culpa, cum, dignissimos dolorem.",
-      "pasos": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam beatae commodi culpa, cum, dignissimos dolorem eligendi facilis ipsam iure maxime, natus necessitatibus nesciunt nihil nobis quae quam quas quisquam."
-    },
-    {
-      "insignia": "Hacker",
-      "img": 'hacker.png',
-      "detalle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam beatae commodi culpa, cum, dignissimos dolorem.",
-      "pasos": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam beatae commodi culpa, cum, dignissimos dolorem eligendi facilis ipsam iure maxime, natus necessitatibus nesciunt nihil nobis quae quam quas quisquam."
-    },
-    {
-      "insignia": "Master Code",
-      "img": 'masterCode.png',
-      "detalle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam beatae commodi culpa, cum, dignissimos dolorem.",
-      "pasos": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam beatae commodi culpa, cum, dignissimos dolorem eligendi facilis ipsam iure maxime, natus necessitatibus nesciunt nihil nobis quae quam quas quisquam."
-    },
-    {
-      "insignia": "Sociable",
-      "img": 'sociable.png',
-      "detalle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam beatae commodi culpa, cum, dignissimos dolorem.",
-      "pasos": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam beatae commodi culpa, cum, dignissimos dolorem eligendi facilis ipsam iure maxime, natus necessitatibus nesciunt nihil nobis quae quam quas quisquam."
-    },
-  ]
+  constructor(private insigniasService: InsigniasService, private testSe: UsuarioService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    this.mostrarInsignias();
   }
 
+  mostrarInsignias(){
+    this.insigniasUsuario = this.testSe.usuario.insignias;
+    this.insigniasService.mostrarInsigniasGanadas().subscribe( data => {
+      for(let i = 0; i < data.length; i++){
+        for(let j=0; j< this.insigniasUsuario.length; j++){
+          if(data[i].id == this.insigniasUsuario[j]){
+            this.insigniasGanadas.push( data[i] );
+          }
+        }
+      }
+    });
+  }
 }

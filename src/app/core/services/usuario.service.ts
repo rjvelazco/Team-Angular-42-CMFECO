@@ -46,7 +46,7 @@ export class UsuarioService {
       const user = await this.fbAuth.createUserWithEmailAndPassword(email, password);
       let { uid, photoURL = '' } = user.user;
       photoURL = (photoURL) ? photoURL : '';
-      const usuario = new Usuario(uid, email , username, 'participante', photoURL, '', '', '', '', '', '', '', '', '', '', []);
+      const usuario = new Usuario(uid, email , username, 'participante', photoURL, '', '', '', '', '', '', '', '', '', '', [], false);
 
       await this.createParticipante(usuario);
       await this.updateUserName(username);
@@ -102,8 +102,8 @@ export class UsuarioService {
     return this.db.collection('participantes').doc(`${this.token}`)
       .valueChanges().pipe(
         map((userProfilSnapshot: any) => {
-          const { uid, email, userName, role, img = '', sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio = '', event = '', group = '', insignias = [] } = userProfilSnapshot;
-          this.usuario = new Usuario(uid, email, userName, role, img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, event, group, insignias);
+          const { uid, email, userName, role, img = '', sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio = '', event = '', group = '', insignias = [], estado = false } = userProfilSnapshot;
+          this.usuario = new Usuario(uid, email, userName, role, img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, event, group, insignias, estado);
           return true;
         }));
   }
