@@ -1,11 +1,11 @@
 <h1 class="title">Mis Insignias</h1>
 <div class="p-grid p-text-center">
-  <p-card class="p-col-12 p-md-6 p-lg-3" *ngFor="let i of dumpData">
-    <img src="assets/img/insignias/{{i.img}}" alt="Avatar" class="image">
+  <p-card class="p-col-12 p-md-6 p-lg-3" *ngFor="let i of insigniasGanadas">
+    <img src="{{i.imagen}}" alt="Avatar" class="image">
     <div>
       <h5>Descripción</h5>
       <div class="p-pt-5">
-        <p> {{ i.detalle }}</p>
+        <p> {{ i.descripcion }}</p>
       </div>
     </div>
       <ng-template pTemplate="footer">

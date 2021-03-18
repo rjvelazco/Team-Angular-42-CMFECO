@@ -16,7 +16,8 @@ export class Usuario {
     public bio      ?: string,
     public event    ?: string,
     public group    ?: string,
-    public insignias?: string[]
+    public insignias?: string[],
+    public estado?: boolean
   ) {}
 
 }
