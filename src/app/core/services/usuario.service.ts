@@ -14,6 +14,7 @@ import {Usuario} from '../../models/usuario.model';
 export class UsuarioService {
 
   public usuario: Usuario;
+  public groupName;
   public usuarioEmiter: EventEmitter<Usuario> = new EventEmitter();
 
   get token(): string{
@@ -97,7 +98,11 @@ export class UsuarioService {
   }
 
   public getIntegratesGroup(groupId) {
-    return this.db.collection('participantes', ref => ref.where('group', '==', groupId))
+    return this.db.collection('participantes', ref => ref.where('group', '==', groupId)).snapshotChanges()
+  }
+
+  public getNameGroup(groupId) {
+    return this.db.collection('grupos', ref => ref.where('id', '==', groupId)).snapshotChanges()
   }
 
   getCurrentUser() {
@@ -114,6 +119,7 @@ export class UsuarioService {
         map((userProfilSnapshot: any) => {
           const { uid, email, userName, role, img = '', sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio = '', event = '', group = '', insignias = [], estado = false } = userProfilSnapshot;
           this.usuario = new Usuario(uid, email, userName, role, img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, event, group, insignias, estado);
+          localStorage.setItem('groupId', this.usuario.group)
           return true;
         }));
   }
