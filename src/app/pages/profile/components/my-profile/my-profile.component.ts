@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from 'src/app/core/services/event.service';
 
 // Services
 import { UsuarioService } from '../../../../core/services/usuario.service';
 
 // Models
 import { Usuario } from '../../../../models/usuario.model';
+import { Event } from '../../../../models/event.model';
 
 @Component({
   selector: 'app-my-profile',
@@ -13,7 +15,10 @@ import { Usuario } from '../../../../models/usuario.model';
 })
 export class MyProfileComponent implements OnInit {
 
-  public usuario: Usuario;
+  public usuario  : Usuario;
+  public eventos  : Event[];
+  public userEvent: Event;
+
   myEvents = [
     {
       'id': 1,
@@ -60,14 +65,26 @@ export class MyProfileComponent implements OnInit {
   ];
 
   constructor(
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private eventService: EventService
   ) {
     this.usuario = this.usuarioService.usuario;
   }
 
   ngOnInit(): void {
+    this.eventService.getEvents().subscribe(events => {
+      this.eventos = events;
+    });
     this.usuarioService.usuarioEmiter.subscribe(usuario => {
       this.usuario = usuario;
+      if (this.usuario.event.length > 0) {
+        this.eventos.forEach(evento => {
+          if (evento.id === this.usuario.event) {
+            this.userEvent = evento;
+            console.log(this.userEvent);
+          }
+        });
+      }
     });
   }
 

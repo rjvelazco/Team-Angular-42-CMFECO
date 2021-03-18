@@ -17,7 +17,6 @@ export class EventService {
   getEvents() {
     return this.db.collection<Event>('evento').valueChanges().pipe(
       map(resp => {
-        console.log('Evento');
         return this.transformEventsModel(resp);
       })
     )
