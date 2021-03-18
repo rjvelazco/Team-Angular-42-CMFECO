@@ -22,9 +22,9 @@ a {
 }
 
 .profile-image {
-  max-width: 100%;
   width: 200px;
-  height: auto;
+  height: 200px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   object-fit: cover;
   border-radius: 50%;
 }

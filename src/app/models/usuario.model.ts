@@ -13,7 +13,11 @@ export class Usuario {
     public github   ?: string,
     public linkedIn ?: string,
     public twitter  ?: string,
-    public bio      ?: string
+    public bio      ?: string,
+    public event    ?: string,
+    public group    ?: string,
+    public insignias?: string[],
+    public estado?: boolean
   ) {}
 
 }
