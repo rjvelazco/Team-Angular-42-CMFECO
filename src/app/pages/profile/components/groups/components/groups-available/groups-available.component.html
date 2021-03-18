@@ -1,7 +1,7 @@
 <p-dataView #dv [value]="filter"
             [paginator]="true"
             rows="9"
-            filterBy="name"
+            filterBy="data.name"
             layout="grid"
             [loading]="loading"
             [sortField]="sortField"
@@ -31,11 +31,11 @@
   <ng-template let-group pTemplate="listItem">
     <div class="p-col-12">
       <div class="group-list-item">
-        <img src="assets/img/{{group['image']}}" alt="Image Group">
+        <img src="assets/img/{{group['data']['image']}}" alt="Image Group">
         <div class="group-list-detail">
-          <div class="group-name">{{group['name']}}</div>
-          <p-chip label="{{group['technology']}}" [styleClass]="group.technology.toLowerCase()"></p-chip>
-          <div class="group-description">{{group['description']}}</div>
+          <div class="group-name">{{group['data']['name']}}</div>
+          <p-chip label="{{group['data']['technology']}}" [styleClass]="group.data.technology.toLowerCase()"></p-chip>
+          <div class="group-description">{{group['data']['description']}}</div>
         </div>
         <div class="group-list-action">
           <p-button label="Unirse"></p-button>
@@ -48,12 +48,12 @@
       <div class="group-grid-item">
         <p-card>
           <ng-template pTemplate="header">
-            <img src="assets/img/{{group['image']}}" alt="Image Group">
-            <p-chip label="{{group['technology']}}" [styleClass]="group.technology.toLowerCase()"></p-chip>
+            <img src="assets/img/{{group['data']['image']}}" alt="Image Group">
+            <p-chip label="{{group['data']['technology']}}" [styleClass]="group.data.technology.toLowerCase()"></p-chip>
           </ng-template>
           <div class="group-grid-item-content">
-            <div class="group-name">{{group['name']}}</div>
-            <div class="group-description">{{group['description']}}</div>
+            <div class="group-name">{{group['data']['name']}}</div>
+            <div class="group-description">{{group['data']['description']}}</div>
           </div>
           <div class="group-list-action">
             <p-button label="Unirse"></p-button>

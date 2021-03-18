@@ -83,11 +83,19 @@ export class UsuarioService {
   async createParticipante(user: Usuario) {
     try {
       const uid = user.uid;
-      const item = {uid, ...user };
+      const item = {uid, ...user};
       return await this.db.collection('participantes').doc(uid).set(item);
     } catch (error) {
       return new Error(error);
     }
+  }
+
+  public grupos() {
+    return this.db.collection('grupos').snapshotChanges();
+  }
+
+  public getIntegratesGroup(groupId) {
+    return this.db.collection('participantes', ref => ref.where('group', '==', groupId))
   }
 
   getCurrentUser() {
