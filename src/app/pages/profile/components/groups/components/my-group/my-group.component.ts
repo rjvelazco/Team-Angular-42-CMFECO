@@ -41,9 +41,12 @@ export class MyGroupComponent implements OnInit {
 
   AbandonarGrupo() {
     Swal.fire({
-        icon: 'success',
-        title: 'Has abandonado el grupo',
+        icon: 'info',
+        title: '¿Estas seguro de abandonar el grupo?',
+        showDenyButton: true,
         showConfirmButton: true,
+        confirmButtonText: `Confirmar`,
+        denyButtonText: `Cancelar`,
         footer: 'Buena suerte en tu aventura!'
       }
     );

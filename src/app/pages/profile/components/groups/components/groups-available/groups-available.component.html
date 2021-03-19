@@ -41,7 +41,7 @@
             </div>
           </div>
           <div class="group-list-action p-col-2">
-            <p-button label="Unirse"></p-button>
+            <p-button label="Unirse" (click)="joinGroup()"></p-button>
         </div>
         </div>
       </div>
@@ -61,7 +61,7 @@
             <div class="group-description" >{{group['data']['description']}}</div>
           </div>
           <div class="group-list-action">
-            <p-button label="Unirse"></p-button>
+            <p-button label="Unirse" (click)="joinGroup()"></p-button>
           </div>
         </p-card>
       </div>

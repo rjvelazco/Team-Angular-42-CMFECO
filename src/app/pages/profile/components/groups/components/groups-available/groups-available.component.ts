@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UsuarioService} from '../../../../../../core/services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-groups-available',
@@ -54,6 +55,17 @@ export class GroupsAvailableComponent implements OnInit {
 
   getGroupName(){
 
+  }
+
+  joinGroup(){
+    Swal.fire({
+      icon: 'info',
+      title: '¿Estas seguro de entrar al grupo?',
+      showDenyButton: true,
+      showConfirmButton: true,
+      confirmButtonText: `Confirmar`,
+      denyButtonText: `Cancelar`,
+    })
   }
 
   groups() {
