@@ -32,13 +32,17 @@
     <div class="p-col-12">
       <div class="group-list-item">
         <img src="assets/img/{{group['data']['image']}}" alt="Image Group">
-        <div class="group-list-detail">
-          <div class="group-name">{{group['data']['name']}}</div>
-          <p-chip label="{{group['data']['technology']}}" [styleClass]="group.data.technology.toLowerCase()"></p-chip>
-          <div class="group-description">{{group['data']['description']}}</div>
+        <div class="p-grid" style="width: 100%;">
+          <div class="p-col-10">
+            <div class="group-name">{{group['data']['name']}}</div>
+            <p-chip label="{{group['data']['technology']}}" [styleClass]="group.data.technology.toLowerCase()"></p-chip>
+              <div class="group-description">
+                {{group['data']['description']}}
+            </div>
+          </div>
+          <div class="group-list-action p-col-2">
+            <p-button label="Unirse"></p-button>
         </div>
-        <div class="group-list-action">
-          <p-button label="Unirse"></p-button>
         </div>
       </div>
     </div>
@@ -51,9 +55,10 @@
             <img src="assets/img/{{group['data']['image']}}" alt="Image Group">
             <p-chip label="{{group['data']['technology']}}" [styleClass]="group.data.technology.toLowerCase()"></p-chip>
           </ng-template>
-          <div class="group-grid-item-content">
+
+          <div class="group-grid-item-content" style="min-height: 70%;">
             <div class="group-name">{{group['data']['name']}}</div>
-            <div class="group-description">{{group['data']['description']}}</div>
+            <div class="group-description" >{{group['data']['description']}}</div>
           </div>
           <div class="group-list-action">
             <p-button label="Unirse"></p-button>
