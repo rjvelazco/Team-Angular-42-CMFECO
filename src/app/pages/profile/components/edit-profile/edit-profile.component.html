@@ -13,8 +13,7 @@
       <form [formGroup]="form" (ngSubmit)="updateUser(form)">
         <div class="avatar">
           <h2 class="title">Editar perfil</h2>
-          <img *ngIf="!imgTemp" src="/assets/img/sponsors_oficiales/sponsor-fernando_herrera.jpg"
-               alt="Italian Trulli">
+          <img *ngIf="!imgTemp" [src]="usuario.img | imagen" alt="Italian Trulli">
           <img *ngIf="imgTemp" class="img-avatar" [src]="imgTemp" alt="avatar">
           <div class="upload-avatar">
             <label class="pi pi-camera cursor" for="uploadImage" style="font-size: 2rem"></label>
@@ -84,8 +83,9 @@
           <div class="p-col-12 p-md-4">
             <div class="p-field">
               <label for="country">Pais</label>
-              <p-dropdown [options]="countries"
-                          [(ngModel)]="selectedCountry"
+              
+              <p-dropdown [(ngModel)]="selectedCountry"
+                          [options]="countries"
                           optionLabel="name"
                           [filter]="true"
                           filterBy="name"
@@ -166,11 +166,11 @@
             <div class="p-field">
               <div class="p-inputgroup">
                 <span class="p-inputgroup-addon"><i class="pi pi-facebook p-mr-2"></i>
-                  linkedin.com/</span>
+                  linkedIn.com/</span>
                 <input type="text"
-                       id="linkedin"
+                       id="linkedIn"
                        pInputText
-                       formControlName="linkedin"
+                       formControlName="linkedIn"
                        placeholder="">
               </div>
             </div>
