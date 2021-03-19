@@ -16,6 +16,10 @@
   flex-direction: column;
 }
 
+.group-list-detail{
+  min-width: 70%;
+}
+
 .group-name{
   font-size: 1.5rem;
   font-weight: 700;
@@ -23,6 +27,7 @@
 
 .group-description{
   margin: 0 0 1rem 0;
+  min-width: 70%;
 }
 
 .group-list-item .group-description{
@@ -57,9 +62,11 @@
   width: 100%;
 }
 
+:host ::ng-deep .p-card-content{
+  height: 170px;
+}
 
-
-:host ::ng-deep .p-card .p-card-body{
+:host ::ng-deep .p-card .p-card-body {
   padding: 0 1rem;
   margin-bottom: 2rem;
 }
