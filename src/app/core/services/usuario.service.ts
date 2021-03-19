@@ -1,10 +1,8 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import { map } from 'rxjs/operators';
-
+import {map} from 'rxjs/operators';
 // Firebase
 import {AngularFireAuth} from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
-
+import {AngularFirestore} from '@angular/fire/firestore';
 // Models
 import {Usuario} from '../../models/usuario.model';
 
@@ -38,6 +36,7 @@ export class UsuarioService {
   async logout() {
     try {
       localStorage.removeItem('token');
+      localStorage.removeItem('groupId')
       return await this.fbAuth.signOut();
     } catch (error) {
       throw new Error(error);
@@ -102,7 +101,7 @@ export class UsuarioService {
   }
 
   public getNameGroup(groupId) {
-    return this.db.collection('grupos', ref => ref.where('id', '==', groupId)).snapshotChanges()
+    return this.db.collection('grupos', ref => ref.where('id', '==', groupId)).valueChanges();
   }
 
   getCurrentUser() {
@@ -113,13 +112,14 @@ export class UsuarioService {
     );
   }
 
+
   getParticipante() {
     return this.db.collection('participantes').doc(`${this.token}`)
       .valueChanges().pipe(
         map((userProfilSnapshot: any) => {
-          const { uid, email, userName, role, img = '', sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio = '', event = '', group = '', insignias = [], estado = false } = userProfilSnapshot;
+          const {uid, email, userName, role, img = '', sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio = '', event = '', group = '', insignias = [], estado = false} = userProfilSnapshot;
           this.usuario = new Usuario(uid, email, userName, role, img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, event, group, insignias, estado);
-          localStorage.setItem('groupId', this.usuario.group)
+          localStorage.setItem('groupId', this.usuario.group);
           return true;
         }));
   }
@@ -127,7 +127,7 @@ export class UsuarioService {
   async updateParticipante(user: Usuario) {
     try {
       const uid = user.uid;
-      const item = { uid, ...user };
+      const item = {uid, ...user};
       const result = await this.db.collection('participantes').doc(`${this.token}`).set(item);
       this.usuario = user;
       this.usuarioEmiter.emit(user);

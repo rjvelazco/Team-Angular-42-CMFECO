@@ -1,11 +1,11 @@
 <p-card>
     <ng-template pTemplate="header">
       <div class="p-card-header">
-        <h5 class="p-text-bold">Talleres</h5>
+        <h5 class="p-text-bold">Grupo</h5>
         <a href="" class="text-decoration-none">Ir a mi grupo</a>
       </div>
     </ng-template>
-  <ng-container *ngIf="integrantes; else elseBlock">
+  <ng-container *ngIf="this.integrantes; else elseBlock">
     <div class="group">
       <h6>{{groupName}}</h6>
       <img src="https://i.imgur.com/bcyviLp.png" alt="" class="img-js">
@@ -37,7 +37,7 @@
                     type="button"
                     label="Abandonar"
                     class="p-button-rounded p-button-outlined p-button-danger"
-                    (click)="AbandonarGrupo()">
+                    (click)="abandonarGrupo()">
             </button>
           </div>
         </div>

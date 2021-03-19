@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import Swal from 'sweetalert2';
 import {UsuarioService} from '../../../../../../core/services/usuario.service';
+import {Usuario} from '../../../../../../models/usuario.model';
 
 @Component({
   selector: 'app-my-group',
@@ -12,9 +13,14 @@ export class MyGroupComponent implements OnInit {
   public integrantes;
   public groupId = localStorage.getItem('groupId');
   public groupName;
+  public usuario: Usuario;
 
-  constructor(private usuarioService: UsuarioService) {
+  constructor(
+    private usuarioService: UsuarioService
+  ) {
     this.getMygroup();
+    this.usuario = this.usuarioService.usuario;
+    console.log(this.integrantes);
   }
 
   ngOnInit(): void {
@@ -35,11 +41,10 @@ export class MyGroupComponent implements OnInit {
             data: responseData.payload.doc.data(),
           });
         });
-        console.log(this.integrantes);
       });
   }
 
-  AbandonarGrupo() {
+  abandonarGrupo() {
     Swal.fire({
         icon: 'info',
         title: '¿Estas seguro de abandonar el grupo?',
@@ -49,7 +54,12 @@ export class MyGroupComponent implements OnInit {
         denyButtonText: `Cancelar`,
         footer: 'Buena suerte en tu aventura!'
       }
-    );
+    ).then(async (result) => {
+      if (result.isConfirmed) {
+        this.usuario.group = ' '
+        await this.usuarioService.updateParticipante(this.usuario);
+      }
+    });
   }
 
 }

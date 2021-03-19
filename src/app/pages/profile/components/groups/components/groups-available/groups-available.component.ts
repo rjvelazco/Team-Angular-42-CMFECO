@@ -15,11 +15,13 @@ export class GroupsAvailableComponent implements OnInit {
   public loading = true;
   public filter = [];
   public groupsAvailable = [];
-  public groupId = localStorage.getItem('groupId')
+  public groupId = localStorage.getItem('groupId');
+  public usuario;
 
   constructor(private usuarioService: UsuarioService,) {
     this.groups();
     this.getGroupName();
+    this.usuario = this.usuarioService.usuario;
   }
 
   onSortChange(event) {
@@ -57,7 +59,7 @@ export class GroupsAvailableComponent implements OnInit {
 
   }
 
-  joinGroup(){
+  joinGroup(groupId) {
     Swal.fire({
       icon: 'info',
       title: '¿Estas seguro de entrar al grupo?',
@@ -65,7 +67,12 @@ export class GroupsAvailableComponent implements OnInit {
       showConfirmButton: true,
       confirmButtonText: `Confirmar`,
       denyButtonText: `Cancelar`,
-    })
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        this.usuario.group = groupId;
+        await this.usuarioService.updateParticipante(this.usuario);
+      }
+    });
   }
 
   groups() {
@@ -79,7 +86,7 @@ export class GroupsAvailableComponent implements OnInit {
         });
         this.loading = false;
         this.filter = this.groupsAvailable;
-        console.log(this.groupsAvailable)
       });
+    console.log(this.groupsAvailable)
   }
 }
