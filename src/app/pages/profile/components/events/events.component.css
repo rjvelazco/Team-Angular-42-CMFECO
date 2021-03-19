@@ -2,6 +2,19 @@ img{
   object-fit: cover;
 }
 
+.cardpadre{
+  margin-top: 10rem;
+}
+
+:host ::ng-deep .p-card-content {
+  min-height: 70%;
+}
+
+:host ::ng-deep .p-card{
+  min-height: 720px;
+}
+
+
 .sponsor-image {
   width: 70px;
   height: 70px;
@@ -17,9 +30,11 @@ img{
 }
 
 .icon-event{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: auto;
 }
+
+
 
 .img-event-container{
   display: flex;
@@ -75,7 +90,6 @@ a{
 }
 
 .card-event{
-  width: 40rem;
   padding: 0 10px;
 }
 
@@ -84,9 +98,6 @@ a{
 }
 
 @media screen and (max-width: 600px){
-  .card-event{
-    width: 100% !important;
-  }
 
   .icons-event{
     display: none;

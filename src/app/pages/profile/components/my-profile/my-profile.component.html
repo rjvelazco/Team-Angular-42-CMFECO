@@ -6,7 +6,7 @@
       </div>
       <img [src]="usuario.img | imagen"
            alt="Avatar" class="profile-image">
-      <div class="profile-info">
+      <div class="profile-info" style="height: 120px;">
         <h1 class="profile-nickname">{{usuario.userName}}</h1>
         <div class="profile-role">{{usuario.role}}</div>
         <div class="profile-biography p-pt-5">
@@ -64,18 +64,19 @@
     </p-card>
   </div>
   <div class="p-col-12 p-lg-3 p-xl-fixed events">
-    <p-card>
+    <p-card class="events">
       <ng-template pTemplate="header">
         <div class="p-card-header">
           <h5 class="color-white">Eventos de tu interes</h5>
           <a href="#">Ver más</a>
         </div>
       </ng-template>
+      <div style="height: 383px;">
       <p-scrollPanel styleClass="custombar">
-        <div *ngFor="let event of myEvents">
+        <div *ngFor="let event of myEvents" >
           <div class="p-grid p-flex-column">
-            <div class="p-col">
-              <div class="event-card">
+            <div class="p-col" >
+              <div class="event-card" >
                 <div class="event-image">
                   <img src="assets/img/{{event['image']}}" alt="image">
                 </div>
@@ -93,6 +94,7 @@
           </div>
         </div>
       </p-scrollPanel>
+    </div>
     </p-card>
   </div>
 </div>

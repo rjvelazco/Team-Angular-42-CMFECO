@@ -1,7 +1,9 @@
-<div *ngIf="events" class="p-d-flex p-justify-around p-align-center p-flex-wrap">
-  <p-card [style]="{'margin-bottom': '2em', 'box-shadow':'0px 0px 4px rgba(0,0,0, .4)'}"
-          class="card-event"
-          *ngFor="let event of events">
+<div class="p-grid p-flex-column p-flex-md-row vertical-container " style="margin-top: 0.5rem">
+<ng-container *ngIf="events" class="carpadre">
+  <p-card [style]="{'margin-bottom': '3em', 'box-shadow':'0px 0px 4px rgba(0,0,0, .4)'}"
+          class="card-event p-col-12 p-md-6 p-lg-4"
+          *ngFor="let event of events"
+          >
     <ng-template pTemplate="header">
       <div class="p-d-flex p-justify-between p-align-center">
         <div class="container-logo-card-event">
@@ -32,32 +34,33 @@
               <h3 class="p-m-0">Frameworks</h3>
             </div>
             <div class="p-col-4 img-event-container">
-              <img class="icon-event" src="assets/img/angular.png" alt="">
-              <img class="icon-event" src="assets/img/react.png"   alt="">
-              <img class="icon-event" src="assets/img/svelte.png"  alt="">
+              <img class="icon-event" src="assets/img/angular.png" alt="iconEvent">
+              <img class="icon-event" src="assets/img/react.png"   alt="iconEvent">
+              <img class="icon-event" src="assets/img/svelte.png"  alt="iconEvent" style="width: 25px;">
             </div>
           </div>
         </div>
       </div>
     </div>
     <ng-template pTemplate="footer">
-      <div class="p-mb-4">
-        <h3>{{event.title}} - [{{event.amount}}]</h3>
+      <div>
+        <h3>{{event.title}} - {{event.amount}} Participantes</h3>
         <p>{{event.desc}}</p>
         <br>
         <small><strong>Empieza el</strong>: {{event.dateStart}}</small>
         <br>
         <small><strong>Limite de Participantes</strong>: {{event.limit}}</small>
       </div>
-      <div class="p-grid p-align-center">
+      <div class="p-grid p-align-center p-mt-4">
         <div class="p-col-6">
           <a href="#">Más Información</a>
         </div>
         <div class="p-col-6">
-          <button *ngIf="usuario.event != event.id" (click)="signIn(event)" pButton type="button" class="p-button-raised button-reverse" label="Participar"></button>
-          <button *ngIf="usuario.event === event.id" (click)="signOut(event)" pButton type="button" class="p-button-raised button-reverse" label="Abandonar"></button>
+          <button *ngIf="usuario.event != event.id" (click)="signIn(event)" pButton type="button" class="p-button-raised" label="Participar"></button>
+          <button *ngIf="usuario.event === event.id" (click)="signOut(event)" pButton type="button" class="p-button-raised p-button-danger" label="Abandonar"></button>
         </div>
       </div>
     </ng-template>
   </p-card>
+</ng-container>
 </div>

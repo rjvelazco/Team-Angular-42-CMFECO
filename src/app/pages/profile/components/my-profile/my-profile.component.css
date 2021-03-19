@@ -6,9 +6,7 @@ a {
   padding-top: 12px;
 }
 
-.insignia {
-  padding: 1rem;
-}
+
 
 .profile-info .profile-nickname {
   font-weight: bold;
@@ -139,6 +137,8 @@ a {
 :host ::ng-deep .p-card .insignia-avatar .p-card-body .p-card-content{
   text-align: center;
 }
+
+
 
 :host ::ng-deep .p-avatar.p-avatar-xl .p-avatar-icon{
   color: var(--color-palette-secondary);
