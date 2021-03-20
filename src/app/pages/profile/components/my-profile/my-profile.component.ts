@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EventService } from 'src/app/core/services/event.service';
+import { InsigniasService } from 'src/app/core/services/insignias.service';
 
 // Services
 import { UsuarioService } from '../../../../core/services/usuario.service';
@@ -67,10 +68,13 @@ export class MyProfileComponent implements OnInit, OnDestroy {
       'information': '',
     }
   ];
-
+  insignias = [];
+  insigniasUsuario = [];
+  insigniasGanadas = [];
   constructor(
     private usuarioService: UsuarioService,
-    private eventService: EventService
+    private eventService: EventService,
+    private insigniasService: InsigniasService
   ) {
     this.usuario = this.usuarioService.usuario;
   }
@@ -103,6 +107,23 @@ export class MyProfileComponent implements OnInit, OnDestroy {
     } else { 
       this.userEvent = '';
     }
+    this.usuario = this.usuarioService.usuario;
+    this.mostrarInsignias();
+    console.log('insignias', this.insignias)  
+    console.log('insignias Ganadas', this.insigniasGanadas)
   }
 
+  mostrarInsignias(){
+    this.insigniasUsuario = this.usuarioService.usuario.insignias;
+    this.insigniasService.mostrarInsigniasGanadas().subscribe( data => {
+      for(let i = 0; i < data.length; i++){
+        this.insignias.push( data[i] );
+        for(let j=0; j< this.insigniasUsuario.length; j++){
+          if(data[i].id == this.insigniasUsuario[j]){
+            this.insigniasGanadas.push( data[i] );
+          }
+        }
+      }
+    });
+  }
 }

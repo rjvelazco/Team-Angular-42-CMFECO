@@ -1,7 +1,7 @@
 <div class="p-grid p-mt-3">
   <div class="p-col-12 p-lg-3 p-xl-fixed p-text-center profile">
     <p-card class="profile-card">
-      <div class="p-text-right">
+      <div class="p-text-right p-pb-3">
         <a routerLink="editar">Editar perfil</a>
       </div>
       <img [src]="usuario.img | imagen"
@@ -24,8 +24,10 @@
       <ng-template pTemplate="footer">
         <p-divider></p-divider>
         <div class="p-d-flex p-jc-between p-align-center">
-          <ng-container *ngFor="let i of [].constructor(4)">
-            <p-avatar icon="pi pi-star" styleClass="p-mr-2" size="large" shape="circle"></p-avatar>
+          <ng-container *ngFor="let item of insigniasGanadas; let i = index">
+            <p-avatar styleClass="p-mr-2" size="large" shape="circle">
+              <img title="{{ item.nombre }}"  src="{{ item.imagen }}" alt="insigniasLogo">  
+            </p-avatar>
           </ng-container>
         </div>
       </ng-template>
@@ -33,8 +35,10 @@
   </div>
   <div class="p-col-12 p-lg-6 insignia">
     <p-card header="Insignias" styleClass="insignias-card">
-      <ng-container *ngFor="let i of [].constructor(4)">
-        <p-avatar icon="pi pi-star" styleClass="insignia-avatar" size="xlarge" shape="circle"></p-avatar>
+      <ng-container>
+          <p-avatar *ngFor="let i of insignias" styleClass="insignia-avatar" size="xlarge" shape="circle">
+              <img title="{{ i.nombre }}" src="{{ i.imagen }}" alt="insigniasLogo">
+          </p-avatar>
       </ng-container>
     </p-card>
     <p-card header="Actividad reciente">
@@ -67,7 +71,7 @@
   <div class="p-col-12 p-lg-3 p-xl-fixed events">
     <p-card>
       <ng-template pTemplate="header">
-        <div class="p-card-header">
+        <div class="p-card-header p-pb-3">
           <h5 class="color-white">Eventos de tu interes</h5>
           <a href="#">Ver más</a>
         </div>

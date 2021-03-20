@@ -7,7 +7,7 @@ a {
 }
 
 .insignia {
-  padding: 1rem;
+  padding-bottom: 1rem;
 }
 
 .profile-info .profile-nickname {
@@ -157,6 +157,8 @@ a {
 
   :host ::ng-deep .p-card .insignia-avatar{
     margin-left: 0;
+    width: 100px;
+    height: 100px;
   }
 
   :host ::ng-deep .insignias-card .p-card-body .p-card-content {
