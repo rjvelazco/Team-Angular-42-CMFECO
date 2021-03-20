@@ -11,63 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  form: FormGroup;
+  
+  public form: FormGroup;
+  public emailRegularExpression: RegExp = new RegExp('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$');
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private usuarioService: UsuarioService,
-    private router: Router
-  ) {
-  }
-
-  ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      username: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      email: new FormControl('', [Validators.compose([
-        Validators.required,
-        Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')])]
-      ),
-      password: new FormControl('', [Validators.required , Validators.minLength(6)]),
-      confirmPassword: new FormControl('', [Validators.required]),
-    },
-    {
-      validators: this.validatePassword('password','confirmPassword')
-    });
-  }
-
-  async createUser(form){
-    const { username, email, password } = form;
-
-    if (this.form.invalid) {
-      Swal.fire({
-        title: '¡Formulario inválido!',
-        text: 'Complete debidamente el registro, por favor.',
-        icon: 'error',
-        confirmButtonText: 'Cool'
-      });
-      this.markAsTouched();
-    } else {
-      try {
-        const { user } = await this.usuarioService.register(username, email, password);
-        Swal.fire({
-          title: '¡Bienvenido!',
-          text: `Verifica tu email [${user.email}] para continuar.`,
-          icon: 'success',
-          confirmButtonText: 'Cool'
-        });
-        this.form.reset();
-        this.router.navigateByUrl('/login');
-      } catch (error) {
-        Swal.fire({
-          title: '¡Error!',
-          text: 'El email ya ha sido registrado.',
-          icon: 'error',
-          confirmButtonText: 'Cool'
-        });
-      }
-    }
-  }
-
+  // Getters -> Validar usuario
   get usernameInvalid() {
     return this.form.get('username').invalid && this.form.get('username').touched
   }
@@ -83,6 +31,50 @@ export class RegisterComponent implements OnInit {
     const password2 = this.form.get('confirmPassword').value;
     return (password1 !== password2);
   }
+  
+  constructor(
+    private formBuilder     : FormBuilder,
+    private usuarioService  : UsuarioService,
+    private router          : Router
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      username        : new FormControl('', [Validators.required, Validators.minLength(6)]),
+      email           : new FormControl('', [Validators.compose([Validators.required,Validators.pattern(this.emailRegularExpression)])]),
+      password        : new FormControl('', [Validators.required , Validators.minLength(6)]),
+      confirmPassword : new FormControl('', [Validators.required]),
+    },
+    {
+      validators: this.validatePassword('password','confirmPassword')
+    });
+  }
+
+  async createUser(form){
+    const { username, email, password } = form;
+
+    if (this.form.invalid) {
+      this.errorMessage('¡Formulario inválido!', 'Complete debidamente el registro, por favor.');
+      this.markAsTouched();
+    } else {
+      try {
+        const { user } = await this.usuarioService.register(username, email, password);
+        Swal.fire({
+          title: '¡Bienvenido!',
+          text: `Verifica tu email [${user.email}] para continuar.`,
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        });
+        this.form.reset();
+        this.router.navigateByUrl('/login');
+      } catch (error) {
+        this.errorMessage('¡Error!', 'El email ya ha sido registrado.');
+      }
+    }
+  }
+
+
 
   validatePassword(p1: string, p2: string){
     return ( formGroup: FormGroup ) => {
@@ -97,8 +89,17 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  markAsTouched(){
+  markAsTouched():void{
     Object.values(this.form.controls).forEach(control => control.markAllAsTouched());
+  }
+
+  errorMessage(title:string, message:string):void{
+    Swal.fire({
+      title: title,
+      text: message,
+      icon: 'error',
+      confirmButtonText: 'Cool'
+    });
   }
 
 

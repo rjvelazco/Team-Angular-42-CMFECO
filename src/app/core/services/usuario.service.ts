@@ -11,7 +11,7 @@ import {Usuario} from '../../models/usuario.model';
 })
 export class UsuarioService {
 
-  
+  // User Info
   public usuario: Usuario;
   public team: any[] = [];
   
@@ -19,6 +19,7 @@ export class UsuarioService {
   public usuarioEmiter: EventEmitter<Usuario> = new EventEmitter();
   public usuarioGroupEmitter: EventEmitter<Usuario[]> = new EventEmitter();
   
+  // Get user  "Token"
   get token(): string {
     return localStorage.getItem('token') || '';
   }
@@ -49,15 +50,21 @@ export class UsuarioService {
 
   async register(username, email, password) {
     try {
+      
+      // Crear user into fireauth
       const user = await this.fbAuth.createUserWithEmailAndPassword(email, password);
-      let { uid, photoURL = '' } = user.user;
-      photoURL = (photoURL) ? photoURL : '';
+      const { uid, photoURL = '' } = user.user;
+
+      // New user Instance
       const usuario = new Usuario(uid, email, username, 'participante', photoURL, '', '', '', '', '', '', '', '', '', '', [], false);
 
+      // Update user into firecloud
       await this.createParticipante(usuario);
       await this.updateUserName(username);
-
+      
+      // Verification Email
       this.sendVerificationEmail();
+
       return user;
     } catch (error) {
       throw new Error(error);
@@ -78,9 +85,7 @@ export class UsuarioService {
 
   async updateUserName(username) {
     try {
-      (await this.fbAuth.currentUser).updateProfile({
-        displayName: username
-      });
+      (await this.fbAuth.currentUser).updateProfile({displayName: username});
     } catch (error) {
       throw new Error(error);
     }
@@ -96,18 +101,16 @@ export class UsuarioService {
     }
   }
 
-  public grupos() {
-    return this.db.collection('grupos').snapshotChanges();
-  }
-
   async getIntegratesGroup(): Promise<Usuario[]> {
     try {
       this.team = [];
-    
-      const resp = await this.db.firestore.collection('participantes').where('group', '==', this.usuario.group).get();
-      resp.forEach(docs => this.team.push(docs.data()));
 
+      const resp = await this.db.firestore.collection('participantes').where('group', '==', this.usuario.group).get();
+
+      // Get user team.
+      resp.forEach(docs => this.team.push(docs.data()));
       this.usuarioGroupEmitter.emit(this.team);
+
       return this.team;
     } catch (error) {
       return [];
@@ -125,26 +128,6 @@ export class UsuarioService {
     }
   }
 
-  getCurrentUser() {
-    return this.fbAuth.user.pipe(
-      map(user => {
-        return user;
-      })
-    );
-  }
-
-
-  getParticipante() {
-    return this.db.collection('participantes').doc(`${this.token}`)
-      .valueChanges().pipe(
-        map((user: any) => {
-          const {uid, email, userName, role, img = '', sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio = '', event = '', group = '', insignias = [], estado = false} = user;
-          this.usuario = new Usuario(uid, email, userName, role, img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, event, group, insignias, estado);
-          localStorage.setItem('groupId', this.usuario.group);
-          return true;
-        }));
-  }
-
   async updateParticipante(user: Usuario) {
     try {
       const uid = user.uid;
@@ -156,6 +139,33 @@ export class UsuarioService {
     } catch (error) {
       return new Error(error)
     }
+  }
+
+
+  // Obersavables
+  public getCurrentUser() {
+    return this.fbAuth.user.pipe(
+      map(user => {
+        return user;
+      })
+    );
+  }
+
+  public getParticipante() {
+    return this.db.collection('participantes').doc(`${this.token}`)
+      .valueChanges().pipe(
+        map((user: any) => {
+          
+          const { uid, email, userName, role, img = '', sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio = '', event = '', group = '', insignias = [], estado = false } = user;
+          
+          this.usuario = new Usuario(uid, email, userName, role, img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, event, group, insignias, estado);
+
+          return true;
+        }));
+  }
+
+  public grupos() {
+    return this.db.collection('grupos').snapshotChanges();
   }
 
 }
