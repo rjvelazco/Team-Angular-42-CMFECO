@@ -34,6 +34,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.countries = [
       {name: 'Colombia'},
       {name: 'Mexico'},
@@ -64,15 +65,15 @@ export class EditProfileComponent implements OnInit {
       validators: this.passwordsIguales('password', 'confirmPassword')
     });
 
-    this.es = {
-      firstDayOfWeek: 1,
-      dayNames: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
-      dayNamesShort: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
-      dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
-      monthNames: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
-      monthNamesShort: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
-    };
-    this.validateDate();
+    // this.es = {
+    //   firstDayOfWeek: 1,
+    //   dayNames: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+    //   dayNamesShort: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+    //   dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+    //   monthNames: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+    //   monthNamesShort: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+    // };
+    // this.validateDate();
   }
 
   get usernameInvalid() {
@@ -116,6 +117,7 @@ export class EditProfileComponent implements OnInit {
     const prevYear = (prevMonth === 11) ? year - 1 : year;
     const nextMonth = (month === 11) ? 0 : month + 1;
     const nextYear = (nextMonth === 0) ? year + 1 : year;
+
     this.minDate = new Date();
     this.minDate.setMonth(prevMonth);
     this.minDate.setFullYear(prevYear);
@@ -157,16 +159,14 @@ export class EditProfileComponent implements OnInit {
 
   // Enviar
   async updateUser(form) {
-    if (this.form.invalid) {
-      return;
-    }
+
+    if (this.form.invalid) {return;}
 
     const values = form.value;
     const { userName, email, bio, birthDate, sex, password, facebook, github, linkedIn, twitter } = values;
-    let {country} = values;
-
+    let { country } = values;
+    
     country = (!country) ? this.usuario.country : country.name;
-
     const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, this.usuario.event, this.usuario.group, this.usuario.insignias, this.usuario.estado);
 
     try {

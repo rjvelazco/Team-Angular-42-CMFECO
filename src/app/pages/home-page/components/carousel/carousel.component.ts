@@ -134,7 +134,6 @@ export class CarouselComponent implements OnInit {
     },
   ];
 
-
   public responsiveCreators;
   public responsiveSponsors;
 

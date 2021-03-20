@@ -18,7 +18,7 @@ export class ClockComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit(): void {
-    this.countDown('Sat Mar 20 2021 14:58:01 GMT-0400 (hora de Venezuela)');
+    this.countDown('Dom Mar 21 2021 14:58:01 GMT-0400 (hora de Venezuela)');
   }
 
   ngOnDestroy(): void {
@@ -30,11 +30,11 @@ export class ClockComponent implements OnInit, OnDestroy {
     const deadLineDate: any = new Date(deadLine);
     const remainTime: number = (deadLineDate - now + 1000) / 1000;
 
-    this.remainTime.remain = remainTime;
-    this.remainTime.seconds = ('0' + Math.floor(remainTime % 60)).slice(-2);
+    this.remainTime.remain   = remainTime;
+    this.remainTime.seconds  = ('0' + Math.floor(remainTime % 60)).slice(-2);
     this.remainTime.minutes  = ('0' + Math.floor((remainTime / 60) % 60)).slice(-2);
-    this.remainTime.hours = ('0' + Math.floor((remainTime / 3600) % 24)).slice(-2);
-    this.remainTime.days  = Math.floor((remainTime / (3600 * 24))).toString();
+    this.remainTime.hours    = ('0' + Math.floor((remainTime / 3600) % 24)).slice(-2);
+    this.remainTime.days     = Math.floor((remainTime / (3600 * 24))).toString();
   }
 
   countDown(deadLine: string) {
