@@ -30,3 +30,7 @@ h5 {
 :host ::ng-deep .p-inputgroup-addon:not(.not-padding) {
   padding-right: 1.2rem !important;
 }
+
+.btn-back{
+  max-width: 200px;
+}
