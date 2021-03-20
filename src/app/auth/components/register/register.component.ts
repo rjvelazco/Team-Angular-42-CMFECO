@@ -19,9 +19,11 @@ export class RegisterComponent implements OnInit {
   get usernameInvalid() {
     return this.form.get('username').invalid && this.form.get('username').touched
   }
+  
   get emailInvalid() {
     return this.form.get('email').invalid && this.form.get('email').touched
   }
+
   get passwordInvalid() {
     return this.form.get('password').invalid && this.form.get('password').touched
   }
