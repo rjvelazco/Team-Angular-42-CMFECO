@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EventService } from 'src/app/core/services/event.service';
 
 // Services
@@ -7,17 +7,21 @@ import { UsuarioService } from '../../../../core/services/usuario.service';
 // Models
 import { Usuario } from '../../../../models/usuario.model';
 import { Event } from '../../../../models/event.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
   styleUrls: ['./my-profile.component.css']
 })
-export class MyProfileComponent implements OnInit {
+export class MyProfileComponent implements OnInit, OnDestroy {
 
   public usuario  : Usuario;
   public eventos  : Event[];
   public userEvent: any;
+
+  public subscriptionUser : Subscription;
+  public subscriptionEvent: Subscription;
 
   myEvents = [
     {
@@ -72,16 +76,21 @@ export class MyProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventService.getEvents().subscribe(events => {
+    this.subscriptionEvent = this.eventService.getEvents().subscribe(events => {
       this.eventos = events;
       this.actualizarUserEvent();
     });
-    this.usuarioService.usuarioEmiter.subscribe(usuario => {
+    this.subscriptionUser = this.usuarioService.usuarioEmiter.subscribe(usuario => {
       this.usuario = usuario;
       if (this.usuario.event.length > 0) {
         this.actualizarUserEvent();
       }
     });
+  }
+
+  ngOnDestroy(): void{
+    this.subscriptionEvent.unsubscribe();
+    this.subscriptionUser.unsubscribe();
   }
 
   actualizarUserEvent() {

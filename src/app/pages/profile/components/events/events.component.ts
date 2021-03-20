@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 // Services
 import { EventService } from '../../../../core/services/event.service';
@@ -10,16 +10,19 @@ import { Event } from '../../../../models/event.model';
 
 // SweetAlert2
 import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
 })
-export class EventsComponent implements OnInit {
+export class EventsComponent implements OnInit, OnDestroy {
 
   public events   : Event[];
   public usuario  : Usuario;
+
+  public subscription: Subscription;
 
   constructor(
     private eventService: EventService,
@@ -29,10 +32,13 @@ export class EventsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventService.getEvents().subscribe(resp => {
+    this.subscription = this.eventService.getEvents().subscribe(resp => {
       this.events = resp;
     });
+  }
 
+  ngOnDestroy(): void{
+    this.subscription.unsubscribe();
   }
 
   async signIn(event: Event){
