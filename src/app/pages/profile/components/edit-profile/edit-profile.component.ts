@@ -6,6 +6,7 @@ import {UsuarioService} from '../../../../core/services/usuario.service';
 import Swal from 'sweetalert2';
 // Models
 import {Usuario} from '../../../../models/usuario.model';
+import { title } from 'process';
 
 @Component({
   selector: 'app-edit-profile',
@@ -15,18 +16,13 @@ import {Usuario} from '../../../../models/usuario.model';
 
 export class EditProfileComponent implements OnInit {
 
-  public countries: any[];
-  public selectedCountry: string;
-  public imgTemp: any = '';
-  public usuario: Usuario;
-  public es: any;
-  public form: FormGroup;
-  public invalidDates: Array<Date>;
-  public maxDate: Date;
-  public minDate: Date;
+  public countries      : any[];
+  public imgTemp        : any = '';
+  public usuario        : Usuario;
+  public form           : FormGroup;
+  public sociableInsignia : string = 'j3U9pxdB2UxcYD3sNtUD';
 
   constructor(
-    private router: Router,
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService
   ) {
@@ -34,7 +30,11 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
+    const userDate = this.usuario.birthDate;
+    const dateBirth = (userDate.length>0)? new Date(userDate): '';
+
+    const useCountry = { name: this.usuario.country }
     this.countries = [
       {name: 'Colombia'},
       {name: 'Mexico'},
@@ -52,8 +52,8 @@ export class EditProfileComponent implements OnInit {
       userName   : [this.usuario.userName || '', [Validators.required, Validators.minLength(5)]],
       email      : [this.usuario.email || '', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       sex        : [this.usuario.sex || '',],
-      birthDate  : [this.usuario.birthDate || '',],
-      country    : [this.usuario.country || '',],
+      birthDate  : [dateBirth || '',],
+      country    : [useCountry || '',],
       password   : ['', [Validators.minLength(8)]],
       confirmPassword  : ['', [Validators.required]],
       facebook   : [this.usuario.facebook || '',],
@@ -65,15 +65,6 @@ export class EditProfileComponent implements OnInit {
       validators: this.passwordsIguales('password', 'confirmPassword')
     });
 
-    // this.es = {
-    //   firstDayOfWeek: 1,
-    //   dayNames: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
-    //   dayNamesShort: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
-    //   dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
-    //   monthNames: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
-    //   monthNamesShort: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
-    // };
-    // this.validateDate();
   }
 
   get usernameInvalid() {
@@ -96,38 +87,6 @@ export class EditProfileComponent implements OnInit {
     const password1 = this.form.get('password').value;
     const password2 = this.form.get('confirmPassword').value;
     return (password1 !== password2);
-  }
-
-  validateDate() {
-    this.es = {
-      firstDayOfWeek: 1,
-      dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
-      dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
-      dayNamesMin: [ "D","L","M","X","J","V","S" ],
-      monthNames: [ "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre" ],
-      monthNamesShort: [ "ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic" ],
-      today: 'Hoy',
-      clear: 'Borrar'
-    }
-
-    const today = new Date();
-    const month = today.getMonth();
-    const year = today.getFullYear();
-    const prevMonth = (month === 0) ? 11 : month -1;
-    const prevYear = (prevMonth === 11) ? year - 1 : year;
-    const nextMonth = (month === 11) ? 0 : month + 1;
-    const nextYear = (nextMonth === 0) ? year + 1 : year;
-
-    this.minDate = new Date();
-    this.minDate.setMonth(prevMonth);
-    this.minDate.setFullYear(prevYear);
-    this.maxDate = new Date();
-    this.maxDate.setMonth(nextMonth);
-    this.maxDate.setFullYear(nextYear);
-
-    const invalidDate = new Date();
-    invalidDate.setDate(today.getDate() - 1);
-    this.invalidDates = [today, invalidDate];
   }
 
   passwordsIguales(pass1Name: string, pass2Name: string) {
@@ -162,22 +121,22 @@ export class EditProfileComponent implements OnInit {
 
     if (this.form.invalid) {return;}
 
-    const values = form.value;
-    const { userName, email, bio, birthDate, sex, password, facebook, github, linkedIn, twitter } = values;
-    let { country } = values;
+    const { userName, email, bio, birthDate, sex, password, facebook, github, linkedIn, twitter } = form.value;
     
+    let { country } = form.value;
     country = (!country) ? this.usuario.country : country.name;
-    const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, this.usuario.event, this.usuario.group, this.usuario.insignias, this.usuario.estado);
-
+    
     try {
+      const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate.toString(), country, facebook, github, linkedIn, twitter, bio, this.usuario.event, this.usuario.group, this.usuario.insignias, this.usuario.estado);
+      if (!this.usuario.estado) { await this.getInsigniaSociable(nuevoUsuario); }
       await this.usuarioService.updateParticipante(nuevoUsuario);
+
       Swal.fire({
         title: '¡Actualizado!',
         text: `¡Los datos se han actualizado con éxito!`,
         icon: 'success',
         confirmButtonText: 'Cool'
       });
-      this.router.navigateByUrl('/perfil');
     } catch (error) {
       Swal.fire({
         title: '¡Error!',
@@ -185,6 +144,21 @@ export class EditProfileComponent implements OnInit {
         icon: 'error',
         confirmButtonText: 'Cool'
       });
+    }
+  }
+
+  async getInsigniaSociable(usuario: Usuario) {
+    const condicional = usuario.userName.length > 0 && usuario.email.length > 0 && usuario.sex.length > 0 && usuario.birthDate.length > 0 && usuario.country.length > 0 && usuario.facebook.length > 0 && usuario.github.length > 0 && usuario.linkedIn.length > 0 && usuario.twitter.length > 0 && usuario.bio.length > 0;
+
+    if (condicional) {
+      this.usuario.insignias.push(this.sociableInsignia);
+      this.usuario.estado = true;
+      await Swal.fire({
+        icon: 'success',
+        title: '¡Haz ganado la insignia Sociable!',
+        showConfirmButton: true,
+        confirmButtonText: `Confirmar`,
+      })
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EventService } from 'src/app/core/services/event.service';
+import { InsigniasService } from 'src/app/core/services/insignias.service';
 
 // Services
 import { UsuarioService } from '../../../../core/services/usuario.service';
@@ -67,12 +68,19 @@ export class MyProfileComponent implements OnInit, OnDestroy {
       'information': '',
     }
   ];
+  
+  // Insignias
+  insignias = [];
+  insigniasUsuario = [];
+  insigniasGanadas = [];
 
   constructor(
     private usuarioService: UsuarioService,
-    private eventService: EventService
+    private eventService: EventService,
+    private insigniasService: InsigniasService
   ) {
     this.usuario = this.usuarioService.usuario;
+    this.mostrarInsignias();
   }
 
   ngOnInit(): void {
@@ -85,6 +93,8 @@ export class MyProfileComponent implements OnInit, OnDestroy {
       if (this.usuario.event.length > 0) {
         this.actualizarUserEvent();
       }
+      this.mostrarInsignias();
+      console.log(this.insignias);
     });
   }
 
@@ -103,6 +113,27 @@ export class MyProfileComponent implements OnInit, OnDestroy {
     } else { 
       this.userEvent = '';
     }
+    this.usuario = this.usuarioService.usuario;
   }
 
+  mostrarInsignias() {
+    this.resetInsignias();
+    this.insigniasUsuario = this.usuarioService.usuario.insignias;
+    this.insigniasService.mostrarInsigniasGanadas().subscribe(data => {
+      console.log('Hola');
+      data.forEach(insignia => {
+        this.insignias.push(insignia);
+        this.insigniasUsuario.forEach(insigniaGanada => {
+          if (insignia.id === insigniaGanada) {
+            this.insigniasGanadas.push(insignia);
+          }
+        })
+      })
+    });
+  }
+
+  resetInsignias() {
+    this.insigniasGanadas = [];
+    this.insignias = [];
+  }
 }
