@@ -5,6 +5,7 @@ import {GroupsAvailableComponent} from './components/groups-available/groups-ava
 import {GroupsComponent} from './components/groups/groups.component';
 import {PrimeModule} from '../../../../prime-module';
 import {FormsModule} from '@angular/forms';
+import {PipeModule} from '../../../../pipe/pipe.module';
 
 
 @NgModule({
@@ -16,11 +17,12 @@ import {FormsModule} from '@angular/forms';
   exports: [
     GroupsComponent
   ],
-  imports: [
-    CommonModule,
-    PrimeModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        PrimeModule,
+        FormsModule,
+        PipeModule
+    ]
 })
 export class GroupsModule {
 }

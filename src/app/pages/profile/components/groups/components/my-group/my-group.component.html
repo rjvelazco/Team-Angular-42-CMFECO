@@ -1,61 +1,62 @@
 <p-card>
-  <ng-template pTemplate="header">
-    <div class="p-card-header">
-      <h5 class="p-text-bold">Talleres</h5>
-      <a href="" class="text-decoration-none">Ir a mi grupo</a>
+    <ng-template pTemplate="header">
+      <div class="p-card-header">
+        <h5 class="p-text-bold">Grupo</h5>
+        <a href="" class="text-decoration-none">Ir a mi grupo</a>
+      </div>
+    </ng-template>
+  <ng-container *ngIf="this.integrantes; else elseBlock">
+    <div class="group">
+      <h6>{{groupName || '¡Consigue algun grupo!'}}</h6>
+      <img src="https://i.imgur.com/bcyviLp.png" alt="" class="img-js">
     </div>
-  </ng-template>
-  <div class="group">
-    <h6>Mi grupo</h6>
-    <img src="https://i.imgur.com/bcyviLp.png" alt="" class="img-js">
-  </div>
-  <div *ngFor="let participante of participantes">
-    <div class="p-d-flex p-align-center">
-      <p-avatar shape="circle"
-                image="{{participante.img}}"
-                styleClass="p-mr-2"
-                size="large">
-      </p-avatar>
-      <div class="p-grid group-detail">
-        <div class="p-col-8">
-          <div>
-            <strong>{{participante.nombre}}</strong>
-            <br>
-            <small>{{participante.nivel}}</small>
+    <div *ngFor="let integrante of integrantes">
+      <div class="p-d-flex p-align-center">
+        <img [src]="integrante.img | imagen" alt="avatar">
+        <div class="p-grid group-detail">
+          <div class="p-col-8">
+            <div>
+              <strong>{{integrante.userName}}</strong>
+              <br>
+              <!-- <small>{{integrante.level}}</small> -->
+            </div>
+          </div>
+          <div class="p-col-1 p-text-left">
+            <h6>{{integrante.role}}</h6>
           </div>
         </div>
-        <div class="p-col-1 p-text-left">
-          <h6>{{participante.rango}}</h6>
+      </div>
+      <p-divider></p-divider>
+    </div>
+    <div>
+      <div *ngIf="usuario.group.length > 0" class="p-grid p-flex-column p-flex-md-row vertical-container ">
+        <div class="p-col">
+          <div class="box">
+            <button pButton
+                    pRipple
+                    type="button"
+                    label="Abandonar"
+                    class="p-button-rounded p-button-outlined p-button-danger"
+                    (click)="abandonarGrupo()">
+            </button>
+          </div>
+        </div>
+        <div class="p-col">
+          <div class="box">
+            <button pButton
+                    pRipple
+                    type="button"
+                    label="Ir al chat"
+                    class="p-button-rounded p-button-info">
+            </button>
+          </div>
         </div>
       </div>
     </div>
-    <p-divider></p-divider>
-  </div>
-  <div>
-    <div class="p-grid p-flex-column p-flex-md-row vertical-container ">
-      <div class="p-col">
-        <div class="box">
-          <button pButton
-                  pRipple
-                  type="button"
-                  label="Abandonar"
-                  class="p-button-rounded p-button-outlined p-button-danger"
-                  (click)="AbandonarGrupo()">
-          </button>
-        </div>
-      </div>
-      <div class="p-col">
-        <div class="box">
-          <button pButton
-                  pRipple
-                  type="button"
-                  label="Ir al chat"
-                  class="p-button-rounded p-button-info">
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  </ng-container>
+  <ng-template #elseBlock>
+    <h1>No tienes un grupo aun :(</h1>
+  </ng-template>
 </p-card>
 
 

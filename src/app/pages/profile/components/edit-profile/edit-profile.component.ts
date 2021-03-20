@@ -164,15 +164,13 @@ export class EditProfileComponent implements OnInit {
     const values = form.value;
     const { userName, email, bio, birthDate, sex, password, facebook, github, linkedIn, twitter } = values;
     let {country} = values;
-    
-    country = (!country) ? this.usuario.country : country.name;  
 
-    const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, this.usuario.event, this.usuario.group, this.usuario.insignias);
+    country = (!country) ? this.usuario.country : country.name;
 
-    console.log(nuevoUsuario);
+    const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, this.usuario.event, this.usuario.group, this.usuario.insignias, this.usuario.estado);
+
     try {
       await this.usuarioService.updateParticipante(nuevoUsuario);
-      console.log('Usuario actualizado?');
       Swal.fire({
         title: '¡Actualizado!',
         text: `¡Los datos se han actualizado con éxito!`,
@@ -187,8 +185,6 @@ export class EditProfileComponent implements OnInit {
         icon: 'error',
         confirmButtonText: 'Cool'
       });
-      console.log(error);
     }
-
   }
 }
