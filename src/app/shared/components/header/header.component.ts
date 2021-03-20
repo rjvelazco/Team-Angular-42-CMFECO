@@ -66,10 +66,6 @@ export class HeaderComponent implements OnInit {
       this.showDashboard = showDashboard;
       this.topbar();
     });
-
-    this.usuarioService.usuarioEmiter.subscribe(usuario => {
-      this.usuario = usuario;
-    })
   }
 
 

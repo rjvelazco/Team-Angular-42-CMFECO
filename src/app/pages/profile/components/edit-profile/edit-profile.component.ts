@@ -171,7 +171,6 @@ export class EditProfileComponent implements OnInit {
 
     try {
       await this.usuarioService.updateParticipante(nuevoUsuario);
-      console.log('Usuario actualizado?');
       Swal.fire({
         title: '¡Actualizado!',
         text: `¡Los datos se han actualizado con éxito!`,

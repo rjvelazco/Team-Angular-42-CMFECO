@@ -12,17 +12,17 @@
     </div>
     <div *ngFor="let integrante of integrantes">
       <div class="p-d-flex p-align-center">
-        <img [src]="integrante.data['img'] | imagen" alt="avatar">
+        <img [src]="integrante.img | imagen" alt="avatar">
         <div class="p-grid group-detail">
           <div class="p-col-8">
             <div>
-              <strong>{{integrante.data['userName']}}</strong>
+              <strong>{{integrante.userName}}</strong>
               <br>
-              <small>{{integrante.data['level']}}</small>
+              <!-- <small>{{integrante.level}}</small> -->
             </div>
           </div>
           <div class="p-col-1 p-text-left">
-            <h6>{{integrante.data['role']}}</h6>
+            <h6>{{integrante.role}}</h6>
           </div>
         </div>
       </div>

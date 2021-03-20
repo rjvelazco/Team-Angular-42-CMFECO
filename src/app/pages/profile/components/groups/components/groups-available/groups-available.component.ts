@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UsuarioService} from '../../../../../../core/services/usuario.service';
 import Swal from 'sweetalert2';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-groups-available',
@@ -37,7 +38,6 @@ export class GroupsAvailableComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.filter)
     this.technologies = [
       {name: 'Python'},
       {name: 'JavaScript'},
@@ -59,20 +59,32 @@ export class GroupsAvailableComponent implements OnInit {
 
   }
 
-  joinGroup(groupId) {
-    Swal.fire({
-      icon: 'info',
-      title: '¿Estas seguro de entrar al grupo?',
-      showDenyButton: true,
-      showConfirmButton: true,
-      confirmButtonText: `Confirmar`,
-      denyButtonText: `Cancelar`,
-    }).then(async (result) => {
+  async joinGroup(groupId) {
+    if (this.usuario.group.length > 0) {
+      this.messageErrorGroup('Ya tienes grupo.');
+      return;
+    }
+    // Fe4cdcsYkDMkAUu8Hddv
+    try { 
+      const result = await Swal.fire({
+        icon: 'info',
+        title: '¿Estas seguro de entrar al grupo?',
+        showDenyButton: true,
+        showConfirmButton: true,
+        confirmButtonText: `Confirmar`,
+        denyButtonText: `Cancelar`,
+      });
       if (result.isConfirmed) {
+        this.usuarioService.usuario.group = groupId;
         this.usuario.group = groupId;
+
+        this.messageSuccesGroup('¡Bienvenido!', '¡Bienvenido a bordo!');
         await this.usuarioService.updateParticipante(this.usuario);
       }
-    });
+    } catch (e) {
+      this.messageErrorGroup('Oosp! Algo salió mal.');
+      console.log(e);
+    }
   }
 
   groups() {
@@ -87,6 +99,23 @@ export class GroupsAvailableComponent implements OnInit {
         this.loading = false;
         this.filter = this.groupsAvailable;
       });
-    console.log(this.groupsAvailable)
+  }
+
+  private messageErrorGroup(message: string) {
+    Swal.fire({
+      icon: 'error',
+      title: '¡Error!',
+      text: message,
+      confirmButtonText: `Cool`,
+    });
+  }
+
+  private messageSuccesGroup(title: string,message: string) {
+    Swal.fire({
+      icon: 'success',
+      title: title,
+      text: message,
+      confirmButtonText: `Cool`,
+    });
   }
 }

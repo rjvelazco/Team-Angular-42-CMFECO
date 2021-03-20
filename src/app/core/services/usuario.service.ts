@@ -14,6 +14,7 @@ export class UsuarioService {
   public usuario: Usuario;
   public groupName;
   public usuarioEmiter: EventEmitter<Usuario> = new EventEmitter();
+  public grupo = [];
 
   get token(): string{
     return localStorage.getItem('token') || '';
@@ -96,12 +97,17 @@ export class UsuarioService {
     return this.db.collection('grupos').snapshotChanges();
   }
 
-  public getIntegratesGroup(groupId) {
-    return this.db.collection('participantes', ref => ref.where('group', '==', groupId)).snapshotChanges()
+  public getIntegratesGroup() {
+    return this.db.collection('participantes', ref => ref.where('group', '==', this.usuario.group))
+    .valueChanges().pipe(
+      map((usuario: Usuario[]) => {
+          return (this.usuario.group.length > 0)? usuario: [this.usuario];
+        }) 
+      )
   }
 
-  public getNameGroup(groupId) {
-    return this.db.collection('grupos', ref => ref.where('id', '==', groupId)).valueChanges();
+  public getNameGroup() {
+    return this.db.collection('grupos', ref => ref.where('id', '==', this.usuario.group)).valueChanges();
   }
 
   getCurrentUser() {
@@ -126,10 +132,13 @@ export class UsuarioService {
 
   async updateParticipante(user: Usuario) {
     try {
+      console.log(user);
       const uid = user.uid;
       const item = {uid, ...user};
       const result = await this.db.collection('participantes').doc(`${this.token}`).set(item);
+      console.log(this.usuario);
       this.usuario = user;
+      console.log(this.usuario);
       this.usuarioEmiter.emit(user);
       return result;
     } catch (error) {

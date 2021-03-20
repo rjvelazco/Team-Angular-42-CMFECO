@@ -10,42 +10,42 @@ import {Usuario} from '../../../../../../models/usuario.model';
 })
 export class MyGroupComponent implements OnInit {
 
-  public integrantes;
-  public groupId = localStorage.getItem('groupId');
+  public integrantes: any[];
   public groupName;
   public usuario: Usuario;
 
   constructor(
     private usuarioService: UsuarioService
   ) {
-    this.getMygroup();
     this.usuario = this.usuarioService.usuario;
-    console.log(this.integrantes);
   }
 
   ngOnInit(): void {
-    this.usuarioService.getNameGroup(this.groupId)
-      .subscribe(response => {
-        this.groupName = response;
+    this.usuarioService.getNameGroup()
+      .subscribe((grupo: any) => {
+        if (grupo.length > 0) {
+          this.groupName = grupo[0].name || '';
+        } else {
+          this.groupName = '';
+        }
       });
+    this.getMygroup();
   }
 
   getMygroup() {
-    let groupId = localStorage.getItem('groupId');
-    this.usuarioService.getIntegratesGroup(groupId)
-      .subscribe((response) => {
-        this.integrantes = [];
-        response.forEach((responseData: any) => {
-          this.integrantes.push({
-            id: responseData.payload.doc.id,
-            data: responseData.payload.doc.data(),
-          });
-        });
+    this.usuarioService.getIntegratesGroup()
+      .subscribe((usuarios) => {
+        if (this.usuario.group.length > 0) {
+          this.integrantes = usuarios;
+        } else {
+          this.integrantes = [];
+        }
       });
   }
 
-  abandonarGrupo() {
-    Swal.fire({
+  async abandonarGrupo() {
+    try {
+      const result = await Swal.fire({
         icon: 'info',
         title: '¿Estas seguro de abandonar el grupo?',
         showDenyButton: true,
@@ -53,13 +53,26 @@ export class MyGroupComponent implements OnInit {
         confirmButtonText: `Confirmar`,
         denyButtonText: `Cancelar`,
         footer: 'Buena suerte en tu aventura!'
-      }
-    ).then(async (result) => {
+      })
       if (result.isConfirmed) {
-        this.usuario.group = ' '
+        this.usuario.group = '';
+        this.usuarioService.usuario.group = '';
+        // console.log(this.usuarioService.usuario.group);
         await this.usuarioService.updateParticipante(this.usuario);
       }
+    } catch (e) {
+      this.messageErrorGroup('Oops! Algo salió mal.');
+    }
+  }
+
+  private messageErrorGroup(message: string) {
+    Swal.fire({
+      icon: 'error',
+      title: '¡Error!',
+      text: message,
+      confirmButtonText: `Cool`,
     });
   }
+
 
 }
