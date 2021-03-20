@@ -167,7 +167,7 @@ export class EditProfileComponent implements OnInit {
 
     country = (!country) ? this.usuario.country : country.name;
 
-    const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, this.usuario.event, this.usuario.group, this.usuario.insignias);
+    const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, this.usuario.event, this.usuario.group, this.usuario.insignias, this.usuario.estado);
 
     try {
       await this.usuarioService.updateParticipante(nuevoUsuario);

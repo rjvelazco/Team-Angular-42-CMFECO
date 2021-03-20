@@ -33,9 +33,6 @@ export class EventsComponent implements OnInit {
       this.events = resp;
     });
 
-    this.usuarioService.usuarioEmiter.subscribe(usuario => {
-      this.usuario = usuario;
-    });
   }
 
   async signIn(event: Event){

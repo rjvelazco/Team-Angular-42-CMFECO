@@ -10,26 +10,25 @@ import { tap } from 'rxjs/operators';
 })
 export class GroupsAvailableComponent implements OnInit {
 
-  public technologies;
-  public sortOrder: number;
-  public sortField: string;
-  public loading = true;
   public filter = [];
-  public groupsAvailable = [];
   public groupId = localStorage.getItem('groupId');
+  public groupsAvailable = [];
+  public loading = true;
+  public sortField: string;
+  public sortOrder: number;
+  public technologies;
   public usuario;
 
   constructor(private usuarioService: UsuarioService,) {
     this.groups();
-    this.getGroupName();
     this.usuario = this.usuarioService.usuario;
   }
 
   onSortChange(event) {
     if (event.value.length > 0) {
-      let value = event.value.map(value => value.name);
+      const value = event.value.map(value => value.name);
       this.filter = this.groupsAvailable.filter(
-        x => value.includes(x.data.technology)
+        group => value.includes(group.data.technology)
       );
     } else {
       this.filter = this.groupsAvailable;
@@ -55,16 +54,11 @@ export class GroupsAvailableComponent implements OnInit {
     ];
   }
 
-  getGroupName(){
-
-  }
-
   async joinGroup(groupId) {
-    if (this.usuario.group.length > 0) {
-      this.messageErrorGroup('Ya tienes grupo.');
-      return;
-    }
-    // Fe4cdcsYkDMkAUu8Hddv
+    // if (this.usuario.group.length > 0) {
+    //   this.messageErrorGroup('Ya tienes grupo.');
+    //   return;
+    // }
     try { 
       const result = await Swal.fire({
         icon: 'info',
@@ -75,11 +69,12 @@ export class GroupsAvailableComponent implements OnInit {
         denyButtonText: `Cancelar`,
       });
       if (result.isConfirmed) {
-        this.usuarioService.usuario.group = groupId;
         this.usuario.group = groupId;
-
-        this.messageSuccesGroup('¡Bienvenido!', '¡Bienvenido a bordo!');
+        this.usuarioService.usuario.group = groupId;
+        
         await this.usuarioService.updateParticipante(this.usuario);
+        await this.usuarioService.getIntegratesGroup();
+        this.messageSuccesGroup('¡Bienvenido!', '¡Bienvenido a bordo!');
       }
     } catch (e) {
       this.messageErrorGroup('Oosp! Algo salió mal.');
@@ -87,7 +82,7 @@ export class GroupsAvailableComponent implements OnInit {
     }
   }
 
-  groups() {
+  private groups() {
     this.usuarioService.grupos()
       .subscribe((response) => {
         response.forEach((responseData: any) => {

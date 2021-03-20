@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 import {UsuarioService} from '../../../../../../core/services/usuario.service';
 import {Usuario} from '../../../../../../models/usuario.model';
@@ -8,11 +9,14 @@ import {Usuario} from '../../../../../../models/usuario.model';
   templateUrl: './my-group.component.html',
   styleUrls: ['./my-group.component.css']
 })
-export class MyGroupComponent implements OnInit {
+export class MyGroupComponent implements OnInit, OnDestroy{
 
   public integrantes: any[];
   public groupName;
   public usuario: Usuario;
+
+  // subscriber
+  public subscriber: Subscription;
 
   constructor(
     private usuarioService: UsuarioService
@@ -21,26 +25,25 @@ export class MyGroupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usuarioService.getNameGroup()
-      .subscribe((grupo: any) => {
-        if (grupo.length > 0) {
-          this.groupName = grupo[0].name || '';
-        } else {
-          this.groupName = '';
-        }
-      });
     this.getMygroup();
+    this.subscriber = this.usuarioService.usuarioGroupEmitter
+      .subscribe(integrantes => {
+        this.integrantes = integrantes;
+        this.getNameGroup();
+      });
   }
 
-  getMygroup() {
-    this.usuarioService.getIntegratesGroup()
-      .subscribe((usuarios) => {
-        if (this.usuario.group.length > 0) {
-          this.integrantes = usuarios;
-        } else {
-          this.integrantes = [];
-        }
-      });
+
+  ngOnDestroy(): void{
+    this.subscriber.unsubscribe();
+  }
+
+  async getMygroup() {
+    this.integrantes = await this.usuarioService.getIntegratesGroup();
+  }
+
+  async getNameGroup() {
+    this.groupName = await this.usuarioService.getNameGroup();
   }
 
   async abandonarGrupo() {
@@ -57,8 +60,9 @@ export class MyGroupComponent implements OnInit {
       if (result.isConfirmed) {
         this.usuario.group = '';
         this.usuarioService.usuario.group = '';
-        // console.log(this.usuarioService.usuario.group);
+        
         await this.usuarioService.updateParticipante(this.usuario);
+        await this.usuarioService.getIntegratesGroup();
       }
     } catch (e) {
       this.messageErrorGroup('Oops! Algo salió mal.');

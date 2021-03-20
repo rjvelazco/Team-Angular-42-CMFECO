@@ -7,7 +7,7 @@
     </ng-template>
   <ng-container *ngIf="this.integrantes; else elseBlock">
     <div class="group">
-      <h6>{{groupName}}</h6>
+      <h6>{{groupName || '¡Consigue algun grupo!'}}</h6>
       <img src="https://i.imgur.com/bcyviLp.png" alt="" class="img-js">
     </div>
     <div *ngFor="let integrante of integrantes">
@@ -29,7 +29,7 @@
       <p-divider></p-divider>
     </div>
     <div>
-      <div class="p-grid p-flex-column p-flex-md-row vertical-container ">
+      <div *ngIf="usuario.group.length > 0" class="p-grid p-flex-column p-flex-md-row vertical-container ">
         <div class="p-col">
           <div class="box">
             <button pButton
