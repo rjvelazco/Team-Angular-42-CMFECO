@@ -16,9 +16,9 @@
       <ng-template pTemplate="footer">
         <p-divider></p-divider>
         <div class="p-d-flex p-jc-between p-align-center">
-          <ng-container *ngFor="let item of insignias; let i = index">
+          <ng-container *ngFor="let item of insigniasGanadas; let i = index">
             <p-avatar styleClass="p-mr-2" size="large" shape="circle">
-              <img *ngIf="i === 3" title="{{ item.nombre }}"  src="{{ item.imagen }}" alt="insigniasLogo">  
+              <img title="{{ item.nombre }}"  src="{{ item.imagen }}" alt="insigniasLogo">  
             </p-avatar>
           </ng-container>
         </div>
