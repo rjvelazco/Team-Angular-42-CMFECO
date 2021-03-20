@@ -11,14 +11,14 @@ export class InsigniasComponent implements OnInit {
   insigniasUsuario = [];
   insigniasGanadas = [];
 
-  constructor(private insigniasService: InsigniasService, private testSe: UsuarioService) { }
+  constructor(private insigniasService: InsigniasService, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
     this.mostrarInsignias();
   }
 
   mostrarInsignias(){
-    this.insigniasUsuario = this.testSe.usuario.insignias;
+    this.insigniasUsuario = this.usuarioService.usuario.insignias;
     this.insigniasService.mostrarInsigniasGanadas().subscribe( data => {
       for(let i = 0; i < data.length; i++){
         for(let j=0; j< this.insigniasUsuario.length; j++){
