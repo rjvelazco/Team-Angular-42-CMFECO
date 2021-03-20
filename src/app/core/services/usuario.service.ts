@@ -53,8 +53,10 @@ export class UsuarioService {
       
       // Crear user into fireauth
       const user = await this.fbAuth.createUserWithEmailAndPassword(email, password);
-      const { uid, photoURL = '' } = user.user;
+      let { uid, photoURL = '' } = user.user;
 
+      photoURL = (photoURL) ? photoURL : '';
+      
       // New user Instance
       const usuario = new Usuario(uid, email, username, 'participante', photoURL, '', '', '', '', '', '', '', '', '', '', [], false);
 
@@ -155,11 +157,8 @@ export class UsuarioService {
     return this.db.collection('participantes').doc(`${this.token}`)
       .valueChanges().pipe(
         map((user: any) => {
-          
           const { uid, email, userName, role, img = '', sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio = '', event = '', group = '', insignias = [], estado = false } = user;
-          
           this.usuario = new Usuario(uid, email, userName, role, img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, event, group, insignias, estado);
-
           return true;
         }));
   }

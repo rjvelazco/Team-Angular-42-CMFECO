@@ -55,10 +55,10 @@ export class GroupsAvailableComponent implements OnInit {
   }
 
   async joinGroup(groupId) {
-    // if (this.usuario.group.length > 0) {
-    //   this.messageErrorGroup('Ya tienes grupo.');
-    //   return;
-    // }
+    if (this.usuario.group.length > 0) {
+      this.messageErrorGroup('Ya tienes grupo.');
+      return;
+    }
     try { 
       const result = await Swal.fire({
         icon: 'info',

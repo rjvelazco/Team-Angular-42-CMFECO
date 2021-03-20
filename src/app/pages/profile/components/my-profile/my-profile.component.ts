@@ -68,15 +68,19 @@ export class MyProfileComponent implements OnInit, OnDestroy {
       'information': '',
     }
   ];
+  
+  // Insignias
   insignias = [];
   insigniasUsuario = [];
   insigniasGanadas = [];
+
   constructor(
     private usuarioService: UsuarioService,
     private eventService: EventService,
     private insigniasService: InsigniasService
   ) {
     this.usuario = this.usuarioService.usuario;
+    this.mostrarInsignias();
   }
 
   ngOnInit(): void {
@@ -89,6 +93,8 @@ export class MyProfileComponent implements OnInit, OnDestroy {
       if (this.usuario.event.length > 0) {
         this.actualizarUserEvent();
       }
+      this.mostrarInsignias();
+      console.log(this.insignias);
     });
   }
 
@@ -108,22 +114,26 @@ export class MyProfileComponent implements OnInit, OnDestroy {
       this.userEvent = '';
     }
     this.usuario = this.usuarioService.usuario;
-    this.mostrarInsignias();
-    console.log('insignias', this.insignias)  
-    console.log('insignias Ganadas', this.insigniasGanadas)
   }
 
-  mostrarInsignias(){
+  mostrarInsignias() {
+    this.resetInsignias();
     this.insigniasUsuario = this.usuarioService.usuario.insignias;
-    this.insigniasService.mostrarInsigniasGanadas().subscribe( data => {
-      for(let i = 0; i < data.length; i++){
-        this.insignias.push( data[i] );
-        for(let j=0; j< this.insigniasUsuario.length; j++){
-          if(data[i].id == this.insigniasUsuario[j]){
-            this.insigniasGanadas.push( data[i] );
+    this.insigniasService.mostrarInsigniasGanadas().subscribe(data => {
+      console.log('Hola');
+      data.forEach(insignia => {
+        this.insignias.push(insignia);
+        this.insigniasUsuario.forEach(insigniaGanada => {
+          if (insignia.id === insigniaGanada) {
+            this.insigniasGanadas.push(insignia);
           }
-        }
-      }
+        })
+      })
     });
+  }
+
+  resetInsignias() {
+    this.insigniasGanadas = [];
+    this.insignias = [];
   }
 }
