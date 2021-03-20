@@ -6,6 +6,7 @@ import {UsuarioService} from '../../../../core/services/usuario.service';
 import Swal from 'sweetalert2';
 // Models
 import {Usuario} from '../../../../models/usuario.model';
+import { title } from 'process';
 
 @Component({
   selector: 'app-edit-profile',
@@ -30,8 +31,10 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
 
-    const dateBirth = new Date(this.usuario.birthDate);
-    const useCountry = {name: this.usuario.country}
+    const userDate = this.usuario.birthDate;
+    const dateBirth = (userDate.length>0)? new Date(userDate): '';
+
+    const useCountry = { name: this.usuario.country }
     this.countries = [
       {name: 'Colombia'},
       {name: 'Mexico'},
@@ -117,17 +120,17 @@ export class EditProfileComponent implements OnInit {
   async updateUser(form) {
 
     if (this.form.invalid) {return;}
-    
-    if (!this.usuario.estado) { await this.getInsigniaSociable() };
-    
+
     const { userName, email, bio, birthDate, sex, password, facebook, github, linkedIn, twitter } = form.value;
+    
     let { country } = form.value;
     country = (!country) ? this.usuario.country : country.name;
     
     try {
-      if (!this.usuario.estado) { await this.getInsigniaSociable(); }
       const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate.toString(), country, facebook, github, linkedIn, twitter, bio, this.usuario.event, this.usuario.group, this.usuario.insignias, this.usuario.estado);
+      if (!this.usuario.estado) { await this.getInsigniaSociable(nuevoUsuario); }
       await this.usuarioService.updateParticipante(nuevoUsuario);
+
       Swal.fire({
         title: '¡Actualizado!',
         text: `¡Los datos se han actualizado con éxito!`,
@@ -144,10 +147,9 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
-  async getInsigniaSociable() {
-
-    const usuario = this.usuario;
+  async getInsigniaSociable(usuario: Usuario) {
     const condicional = usuario.userName.length > 0 && usuario.email.length > 0 && usuario.sex.length > 0 && usuario.birthDate.length > 0 && usuario.country.length > 0 && usuario.facebook.length > 0 && usuario.github.length > 0 && usuario.linkedIn.length > 0 && usuario.twitter.length > 0 && usuario.bio.length > 0;
+
     if (condicional) {
       this.usuario.insignias.push(this.sociableInsignia);
       this.usuario.estado = true;
