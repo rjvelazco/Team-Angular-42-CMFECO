@@ -24,6 +24,7 @@ export class EditProfileComponent implements OnInit {
   public invalidDates: Array<Date>;
   public maxDate: Date;
   public minDate: Date;
+  public activeState: boolean[] = [false];
 
   constructor(
     private router: Router,
@@ -136,15 +137,18 @@ export class EditProfileComponent implements OnInit {
       if (pass1Control.value === pass2Control.value) {
         pass2Control.setErrors(null);
       } else {
-        pass2Control.setErrors({ noEsIgual: true });
+        pass2Control.setErrors({noEsIgual: true});
       }
     }
   }
 
 
+  toggle(index: number) {
+    this.activeState[index] = !this.activeState[index];
+  }
+
   // IMAGEN
   cambiarImagen(file: File) {
-    // this.imagenSubir = file;
     if (!file) {
       return this.imgTemp = '';
     }
@@ -162,14 +166,28 @@ export class EditProfileComponent implements OnInit {
     }
 
     const values = form.value;
-    const { userName, email, bio, birthDate, sex, password, facebook, github, linkedIn, twitter } = values;
+    const {userName, email, bio, birthDate, sex, password, facebook, github, linkedIn, twitter} = values;
     let {country} = values;
-    
-    country = (!country) ? this.usuario.country : country.name;  
 
-    const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, this.usuario.event, this.usuario.group, this.usuario.insignias);
+    country = (!country) ? this.usuario.country : country.name;
 
-    console.log(nuevoUsuario);
+    const nuevoUsuario = new Usuario(
+      this.usuario.uid,
+      email, userName,
+      this.usuario.role,
+      this.usuario.img,
+      sex,
+      birthDate,
+      country,
+      facebook,
+      github,
+      linkedIn,
+      twitter,
+      bio,
+      this.usuario.event,
+      this.usuario.group,
+      this.usuario.insignias
+    );
     try {
       await this.usuarioService.updateParticipante(nuevoUsuario);
       console.log('Usuario actualizado?');
@@ -187,8 +205,6 @@ export class EditProfileComponent implements OnInit {
         icon: 'error',
         confirmButtonText: 'Cool'
       });
-      console.log(error);
     }
-
   }
 }

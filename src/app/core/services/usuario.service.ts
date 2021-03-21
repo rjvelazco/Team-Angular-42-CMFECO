@@ -1,10 +1,8 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import { map } from 'rxjs/operators';
-
+import {map} from 'rxjs/operators';
 // Firebase
 import {AngularFireAuth} from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
-
+import {AngularFirestore} from '@angular/fire/firestore';
 // Models
 import {Usuario} from '../../models/usuario.model';
 
@@ -46,14 +44,28 @@ export class UsuarioService {
   async register(username, email, password) {
     try {
       const user = await this.fbAuth.createUserWithEmailAndPassword(email, password);
-      let { uid, photoURL = '' } = user.user;
+      let {uid, photoURL = ''} = user.user;
       photoURL = (photoURL) ? photoURL : '';
-      const usuario = new Usuario(uid, email , username, 'participante', photoURL, '', '', '', '', '', '', '', '', '', '', [], false);
+      const usuario = new Usuario(
+        uid,
+        email,
+        username,
+        'participante',
+        photoURL,
+        '',
+        '',
+        '',
+        '',
+        '', '',
+        '', '',
+        '', '',
+        [],
+        false
+      );
 
       await this.createParticipante(usuario);
       await this.updateUserName(username);
-
-      this.sendVerificationEmail();
+      await this.sendVerificationEmail();
       return user;
     } catch (error) {
       throw new Error(error);
@@ -104,8 +116,43 @@ export class UsuarioService {
     return this.db.collection('participantes').doc(`${this.token}`)
       .valueChanges().pipe(
         map((userProfilSnapshot: any) => {
-          const { uid, email, userName, role, img = '', sex = '', birthDate = '', country = '', facebook = '', github = '', linkedIn = '', twitter = '', bio = '', event = '', group = '', insignias = [], estado = false } = userProfilSnapshot;
-          this.usuario = new Usuario(uid, email, userName, role, img, sex, birthDate, country, facebook, github, linkedIn, twitter, bio, event, group, insignias, estado);
+          const {
+            uid,
+            email,
+            userName,
+            role,
+            img = '',
+            sex = '',
+            birthDate = '',
+            country = '',
+            facebook = '',
+            github = '',
+            linkedIn = '',
+            twitter = '',
+            bio = '',
+            event = '',
+            group = '',
+            insignias = [],
+            estado = false
+          } = userProfilSnapshot;
+          this.usuario = new Usuario(
+            uid, email,
+            userName,
+            role,
+            img,
+            sex,
+            birthDate,
+            country,
+            facebook,
+            github,
+            linkedIn,
+            twitter,
+            bio,
+            event,
+            group,
+            insignias,
+            estado
+          );
           return true;
         }));
   }

@@ -39,12 +39,21 @@ footer {
     justify-content: space-between;
   }
 
+
   .social_media {
-    padding: 0;
+    padding-top: 0;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
   }
+}
+
+@media screen and (max-width: 595px) {
+
+  .conditions{
+    margin-top: 0.5rem;
+  }
+
 }
 
 

@@ -3,9 +3,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {NavComponent} from './components/nav/nav.component';
 
-// Guard
-import {AuthGuard} from '../../guards/auth.guard';
-
 const routes: Routes = [
   {
     path: '',

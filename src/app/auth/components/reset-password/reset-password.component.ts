@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import Swal from 'sweetalert2';
-
 // Services
 import {UsuarioService} from 'src/app/core/services/usuario.service';
 import {HeaderService} from '../../../core/services/header.service';
@@ -30,7 +29,6 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.headerService.showLoginBtn.emit(false);
-    // this.headerService.showLoginBtn = false;
   }
 
   get emailInvalid() {
@@ -69,5 +67,4 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
       Object.values(this.form.controls).forEach(control => control.markAllAsTouched());
     }
   }
-
 }

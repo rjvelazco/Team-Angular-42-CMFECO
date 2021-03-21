@@ -119,7 +119,7 @@ export class GroupsAvailableComponent implements OnInit {
     if (event.value.length > 0 ){
       let value = event.value.map(value => value.name);
       this.filter = this.groupsAvailable.filter(
-        x => value.includes(x.technology)
+        data => value.includes(data.technology)
       );
     } else {
       this.filter = this.groupsAvailable

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { InsigniasService } from 'src/app/core/services/insignias.service';
-import { UsuarioService } from 'src/app/core/services/usuario.service';
+import {Component, OnInit} from '@angular/core';
+import {InsigniasService} from 'src/app/core/services/insignias.service';
+import {UsuarioService} from 'src/app/core/services/usuario.service';
 
 @Component({
   selector: 'app-insignias',

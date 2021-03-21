@@ -8,7 +8,6 @@
 
 .header.topbar {
   background: #ffffff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, .25);
   border-bottom: 1px solid #dee2e6;
   align-content: center;
 }
@@ -23,14 +22,18 @@
   list-style-type: none;
   height: 100%;
   display: flex;
+  transition: 0.2s all;
+  flex-wrap: nowrap;
+  overflow-y: hidden;
 }
 
-.topbar-menu > li {
+.topbar-menu .topbar-submenu {
   height: 70px;
   line-height: 70px;
+  display: inline-block
 }
 
-.topbar-menu > li > a {
+.topbar-menu .topbar-submenu a {
   text-decoration: none;
   min-width: 120px;
   font-size: 16px;
@@ -38,13 +41,13 @@
   text-align: center;
   user-select: none;
   line-height: 68px;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   transition: border-bottom-color .2s;
   cursor: pointer;
   color: #495057;
 }
 
-.topbar-menu > li > a:hover {
+.topbar-menu .topbar-submenu a:hover {
   border-bottom-color: var(--color-palette-primary);
 }
 
@@ -70,6 +73,7 @@
 
 .profile-info {
   margin-left: 7px;
+  color: #606164;
 }
 
 .profile-info > h6 {
@@ -98,6 +102,9 @@
 
 
 @media screen and (max-width: 75em) {
+  .menu {
+    width: 100%;
+  }
 
   .topbar {
     height: 110px;
@@ -120,26 +127,21 @@
     border-bottom: 1px solid #E8F1F8;
     height: 48px;
     width: 100%;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-content: space-around;
   }
 
-  .topbar-menu > li {
-    height: 40px;
-    line-height: 40px;
-    width: 25%;
-  }
 
-  .topbar-menu > li > a {
+  .topbar-menu .topbar-submenu a {
     padding-bottom: 0;
     height: 40px;
     line-height: 38px;
-    width: 100%;
     font-size: 12px;
     font-weight: 600;
-    min-width: auto;
     text-overflow: ellipsis;
   }
+
 
   .user-profile {
     position: absolute;
@@ -160,13 +162,57 @@
   }
 }
 
-@media screen and (max-width: 522px) {
-  .creators {
-    width: calc(30% + 15%) !important
+@media screen and (max-width: 595px) {
+  .menu {
+    position: relative;
+    white-space: nowrap;
+    display: block !important;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch
+  }
+
+  .topbar-menu .topbar-submenu {
+    padding: 0 1.5em 0 0;
+  }
+
+  .topbar-menu::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: linear-gradient(90deg, transparent 0%, #e9e9e9 50%);
+    color: #86868a;
+    display: flex;
+    -webkit-box-pack: end;
+    font-family: primeicons;
+    align-items: center;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    justify-content: flex-end;
+    width: 25px;
+    -webkit-font-smoothing: antialiased;
+    content: "\e932";
   }
 
   .profile-info {
     display: none;
+  }
+
+  .topbar .topbar-menu {
+    justify-content: normal;
+    align-content: normal;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    max-height: 45px;
+    transition: 0.2s all;
+    will-change: max-height;
   }
 
   :host ::ng-deep .p-menu.p-menu-overlay {

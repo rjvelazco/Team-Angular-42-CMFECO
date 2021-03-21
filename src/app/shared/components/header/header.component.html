@@ -3,26 +3,28 @@
     <img src="assets/img/comfeco.png" alt="logo">
   </span>
   <ng-template [ngIf]="showDashboard">
-    <ul class="topbar-menu">
-      <li class="topbar-submenu">
-        <a [routerLink]="['/dashboard']" routerLinkActive="active">Inicio</a>
-      </li>
-      <li class="topbar-submenu">
-        <a [routerLink]="['/code-fest','comunity']" routerLinkActive="active">Comunidades</a>
-      </li>
-      <li class="topbar-submenu">
-        <a [routerLink]="['/code-fest', 'workshop']" routerLinkActive="active">Talleres</a>
-      </li>
-      <li class="topbar-submenu creators">
-        <a [routerLink]="['/code-fest','content-creators']" routerLinkActive="active">Creadores de contenido</a>
-      </li>
-    </ul>
+    <div class="menu">
+      <div class="topbar-menu">
+        <div class="topbar-submenu">
+          <a [routerLink]="['/dashboard']" routerLinkActive="active">Inicio</a>
+        </div>
+        <div class="topbar-submenu">
+          <a [routerLink]="['/code-fest','comunity']" routerLinkActive="active">Comunidades</a>
+        </div>
+        <div class="topbar-submenu">
+          <a [routerLink]="['/code-fest', 'workshop']" routerLinkActive="active">Talleres</a>
+        </div>
+        <div class="topbar-submenu creators">
+          <a [routerLink]="['/code-fest','content-creators']" routerLinkActive="active">Creadores de contenido</a>
+        </div>
+      </div>
+    </div>
     <div class="user-profile p-d-flex p-align-center p-jc-center">
       <i class="pi pi-bell notification" pBadge severity="danger"></i>
       <div class="p-d-flex p-align-center p-jc-center cursor" (click)="menu.toggle($event)">
         <img [src]="usuario.img | imagen" alt="" class="profile-image">
         <div class="profile-info">
-          <h6>{{usuario.userName}}</h6>
+          <h4>{{usuario.userName}}</h4>
           <span>{{usuario.role}}</span>
         </div>
         <i class="pi pi-angle-down p-ml-3"></i>

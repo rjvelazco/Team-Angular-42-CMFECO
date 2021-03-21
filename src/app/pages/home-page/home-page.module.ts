@@ -1,9 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
 // Router
 import {HomePageRoutingModule} from './home-page.routing';
-
 // Modules
 import {PrimeModule} from '../../prime-module';
 import {CarouselComponent} from './components/carousel/carousel.component';

@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { map } from 'rxjs/operators';
-
+import {Injectable} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {map} from 'rxjs/operators';
 // Model
-import { Event } from '../../models/event.model';
+import {Event} from '../../models/event.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +25,7 @@ export class EventService {
     try {
       const id = evento.id;
       const item = { id, ...evento };
-      const result = await this.db.collection('evento').doc(`${evento.id}`).set(item);
-      return result;
+      return await this.db.collection('evento').doc(`${evento.id}`).set(item);
     } catch (error) {
       return new Error(error)
     }

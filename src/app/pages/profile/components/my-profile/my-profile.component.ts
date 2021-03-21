@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { EventService } from 'src/app/core/services/event.service';
-
+import {Component, OnInit} from '@angular/core';
+import {EventService} from 'src/app/core/services/event.service';
 // Services
-import { UsuarioService } from '../../../../core/services/usuario.service';
-
+import {UsuarioService} from '../../../../core/services/usuario.service';
 // Models
-import { Usuario } from '../../../../models/usuario.model';
-import { Event } from '../../../../models/event.model';
+import {Usuario} from '../../../../models/usuario.model';
+import {Event} from '../../../../models/event.model';
 
 @Component({
   selector: 'app-my-profile',
@@ -91,7 +89,7 @@ export class MyProfileComponent implements OnInit {
           this.userEvent = evento;
         }
       });
-    } else { 
+    } else {
       this.userEvent = '';
     }
   }

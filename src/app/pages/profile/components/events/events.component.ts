@@ -1,13 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-
 // Services
-import { EventService } from '../../../../core/services/event.service';
-import { UsuarioService } from '../../../../core/services/usuario.service';
-
+import {EventService} from '../../../../core/services/event.service';
+import {UsuarioService} from '../../../../core/services/usuario.service';
 // Models
-import { Usuario } from '../../../../models/usuario.model';
-import { Event } from '../../../../models/event.model';
-
+import {Usuario} from '../../../../models/usuario.model';
+import {Event} from '../../../../models/event.model';
 // SweetAlert2
 import Swal from 'sweetalert2';
 
@@ -31,7 +28,6 @@ export class EventsComponent implements OnInit {
   ngOnInit(): void {
     this.eventService.getEvents().subscribe(resp => {
       this.events = resp;
-      console.log(this.events);
     });
 
     this.usuarioService.usuarioEmiter.subscribe(usuario => {
@@ -40,7 +36,6 @@ export class EventsComponent implements OnInit {
   }
 
   async signIn(event: Event){
-
     if (this.usuario.event.length > 0) {
       Swal.fire({
         title: '¡Error!',
@@ -76,9 +71,7 @@ export class EventsComponent implements OnInit {
         showCancelButton: false,
         showConfirmButton: false,
       });
-      console.log(e);
     }
-
   }
 
   async signOut(event: Event) {
@@ -105,7 +98,6 @@ export class EventsComponent implements OnInit {
         icon: 'error',
         timer: 2000,
       });
-      console.log(e);
     }
   }
 }

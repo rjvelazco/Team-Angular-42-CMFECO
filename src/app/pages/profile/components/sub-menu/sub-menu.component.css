@@ -1,3 +1,8 @@
+.title-panel {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
 :host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
   color: var(--color-palette-primary);
   vertical-align: middle;
@@ -58,34 +63,36 @@
 
 :host ::ng-deep .p-tabview-panels {
   min-height: 70vh;
+  padding: 3rem 0;
 }
 
 
 @media screen and (max-width: 75em) {
+  :host ::ng-deep .p-tabview-panels {
+    padding: 0;
+  }
+
   :host ::ng-deep .p-tabview-nav {
     padding: 1rem 0;
   }
 
   :host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
     font-size: 1em;
+    padding: 0.5em 1em;
+  }
+
+  :host ::ng-deep .p-tabview .p-tabview-nav .p-tabview-nav-link i {
+    display: none;
   }
 }
 
 @media screen and (max-width: 627px) {
   :host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
     font-size: 0.8em;
-    padding: 0.5rem;
-  }
-}
-
-@media screen and (max-width: 522px) {
-  :host ::ng-deep .tabview-profile i {
-    font-size: 0.9em;
   }
 
-  :host ::ng-deep .tabview-profile span {
-    font-size: 0.9em;
-    margin: 0 .3rem;
+  :host ::ng-deep .p-tabview-panels {
+    padding: 1rem;
   }
 }
 

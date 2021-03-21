@@ -2,11 +2,13 @@ a {
   text-decoration: none;
 }
 
+a:active{
+  color: var(--color-palette-primary);
+}
+
 .profile-info {
   padding-top: 12px;
 }
-
-
 
 .profile-info .profile-nickname {
   font-weight: bold;
@@ -34,6 +36,11 @@ a {
   color: #273b47;
 }
 
+.edit-profile {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
 
 .event-card, .base-activity {
   border-radius: .5rem;
@@ -55,13 +62,11 @@ a {
   padding-bottom: 12px;
 }
 
-
 .btn-comfeco {
-  max-width: 65%;
   margin-top: 1rem;
 }
 
-.event-card .event-content h5 {
+.event-card .event-content h4 {
   margin: 6px;
   font-weight: 500;
   color: #4c566a;
@@ -82,9 +87,9 @@ a {
   line-height: 1.38;
 }
 
-.event-info{
+.event-info {
   display: inline-block;
-  margin: 10px 0px;
+  margin: 10px 0;
   font-size: 14px;
   font-weight: bold;
 }
@@ -134,14 +139,16 @@ a {
   background-color: var(--color-palette-primary);
 }
 
-:host ::ng-deep .p-card .insignia-avatar .p-card-body .p-card-content{
+:host ::ng-deep .p-card .insignia-avatar .p-card-body .p-card-content {
   text-align: center;
 }
 
-
-
-:host ::ng-deep .p-avatar.p-avatar-xl .p-avatar-icon{
+:host ::ng-deep .p-avatar.p-avatar-xl .p-avatar-icon {
   color: var(--color-palette-secondary);
+}
+
+:host ::ng-deep .p-card.box-stretched {
+  height: 60vh;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -150,12 +157,17 @@ a {
   }
 }
 
-@media only screen and (max-width: 992px){
+@media only screen and (max-width: 992px) {
   .insignia {
     padding: 0.5rem;
   }
 
-  :host ::ng-deep .p-card .insignia-avatar{
+  :host ::ng-deep .p-card.box-stretched {
+    height: 100% !important;
+  }
+
+
+  :host ::ng-deep .p-card .insignia-avatar {
     margin-left: 0;
   }
 
