@@ -19,14 +19,14 @@ export class InsigniasComponent implements OnInit {
 
   mostrarInsignias(){
     this.insigniasUsuario = this.usuarioService.usuario.insignias;
-    this.insigniasService.mostrarInsigniasGanadas().subscribe( data => {
-      for(let i = 0; i < data.length; i++){
-        for(let j=0; j< this.insigniasUsuario.length; j++){
-          if(data[i].id == this.insigniasUsuario[j]){
-            this.insigniasGanadas.push( data[i] );
+    this.insigniasService.mostrarInsigniasGanadas().subscribe(data => {
+      data.forEach(insignia => {
+        this.insigniasUsuario.forEach(insigniaGanada => {
+          if (insignia.id === insigniaGanada) {
+            this.insigniasGanadas.push(insignia);
           }
-        }
-      }
-    });
+        })
+      })
+    })
   }
 }

@@ -14,7 +14,6 @@ import {HeaderService} from '../../../core/services/header.service';
 export class ResetPasswordComponent implements OnInit, OnDestroy {
 
   public form: FormGroup;
-  public emailRegularExpression: RegExp = new RegExp(' (/^[0-9a-zA-Z]+([0-9a-zA-Z]*[-._+])*[0-9a-zA-Z]+@[0-9a-zA-Z]+([-.][0-9a-zA-Z]+)*([0-9a-zA-Z]*[.])[a-zA-Z]{2,6}$/)');
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,7 +41,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
 
   private buildForm(): void {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.pattern(this.emailRegularExpression)]]
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]]
     });
   }
 
