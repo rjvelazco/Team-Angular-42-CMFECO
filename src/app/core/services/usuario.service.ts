@@ -114,7 +114,11 @@ export class UsuarioService {
       const resp = await this.db.firestore.collection('participantes').where('group', '==', this.usuario.group).get();
 
       // Get user team.
-      resp.forEach(docs => this.team.push(docs.data()));
+      if (this.usuario.group.length > 0) {
+        resp.forEach(docs => this.team.push(docs.data()));
+      } else {
+        this.team.push(this.usuario);
+      }
       this.usuarioGroupEmitter.emit(this.team);
 
       return this.team;
