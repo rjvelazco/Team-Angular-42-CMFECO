@@ -1,6 +1,6 @@
 # Proyecto
 
-[Team-Angular-42-CMFECO](https://community-fest-code.web.app/login)
+[Team-Angular-42-CMFECO](https://community-fest-code.web.app)`
 
 # Notas:
 
