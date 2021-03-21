@@ -18,7 +18,7 @@ export class ClockComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit(): void {
-    this.countDown('Dom Mar 21 2021 14:58:01 GMT-0400 (hora de Venezuela)');
+    this.countDown('Fri Apr 30 2021 14:58:01 GMT-0400 (hora de Venezuela)');
   }
 
   ngOnDestroy(): void {
