@@ -133,13 +133,13 @@ export class EditProfileComponent implements OnInit {
     country = (!country) ? this.usuario.country : country.name;
 
     try {
+      console.log()
       const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate.toString(), country, facebook, github, linkedIn, twitter, bio, this.usuario.event, this.usuario.group, this.usuario.insignias, this.usuario.estado);
       if (!this.usuario.estado) {
         this.usuario.estado = true;
         await  this.getInsigniaSociable(nuevoUsuario);
       }
       await this.usuarioService.updateParticipante(nuevoUsuario);
-
       Swal.fire({
         title: '¡Actualizado!',
         text: `¡Los datos se han actualizado con éxito!`,
@@ -161,6 +161,7 @@ export class EditProfileComponent implements OnInit {
     if (condicional) {
       console.log(this.usuario)
       this.usuario.insignias.push(this.sociableInsignia);
+      usuario.estado = true;
       await Swal.fire({
         icon: 'success',
         title: '¡Haz ganado la insignia Sociable!',
