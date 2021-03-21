@@ -68,7 +68,6 @@ export class LoginComponent implements OnInit {
 
 
   async loginUser() {
-    // console.log('form ->', this.form.value.email);
 
     if (this.form.valid) {
 
@@ -104,7 +103,7 @@ export class LoginComponent implements OnInit {
           title: '¡Error!',
           text: 'Email y/o contraseña no válidos',
           icon: 'error',
-          confirmButtonText: 'Cool'
+          confirmButtonText: 'Ok'
         });
       }
 
