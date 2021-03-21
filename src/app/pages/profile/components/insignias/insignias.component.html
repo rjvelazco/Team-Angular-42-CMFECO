@@ -1,6 +1,6 @@
-<div class="p-grid p-text-center">
-  <p-card class="p-col-12 p-md-6 p-lg-3" *ngFor="let insignia of insigniasGanadas">
-    <img src="{{insignia['imagen']}}" alt="Avatar" class="image">
+<div *ngIf="insigniasGanadas.length > 0; else elseBlock" class="p-grid p-text-center">
+  <p-card class="p-col-12 p-md-6 p-lg-3" *ngFor="let i of insigniasGanadas">
+    <img src="{{i.imagen}}" alt="Avatar" class="image">
     <div>
       <h5>Descripción</h5>
       <div class="p-pt-5">
@@ -24,3 +24,8 @@
     </ng-template>
   </p-card>
 </div>
+  <ng-template #elseBlock>
+    <div class="p-text-center p-pt-5 title">
+        ¡Anímate a conseguir todas las insignias!
+    </div>
+  </ng-template>

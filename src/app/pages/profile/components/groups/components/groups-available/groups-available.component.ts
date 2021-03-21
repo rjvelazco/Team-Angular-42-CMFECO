@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {UsuarioService} from '../../../../../../core/services/usuario.service';
+import Swal from 'sweetalert2';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-groups-available',
@@ -7,124 +10,31 @@ import {Component, OnInit} from '@angular/core';
 })
 export class GroupsAvailableComponent implements OnInit {
 
-  public technologies;
-  public sortOrder: number;
-  public sortField: string;
-  public loading = true;
   public filter = [];
-  public groupsAvailable = [
-    {
-      'id': 1,
-      'image': 'group.jpg',
-      'name': 'Andromeda',
-      'technology': 'Python',
-      'description': 'Gran Grupo de trabajo autonomo con ganas de aprender y mejorar cada dia sin importar' +
-        'las dificultades o retos que se presenten, siempre con la mejor actitud y disposición de ayudar siempre.',
-    },
-    {
-      'id': 2,
-      'image': 'group.jpg',
-      'name': 'Los Programadores',
-      'technology': 'Typescript',
-      'description': 'Gran Grupo de trabajo autonomo con ganas de aprender y mejorar cada dia sin importar' +
-        'las dificultades o retos que se presenten, siempre con la mejor actitud y disposición de ayudar siempre.',
-    },
-    {
-      'id': 3,
-      'image': 'group.jpg',
-      'name': 'Los Crypto',
-      'technology': 'JavaScript',
-      'description': 'Gran Grupo de trabajo autonomo con ganas de aprender y mejorar cada dia sin importar' +
-        'las dificultades o retos que se presenten, siempre con la mejor actitud y disposición de ayudar siempre.',
-    },
-    {
-      'id': 4,
-      'image': 'group.jpg',
-      'name': 'Los Crypto',
-      'technology': 'Java',
-      'description': 'Gran Grupo de trabajo autonomo con ganas de aprender y mejorar cada dia sin importar' +
-        'las dificultades o retos que se presenten, siempre con la mejor actitud y disposición de ayudar siempre.',
-    },
-    {
-      'id': 5,
-      'image': 'group.jpg',
-      'name': 'Los Crypto',
-      'technology': 'C#',
-      'description': 'Gran Grupo de trabajo autonomo con ganas de aprender y mejorar cada dia sin importar' +
-        'las dificultades o retos que se presenten, siempre con la mejor actitud y disposición de ayudar siempre.',
-    },
-    {
-      'id': 6,
-      'image': 'group.jpg',
-      'name': 'Los Crypto',
-      'technology': 'C++',
-      'description': 'Gran Grupo de trabajo autonomo con ganas de aprender y mejorar cada dia sin importar' +
-        'las dificultades o retos que se presenten, siempre con la mejor actitud y disposición de ayudar siempre.',
-    },
-    {
-      'id': 7,
-      'image': 'group.jpg',
-      'name': 'Los Crypto',
-      'technology': 'PHP',
-      'description': 'Gran Grupo de trabajo autonomo con ganas de aprender y mejorar cada dia sin importar' +
-        'las dificultades o retos que se presenten, siempre con la mejor actitud y disposición de ayudar siempre.',
-    },
-    {
-      'id': 8,
-      'image': 'group.jpg',
-      'name': 'Los Crypto',
-      'technology': 'Swift',
-      'description': 'Gran Grupo de trabajo autonomo con ganas de aprender y mejorar cada dia sin importar' +
-        'las dificultades o retos que se presenten, siempre con la mejor actitud y disposición de ayudar siempre.',
-    },
-    {
-      'id': 9,
-      'image': 'group.jpg',
-      'name': 'Los Crypto',
-      'technology': 'Flutter',
-      'description': 'Gran Grupo de trabajo autonomo con ganas de aprender y mejorar cada dia sin importar' +
-        'las dificultades o retos que se presenten, siempre con la mejor actitud y disposición de ayudar siempre.',
-    },
-    {
-      'id': 10,
-      'image': 'group.jpg',
-      'name': 'Los Crypto',
-      'technology': 'Ruby',
-      'description': 'Gran Grupo de trabajo autonomo con ganas de aprender y mejorar cada dia sin importar' +
-        'las dificultades o retos que se presenten, siempre con la mejor actitud y disposición de ayudar siempre.',
-    },
-    {
-      'id': 11,
-      'image': 'group.jpg',
-      'name': 'Los Crypto',
-      'technology': 'Kotlin',
-      'description': 'Gran Grupo de trabajo autonomo con ganas de aprender y mejorar cada dia sin importar' +
-        'las dificultades o retos que se presenten, siempre con la mejor actitud y disposición de ayudar siempre.',
-    },
-    {
-      'id': 12,
-      'image': 'group.jpg',
-      'name': 'Los Crypto',
-      'technology': 'Go',
-      'description': 'Gran Grupo de trabajo autonomo con ganas de aprender y mejorar cada dia sin importar' +
-        'las dificultades o retos que se presenten, siempre con la mejor actitud y disposición de ayudar siempre.',
-    },
-  ];
+  public groupId = localStorage.getItem('groupId');
+  public groupsAvailable = [];
+  public loading = true;
+  public sortField: string;
+  public sortOrder: number;
+  public technologies;
+  public usuario;
 
-  constructor() {
-    this.filter = this.groupsAvailable
+  constructor(private usuarioService: UsuarioService,) {
+    this.groups();
+    this.usuario = this.usuarioService.usuario;
   }
 
   onSortChange(event) {
-    if (event.value.length > 0 ){
-      let value = event.value.map(value => value.name);
+    if (event.value.length > 0) {
+      const value = event.value.map(value => value.name);
       this.filter = this.groupsAvailable.filter(
-        data => value.includes(data.technology)
+        group => value.includes(group.data.technology)
       );
     } else {
-      this.filter = this.groupsAvailable
+      this.filter = this.groupsAvailable;
     }
   }
+
 
   ngOnInit(): void {
     this.technologies = [
@@ -142,6 +52,65 @@ export class GroupsAvailableComponent implements OnInit {
       {name: 'C++'},
       {name: 'C#'},
     ];
-    this.loading = false;
+  }
+
+  async joinGroup(groupId) {
+    if (this.usuario.group.length > 0) {
+      this.messageErrorGroup('Ya tienes grupo.');
+      return;
+    }
+    try { 
+      const result = await Swal.fire({
+        icon: 'info',
+        title: '¿Estas seguro de entrar al grupo?',
+        showDenyButton: true,
+        showConfirmButton: true,
+        confirmButtonText: `Confirmar`,
+        denyButtonText: `Cancelar`,
+      });
+      if (result.isConfirmed) {
+        this.usuario.group = groupId;
+        this.usuarioService.usuario.group = groupId;
+        
+        await this.usuarioService.updateParticipante(this.usuario);
+        await this.usuarioService.getIntegratesGroup();
+        this.messageSuccesGroup('¡Bienvenido!', '¡Bienvenido a bordo!');
+      }
+    } catch (e) {
+      this.messageErrorGroup('Oosp! Algo salió mal.');
+      console.log(e);
+    }
+  }
+
+  private groups() {
+    this.usuarioService.grupos()
+      .subscribe((response) => {
+        response.forEach((responseData: any) => {
+          this.groupsAvailable.push({
+            id: responseData.payload.doc.id,
+            data: responseData.payload.doc.data(),
+          });
+        });
+        this.loading = false;
+        this.filter = this.groupsAvailable;
+      });
+  }
+
+  private messageErrorGroup(message: string) {
+    Swal.fire({
+      icon: 'error',
+      title: '¡Error!',
+      text: message,
+      confirmButtonText: `Cool`,
+    });
+  }
+
+  private messageSuccesGroup(title: string,message: string) {
+    Swal.fire({
+      icon: 'success',
+      title: title,
+      text: message,
+      confirmButtonText: `Cool`,
+    });
   }
 }

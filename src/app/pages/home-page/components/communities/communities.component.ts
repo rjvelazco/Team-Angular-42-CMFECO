@@ -10,19 +10,19 @@ export class CommunitiesComponent implements OnInit {
     {
       'id': 1,
       'name': 'Comunidad de programadores',
-      'imgurl': 'comunidad_programadores.png',
+      'imgurl': 'https://res.cloudinary.com/dsktpevg6/image/upload/v1616287951/dqbqlysgcsxovqpouz0m.png',
       'url': 'https://discord.gg/YPQaUgn2'
     },
     {
       'id': 2,
       'name': 'StacklyCode Community',
-      'imgurl': 'stackly.png',
+      'imgurl': 'https://res.cloudinary.com/dsktpevg6/image/upload/v1616287951/lzrmmbjlpwmexxfwlxan.png',
       'url': 'https://discord.gg/VeXZ2DzyFM'
     },
     {
       'id': 3,
       'name': 'Comunidad Coderos',
-      'imgurl': 'comunidad_coderos.png',
+      'imgurl': 'https://res.cloudinary.com/dsktpevg6/image/upload/v1616287950/kpumsexxzmtbmxgxnovf.png',
       'url': 'https://discord.gg/3sKnKjrcUW'
     },
 

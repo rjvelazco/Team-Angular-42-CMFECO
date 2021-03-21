@@ -7,6 +7,7 @@
         class="p-button-text btn-leave">
 </button>
 
+
 <div class="p-grid">
   <div class="p-col-12 p-md-6 p-lg-6 x">
     <div class="contact-form p-grid p-fluid">
@@ -83,20 +84,19 @@
           <div class="p-col-12 p-md-4">
             <div class="p-field">
               <label for="country">Pais</label>
-
-              <p-dropdown [(ngModel)]="selectedCountry"
-                          [options]="countries"
+              
+              <p-dropdown [options]="countries"
                           optionLabel="name"
                           [filter]="true"
                           filterBy="name"
                           formControlName="country"
                           id="country"
                           placeholder="Tu pais">
-                <ng-template pTemplate="selectedItem">
+                <!-- <ng-template pTemplate="selectedItem">
                   <div class="country-item country-item-value" *ngIf="selectedCountry">
                     <div>{{selectedCountry['name']}}</div>
                   </div>
-                </ng-template>
+                </ng-template> -->
                 <ng-template let-country pTemplate="item">
                   <div class="country-item">
                     <div>{{country['name']}}</div>
@@ -191,7 +191,7 @@
                 <input type="text"
                        id="twitter"
                        pInputText
-                       formControlName="github"
+                       formControlName="twitter"
                        placeholder="">
               </div>
             </div>

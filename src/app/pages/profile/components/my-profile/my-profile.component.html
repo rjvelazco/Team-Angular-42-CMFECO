@@ -16,19 +16,22 @@
             <button class="p-button p-text-center" type="button" routerLink="editar">Completa tu perfil</button>
           </ng-template>
         </div>
+        <p-divider type="dashed"></p-divider>
         <div *ngIf="userEvent">
-          <span class="event-info">Informacion del Evento</span>
+          <span class="event-info">Información del Evento</span>
           <br>
           <span class="label-event-info">Nombre: <span class="event-title">{{userEvent.title}}</span></span>
           <br>
-          <small><strong>Empieza:</strong>{{userEvent['dateStart']}}</small>
+          <small>Empieza: <strong>{{userEvent.dateStart}}</strong></small>
         </div>
       </div>
       <ng-template pTemplate="footer">
         <p-divider></p-divider>
         <div class="p-d-flex p-jc-between p-align-center">
-          <ng-container *ngFor="let i of [].constructor(4)">
-            <p-avatar icon="pi pi-star" styleClass="p-mr-2" size="large" shape="circle"></p-avatar>
+          <ng-container *ngFor="let item of insigniasGanadas; let i = index">
+            <p-avatar styleClass="p-mr-2" size="large" shape="circle">
+              <img title="{{ item.nombre }}"  src="{{ item.imagen }}" alt="insigniasLogo">  
+            </p-avatar>
           </ng-container>
         </div>
       </ng-template>
@@ -38,10 +41,12 @@
     <div class="p-grid">
       <div class="p-col-12">
         <p-card header="Insignias">
-          <ng-container *ngFor="let i of [].constructor(4)">
-            <p-avatar icon="pi pi-star" styleClass="insignia-avatar" size="xlarge" shape="circle"></p-avatar>
-          </ng-container>
-        </p-card>
+      <ng-container>
+          <p-avatar *ngFor="let i of insignias" styleClass="insignia-avatar" size="xlarge" shape="circle">
+              <img title="{{ i.nombre }}" src="{{ i.imagen }}" alt="insigniasLogo">
+          </p-avatar>
+      </ng-container>
+    </p-card>
       </div>
       <div class="p-col-12">
         <p-card header="Actividad reciente">
@@ -53,7 +58,7 @@
                 </h6>
               </div>
               <div class="badge-activity">
-                <img src="assets/img/communities/stackly.png" alt="badge">
+                <img src="https://res.cloudinary.com/dsktpevg6/image/upload/v1616287608/kyigingh6fauoylytq0r.webp" alt="badge">
               </div>
             </div>
           </article>
@@ -65,7 +70,7 @@
                 </h6>
               </div>
               <div class="badge-activity">
-                <img src="assets/img/communities/stackly.png" alt="badge">
+                <img src="https://res.cloudinary.com/dsktpevg6/image/upload/v1616287608/kyigingh6fauoylytq0r.webp" alt="badge">
               </div>
             </div>
           </article>
@@ -94,7 +99,7 @@
                   <button pButton
                           pRipple
                           class="btn-comfeco"
-                          label="Mas información"
+                          label="Más información"
                           routerLink="{{event['information']}}">
                   </button>
                 </div>

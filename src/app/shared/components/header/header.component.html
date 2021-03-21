@@ -22,7 +22,7 @@
     <div class="user-profile p-d-flex p-align-center p-jc-center">
       <i class="pi pi-bell notification" pBadge severity="danger"></i>
       <div class="p-d-flex p-align-center p-jc-center cursor" (click)="menu.toggle($event)">
-        <img [src]="usuario.img | imagen" alt="" class="profile-image">
+        <img [src]="usuario.img | imagen" alt="Avatar" class="profile-image">
         <div class="profile-info">
           <h4>{{usuario.userName}}</h4>
           <span>{{usuario.role}}</span>

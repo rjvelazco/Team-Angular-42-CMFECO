@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
-// Services
+// services
 import {UsuarioService} from 'src/app/core/services/usuario.service';
 import {HeaderService} from '../../../core/services/header.service';
 // Models
@@ -17,9 +17,9 @@ export class HeaderComponent implements OnInit {
   public showBackLoginBtn: boolean = false;
   public showDashboard: boolean = false;
   public usuario: Usuario;
-  items: MenuItem[];
-  changeColor = true;
-  classTopBar: string;
+  public items: MenuItem[];
+  public changeColor = true;
+  public classTopBar: string;
 
   constructor(
     private headerService: HeaderService,

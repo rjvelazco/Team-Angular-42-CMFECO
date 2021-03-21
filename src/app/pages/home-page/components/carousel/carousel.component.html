@@ -10,7 +10,7 @@
     <ng-template let-creator pTemplate="item">
       <div class="creator">
         <div class="creator-content">
-          <img src="assets/img/creators/{{creator['image']}}" alt="Creator" class="creator-image">
+          <img src="{{creator['image']}}" alt="Creator" class="creator-image">
           <div class="creator-container {{creator['technology']}}">
             <span class="creator-text">{{creator['full_name']}}</span>
             <div class="creator-icon">
@@ -48,7 +48,7 @@
       <a href="{{sponsor['link']}}" target="_blank">
         <div class="sponsor">
           <div class="sponsor-content">
-            <img src="assets/img/sponsors_oficiales/{{sponsor['image']}}"
+            <img src="{{sponsor['image']}}"
                  class="sponsor-image p-shadow-2"
                  pTooltip="{{sponsor['sponsor_name']}}"
                  tooltipPosition="top"

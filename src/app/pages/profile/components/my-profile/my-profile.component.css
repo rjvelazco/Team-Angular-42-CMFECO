@@ -10,6 +10,10 @@ a:active{
   padding-top: 12px;
 }
 
+.insignia {
+  padding-bottom: 1rem;
+}
+
 .profile-info .profile-nickname {
   font-weight: bold;
   font-size: 24px;
@@ -169,6 +173,8 @@ a:active{
 
   :host ::ng-deep .p-card .insignia-avatar {
     margin-left: 0;
+    width: 100px;
+    height: 100px;
   }
 
   :host ::ng-deep .insignias-card .p-card-body .p-card-content {
