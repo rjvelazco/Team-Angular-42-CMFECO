@@ -2,7 +2,8 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {map} from 'rxjs/operators';
 // Firebase
 import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFirestore} from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase';
 // Models
 import {Usuario} from '../../models/usuario.model';
 
@@ -14,6 +15,9 @@ export class UsuarioService {
   // User Info
   public usuario: Usuario;
   public team: any[] = [];
+
+  // Image
+  private CARPETA_IMAGENES = 'img';
   
   // Observables
   public usuarioEmiter: EventEmitter<Usuario> = new EventEmitter();
@@ -166,5 +170,4 @@ export class UsuarioService {
   public grupos() {
     return this.db.collection('grupos').snapshotChanges();
   }
-
 }

@@ -18,6 +18,7 @@ export class EditProfileComponent implements OnInit {
 
   public countries      : any[];
   public imgTemp        : any = '';
+  public imagenSubir    : File;
   public usuario        : Usuario;
   public form           : FormGroup;
   public sociableInsignia : string = 'j3U9pxdB2UxcYD3sNtUD';
@@ -105,7 +106,7 @@ export class EditProfileComponent implements OnInit {
 
   // IMAGEN
   cambiarImagen(file: File) {
-    // this.imagenSubir = file;
+    this.imagenSubir = file;
     if (!file) {
       return this.imgTemp = '';
     }

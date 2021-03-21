@@ -120,7 +120,6 @@ export class MyProfileComponent implements OnInit, OnDestroy {
     this.resetInsignias();
     this.insigniasUsuario = this.usuarioService.usuario.insignias;
     this.insigniasService.mostrarInsigniasGanadas().subscribe(data => {
-      console.log('Hola');
       data.forEach(insignia => {
         this.insignias.push(insignia);
         this.insigniasUsuario.forEach(insigniaGanada => {
