@@ -128,13 +128,16 @@ export class EditProfileComponent implements OnInit {
     if (this.form.invalid) {return;}
 
     const { userName, email, bio, birthDate, sex, password, facebook, github, linkedIn, twitter } = form.value;
-    
+
     let { country } = form.value;
     country = (!country) ? this.usuario.country : country.name;
-    
+
     try {
       const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate.toString(), country, facebook, github, linkedIn, twitter, bio, this.usuario.event, this.usuario.group, this.usuario.insignias, this.usuario.estado);
-      if (!this.usuario.estado) { await this.getInsigniaSociable(nuevoUsuario); }
+      if (!this.usuario.estado) {
+        this.usuario.estado = true;
+        await  this.getInsigniaSociable(nuevoUsuario);
+      }
       await this.usuarioService.updateParticipante(nuevoUsuario);
 
       Swal.fire({
@@ -155,10 +158,9 @@ export class EditProfileComponent implements OnInit {
 
   async getInsigniaSociable(usuario: Usuario) {
     const condicional = usuario.userName.length > 0 && usuario.email.length > 0 && usuario.sex.length > 0 && usuario.birthDate.length > 0 && usuario.country.length > 0 && usuario.facebook.length > 0 && usuario.github.length > 0 && usuario.linkedIn.length > 0 && usuario.twitter.length > 0 && usuario.bio.length > 0;
-
     if (condicional) {
+      console.log(this.usuario)
       this.usuario.insignias.push(this.sociableInsignia);
-      this.usuario.estado = true;
       await Swal.fire({
         icon: 'success',
         title: '¡Haz ganado la insignia Sociable!',

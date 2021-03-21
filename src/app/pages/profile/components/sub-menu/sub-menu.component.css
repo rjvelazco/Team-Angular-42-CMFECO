@@ -63,7 +63,6 @@
 
 :host ::ng-deep .p-tabview-panels {
   min-height: 70vh;
-  padding: 3rem 0;
 }
 
 

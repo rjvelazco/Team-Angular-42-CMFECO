@@ -29,8 +29,8 @@
         <p-divider></p-divider>
         <div class="p-d-flex p-jc-between p-align-center">
           <ng-container *ngFor="let item of insigniasGanadas; let i = index">
-            <p-avatar styleClass="p-mr-2" size="large" shape="circle">
-              <img title="{{ item.nombre }}"  src="{{ item.imagen }}" alt="insigniasLogo">  
+            <p-avatar styleClass="p-mr-2 insignia-avatar" size="large" shape="circle">
+              <img title="{{ item.nombre }}"  src="{{ item.imagen }}" alt="insigniasLogo">
             </p-avatar>
           </ng-container>
         </div>
@@ -40,22 +40,22 @@
   <div class="p-col-12 p-lg-6">
     <div class="p-grid">
       <div class="p-col-12">
-        <p-card header="Insignias">
-      <ng-container>
-          <p-avatar *ngFor="let i of insignias" styleClass="insignia-avatar" size="xlarge" shape="circle">
-              <img title="{{ i.nombre }}" src="{{ i.imagen }}" alt="insigniasLogo">
-          </p-avatar>
-      </ng-container>
-    </p-card>
+        <p-card header="Insignias" styleClass="insignias-card">
+          <ng-container>
+            <p-avatar *ngFor="let insignia of insignias" styleClass="insignia-avatar" size="xlarge" shape="circle">
+              <img title="{{ insignia.nombre }}" src="{{ insignia.imagen }}" alt="insigniasLogo">
+            </p-avatar>
+          </ng-container>
+        </p-card>
       </div>
       <div class="p-col-12">
         <p-card header="Actividad reciente">
           <article class="base-activity">
             <div class="recent-activity">
               <div class="title">
-                <h6>
+                <h5>
                   Te has unido al evento Community Fest and Code
-                </h6>
+                </h5>
               </div>
               <div class="badge-activity">
                 <img src="https://res.cloudinary.com/dsktpevg6/image/upload/v1616287608/kyigingh6fauoylytq0r.webp" alt="badge">
@@ -65,9 +65,9 @@
           <article class="base-activity">
             <div class="recent-activity">
               <div class="title">
-                <h6>
+                <h5>
                   Te has unido al evento Community Fest and Code
-                </h6>
+                </h5>
               </div>
               <div class="badge-activity">
                 <img src="https://res.cloudinary.com/dsktpevg6/image/upload/v1616287608/kyigingh6fauoylytq0r.webp" alt="badge">
