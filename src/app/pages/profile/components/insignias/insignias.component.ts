@@ -26,7 +26,8 @@ export class InsigniasComponent implements OnInit, OnDestroy {
     this.subcription.unsubscribe();
   }
 
-  mostrarInsignias(){
+  mostrarInsignias() {
+    this.resetInsignias();
     this.insigniasUsuario = this.usuarioService.usuario.insignias;
     this.insigniasService.mostrarInsigniasGanadas().subscribe(data => {
       data.forEach(insignia => {
@@ -37,5 +38,10 @@ export class InsigniasComponent implements OnInit, OnDestroy {
         })
       })
     })
+  }
+
+  resetInsignias() {
+    this.insigniasUsuario = [];
+    this.insigniasGanadas = [];
   }
 }
