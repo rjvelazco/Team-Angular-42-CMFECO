@@ -2,7 +2,6 @@ a {
   text-decoration: none;
 }
 
-
 a:active{
   color: var(--color-palette-primary);
 }
@@ -140,7 +139,7 @@ a:active{
   font-size: 30px;
 }
 
-:host ::ng-deep .insignias-card .insignia-avatar img{
+:host ::ng-deep .insignia-avatar img{
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 50%;
   object-fit: cover;
@@ -183,8 +182,8 @@ a:active{
 
   :host ::ng-deep .p-card .insignia-avatar {
     margin-left: 0;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
   }
 
   :host ::ng-deep .insignias-card .p-card-body .p-card-content {
@@ -192,5 +191,11 @@ a:active{
     justify-content: space-between;
     align-content: space-between;
   }
+}
 
+@media only screen and (max-width: 48em) {
+  :host ::ng-deep .p-card .insignia-avatar {
+    width: 50px;
+    height: 50px;
+  }
 }

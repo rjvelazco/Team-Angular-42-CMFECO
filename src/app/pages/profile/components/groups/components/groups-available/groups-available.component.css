@@ -26,8 +26,8 @@
 }
 
 .group-description{
-  margin: 0 0 1rem 0;
-  min-width: 70%;
+  margin: 0.5rem 0 1.5rem 0;
+  min-height: 54px;
 }
 
 .group-list-item .group-description{

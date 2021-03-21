@@ -8,6 +8,7 @@ import {RouterModule} from '@angular/router';
 import {ComunityComponent} from './comunity/comunity.component';
 import {ContentCreatorsComponent} from './content-creators/content-creators.component';
 import {WorkshopComponent} from './workshop/workshop.component';
+import {PrimeModule} from '../prime-module';
 
 
 @NgModule({
@@ -17,11 +18,12 @@ import {WorkshopComponent} from './workshop/workshop.component';
     ContentCreatorsComponent,
     WorkshopComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    PipeModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        PipeModule,
+        PrimeModule
+    ],
   exports: [
     PagesComponent
   ]

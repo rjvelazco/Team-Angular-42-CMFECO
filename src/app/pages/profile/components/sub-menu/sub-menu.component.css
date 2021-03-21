@@ -67,10 +67,6 @@
 
 
 @media screen and (max-width: 75em) {
-  :host ::ng-deep .p-tabview-panels {
-    padding: 0;
-  }
-
   :host ::ng-deep .p-tabview-nav {
     padding: 1rem 0;
   }
