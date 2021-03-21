@@ -2,6 +2,10 @@ a {
   text-decoration: none;
 }
 
+a:active{
+  color: var(--color-palette-primary);
+}
+
 .profile-info {
   padding-top: 12px;
 }
@@ -36,6 +40,11 @@ a {
   color: #273b47;
 }
 
+.edit-profile {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
 
 .event-card, .base-activity {
   border-radius: .5rem;
@@ -57,13 +66,11 @@ a {
   padding-bottom: 12px;
 }
 
-
 .btn-comfeco {
-  max-width: 65%;
   margin-top: 1rem;
 }
 
-.event-card .event-content h5 {
+.event-card .event-content h4 {
   margin: 6px;
   font-weight: 500;
   color: #4c566a;
@@ -84,10 +91,10 @@ a {
   line-height: 1.38;
 }
 
-.event-info{
+.event-info {
   display: inline-block;
-  margin: 10px 0px;
-  font-size: 20px;
+  margin: 10px 0;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -100,6 +107,11 @@ a {
 .event-title{
   font-size: 14px;
   font-weight: bold;
+}
+
+.badge-activity img{
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 :host ::ng-deep .custombar {
@@ -127,27 +139,29 @@ a {
   font-size: 30px;
 }
 
+:host ::ng-deep .insignia-avatar img{
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
 :host ::ng-deep .insignias-card .p-card-content {
   display: flex;
   justify-content: space-evenly;
 }
 
-:host ::ng-deep .p-card .insignia-avatar{
-  background-color: var(--color-palette-primary);
-}
 
-:host ::ng-deep .p-card .insignia-avatar .p-card-body .p-card-content{
+:host ::ng-deep .p-card .insignia-avatar .p-card-body .p-card-content {
   text-align: center;
 }
 
-:host ::ng-deep .p-avatar.p-avatar-xl .p-avatar-icon{
+:host ::ng-deep .p-avatar.p-avatar-xl .p-avatar-icon {
   color: var(--color-palette-secondary);
 }
 
-.div-center-text{
-  display: flex;
-  justify-content:center;
-  align-items:center;
+:host ::ng-deep .p-card.box-stretched {
+  height: 66vh;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -156,15 +170,20 @@ a {
   }
 }
 
-@media only screen and (max-width: 992px){
+@media only screen and (max-width: 992px) {
   .insignia {
     padding: 0.5rem;
   }
 
-  :host ::ng-deep .p-card .insignia-avatar{
+  :host ::ng-deep .p-card.box-stretched {
+    height: 100% !important;
+  }
+
+
+  :host ::ng-deep .p-card .insignia-avatar {
     margin-left: 0;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
   }
 
   :host ::ng-deep .insignias-card .p-card-body .p-card-content {
@@ -172,5 +191,11 @@ a {
     justify-content: space-between;
     align-content: space-between;
   }
+}
 
+@media only screen and (max-width: 48em) {
+  :host ::ng-deep .p-card .insignia-avatar {
+    width: 50px;
+    height: 50px;
+  }
 }

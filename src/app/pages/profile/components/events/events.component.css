@@ -2,6 +2,24 @@ img{
   object-fit: cover;
 }
 
+a {
+  text-decoration: none;
+  color: #2196F3;
+}
+
+.event-detail {
+  min-height: 150px;
+}
+
+.icons-event {
+  margin-top: 0.5rem;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .sponsor-image {
   width: 70px;
   height: 70px;
@@ -16,25 +34,15 @@ img{
   margin: 20px 0;
 }
 
-.icon-event{
-  width: 50px;
-  height: 50px;
+.icon-event {
+  width: 40px;
+  height: auto;
+  border-radius: 50%;
 }
 
-.img-event-container{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.title-event-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container-logo-card-event{
-  padding: 10px;
+.container-logo-card-event {
+  margin-bottom: 1rem;
 }
 
 .logo-card-event{
@@ -42,53 +50,32 @@ img{
   height: 50px;
 }
 
-a{
-  text-decoration: none;
-  color: #2196F3;
-}
 
-.share-event{
-  position: relative;
+.share-event {
   padding: 10px;
-  bottom: 0px;
-  right: 0px;
   color: #2196F3;
 }
 
-.button-reverse:hover{
-  color: #2196F3;
-  background: #fff;
-}
-
-.container-img-bg-card{
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.img-bg-event-card{
-  width: 100%;
-}
-
-.card-event{
-  width: 40rem;
-  padding: 0 10px;
-}
-
-.icon-share{
+.icon-share {
   font-size: 25px;
 }
 
-@media screen and (max-width: 600px){
-  .card-event{
-    width: 100% !important;
-  }
 
-  .icons-event{
+:host ::ng-deep .p-card-content {
+  min-height: 70%;
+}
+
+:host ::ng-deep .p-card {
+  margin-bottom: 1em;
+  box-shadow: 0 0 4px rgba(0, 0, 0, .4);
+}
+
+:host ::ng-deep .p-card .p-card-header {
+  padding: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .icons-event {
     display: none;
   }
 }

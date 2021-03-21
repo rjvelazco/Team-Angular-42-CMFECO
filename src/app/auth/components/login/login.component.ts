@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 import Swal from 'sweetalert2';
-
 // Services
-import { UsuarioService } from '../../../core/services/usuario.service';
+import {UsuarioService} from '../../../core/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -26,11 +25,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-    // this.usuarioService.getCurrentUser().subscribe(data => console.log(data));
   }
 
   // Getters - Errors.
-
   get emailInvalid() {
     return this.form.get('email').hasError('pattern') && this.form.get('email').touched;
   }

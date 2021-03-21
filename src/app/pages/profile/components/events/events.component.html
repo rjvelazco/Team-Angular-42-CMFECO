@@ -1,63 +1,76 @@
-<div *ngIf="events" class="p-d-flex p-justify-around p-align-center p-flex-wrap">
-  <p-card [style]="{'margin-bottom': '2em', 'box-shadow':'0px 0px 4px rgba(0,0,0, .4)'}"
-          class="card-event"
-          *ngFor="let event of events">
-    <ng-template pTemplate="header">
-      <div class="p-d-flex p-justify-between p-align-center">
-        <div class="container-logo-card-event">
-          <img *ngIf="event.img" class="logo-card-event"[src]="event.img" [alt]="event.title">
-          <img *ngIf="!event.img" class="logo-card-event" src="assets/img/CMFECO-Logo.png" alt="event.title">
-        </div>
-        <div>
-          <h3 class="p-text-center">!DUELO DE TITANES!</h3>
-        </div>
-        <div class="share-event cursor">
-          <i class="pi pi-share-alt icon-share" pTooltip="Compartir" tooltipPosition="top"></i>
-        </div>
-      </div>
-    </ng-template>
-    <div class="p-py-0">
-      <div class="p-mb-2 container-img-bg-card">
-        <img class="img-bg-event-card" src="assets/img/bg_event_card.png" alt="Event">
-      </div>
-      <div class="icons-event p-grid">
-        <div class="p-col-12">
-          <div class="p-grid">
-            <div class="p-col-4 img-event-container">
-              <img class="icon-event" src="assets/img/communities/comunidad_coderos.png" alt="">
-              <img class="icon-event" src="assets/img/communities/comunidad_programadores.png" alt="">
-              <img class="icon-event" src="assets/img/communities/stackly.png"  alt="">
-            </div>
-            <div class="p-col-4 title-event-container">
-              <h3 class="p-m-0">Frameworks</h3>
-            </div>
-            <div class="p-col-4 img-event-container">
-              <img class="icon-event" src="assets/img/angular.png" alt="">
-              <img class="icon-event" src="assets/img/react.png"   alt="">
-              <img class="icon-event" src="assets/img/svelte.png"  alt="">
-            </div>
+<div class="p-grid p-mt-3">
+  <ng-container *ngIf="events">
+    <p-card class="p-col-12 p-md-6 p-xl-4" *ngFor="let event of events">
+      <ng-template pTemplate="header">
+        <div class="p-d-flex p-justify-between p-align-center">
+          <div class="container-logo-card-event">
+            <img *ngIf="event.img" class="logo-card-event" [src]="event.img" [alt]="event.title">
+            <img *ngIf="!event.img" class="logo-card-event" src="assets/img/CMFECO-Logo.png" alt="event.title">
+          </div>
+          <div>
+            <h3 class="p-text-center">!DUELO DE TITANES!</h3>
+          </div>
+          <div class="share-event cursor">
+            <i class="pi pi-share-alt icon-share" pTooltip="Compartir" tooltipPosition="top"></i>
           </div>
         </div>
-      </div>
-    </div>
-    <ng-template pTemplate="footer">
-      <div class="p-mb-4">
-        <h3>{{event.title}} - [{{event.amount}}]</h3>
+        <div>
+          <img class="img-bg-event-card" src="assets/img/bg_event_card.png" alt="Event">
+        </div>
+        <div class="icons-event">
+          <img class="icon-event"
+               src="https://res.cloudinary.com/dsktpevg6/image/upload/v1616287950/kpumsexxzmtbmxgxnovf.png"
+               alt="iconEvent">
+          <img class="icon-event"
+               src="https://res.cloudinary.com/dsktpevg6/image/upload/v1616287951/dqbqlysgcsxovqpouz0m.png"
+               alt="iconEvent">
+          <img class="icon-event"
+               src="https://res.cloudinary.com/dsktpevg6/image/upload/v1616287951/lzrmmbjlpwmexxfwlxan.png"
+               alt="iconEvent">
+          <div class="title-event-container">
+            <h3 class="p-m-0">Frameworks</h3>
+          </div>
+          <img class="icon-event" src="assets/img/angular.png" alt="iconEvent">
+          <img class="icon-event" src="assets/img/react.png" alt="iconEvent">
+          <img class="icon-event" src="assets/img/svelte.png" alt="iconEvent" style="width: 25px;">
+        </div>
+      </ng-template>
+      <div class="event-detail">
+        <h3>{{event.title}} - {{event.amount}} Participantes</h3>
         <p>{{event.desc}}</p>
         <br>
-        <small><strong>Empieza el</strong>: {{event.dateStart}}</small>
+        <small>
+          <strong>Empieza el: </strong>:
+          {{event.dateStart}}
+        </small>
         <br>
-        <small><strong>Limite de Participantes</strong>: {{event.limit}}</small>
+        <small>
+          <strong>Limite de Participantes: </strong>:
+          {{event.limit}}
+        </small>
       </div>
-      <div class="p-grid p-align-center">
-        <div class="p-col-6">
-          <a href="#">Más Información</a>
+      <ng-template pTemplate="footer">
+        <div class="p-grid p-align-center">
+          <div class="p-col-6">
+            <a href="#">Más Información</a>
+          </div>
+          <div class="p-col-6">
+            <button *ngIf="usuario.event != event.id"
+                    (click)="signIn(event)"
+                    pButton
+                    type="button"
+                    class="p-button-raised"
+                    label="Participar">
+            </button>
+            <button *ngIf="usuario.event === event.id"
+                    (click)="signOut(event)"
+                    pButton type="button"
+                    class="p-button-raised p-button-danger"
+                    label="Abandonar">
+            </button>
+          </div>
         </div>
-        <div class="p-col-6">
-          <button *ngIf="usuario.event != event.id" (click)="signIn(event)" pButton type="button" class="p-button-raised button-reverse" label="Participar"></button>
-          <button *ngIf="usuario.event === event.id" (click)="signOut(event)" pButton type="button" class="p-button-raised button-reverse" label="Abandonar"></button>
-        </div>
-      </div>
-    </ng-template>
-  </p-card>
+      </ng-template>
+    </p-card>
+  </ng-container>
 </div>

@@ -59,19 +59,23 @@ export class GroupsAvailableComponent implements OnInit {
       this.messageErrorGroup('Ya tienes grupo.');
       return;
     }
-    try { 
+    try {
       const result = await Swal.fire({
         icon: 'info',
         title: '¿Estas seguro de entrar al grupo?',
         showDenyButton: true,
         showConfirmButton: true,
-        confirmButtonText: `Confirmar`,
         denyButtonText: `Cancelar`,
+        confirmButtonText: `Unirme`,
+        customClass: {
+          denyButton: 'btn-deny'
+        },
+        reverseButtons: true
       });
       if (result.isConfirmed) {
         this.usuario.group = groupId;
         this.usuarioService.usuario.group = groupId;
-        
+
         await this.usuarioService.updateParticipante(this.usuario);
         await this.usuarioService.getIntegratesGroup();
         this.messageSuccesGroup('¡Bienvenido!', '¡Bienvenido a bordo!');

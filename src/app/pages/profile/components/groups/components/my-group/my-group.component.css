@@ -9,7 +9,6 @@ img {
   width: 100%;
 }
 
-
 .p-card-header {
   padding: 2rem 1rem 0;
   display: flex;
@@ -33,7 +32,6 @@ img {
   border-radius: 50%;
   object-fit: cover;
 }
-
 
 :host ::ng-deep .p-card .p-card-body {
   padding: 0 1rem;

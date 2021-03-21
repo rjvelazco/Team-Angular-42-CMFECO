@@ -16,6 +16,7 @@ import { title } from 'process';
 
 export class EditProfileComponent implements OnInit {
 
+  public activeState: boolean[] = [false];
   public countries      : any[];
   public imgTemp        : any = '';
   public imagenSubir    : File;
@@ -98,11 +99,15 @@ export class EditProfileComponent implements OnInit {
       if (pass1Control.value === pass2Control.value) {
         pass2Control.setErrors(null);
       } else {
-        pass2Control.setErrors({ noEsIgual: true });
+        pass2Control.setErrors({noEsIgual: true});
       }
     }
   }
 
+
+  toggle(index: number) {
+    this.activeState[index] = !this.activeState[index];
+  }
 
   // IMAGEN
   cambiarImagen(file: File) {
@@ -123,14 +128,17 @@ export class EditProfileComponent implements OnInit {
     if (this.form.invalid) {return;}
 
     const { userName, email, bio, birthDate, sex, password, facebook, github, linkedIn, twitter } = form.value;
-    
+
     let { country } = form.value;
     country = (!country) ? this.usuario.country : country.name;
-    
+
     try {
       console.log()
       const nuevoUsuario = new Usuario(this.usuario.uid, email, userName, this.usuario.role, this.usuario.img, sex, birthDate.toString(), country, facebook, github, linkedIn, twitter, bio, this.usuario.event, this.usuario.group, this.usuario.insignias, this.usuario.estado);
-      if (!this.usuario.estado) { await this.getInsigniaSociable(nuevoUsuario); }
+      if (!this.usuario.estado) {
+        this.usuario.estado = true;
+        await  this.getInsigniaSociable(nuevoUsuario);
+      }
       await this.usuarioService.updateParticipante(nuevoUsuario);
       Swal.fire({
         title: '¡Actualizado!',
@@ -150,8 +158,8 @@ export class EditProfileComponent implements OnInit {
 
   async getInsigniaSociable(usuario: Usuario) {
     const condicional = usuario.userName.length > 0 && usuario.email.length > 0 && usuario.sex.length > 0 && usuario.birthDate.length > 0 && usuario.country.length > 0 && usuario.facebook.length > 0 && usuario.github.length > 0 && usuario.linkedIn.length > 0 && usuario.twitter.length > 0 && usuario.bio.length > 0;
-
     if (condicional) {
+      console.log(this.usuario)
       this.usuario.insignias.push(this.sociableInsignia);
       usuario.estado = true;
       await Swal.fire({

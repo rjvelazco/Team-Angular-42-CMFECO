@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-
+import {Component, OnDestroy, OnInit} from '@angular/core';
 // Services
 import { HeaderService } from '../core/services/header.service';
 import { LoadingService } from '../core/services/loading.service';

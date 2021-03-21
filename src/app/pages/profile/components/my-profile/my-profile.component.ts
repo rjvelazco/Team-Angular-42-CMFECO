@@ -3,8 +3,7 @@ import { EventService } from 'src/app/core/services/event.service';
 import { InsigniasService } from 'src/app/core/services/insignias.service';
 
 // Services
-import { UsuarioService } from '../../../../core/services/usuario.service';
-
+import {UsuarioService} from '../../../../core/services/usuario.service';
 // Models
 import { Usuario } from '../../../../models/usuario.model';
 import { Event } from '../../../../models/event.model';
@@ -110,7 +109,7 @@ export class MyProfileComponent implements OnInit, OnDestroy {
           this.userEvent = evento;
         }
       });
-    } else { 
+    } else {
       this.userEvent = '';
     }
     this.usuario = this.usuarioService.usuario;

@@ -1,31 +1,26 @@
 <div *ngIf="insigniasGanadas.length > 0; else elseBlock" class="p-grid p-text-center">
-  <p-card class="p-col-12 p-md-6 p-lg-3" *ngFor="let i of insigniasGanadas">
-    <img src="{{i.imagen}}" alt="Avatar" class="image">
+  <p-card class="p-col-12 p-md-6 p-lg-3" *ngFor="let insignia of insigniasGanadas">
+    <img src="{{insignia.imagen}}" alt="Avatar" class="image">
     <div>
-      <h5>Descripción</h5>
+      <h3>Descripción</h3>
       <div class="p-pt-5">
-        <p> {{ i.descripcion }}</p>
+        <p>{{insignia['descripcion']}}</p>
       </div>
     </div>
-      <ng-template pTemplate="footer">
-        <p-divider></p-divider>
-        <div class="p-d-flex p-jc-between p-align-center">
-          <ng-container>
-            <div class="p-grid">
-              <div class="p-col-12">
-                <h5>¿Cómo ganaría?</h5>
-              </div>
-              <div class="p-col-12">
-                <p>{{ i.pasos }}</p>
-              </div>
-            </div>
-          </ng-container>
-        </div>
-      </ng-template>
-    </p-card>
+    <ng-template pTemplate="footer">
+      <p-divider></p-divider>
+      <div class="description">
+        <h3>¿Cómo ganar la insignia?</h3>
+      </div>
+      <p-divider></p-divider>
+      <div class="steps">
+        <p>{{insignia['pasos']}}</p>
+      </div>
+    </ng-template>
+  </p-card>
 </div>
-  <ng-template #elseBlock>
-    <div class="p-text-center p-pt-5 title">
-        ¡Anímate a conseguir todas las insignias!
-    </div>
-  </ng-template>
+<ng-template #elseBlock>
+  <div class="p-text-center p-pt-5 title">
+    ¡Anímate a conseguir todas las insignias!
+  </div>
+</ng-template>

@@ -2,14 +2,14 @@
         pRipple
         type="button"
         [routerLink]="['/perfil']"
-        icon="pi pi-angle-left"
-        label="Volver al perfil"
-        class="p-button-rounded p-button-text btn-back">
+        icon="pi pi-arrow-left"
+        label="Volver a mi perfil"
+        class="p-button-text btn-leave">
 </button>
 
 
 <div class="p-grid">
-  <div class="p-col-12 p-md-6 p-lg-6 p-md-offset-3 p-lg-offset-4">
+  <div class="p-col-12 p-md-6 p-lg-6 x">
     <div class="contact-form p-grid p-fluid">
       <form [formGroup]="form" (ngSubmit)="updateUser(form)">
         <div class="avatar">
@@ -106,32 +106,40 @@
             </div>
           </div>
         </div>
-        <div class="p-grid p-fluid">
-          <div class="p-col-12 p-md-6">
-            <div class="p-field">
-              <label for="password">Contraseña</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                formControlName="password"
-                pInputText>
-              <small *ngIf="passwordInvalid" class="p-error">Ingrese al menos 8 carácteres</small>
+        <h5>Contraseña</h5>
+        <p-button (click)="toggle(0)" styleClass="p-button-text"
+                  label="Cambiar contraseña"></p-button>
+        <p-accordion>
+          <p-accordionTab header="Header I" [(selected)]="activeState[0]">
+            <div class="p-grid p-fluid">
+              <div class="p-col-12 p-md-6">
+                <div class="p-field">
+                  <label for="password">Nueva contraseña</label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    formControlName="password"
+                    pInputText>
+                  <small *ngIf="passwordInvalid" class="p-error">Ingrese al menos 8 carácteres</small>
+                </div>
+              </div>
+              <div class="p-col-12 p-md-6">
+                <div class="p-field">
+                  <label for="password-confirmation">Confirmar nueva contraseña</label>
+                  <input
+                    type="password"
+                    name="password-confirmation"
+                    formControlName="confirmPassword"
+                    id="password-confirmation"
+                    pInputText>
+                  <small *ngIf="confirmPasswordInvalid" class="p-error">La contraseña debe coincidir</small>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="p-col-12 p-md-6">
-            <div class="p-field">
-              <label for="password-confirmation">Repetir contraseña</label>
-              <input
-                type="password"
-                name="password-confirmation"
-                formControlName="confirmPassword"
-                id="password-confirmation"
-                pInputText>
-              <small *ngIf="confirmPasswordInvalid" class="p-error">La contraseña debe coincidir</small>
-            </div>
-          </div>
-        </div>
+          </p-accordionTab>
+        </p-accordion>
+
         <h5>Redes Sociales</h5>
         <div class="p-grid p-fluid">
           <div class="p-col-12 p-md-6">

@@ -1,14 +1,12 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-
+import {RouterModule, Routes} from '@angular/router';
 // Guards
 import {AuthGuard} from '../guards/auth.guard';
-
 // Components
 import {PagesComponent} from './pages.component';
-import { ComunityComponent } from './comunity/comunity.component';
-import { WorkshopComponent } from './workshop/workshop.component';
-import { ContentCreatorsComponent } from './content-creators/content-creators.component';
+import {ComunityComponent} from './comunity/comunity.component';
+import {WorkshopComponent} from './workshop/workshop.component';
+import {ContentCreatorsComponent} from './content-creators/content-creators.component';
 
 
 const routes: Routes = [

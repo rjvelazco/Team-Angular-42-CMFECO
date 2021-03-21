@@ -1,16 +1,20 @@
-<div class="p-grid p-mt-3">
-  <div class="p-col-12 p-lg-3 p-xl-fixed p-text-center profile">
-    <p-card class="profile-card">
-      <div class="p-text-right p-pb-3">
+<div class="p-grid p-ai-stretch vertical-container">
+  <div class="p-col-12 p-lg-3 p-xl-fixed p-text-center">
+    <p-card styleClass="box-stretched">
+      <div class="edit-profile">
         <a routerLink="editar">Editar perfil</a>
       </div>
-      <img [src]="usuario.img | imagen"
-           alt="Avatar" class="profile-image">
+      <img [src]="usuario.img | imagen" class="profile-image" alt="Avatar">
       <div class="profile-info">
         <h1 class="profile-nickname">{{usuario.userName}}</h1>
         <div class="profile-role">{{usuario.role}}</div>
         <div class="profile-biography p-pt-5">
-          <p>{{usuario.bio}}</p>
+          <ng-container *ngIf="usuario['bio']; else elseBio">
+            <p>{{usuario.bio}}</p>
+          </ng-container>
+          <ng-template #elseBio>
+            <button class="p-button p-text-center" type="button" routerLink="editar">Completa tu perfil</button>
+          </ng-template>
         </div>
         <p-divider type="dashed"></p-divider>
         <div *ngIf="userEvent">
@@ -25,54 +29,61 @@
         <p-divider></p-divider>
         <div class="p-d-flex p-jc-between p-align-center">
           <ng-container *ngFor="let item of insigniasGanadas; let i = index">
-            <p-avatar styleClass="p-mr-2" size="large" shape="circle">
-              <img title="{{ item.nombre }}"  src="{{ item.imagen }}" alt="insigniasLogo">  
+            <p-avatar styleClass="p-mr-2 insignia-avatar" size="large" shape="circle">
+              <img title="{{ item.nombre }}"  src="{{ item.imagen }}" alt="insigniasLogo">
             </p-avatar>
           </ng-container>
         </div>
       </ng-template>
     </p-card>
   </div>
-  <div class="p-col-12 p-lg-6 insignia">
-    <p-card header="Insignias" styleClass="insignias-card">
-      <ng-container>
-          <p-avatar *ngFor="let i of insignias" styleClass="insignia-avatar" size="xlarge" shape="circle">
-              <img title="{{ i.nombre }}" src="{{ i.imagen }}" alt="insigniasLogo">
-          </p-avatar>
-      </ng-container>
-    </p-card>
-    <p-card header="Actividad reciente">
-      <article class="base-activity">
-        <div class="recent-activity">
-          <div class="title">
-            <h6>
-              Te has unido al evento Community Fest and Code
-            </h6>
-          </div>
-          <div class="badge-activity">
-            <img src="assets/img/communities/stackly.png" alt="badge">
-          </div>
-        </div>
-      </article>
-      <article class="base-activity">
-        <div class="recent-activity">
-          <div class="title">
-            <h6>
-              Te has unido al evento Community Fest and Code
-            </h6>
-          </div>
-          <div class="badge-activity">
-            <img src="assets/img/communities/stackly.png" alt="badge">
-          </div>
-        </div>
-      </article>
-    </p-card>
+  <div class="p-col-12 p-lg-6">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <p-card header="Insignias" styleClass="insignias-card">
+          <ng-container>
+            <p-avatar *ngFor="let insignia of insignias" styleClass="insignia-avatar" size="xlarge" shape="circle">
+              <img title="{{ insignia.nombre }}" src="{{ insignia.imagen }}" alt="insigniasLogo">
+            </p-avatar>
+          </ng-container>
+        </p-card>
+      </div>
+      <div class="p-col-12">
+        <p-card header="Actividad reciente">
+          <article class="base-activity">
+            <div class="recent-activity">
+              <div class="title">
+                <h5>
+                  Te has unido al evento Community Fest and Code
+                </h5>
+              </div>
+              <div class="badge-activity">
+                <img src="https://res.cloudinary.com/dsktpevg6/image/upload/v1616287608/kyigingh6fauoylytq0r.webp" alt="badge">
+              </div>
+            </div>
+          </article>
+          <article class="base-activity">
+            <div class="recent-activity">
+              <div class="title">
+                <h5>
+                  Te has unido al evento Community Fest and Code
+                </h5>
+              </div>
+              <div class="badge-activity">
+                <img src="https://res.cloudinary.com/dsktpevg6/image/upload/v1616287608/kyigingh6fauoylytq0r.webp" alt="badge">
+              </div>
+            </div>
+          </article>
+        </p-card>
+      </div>
+    </div>
   </div>
-  <div class="p-col-12 p-lg-3 p-xl-fixed events">
-    <p-card>
+  <div class="p-col-12 p-lg-3 p-xl-fixed">
+    <p-card styleClass="box-stretched">
       <ng-template pTemplate="header">
-        <div class="p-card-header p-pb-3 div-center-text">
-        <h4 class="color-white">Eventos de tu interes</h4>
+        <div class="p-card-header">
+          <h4 class="color-white">Eventos de tu interes</h4>
+          <a href="#">Ver más</a>
         </div>
       </ng-template>
       <p-scrollPanel styleClass="custombar">
@@ -84,7 +95,7 @@
                   <img src="assets/img/{{event['image']}}" alt="image">
                 </div>
                 <div class="event-content">
-                  <h5>{{event['event']}}</h5>
+                  <h4>{{event['event']}}</h4>
                   <button pButton
                           pRipple
                           class="btn-comfeco"

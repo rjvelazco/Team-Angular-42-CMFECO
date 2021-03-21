@@ -3,6 +3,13 @@
   padding-left: 3rem;
   padding-right: 3rem;
   text-align: left;
-  white-space: pre-wrap;
-  word-break: break-word;
+  color: #3a3c3f;
+}
+
+.content-title{
+  font-weight: bold;
+}
+
+.content{
+  color: #273b47;
 }

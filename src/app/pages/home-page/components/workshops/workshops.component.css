@@ -7,6 +7,10 @@
   color: #6c757d;
 }
 
+.btn-comfeco {
+  max-width: none;
+}
+
 .speaker a {
   text-decoration: none;
 }

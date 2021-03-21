@@ -1,13 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 // Services
-import { EventService } from '../../../../core/services/event.service';
-import { UsuarioService } from '../../../../core/services/usuario.service';
-
+import {EventService} from '../../../../core/services/event.service';
+import {UsuarioService} from '../../../../core/services/usuario.service';
 // Models
-import { Usuario } from '../../../../models/usuario.model';
-import { Event } from '../../../../models/event.model';
-
+import {Usuario} from '../../../../models/usuario.model';
+import {Event} from '../../../../models/event.model';
 // SweetAlert2
 import Swal from 'sweetalert2';
 import { Subscription } from 'rxjs';
@@ -27,7 +25,7 @@ export class EventsComponent implements OnInit, OnDestroy {
   constructor(
     private eventService: EventService,
     private usuarioService: UsuarioService,
-  ) { 
+  ) {
     this.usuario = this.usuarioService.usuario;
   }
 
@@ -42,13 +40,14 @@ export class EventsComponent implements OnInit, OnDestroy {
   }
 
   async signIn(event: Event){
-  
     if (this.usuario.event.length > 0) {
       Swal.fire({
         title: '¡Error!',
         text: 'Ya estas registrado en otro evento.',
+        timer: 2000,
         icon: 'error',
-        confirmButtonText: 'Cool'
+        showCancelButton: false,
+        showConfirmButton: false,
       });
       return;
     }
@@ -59,22 +58,24 @@ export class EventsComponent implements OnInit, OnDestroy {
       await this.usuarioService.updateParticipante(this.usuario);
       await this.eventService.updateEvent(event);
       Swal.fire({
-        title: 'Bienvenido al Event',
+        title: 'Bienvenido al evento',
+        timer: 2000,
         text: `Te has registrado en el evento de ${event.title}`,
         icon: 'success',
-        confirmButtonText: 'Cool'
+        showCancelButton: false,
+        showConfirmButton: false,
       });
     } catch (e) {
       this.usuario.event = '';
       Swal.fire({
         title: '¡Error!',
+        timer: 2000,
         text: 'Algo ha salido mal, intenta  nuevamente.',
         icon: 'error',
-        confirmButtonText: 'Cool'
+        showCancelButton: false,
+        showConfirmButton: false,
       });
-      console.log(e);
     }
-
   }
 
   async signOut(event: Event) {
@@ -87,17 +88,20 @@ export class EventsComponent implements OnInit, OnDestroy {
         title: '¡Hasta luego!',
         text: `Has abandonado el evento: ${event.title}`,
         icon: 'success',
-        confirmButtonText: 'Cool'
+        timer: 2000,
+        showCancelButton: false,
+        showConfirmButton: false,
       });
     } catch (e) {
       this.usuario.event = '';
       Swal.fire({
         title: '¡Error!',
         text: 'Algo ha salido mal, intenta  nuevamente.',
+        showCancelButton: false,
+        showConfirmButton: false,
         icon: 'error',
-        confirmButtonText: 'Cool'
+        timer: 2000,
       });
-      console.log(e);
     }
   }
 }

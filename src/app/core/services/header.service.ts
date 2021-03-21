@@ -1,5 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
-// import * as EventEmitter from 'events';
+import {EventEmitter, Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'

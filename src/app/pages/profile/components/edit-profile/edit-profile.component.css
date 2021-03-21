@@ -8,9 +8,13 @@ h5 {
   line-height: 30px;
 }
 
-
 .title {
-  margin-bottom: 12px;
+  margin: 2rem 0;
+}
+
+.btn-leave {
+  text-align: left;
+  color: #4e007e !important;
 }
 
 .avatar {
@@ -27,10 +31,20 @@ h5 {
   margin-bottom: 12px;
 }
 
+:host ::ng-deep .p-accordion-header {
+  display: none;
+}
+
 :host ::ng-deep .p-inputgroup-addon:not(.not-padding) {
   padding-right: 1.2rem !important;
 }
 
-.btn-back{
-  max-width: 200px;
+:host ::ng-deep .p-grid {
+  justify-content: center;
+  align-content: center;
+}
+
+
+:host ::ng-deep .p-button .p-button-icon-left {
+  font-size: 2rem;
 }

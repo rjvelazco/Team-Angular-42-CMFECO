@@ -26,8 +26,8 @@
 }
 
 .group-description{
-  margin: 0 0 1rem 0;
-  min-width: 70%;
+  margin: 0.5rem 0 1.5rem 0;
+  min-height: 54px;
 }
 
 .group-list-item .group-description{
@@ -62,11 +62,7 @@
   width: 100%;
 }
 
-:host ::ng-deep .p-card-content{
-  height: 170px;
-}
-
-:host ::ng-deep .p-card .p-card-body {
+:host ::ng-deep .p-card .p-card-body{
   padding: 0 1rem;
   margin-bottom: 2rem;
 }
@@ -120,6 +116,11 @@
   background-color: #7f52ff;
   color: #ffffff;
 }
+
+.swal2-styled.swal2-deny.btn-deny{
+  background: black !important;
+}
+
 
 @media screen and (max-width: 765px) {
   p-dataViewLayoutOptions{

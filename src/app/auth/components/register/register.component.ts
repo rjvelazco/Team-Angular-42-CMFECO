@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { UsuarioService } from 'src/app/core/services/usuario.service';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UsuarioService} from 'src/app/core/services/usuario.service';
 
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -64,9 +64,9 @@ export class RegisterComponent implements OnInit {
         const { user } = await this.usuarioService.register(username, email, password);
         Swal.fire({
           title: '¡Bienvenido!',
-          text: `Verifica tu email [${user.email}] para continuar.`,
+          text: `Verifica tu email ${user.email} para continuar.`,
           icon: 'success',
-          confirmButtonText: 'Cool'
+          confirmButtonText: 'Ok'
         });
         this.form.reset();
         this.router.navigateByUrl('/login');
