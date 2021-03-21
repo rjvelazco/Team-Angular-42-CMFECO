@@ -151,7 +151,7 @@ export class EditProfileComponent implements OnInit {
         title: '¡Error!',
         text: 'No se han podido actualizar los datos.',
         icon: 'error',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'Ok'
       });
     }
   }

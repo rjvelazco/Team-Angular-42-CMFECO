@@ -100,7 +100,7 @@ export class RegisterComponent implements OnInit {
       title: title,
       text: message,
       icon: 'error',
-      confirmButtonText: 'Cool'
+      confirmButtonText: 'Ok'
     });
   }
 

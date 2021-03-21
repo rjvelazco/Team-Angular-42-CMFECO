@@ -52,12 +52,12 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
         await this.usuarioService.resetPassword(email);
         Swal.fire({
           title: 'Email Enviado',
-          text: 'Recuerde revisar la bandeja de span y/o correo no deseado.',
+          text: 'Recuerde revisar la bandeja de spam y/o correo no deseado.',
           icon: 'success',
-          confirmButtonText: 'Cool'
+          confirmButtonText: 'Ok'
         });
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     } else {
       Object.values(this.form.controls).forEach(control => control.markAllAsTouched());
